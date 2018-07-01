@@ -13,9 +13,11 @@
 		47409A2720E6633300AD2031 /* iosDeKasegu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 47409A2520E6633300AD2031 /* iosDeKasegu.xcdatamodeld */; };
 		47409A2920E6633500AD2031 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47409A2820E6633500AD2031 /* Assets.xcassets */; };
 		47409A2C20E6633500AD2031 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47409A2A20E6633500AD2031 /* LaunchScreen.storyboard */; };
+		5EBC0C837D2F8073B21F0A40 /* Pods_iosDeKasegu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B1C634B5C0E253B6A65BC5 /* Pods_iosDeKasegu.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		266A3B3A4ACA227D34169225 /* Pods-iosDeKasegu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosDeKasegu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iosDeKasegu/Pods-iosDeKasegu.debug.xcconfig"; sourceTree = "<group>"; };
 		47409A1B20E6633200AD2031 /* iosDeKasegu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosDeKasegu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47409A1E20E6633200AD2031 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47409A2020E6633300AD2031 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +26,8 @@
 		47409A2820E6633500AD2031 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		47409A2B20E6633500AD2031 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		47409A2D20E6633500AD2031 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEC9F50579D3FA14D89B3E9E /* Pods-iosDeKasegu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosDeKasegu.release.xcconfig"; path = "Pods/Target Support Files/Pods-iosDeKasegu/Pods-iosDeKasegu.release.xcconfig"; sourceTree = "<group>"; };
+		C1B1C634B5C0E253B6A65BC5 /* Pods_iosDeKasegu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosDeKasegu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EBC0C837D2F8073B21F0A40 /* Pods_iosDeKasegu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				47409A1D20E6633200AD2031 /* iosDeKasegu */,
 				47409A1C20E6633200AD2031 /* Products */,
+				EB8EE59FF313D6B3ADD63B1C /* Pods */,
+				A9004398B0A041C37B42D867 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +74,23 @@
 			path = iosDeKasegu;
 			sourceTree = "<group>";
 		};
+		A9004398B0A041C37B42D867 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C1B1C634B5C0E253B6A65BC5 /* Pods_iosDeKasegu.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EB8EE59FF313D6B3ADD63B1C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				266A3B3A4ACA227D34169225 /* Pods-iosDeKasegu.debug.xcconfig */,
+				BEC9F50579D3FA14D89B3E9E /* Pods-iosDeKasegu.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +98,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 47409A3020E6633500AD2031 /* Build configuration list for PBXNativeTarget "iosDeKasegu" */;
 			buildPhases = (
+				1120B9867AF28247352EEF27 /* [CP] Check Pods Manifest.lock */,
 				47409A1720E6633200AD2031 /* Sources */,
 				47409A1820E6633200AD2031 /* Frameworks */,
 				47409A1920E6633200AD2031 /* Resources */,
+				7D4EFA69D4EE21600470F969 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +158,47 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1120B9867AF28247352EEF27 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iosDeKasegu-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7D4EFA69D4EE21600470F969 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-iosDeKasegu/Pods-iosDeKasegu-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iosDeKasegu/Pods-iosDeKasegu-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		47409A1720E6633200AD2031 /* Sources */ = {
@@ -282,6 +349,7 @@
 		};
 		47409A3120E6633500AD2031 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 266A3B3A4ACA227D34169225 /* Pods-iosDeKasegu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +368,7 @@
 		};
 		47409A3220E6633500AD2031 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BEC9F50579D3FA14D89B3E9E /* Pods-iosDeKasegu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
