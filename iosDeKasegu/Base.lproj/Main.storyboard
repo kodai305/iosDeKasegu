@@ -93,7 +93,7 @@
         <!--アイデアを発想-->
         <scene sceneID="HfH-ih-G0K">
             <objects>
-                <viewController id="K0v-UG-ZIM" sceneMemberID="viewController">
+                <viewController id="K0v-UG-ZIM" customClass="SiritoriViewController" customModule="iosDeKasegu" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SzH-XH-X2P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

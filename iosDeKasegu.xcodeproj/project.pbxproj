@@ -13,6 +13,10 @@
 		47409A2720E6633300AD2031 /* iosDeKasegu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 47409A2520E6633300AD2031 /* iosDeKasegu.xcdatamodeld */; };
 		47409A2920E6633500AD2031 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47409A2820E6633500AD2031 /* Assets.xcassets */; };
 		47409A2C20E6633500AD2031 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47409A2A20E6633500AD2031 /* LaunchScreen.storyboard */; };
+		47AF685020E8C6C3003BD075 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 47AF684F20E8C6C3003BD075 /* GoogleService-Info.plist */; };
+		47AF685220E8C7E1003BD075 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47AF685120E8C7E1003BD075 /* AdSupport.framework */; };
+		47AF685420E8C874003BD075 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AF685320E8C874003BD075 /* BaseViewController.swift */; };
+		47AF685620E8CAE5003BD075 /* SiritoriViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AF685520E8CAE5003BD075 /* SiritoriViewController.swift */; };
 		5EBC0C837D2F8073B21F0A40 /* Pods_iosDeKasegu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B1C634B5C0E253B6A65BC5 /* Pods_iosDeKasegu.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +30,10 @@
 		47409A2820E6633500AD2031 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		47409A2B20E6633500AD2031 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		47409A2D20E6633500AD2031 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		47AF684F20E8C6C3003BD075 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		47AF685120E8C7E1003BD075 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		47AF685320E8C874003BD075 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		47AF685520E8CAE5003BD075 /* SiritoriViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiritoriViewController.swift; sourceTree = "<group>"; };
 		BEC9F50579D3FA14D89B3E9E /* Pods-iosDeKasegu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosDeKasegu.release.xcconfig"; path = "Pods/Target Support Files/Pods-iosDeKasegu/Pods-iosDeKasegu.release.xcconfig"; sourceTree = "<group>"; };
 		C1B1C634B5C0E253B6A65BC5 /* Pods_iosDeKasegu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosDeKasegu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -35,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47AF685220E8C7E1003BD075 /* AdSupport.framework in Frameworks */,
 				5EBC0C837D2F8073B21F0A40 /* Pods_iosDeKasegu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,11 +72,14 @@
 		47409A1D20E6633200AD2031 /* iosDeKasegu */ = {
 			isa = PBXGroup;
 			children = (
+				47AF685320E8C874003BD075 /* BaseViewController.swift */,
 				47409A1E20E6633200AD2031 /* AppDelegate.swift */,
 				47409A2020E6633300AD2031 /* ViewController.swift */,
 				47409A2220E6633300AD2031 /* Main.storyboard */,
+				47AF685520E8CAE5003BD075 /* SiritoriViewController.swift */,
 				47409A2820E6633500AD2031 /* Assets.xcassets */,
 				47409A2A20E6633500AD2031 /* LaunchScreen.storyboard */,
+				47AF684F20E8C6C3003BD075 /* GoogleService-Info.plist */,
 				47409A2D20E6633500AD2031 /* Info.plist */,
 				47409A2520E6633300AD2031 /* iosDeKasegu.xcdatamodeld */,
 			);
@@ -77,6 +89,7 @@
 		A9004398B0A041C37B42D867 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				47AF685120E8C7E1003BD075 /* AdSupport.framework */,
 				C1B1C634B5C0E253B6A65BC5 /* Pods_iosDeKasegu.framework */,
 			);
 			name = Frameworks;
@@ -152,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47409A2C20E6633500AD2031 /* LaunchScreen.storyboard in Resources */,
+				47AF685020E8C6C3003BD075 /* GoogleService-Info.plist in Resources */,
 				47409A2920E6633500AD2031 /* Assets.xcassets in Resources */,
 				47409A2420E6633300AD2031 /* Main.storyboard in Resources */,
 			);
@@ -205,8 +219,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47AF685620E8CAE5003BD075 /* SiritoriViewController.swift in Sources */,
 				47409A2120E6633300AD2031 /* ViewController.swift in Sources */,
 				47409A1F20E6633200AD2031 /* AppDelegate.swift in Sources */,
+				47AF685420E8C874003BD075 /* BaseViewController.swift in Sources */,
 				47409A2720E6633300AD2031 /* iosDeKasegu.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
