@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMobileAds
 
-class ViewController: BaseViewController {
+class TopViewController: BaseViewController {
     var bannerView: GADBannerView!
     
     override func viewDidLoad() {

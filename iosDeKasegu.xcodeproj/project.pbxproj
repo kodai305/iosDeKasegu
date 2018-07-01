@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		47409A1F20E6633200AD2031 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47409A1E20E6633200AD2031 /* AppDelegate.swift */; };
-		47409A2120E6633300AD2031 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47409A2020E6633300AD2031 /* ViewController.swift */; };
+		47409A2120E6633300AD2031 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47409A2020E6633300AD2031 /* TopViewController.swift */; };
 		47409A2420E6633300AD2031 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47409A2220E6633300AD2031 /* Main.storyboard */; };
 		47409A2720E6633300AD2031 /* iosDeKasegu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 47409A2520E6633300AD2031 /* iosDeKasegu.xcdatamodeld */; };
 		47409A2920E6633500AD2031 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47409A2820E6633500AD2031 /* Assets.xcassets */; };
@@ -24,7 +24,7 @@
 		266A3B3A4ACA227D34169225 /* Pods-iosDeKasegu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosDeKasegu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iosDeKasegu/Pods-iosDeKasegu.debug.xcconfig"; sourceTree = "<group>"; };
 		47409A1B20E6633200AD2031 /* iosDeKasegu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosDeKasegu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47409A1E20E6633200AD2031 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		47409A2020E6633300AD2031 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		47409A2020E6633300AD2031 /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		47409A2320E6633300AD2031 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		47409A2620E6633300AD2031 /* iosDeKasegu.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iosDeKasegu.xcdatamodel; sourceTree = "<group>"; };
 		47409A2820E6633500AD2031 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 			children = (
 				47AF685320E8C874003BD075 /* BaseViewController.swift */,
 				47409A1E20E6633200AD2031 /* AppDelegate.swift */,
-				47409A2020E6633300AD2031 /* ViewController.swift */,
+				47409A2020E6633300AD2031 /* TopViewController.swift */,
 				47409A2220E6633300AD2031 /* Main.storyboard */,
 				47AF685520E8CAE5003BD075 /* SiritoriViewController.swift */,
 				47409A2820E6633500AD2031 /* Assets.xcassets */,
@@ -220,7 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47AF685620E8CAE5003BD075 /* SiritoriViewController.swift in Sources */,
-				47409A2120E6633300AD2031 /* ViewController.swift in Sources */,
+				47409A2120E6633300AD2031 /* TopViewController.swift in Sources */,
 				47409A1F20E6633200AD2031 /* AppDelegate.swift in Sources */,
 				47AF685420E8C874003BD075 /* BaseViewController.swift in Sources */,
 				47409A2720E6633300AD2031 /* iosDeKasegu.xcdatamodeld in Sources */,
