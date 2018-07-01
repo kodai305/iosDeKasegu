@@ -1,5 +1,5 @@
 //
-//  SiritoriViewController.swift
+//  SiritoriWorkViewController.swift
 //  iosDeKasegu
 //
 //  Created by 高木広大 on 2018/07/01.
@@ -9,12 +9,18 @@
 import UIKit
 import GoogleMobileAds
 
-class SiritoriViewController: BaseViewController {
+class SiritoriWorkViewController: BaseViewController {
     var bannerView: GADBannerView!
+    
+    @IBOutlet weak var themeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        // siritoriのテーマを読込
+        themeLabel.backgroundColor = UIColor.white
+        themeLabel.text = "~テーマ~\n    " + siritoriTheme
+
         // To display the advertisement
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         bannerView.adUnitID = admob_id
@@ -22,9 +28,10 @@ class SiritoriViewController: BaseViewController {
         bannerView.load(GADRequest())
         bannerView.delegate = self
         addBannerViewToView(bannerView)
-        
+
+        // Do any additional setup after loading the view.
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
