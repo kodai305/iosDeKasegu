@@ -9,18 +9,22 @@
 import UIKit
 import GoogleMobileAds
 
+// XXX: 別々の配列じゃなくて構造体とかにするべき、おそらく
+var keywordArray:[UITextField] = []
+var IdeaArray:[UITextView] = []
+
+
 class SiritoriWorkViewController: BaseViewController {
+    let firstWord = "アイデア"
+    
     var bannerView: GADBannerView!
     let scrollView = UIScrollView()
 
+    // キーボードを下げる
     @IBAction func tapView(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
-    // XXX: 別々の配列じゃなくて構造体とかにするべき、おそらく
-    var keywordArray:[UITextField] = []
-    var IdeaArray:[UITextView] = []
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 // XXX: CGRectのパラメータを数値でなく、画面の幅の半分とかにしないと別の機器で表示が崩れる、多分
@@ -31,7 +35,7 @@ class SiritoriWorkViewController: BaseViewController {
         scrollView.frame = scrollFrame
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height-20)
 
-        // siritoriのテーマを読込んで表示
+        // しりとりのテーマを読込んで表示
         let themeLabel = UILabel()
         themeLabel.frame = CGRect(x:0, y:60, width:view.frame.width, height:50)
         themeLabel.numberOfLines = 0
@@ -40,6 +44,24 @@ class SiritoriWorkViewController: BaseViewController {
         themeLabel.backgroundColor = UIColor.blue
         view.addSubview(themeLabel)
 
+        // しりとりの最初のワードを設定・表示
+        let contentsView = UIView()
+        contentsView.frame = CGRect(x:20, y:10, width:Int(view.frame.width-CGFloat(40)), height:90)
+        contentsView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.6, alpha: 1.0)
+            // 説明
+        let firstWordLabel = UILabel()
+        firstWordLabel.frame = CGRect(x:10, y:5, width:contentsView.frame.width-20, height:30)
+        firstWordLabel.text = "しりとりの最初のフレーズ"
+        firstWordLabel.textColor = UIColor.black
+        contentsView.addSubview(firstWordLabel)
+            // 最初のワード
+        let firstWordField = UITextField(frame: CGRect(x: 10, y:40, width:140, height:30))
+        firstWordField.borderStyle = UITextBorderStyle.roundedRect
+        firstWordField.text = firstWord
+        contentsView.addSubview(firstWordField)
+
+        scrollView.addSubview(contentsView)
+        
         // キーワード+アイデアのコンテンツを作成
         createContentsView()
 
@@ -76,6 +98,21 @@ class SiritoriWorkViewController: BaseViewController {
         let y_new = index*140
         let y_field = 120 + y_new
         
+        // キーワードが入力されていなかったらアラートを出す
+        if (keywordArray[index-1].text?.isEmpty)! {
+            print("hoge")
+            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+            alert.title = "Ops!!"
+            alert.message = "please input a keyword!"
+            alert.addAction(UIAlertAction(
+                title: "back",
+                style: .default
+                )
+            )
+            self.present(alert, animated: true)
+            return
+        }
+        
         // キーワード+アイデアを作成
         createContentsView()
         
@@ -86,7 +123,7 @@ class SiritoriWorkViewController: BaseViewController {
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + CGFloat(y_new))
 
         // 中心を変更する
-        scrollView.setContentOffset(CGPoint(x: 0, y: y_field-120), animated: true)
+        scrollView.setContentOffset(CGPoint(x: 0, y: y_field-200), animated: true)
         
     }
     
@@ -102,16 +139,22 @@ class SiritoriWorkViewController: BaseViewController {
         
         // キーワードのラベルを追加
         let keywordLabel = UILabel()
-        keywordLabel.frame = CGRect(x:10, y:5, width:100, height:30)
+        keywordLabel.frame = CGRect(x:10, y:5, width:140, height:30)
         keywordLabel.numberOfLines = 0
         keywordLabel.text = "キーワード"+String(index+1)
         keywordLabel.textColor = UIColor.black
         contentsView.addSubview(keywordLabel)
         
         // キーワードフィールドの追加
-        let keywordField: UITextField = UITextField(frame: CGRect(x: 10, y:40, width:100, height:30))
+        let keywordField: UITextField = UITextField(frame: CGRect(x: 10, y:40, width:140, height:30))
+        keywordField.delegate = self as? UITextFieldDelegate
         keywordField.borderStyle = UITextBorderStyle.roundedRect
         keywordArray.append(keywordField)
+        if (index == 0) {
+            keywordField.placeholder = firstWord+"→ ..."
+        } else {
+            keywordField.placeholder = keywordArray[index-1].text!+"→ ..."
+        }
         contentsView.addSubview(keywordField)
         
         // アイデアのラベルを追加
@@ -134,6 +177,7 @@ class SiritoriWorkViewController: BaseViewController {
         scrollView.addSubview(contentsView)
     }
     
+
 
     /*
     // MARK: - Navigation
