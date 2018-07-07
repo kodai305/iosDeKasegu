@@ -86,6 +86,8 @@ class SiritoriWorkViewController: BaseViewController {
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + CGFloat(y_new))
 
         // 中心を変更する
+        scrollView.setContentOffset(CGPoint(x: 0, y: y_field-120), animated: true)
+        
     }
     
     func createContentsView() {
