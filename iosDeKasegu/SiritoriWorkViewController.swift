@@ -35,7 +35,7 @@ class SiritoriWorkViewController: BaseViewController {
         
         // siritoriのテーマを読込んで表示
         let themeLabel = UILabel()
-        themeLabel.frame = CGRect(x:50, y:80, width:300, height:80)
+        themeLabel.frame = CGRect(x:50, y:10, width:300, height:80)
         themeLabel.numberOfLines = 0
         themeLabel.text = "★テーマ★\n　　　　" + siritoriTheme
         themeLabel.backgroundColor = UIColor.gray
