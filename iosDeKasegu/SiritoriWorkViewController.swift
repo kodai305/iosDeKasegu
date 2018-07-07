@@ -27,13 +27,16 @@ class SiritoriWorkViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let index = keywordArray.count
+        
 // XXX: CGRectのパラメータを数値でなく、画面の幅の半分とかにしないと別の機器で表示が崩れる、多分
         scrollView.backgroundColor = UIColor.gray
         scrollView.keyboardDismissMode = .onDrag
         // 表示窓のサイズと位置を設定
         let scrollFrame = CGRect(x:0 , y:110 , width:view.frame.width, height:view.frame.height-20)
         scrollView.frame = scrollFrame
-        scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height-20)
+        scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height-20+CGFloat(140*index))
 
         // しりとりのテーマを読込んで表示
         let themeLabel = UILabel()
@@ -63,13 +66,19 @@ class SiritoriWorkViewController: BaseViewController {
         scrollView.addSubview(contentsView)
         
         // キーワード+アイデアのコンテンツを作成
-        createContentsView()
-
+        if (index == 0) {
+            createContentsView(ArrayIndex: 0)
+        } else {
+            for i in 0..<index {
+                loadContentsView(ArrayIndex: i)
+            }
+        }
+        
         // ボタンの追加
         let button = UIButton()
         button.setTitle("次へ", for: .normal)
         button.setTitleColor(UIColor.blue, for: .normal)
-        button.frame = CGRect(x: 300, y: 250, width: 50, height: 50)
+        button.frame = CGRect(x: 300, y: 140*(index)+250, width: 50, height: 50)
         button.addTarget(self, action: #selector(self.onClick(_:)), for: .touchUpInside)
         scrollView.addSubview(button)
         
@@ -114,7 +123,7 @@ class SiritoriWorkViewController: BaseViewController {
         }
         
         // キーワード+アイデアを作成
-        createContentsView()
+        createContentsView(ArrayIndex: Int(index))
         
         // ボタンを下げる
         button.frame = CGRect(x:300, y:y_field+120, width:50, height:50)
@@ -127,9 +136,9 @@ class SiritoriWorkViewController: BaseViewController {
         
     }
     
-    func createContentsView() {
-        let index = keywordArray.count
-        let y_new = index*140
+    
+    func loadContentsView(ArrayIndex: Int) {
+        let y_new = ArrayIndex*140
         let y_field = 120 + y_new
         
         // キーワード + アイデアのUIViewの作成
@@ -141,7 +150,42 @@ class SiritoriWorkViewController: BaseViewController {
         let keywordLabel = UILabel()
         keywordLabel.frame = CGRect(x:10, y:5, width:140, height:30)
         keywordLabel.numberOfLines = 0
-        keywordLabel.text = "キーワード"+String(index+1)
+        keywordLabel.text = "キーワード"+String(ArrayIndex+1)
+        keywordLabel.textColor = UIColor.black
+        contentsView.addSubview(keywordLabel)
+        
+        // キーワードフィールドの追加
+        contentsView.addSubview(keywordArray[ArrayIndex])
+        
+        // アイデアのラベルを追加
+        let IdeaLabel = UILabel()
+        IdeaLabel.frame = CGRect(x:160, y:5, width:160, height:30)
+        IdeaLabel.numberOfLines = 0
+        IdeaLabel.text = "アイデア"+String(ArrayIndex+1)
+        IdeaLabel.textColor = UIColor.black
+        contentsView.addSubview(IdeaLabel)
+        
+        // アイデアフィールドの追加
+        contentsView.addSubview(IdeaArray[ArrayIndex])
+        
+        // スクロールビューに追加
+        scrollView.addSubview(contentsView)
+    }
+    
+    func createContentsView(ArrayIndex: Int) {
+        let y_new = ArrayIndex*140
+        let y_field = 120 + y_new
+        
+        // キーワード + アイデアのUIViewの作成
+        let contentsView = UIView()
+        contentsView.frame = CGRect(x:20, y:y_field, width:Int(view.frame.width-CGFloat(40)), height:120)
+        contentsView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.6, alpha: 1.0)
+        
+        // キーワードのラベルを追加
+        let keywordLabel = UILabel()
+        keywordLabel.frame = CGRect(x:10, y:5, width:140, height:30)
+        keywordLabel.numberOfLines = 0
+        keywordLabel.text = "キーワード"+String(ArrayIndex+1)
         keywordLabel.textColor = UIColor.black
         contentsView.addSubview(keywordLabel)
         
@@ -150,10 +194,10 @@ class SiritoriWorkViewController: BaseViewController {
         keywordField.delegate = self as? UITextFieldDelegate
         keywordField.borderStyle = UITextBorderStyle.roundedRect
         keywordArray.append(keywordField)
-        if (index == 0) {
+        if (ArrayIndex == 0) {
             keywordField.placeholder = firstWord+"→ ..."
         } else {
-            keywordField.placeholder = keywordArray[index-1].text!+"→ ..."
+            keywordField.placeholder = keywordArray[ArrayIndex-1].text!+"→ ..."
         }
         contentsView.addSubview(keywordField)
         
@@ -161,7 +205,7 @@ class SiritoriWorkViewController: BaseViewController {
         let IdeaLabel = UILabel()
         IdeaLabel.frame = CGRect(x:160, y:5, width:160, height:30)
         IdeaLabel.numberOfLines = 0
-        IdeaLabel.text = "アイデア"+String(index+1)
+        IdeaLabel.text = "アイデア"+String(ArrayIndex+1)
         IdeaLabel.textColor = UIColor.black
         contentsView.addSubview(IdeaLabel)
         
