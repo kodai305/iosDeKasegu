@@ -12,14 +12,22 @@ import GoogleMobileAds
 class MandaraWorkTableViewController: BaseViewController,UITextViewDelegate {
     var bannerView: GADBannerView!
     
+    @IBAction func TapScreen(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
     @IBOutlet weak var themeLabel: UILabel!
     @IBOutlet weak var waku1: UITextView!
-    @IBOutlet weak var waku2: UITextView!
+    @IBOutlet weak var Center6: UITextView!
+    
+    @IBOutlet weak var RightCenter5: UITextView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        waku1.delegate = self
-        waku2.delegate = self
+        Center6.delegate = self
+        
+        RightCenter5.delegate = self
 
         waku1.layer.borderColor = UIColor.red.cgColor
         
@@ -27,8 +35,8 @@ class MandaraWorkTableViewController: BaseViewController,UITextViewDelegate {
         waku1.layer.borderWidth = 1.0
     }
     
-    func textViewDidChange(_ waku1: UITextView) {
-        waku2.text = waku1.text;
+    func textViewDidChange(_ Center6: UITextView) {
+        RightCenter5.text = Center6.text;
     }
 
     override func didReceiveMemoryWarning() {
