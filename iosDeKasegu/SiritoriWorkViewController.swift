@@ -23,43 +23,31 @@ class SiritoriWorkViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+// XXX: CGRectのパラメータを数値でなく、画面の幅の半分とかにしないと別の機器で表示が崩れる、多分
         scrollView.backgroundColor = UIColor.gray
         scrollView.keyboardDismissMode = .onDrag
         // 表示窓のサイズと位置を設定
-        let scrollFrame = CGRect(x: 0, y: 20, width: view.frame.width, height: view.frame.height-20)
+        let scrollFrame = CGRect(x:0 , y:110 , width:view.frame.width, height:view.frame.height-20)
         scrollView.frame = scrollFrame
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height-20)
 
-        // XXX: CGRectのパラメータを数値でなく、画面の幅の半分とかにしないと別の機器で表示が崩れる、多分
-        
         // siritoriのテーマを読込んで表示
         let themeLabel = UILabel()
-        themeLabel.frame = CGRect(x:50, y:10, width:300, height:80)
+        themeLabel.frame = CGRect(x:0, y:60, width:view.frame.width, height:50)
         themeLabel.numberOfLines = 0
         themeLabel.text = "★テーマ★\n　　　　" + siritoriTheme
-        themeLabel.backgroundColor = UIColor.gray
-        self.scrollView.addSubview(themeLabel)
+        themeLabel.textColor = UIColor.white
+        themeLabel.backgroundColor = UIColor.blue
+        view.addSubview(themeLabel)
 
-        // キーワード入力用
-        let firstKeyword: UITextField = UITextField(frame: CGRect(x: 10, y:200, width:100, height:30))
-        firstKeyword.borderStyle = UITextBorderStyle.roundedRect
-        keywordArray.append(firstKeyword)
-        scrollView.addSubview(firstKeyword)
-        
-        // アイデア入力用
-        let firstIdea: UITextView = UITextView(frame: CGRect(x: 150, y:200, width:200, height:60))
-        firstIdea.layer.borderWidth = 1
-        firstIdea.layer.cornerRadius = 5
-        firstIdea.layer.borderColor = UIColor.lightGray.cgColor
-        IdeaArray.append(firstIdea)
-        scrollView.addSubview(firstIdea)
-        
+        // キーワード+アイデアのコンテンツを作成
+        createContentsView()
+
         // ボタンの追加
         let button = UIButton()
         button.setTitle("次へ", for: .normal)
         button.setTitleColor(UIColor.blue, for: .normal)
-        button.frame = CGRect(x: 300, y: 270, width: 50, height: 50)
+        button.frame = CGRect(x: 300, y: 250, width: 50, height: 50)
         button.addTarget(self, action: #selector(self.onClick(_:)), for: .touchUpInside)
         scrollView.addSubview(button)
         
@@ -85,50 +73,66 @@ class SiritoriWorkViewController: BaseViewController {
     @objc func onClick(_ sender: AnyObject){
         let button = sender as! UIButton
         let index = keywordArray.count
-        let y_new = index*80
-        let y_field = 200 + y_new
+        let y_new = index*140
+        let y_field = 120 + y_new
+        
+        // キーワード+アイデアを作成
+        createContentsView()
+        
+        // ボタンを下げる
+        button.frame = CGRect(x:300, y:y_field+120, width:50, height:50)
+
+        // スクロールビューのサイズを更新
+        scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + CGFloat(y_new))
+
+        // 中心を変更する
+    }
+    
+    func createContentsView() {
+        let index = keywordArray.count
+        let y_new = index*140
+        let y_field = 120 + y_new
+        
+        // キーワード + アイデアのUIViewの作成
+        let contentsView = UIView()
+        contentsView.frame = CGRect(x:20, y:y_field, width:Int(view.frame.width-CGFloat(40)), height:120)
+        contentsView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.6, alpha: 1.0)
+        
+        // キーワードのラベルを追加
+        let keywordLabel = UILabel()
+        keywordLabel.frame = CGRect(x:10, y:5, width:80, height:30)
+        keywordLabel.numberOfLines = 0
+        keywordLabel.text = "キーワード"
+        keywordLabel.textColor = UIColor.black
+        contentsView.addSubview(keywordLabel)
+        
         // キーワードフィールドの追加
-        let keywordField: UITextField = UITextField(frame: CGRect(x: 10, y:y_field, width:100, height:30))
+        let keywordField: UITextField = UITextField(frame: CGRect(x: 10, y:40, width:100, height:30))
         keywordField.borderStyle = UITextBorderStyle.roundedRect
         keywordArray.append(keywordField)
-        scrollView.addSubview(keywordField)
+        contentsView.addSubview(keywordField)
+        
+        // キーワードのラベルを追加
+        let IdeaLabel = UILabel()
+        IdeaLabel.frame = CGRect(x:120, y:5, width:80, height:30)
+        IdeaLabel.numberOfLines = 0
+        IdeaLabel.text = "アイデア"
+        IdeaLabel.textColor = UIColor.black
+        contentsView.addSubview(IdeaLabel)
         
         // アイデアフィールドの追加
-        let IdeaField: UITextView = UITextView(frame: CGRect(x: 150, y:y_field, width:200, height:60))
+        let IdeaField: UITextView = UITextView(frame: CGRect(x: 120, y:40, width:160, height:60))
         IdeaField.layer.borderWidth = 1
         IdeaField.layer.cornerRadius = 5
         IdeaField.layer.borderColor = UIColor.lightGray.cgColor
         IdeaArray.append(IdeaField)
-        scrollView.addSubview(IdeaField)
+        contentsView.addSubview(IdeaField)
         
-        // ボタンを下げる
-        button.frame = CGRect(x:300, y:y_field+50, width:50, height:50)
-
-        // スクロールビューのサイズを更新
-        scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + CGFloat(y_new))
+        // スクロールビューに追加
+        scrollView.addSubview(contentsView)
     }
     
 
-    func addBannerViewToScrollView(_ bannerView: GADBannerView) {
-        bannerView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.addSubview(bannerView)
-        scrollView.addConstraints(
-            [NSLayoutConstraint(item: bannerView,
-                                attribute: .bottom,
-                                relatedBy: .equal,
-                                toItem: bottomLayoutGuide,
-                                attribute: .top,
-                                multiplier: 1,
-                                constant: 0),
-             NSLayoutConstraint(item: bannerView,
-                                attribute: .centerX,
-                                relatedBy: .equal,
-                                toItem: scrollView,
-                                attribute: .centerX,
-                                multiplier: 1,
-                                constant: 0)
-            ])
-    }
     /*
     // MARK: - Navigation
 
