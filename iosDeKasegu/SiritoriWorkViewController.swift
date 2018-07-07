@@ -102,9 +102,9 @@ class SiritoriWorkViewController: BaseViewController {
         
         // キーワードのラベルを追加
         let keywordLabel = UILabel()
-        keywordLabel.frame = CGRect(x:10, y:5, width:80, height:30)
+        keywordLabel.frame = CGRect(x:10, y:5, width:100, height:30)
         keywordLabel.numberOfLines = 0
-        keywordLabel.text = "キーワード"
+        keywordLabel.text = "キーワード"+String(index+1)
         keywordLabel.textColor = UIColor.black
         contentsView.addSubview(keywordLabel)
         
@@ -114,16 +114,16 @@ class SiritoriWorkViewController: BaseViewController {
         keywordArray.append(keywordField)
         contentsView.addSubview(keywordField)
         
-        // キーワードのラベルを追加
+        // アイデアのラベルを追加
         let IdeaLabel = UILabel()
-        IdeaLabel.frame = CGRect(x:120, y:5, width:80, height:30)
+        IdeaLabel.frame = CGRect(x:160, y:5, width:160, height:30)
         IdeaLabel.numberOfLines = 0
-        IdeaLabel.text = "アイデア"
+        IdeaLabel.text = "アイデア"+String(index+1)
         IdeaLabel.textColor = UIColor.black
         contentsView.addSubview(IdeaLabel)
         
         // アイデアフィールドの追加
-        let IdeaField: UITextView = UITextView(frame: CGRect(x: 120, y:40, width:160, height:60))
+        let IdeaField: UITextView = UITextView(frame: CGRect(x: 160, y:40, width:160, height:60))
         IdeaField.layer.borderWidth = 1
         IdeaField.layer.cornerRadius = 5
         IdeaField.layer.borderColor = UIColor.lightGray.cgColor
