@@ -139,7 +139,11 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="UH0-Io-7xT"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="X9m-7G-kjj" appends="YES" id="f9B-Qc-ZC2"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="アイデアを発想" leftItemsSupplementBackButton="YES" id="iFE-DI-2KX">
                         <barButtonItem key="backBarButtonItem" title="戻る" id="vk1-2P-Kia"/>
@@ -151,6 +155,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MoN-MW-QFW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="X9m-7G-kjj">
+                    <connections>
+                        <action selector="viewTap:" destination="K0v-UG-ZIM" id="UbA-Az-N1x"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1868" y="-229.83508245877064"/>
         </scene>
@@ -162,10 +171,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="Jjz-QG-LJD"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="df9-Z5-Zc5" appends="YES" id="dGb-2o-st6"/>
+                        </connections>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WSs-cq-awh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="df9-Z5-Zc5">
+                    <connections>
+                        <action selector="tapView:" destination="V22-p7-Vr8" id="7zl-0E-KEe"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2597.5999999999999" y="-230.73463268365819"/>
         </scene>

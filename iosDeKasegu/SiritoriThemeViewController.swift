@@ -14,6 +14,10 @@ var siritoriTheme = ""
 class SiritoriThemeViewController: BaseViewController {
     var bannerView: GADBannerView!
 
+    @IBAction func viewTap(_ sender: UITapGestureRecognizer) {
+        // タップされたらキーボードを下げる
+        view.endEditing(true)
+    }
     @IBOutlet weak var sublabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var themeUITextView: UITextView!

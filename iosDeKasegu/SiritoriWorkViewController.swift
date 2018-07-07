@@ -12,6 +12,9 @@ import GoogleMobileAds
 class SiritoriWorkViewController: BaseViewController {
     var bannerView: GADBannerView!
     
+    @IBAction func tapView(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
     // XXX: 別々の配列じゃなくて構造体とかにするべき、おそらく
     var keywordArray:[UITextField] = []
     var IdeaArray:[UITextView] = []
@@ -23,7 +26,7 @@ class SiritoriWorkViewController: BaseViewController {
         
         // siritoriのテーマを読込んで表示
         let themeLabel = UILabel()
-        themeLabel.frame = CGRect(x:50, y:50, width:300, height:80)
+        themeLabel.frame = CGRect(x:50, y:80, width:300, height:80)
         themeLabel.numberOfLines = 0
         themeLabel.text = "★テーマ★\n　　　　" + siritoriTheme
         themeLabel.backgroundColor = UIColor.gray
