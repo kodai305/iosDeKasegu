@@ -100,9 +100,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="アイデアを拡大" id="Ndx-zh-vJT"/>
                     <connections>
+                        <outlet property="Center5" destination="cRX-il-LIz" id="M2F-Hf-4iK"/>
                         <outlet property="Center6" destination="MK0-Bz-Pbz" id="90s-cR-Wl4"/>
                         <outlet property="RightCenter5" destination="8Al-7Y-YZV" id="Bc0-17-ulu"/>
-                        <outlet property="waku1" destination="cRX-il-LIz" id="Caa-9B-3Wz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dOU-G4-KXu" userLabel="First Responder" sceneMemberID="firstResponder"/>
