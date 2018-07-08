@@ -13,10 +13,8 @@ import GoogleMobileAds
 var keywordArray:[UITextField] = []
 var IdeaArray:[UITextView] = []
 
-
 class SiritoriWorkViewController: BaseViewController {
     let firstWord = "アイデア"
-    
     var bannerView: GADBannerView!
     let scrollView = UIScrollView()
 
@@ -28,7 +26,7 @@ class SiritoriWorkViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let index = keywordArray.count
+        var index = keywordArray.count
         
 // XXX: CGRectのパラメータを数値でなく、画面の幅の半分とかにしないと別の機器で表示が崩れる、多分
         scrollView.backgroundColor = UIColor.gray
@@ -65,7 +63,7 @@ class SiritoriWorkViewController: BaseViewController {
 
         scrollView.addSubview(contentsView)
         
-        // キーワード+アイデアのコンテンツを作成
+        // キーワード+アイデアのコンテンツを作成, すでにあれば表示だけする
         if (index == 0) {
             createContentsView(ArrayIndex: 0)
         } else {
@@ -75,10 +73,15 @@ class SiritoriWorkViewController: BaseViewController {
         }
         
         // ボタンの追加
+        index = keywordArray.count // indexの更新
         let button = UIButton()
+        button.backgroundColor = UIColor.white
+        button.layer.borderWidth = 2.0 // 枠線の幅
+        button.layer.borderColor = UIColor.red.cgColor // 枠線の色
+        button.layer.cornerRadius = 10.0
         button.setTitle("次へ", for: .normal)
         button.setTitleColor(UIColor.blue, for: .normal)
-        button.frame = CGRect(x: 300, y: 140*(index)+250, width: 50, height: 50)
+        button.frame = CGRect(x: 300, y: 140*(index)+100, width: 50, height: 25)
         button.addTarget(self, action: #selector(self.onClick(_:)), for: .touchUpInside)
         scrollView.addSubview(button)
         
@@ -124,16 +127,12 @@ class SiritoriWorkViewController: BaseViewController {
         
         // キーワード+アイデアを作成
         createContentsView(ArrayIndex: Int(index))
-        
         // ボタンを下げる
-        button.frame = CGRect(x:300, y:y_field+120, width:50, height:50)
-
+        button.frame = CGRect(x:300, y:y_field+120, width:50, height:25)
         // スクロールビューのサイズを更新
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + CGFloat(y_new))
-
         // 中心を変更する
         scrollView.setContentOffset(CGPoint(x: 0, y: y_field-200), animated: true)
-        
     }
     
     
@@ -221,7 +220,10 @@ class SiritoriWorkViewController: BaseViewController {
         scrollView.addSubview(contentsView)
     }
     
-
+    public func resetContents() {
+        keywordArray.removeAll()
+        IdeaArray.removeAll()
+    }
 
     /*
     // MARK: - Navigation

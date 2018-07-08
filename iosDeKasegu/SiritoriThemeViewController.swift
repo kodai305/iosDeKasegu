@@ -9,7 +9,9 @@
 import UIKit
 import GoogleMobileAds
 
-var siritoriTheme = ""
+var siritoriTheme:String!
+//var themeUITextView:UITextView
+//var siritoriTheme = ""
 
 class SiritoriThemeViewController: BaseViewController {
     var bannerView: GADBannerView!
@@ -25,7 +27,6 @@ class SiritoriThemeViewController: BaseViewController {
     @IBAction func next(_ sender: Any) {
         // テーマの保存
         siritoriTheme = self.themeUITextView.text
-        print(siritoriTheme)
 
         // テーマが入力されていなかったらアラートを出す
         if themeUITextView.text.isEmpty {
@@ -40,12 +41,7 @@ class SiritoriThemeViewController: BaseViewController {
             )
             self.present(alert, animated: true)
         }
-        
     }
-    func hello(_ msg:String) {
-        print(msg)
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +56,20 @@ class SiritoriThemeViewController: BaseViewController {
         bannerView.load(GADRequest())
         bannerView.delegate = self
         addBannerViewToView(bannerView)
+     
+        // テスト：クリアボタン
+        let button = UIButton()
+        button.backgroundColor = UIColor.white
+        button.layer.borderWidth = 2.0 // 枠線の幅
+        button.layer.borderColor = UIColor.red.cgColor // 枠線の色
+        button.layer.cornerRadius = 10.0
+        button.setTitle("clear", for: .normal)
+        button.setTitleColor(UIColor.blue, for: .normal)
+        button.frame = CGRect(x: 250, y: 450, width: 80, height: 35)
+        button.addTarget(self, action: #selector(self.clear(_:)), for: .touchUpInside)
+        view.addSubview(button)
+        
+        themeUITextView.text = siritoriTheme
         
     }
     
@@ -68,7 +78,12 @@ class SiritoriThemeViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @objc func clear(_ sender: AnyObject) {
+        //let button = sender as! UIButton
+        SiritoriWorkViewController().resetContents()
+    }
+                                     
+    
     /*
     // MARK: - Navigation
 
