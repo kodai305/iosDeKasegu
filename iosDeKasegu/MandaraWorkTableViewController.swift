@@ -29,7 +29,7 @@ class MandaraWorkTableViewController: BaseViewController,UITextViewDelegate {
         
         RightCenter5.delegate = self
 
-        waku1.layer.borderColor = UIColor.red.cgColor
+        waku1.layer.borderColor = UIColor.black.cgColor
         
         // 枠の幅
         waku1.layer.borderWidth = 1.0
