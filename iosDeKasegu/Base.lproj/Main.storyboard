@@ -34,6 +34,14 @@
                                     <segue destination="fSm-pZ-aVR" kind="show" id="gN5-9F-SyP"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wue-VC-Mo4">
+                                <rect key="frame" x="165" y="545" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="練習用"/>
+                                <connections>
+                                    <segue destination="wpq-R5-Cs8" kind="show" id="PK6-K4-FP7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -113,6 +121,21 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1868" y="517.6911544227886"/>
+        </scene>
+        <!--Sample View Controller-->
+        <scene sceneID="agl-0m-AlV">
+            <objects>
+                <viewController id="wpq-R5-Cs8" customClass="SampleViewController" customModule="iosDeKasegu" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7SV-kl-xAL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="toJ-QX-pDr"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2pL-aI-HWs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1868" y="1283"/>
         </scene>
         <!--アイデアを発想-->
         <scene sceneID="HfH-ih-G0K">
