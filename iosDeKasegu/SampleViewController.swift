@@ -8,81 +8,78 @@
 
 import UIKit
 
+var ThemeTextView = UITextView()
+var ElementArray = [UITextView](repeating: UITextView(), count: 8)
+var ElementRoundArray = [UITextView](repeating: UITextView(), count: 8)
+//var DetailArray:[[UITextView]] = [[]]
+var DetailArray:[[UITextView]] = [[UITextView](repeating: UITextView(), count: 8),
+                                  [UITextView](repeating: UITextView(), count: 8),
+                                  [UITextView](repeating: UITextView(), count: 8),
+                                  [UITextView](repeating: UITextView(), count: 8),
+                                  [UITextView](repeating: UITextView(), count: 8),
+                                  [UITextView](repeating: UITextView(), count: 8),
+                                  [UITextView](repeating: UITextView(), count: 8),
+                                  [UITextView](repeating: UITextView(), count: 8),]
+
 class SampleViewController: UIViewController, UITextViewDelegate {
-    var ElementArray:[UITextView] = []
-    var ElementRoundArray:[UITextView] = []
-    var DetailArray:[[UITextView]] = [[]]
     
     let vector: [(x: Int, y: Int)] = [
         (0, 1), (1, 1), (1, 0), (1, -1),
         (0, -1), (-1, -1), (-1, 0), (-1, 1)]
 
-    let wakuSize   = 36
-    let vector_len = 18
-    
-    var ThemeTextField = UITextView()
-    var Theme2TextField = UITextView()
+    let cellSize  = 36
+    let vectorLen = 18
+    let margin    =  3
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // テーマの作成
-        ThemeTextField = UITextView(frame: CGRect(x: self.view.center.x-CGFloat(wakuSize/2), y:self.view.center.y-CGFloat(wakuSize/2), width:CGFloat(wakuSize), height:CGFloat(wakuSize)))
-        ThemeTextField.layer.borderWidth = 1
-        ThemeTextField.layer.borderColor = UIColor.lightGray.cgColor
-        ThemeTextField.backgroundColor = UIColor.red
-        view.addSubview(ThemeTextField)
-        ThemeTextField.delegate = self
+        if (ThemeTextView.text.isEmpty) {
+            ThemeTextView = UITextView(frame: CGRect(x: self.view.center.x-CGFloat(cellSize/2), y:self.view.center.y-CGFloat(cellSize/2), width:CGFloat(cellSize), height:CGFloat(cellSize)))
+            ThemeTextView.layer.borderWidth = 1
+            ThemeTextView.layer.borderColor = UIColor.lightGray.cgColor
+            ThemeTextView.backgroundColor = UIColor.red
+        }
+        view.addSubview(ThemeTextView)
         
-//        Theme2TextField: UITextView = UITextView(frame: CGRect(x: self.view.center.x-CGFloat(wakuSize/2), y:self.view.center.y-CGFloat(300+wakuSize/2), width:CGFloat(wakuSize), height:CGFloat(wakuSize)))
-        Theme2TextField = UITextView(frame: CGRect(x: self.view.center.x-CGFloat(wakuSize/2), y:self.view.center.y-CGFloat(200+wakuSize/2), width:CGFloat(wakuSize), height:CGFloat(wakuSize)))
-        Theme2TextField.layer.borderWidth = 1
-        Theme2TextField.layer.borderColor = UIColor.lightGray.cgColor
-        Theme2TextField.backgroundColor = UIColor.green
-        view.addSubview(Theme2TextField)
-
-        Theme2TextField.delegate = self
         var index_i = 0
         for (x,y) in vector {
             // 要素の作成
-            let WakuTextField: UITextView = UITextView(frame: CGRect(x: self.view.center.x-CGFloat(vector_len+(wakuSize+3)*x), y:self.view.center.y-CGFloat(vector_len+(wakuSize+3)*y), width:CGFloat(wakuSize), height:CGFloat(wakuSize)))
-            WakuTextField.layer.borderWidth = 1
-            WakuTextField.layer.borderColor = UIColor.lightGray.cgColor
-            WakuTextField.backgroundColor = UIColor.yellow
-//            WakuTextField.delegate = self
-            ElementArray.append(WakuTextField)
+            var CellTextView: UITextView = UITextView(frame: CGRect(x: self.view.center.x-CGFloat(vectorLen+(cellSize+margin)*x), y:self.view.center.y-CGFloat(vectorLen+(cellSize+margin)*y), width:CGFloat(cellSize), height:CGFloat(cellSize)))
+            if (ElementArray[index_i].text.isEmpty) {
+                CellTextView.layer.borderWidth = 1
+                CellTextView.layer.borderColor = UIColor.lightGray.cgColor
+                CellTextView.backgroundColor = UIColor.yellow
+                ElementArray[index_i] = CellTextView
+                ElementArray[index_i].delegate = self
+            }
             view.addSubview(ElementArray[index_i])
 
-            
             // 要素を周りに配置(新しい中心)
-            let Waku2TextField: UITextView = UITextView(frame: CGRect(x: self.view.center.x-CGFloat(vector_len+(wakuSize+3)*3*x), y:self.view.center.y-CGFloat(vector_len+(wakuSize+3)*3*y), width:CGFloat(wakuSize), height:CGFloat(wakuSize)))
-            Waku2TextField.layer.borderWidth = 1
-            Waku2TextField.layer.borderColor = UIColor.lightGray.cgColor
-            Waku2TextField.backgroundColor = UIColor.yellow
-//            Waku2TextField.delegate = self
-            ElementRoundArray.append(Waku2TextField)
+            if (ElementRoundArray[index_i].text.isEmpty) {
+                CellTextView = UITextView(frame: CGRect(x: self.view.center.x-CGFloat(vectorLen+(cellSize+margin)*3*x), y:self.view.center.y-CGFloat(vectorLen+(cellSize+margin)*3*y), width:CGFloat(cellSize), height:CGFloat(cellSize)))
+                CellTextView.layer.borderWidth = 1
+                CellTextView.layer.borderColor = UIColor.lightGray.cgColor
+                CellTextView.backgroundColor = UIColor.yellow
+                ElementRoundArray[index_i] = CellTextView
+                ElementRoundArray[index_i].delegate = self
+            }
             view.addSubview(ElementRoundArray[index_i])
-//            ElementRoundArray[index_i].delegate = self
-            // 詳細枠の作成
+
+            // 詳細枠(外側)の作成
             var index_j = 0
             for (xx,yy) in vector {
-                let Waku3TextField: UITextView = UITextView(frame: CGRect(x: self.view.center.x-CGFloat(vector_len+(wakuSize+3)*3*x+(wakuSize+3)*xx), y:self.view.center.y-CGFloat(vector_len+(wakuSize+3)*3*y+(wakuSize+3)*yy), width:CGFloat(wakuSize), height:CGFloat(wakuSize)))
-                Waku3TextField.layer.borderWidth = 1
-                Waku3TextField.layer.borderColor = UIColor.lightGray.cgColor
-                Waku3TextField.backgroundColor = UIColor.lightGray
-                DetailArray[index_i].append(Waku3TextField)
+                if (DetailArray[index_i][index_j].text.isEmpty) {
+                    CellTextView = UITextView(frame: CGRect(x: self.view.center.x-CGFloat(vectorLen+(cellSize+margin)*3*x+(cellSize+margin)*xx), y:self.view.center.y-CGFloat(vectorLen+(cellSize+margin)*3*y+(cellSize+margin)*yy), width:CGFloat(cellSize), height:CGFloat(cellSize)))
+                    CellTextView.layer.borderWidth = 1
+                    CellTextView.layer.borderColor = UIColor.lightGray.cgColor
+                    CellTextView.backgroundColor = UIColor.lightGray
+                    DetailArray[index_i][index_j] = CellTextView
+                }
                 view.addSubview(DetailArray[index_i][index_j])
-                DetailArray.append([])
                 index_j += 1
             }
             index_i += 1
-            
-            for element in ElementArray {
-                element.delegate = self
-            }
-            for elementRound in ElementRoundArray {
-                elementRound.delegate = self
-            }
-            
         }
         
         // Do any additional setup after loading the view.
@@ -93,10 +90,11 @@ class SampleViewController: UIViewController, UITextViewDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-    func textViewDidChange(_ ThemeTextField: UITextView) {
-        Theme2TextField.text = ThemeTextField.text
+    func textViewDidChange(_ textView: UITextView) {
+        for i in 0..<8 {
+            ElementRoundArray[i].text = ElementArray[i].text
+        }
     }
-    
 
     /*
     // MARK: - Navigation
