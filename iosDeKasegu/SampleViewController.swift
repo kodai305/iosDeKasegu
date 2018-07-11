@@ -91,25 +91,25 @@ class SampleViewController: UIViewController, UITextViewDelegate {
     }
 
     func textViewDidChange(_ textView: UITextView) {
+        //変更したマスから対象マスへの代入と変更したマスの特定
         var k: Int = 0
         for i in 0..<8 {
-            if (textView.text == ElementArray[i].text){
+            if (textView == ElementArray[i]){
                 ElementRoundArray[i].text = ElementArray[i].text
                 k = i
             }
         }
         //枠にあわせて文字サイズを調整
-        let defaultfontsize: CGFloat = 20.0
+        let defaultfontsize: CGFloat = 20
         var fixedFontPoint: CGFloat = 0.0
-        if (textView.contentSize.height > textView.frame.size.height) {
-            var fontIncrement: CGFloat = 1.0
-            while (textView.contentSize.height > textView.frame.size.height) {
-                fixedFontPoint = defaultfontsize - fontIncrement
-                textView.font = UIFont.systemFont(ofSize: fixedFontPoint)
-                fontIncrement = fontIncrement + 1
+        textView.font = UIFont.systemFont(ofSize: defaultfontsize)
+        var fontIncrement: CGFloat = 1.0
+        while (textView.contentSize.height > textView.frame.size.height) {
+            fixedFontPoint = defaultfontsize - fontIncrement
+            textView.font = UIFont.systemFont(ofSize: fixedFontPoint)
+            fontIncrement = fontIncrement + 1
             }
-            ElementRoundArray[k].font = UIFont.systemFont(ofSize: fixedFontPoint)
-        }
+        ElementRoundArray[k].font = UIFont.systemFont(ofSize: fixedFontPoint)
     }
 
     /*
