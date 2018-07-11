@@ -91,19 +91,24 @@ class SampleViewController: UIViewController, UITextViewDelegate {
     }
 
     func textViewDidChange(_ textView: UITextView) {
+        var k: Int = 0
         for i in 0..<8 {
-            ElementRoundArray[i].text = ElementArray[i].text
+            if (textView.text == ElementArray[i].text){
+                ElementRoundArray[i].text = ElementArray[i].text
+                k = i
+            }
         }
-        
         //枠にあわせて文字サイズを調整
         let defaultfontsize: CGFloat = 20.0
+        var fixedFontPoint: CGFloat = 0.0
         if (textView.contentSize.height > textView.frame.size.height) {
             var fontIncrement: CGFloat = 1.0
             while (textView.contentSize.height > textView.frame.size.height) {
-                let fixedFontPoint: CGFloat = defaultfontsize - fontIncrement
+                fixedFontPoint = defaultfontsize - fontIncrement
                 textView.font = UIFont.systemFont(ofSize: fixedFontPoint)
                 fontIncrement = fontIncrement + 1
             }
+            ElementRoundArray[k].font = UIFont.systemFont(ofSize: fixedFontPoint)
         }
     }
 
