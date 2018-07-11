@@ -94,6 +94,17 @@ class SampleViewController: UIViewController, UITextViewDelegate {
         for i in 0..<8 {
             ElementRoundArray[i].text = ElementArray[i].text
         }
+        
+        //枠にあわせて文字サイズを調整
+        let defaultfontsize: CGFloat = 20.0
+        if (textView.contentSize.height > textView.frame.size.height) {
+            var fontIncrement: CGFloat = 1.0
+            while (textView.contentSize.height > textView.frame.size.height) {
+                let fixedFontPoint: CGFloat = defaultfontsize - fontIncrement
+                textView.font = UIFont.systemFont(ofSize: fixedFontPoint)
+                fontIncrement = fontIncrement + 1
+            }
+        }
     }
 
     /*

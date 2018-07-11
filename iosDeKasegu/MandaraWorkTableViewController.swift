@@ -35,7 +35,7 @@ class MandaraWorkTableViewController: BaseViewController,UITextViewDelegate {
         Center5.delegate = self
         Center6.delegate = self
         RightCenter5.delegate = self
-
+        
         //枠線の色と幅を設定
         //waku1.layer.borderColor = UIColor.black.cgColor
         //waku1.layer.borderWidth = 1.0
@@ -55,6 +55,17 @@ class MandaraWorkTableViewController: BaseViewController,UITextViewDelegate {
         let userDefaults = UserDefaults.standard
         userDefaults.set(Center6.text, forKey: "c6")
         userDefaults.synchronize()
+        
+        let defaultfontsize: CGFloat = RightCenter5.font!.pointSize
+        
+        if (RightCenter5.contentSize.height > RightCenter5.frame.size.height) {
+            var fontIncrement: CGFloat = 1.0
+            while (RightCenter5.contentSize.height > RightCenter5.frame.size.height) {
+                let fixedFontPoint: CGFloat = defaultfontsize - fontIncrement
+                RightCenter5.font = UIFont.systemFont(ofSize: fixedFontPoint)
+                fontIncrement = fontIncrement + 1
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
