@@ -18,35 +18,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M0j-6a-V72">
-                                <rect key="frame" x="133" y="192" width="108" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="アイデアを発想"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M0j-6a-V72">
+                                <rect key="frame" x="30" y="94" width="315" height="150"/>
+                                <color key="backgroundColor" red="1" green="0.99578227031718758" blue="0.42074295857966271" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="uPI-bU-e8z"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="20"/>
+                                <color key="tintColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                <inset key="titleEdgeInsets" minX="-250" minY="120" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="70" minY="10" maxX="70" maxY="40"/>
+                                <state key="normal" title="アイデアを発想">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="K0v-UG-ZIM" kind="show" id="Y9V-r6-559"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxR-Cu-w8o">
-                                <rect key="frame" x="134" y="380" width="108" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="アイデアを拡大"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxR-Cu-w8o">
+                                <rect key="frame" x="30" y="264" width="315" height="150"/>
+                                <color key="backgroundColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="utI-KX-QVJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="20"/>
+                                <color key="tintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="titleEdgeInsets" minX="-250" minY="120" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="70" minY="10" maxX="70" maxY="40"/>
+                                <state key="normal" title="アイデアを拡大">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="fSm-pZ-aVR" kind="show" id="gN5-9F-SyP"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wue-VC-Mo4">
-                                <rect key="frame" x="165" y="545" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="練習用"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wue-VC-Mo4">
+                                <rect key="frame" x="30" y="434" width="315" height="150"/>
+                                <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="Lio-XX-yJ1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="20"/>
+                                <color key="tintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="titleEdgeInsets" minX="-250" minY="120" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="70" minY="10" maxX="70" maxY="40"/>
+                                <state key="normal" title="練習用">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="wpq-R5-Cs8" kind="show" id="PK6-K4-FP7"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="M0j-6a-V72" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="1eS-Pu-zba"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wue-VC-Mo4" secondAttribute="trailing" constant="30" id="7Wo-dM-kS6"/>
+                            <constraint firstItem="M0j-6a-V72" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="DeK-R6-g8T"/>
+                            <constraint firstItem="wue-VC-Mo4" firstAttribute="top" secondItem="kxR-Cu-w8o" secondAttribute="bottom" constant="20" id="EEj-r0-Omz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kxR-Cu-w8o" secondAttribute="trailing" constant="30" id="LVX-XX-4Hl"/>
+                            <constraint firstItem="kxR-Cu-w8o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="LzK-kJ-O0C"/>
+                            <constraint firstItem="wue-VC-Mo4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="iLU-0B-cA4"/>
+                            <constraint firstItem="kxR-Cu-w8o" firstAttribute="top" secondItem="M0j-6a-V72" secondAttribute="bottom" constant="20" id="kF7-pD-gtP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="M0j-6a-V72" secondAttribute="trailing" constant="30" id="zTK-xV-4ZV"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Main" id="jmy-MV-NVb"/>
+                    <connections>
+                        <outlet property="Expand" destination="kxR-Cu-w8o" id="y60-Pb-51S"/>
+                        <outlet property="GetIdea" destination="M0j-6a-V72" id="jnj-xO-ePX"/>
+                        <outlet property="Tutorial" destination="wue-VC-Mo4" id="6Sf-e7-GZU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
