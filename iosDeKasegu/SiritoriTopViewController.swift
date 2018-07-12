@@ -62,7 +62,7 @@ class SiritoriTopViewController: UIViewController,UITableViewDelegate, UITableVi
         tableView.deselectRow(at: indexPath, animated: true)
 
         //画面遷移
-        if (indexPath.section == 0) { // 0番目がタップされたとき
+        if (indexPath.row == 0) { // 0番目がタップされたとき
             self.performSegue(withIdentifier: "toSiritoriGuide", sender: nil)
         } else {
             self.performSegue(withIdentifier: "toSiritoriTheme", sender: nil)
