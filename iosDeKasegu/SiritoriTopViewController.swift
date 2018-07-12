@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 let sectionTitle = ["パーソナルボード"]
 let section0     = [("しりとり法を使ってみよう","チュートリアル"),("テーマ1","sample")]
 let tableData    = [section0]
 
-class SiritoriTopViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
-    
-
+class SiritoriTopViewController: BaseViewController,UITableViewDelegate, UITableViewDataSource {
+    // 広告バナー作成
+    var bannerView: GADBannerView!
     //テーブルビューインスタンス作成
     var siritoriTableView: UITableView  =   UITableView()
     
@@ -28,6 +29,14 @@ class SiritoriTopViewController: UIViewController,UITableViewDelegate, UITableVi
         
         self.view.addSubview(siritoriTableView)
         // Do any additional setup after loading the view.
+        
+        // To display the advertisement on scrollView
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        bannerView.adUnitID = admob_id
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        bannerView.delegate = self
+        addBannerViewToView(bannerView)
     }
     
     // セルを作る
