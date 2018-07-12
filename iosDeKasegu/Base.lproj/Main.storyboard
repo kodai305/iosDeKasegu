@@ -23,7 +23,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="アイデアを発想"/>
                                 <connections>
-                                    <segue destination="K0v-UG-ZIM" kind="show" id="Y9V-r6-559"/>
+                                    <segue destination="Bgr-PG-ANw" kind="show" id="eCr-7G-b66"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxR-Cu-w8o">
@@ -137,6 +137,49 @@
             </objects>
             <point key="canvasLocation" x="1868" y="1283"/>
         </scene>
+        <!--Siritori Top View Controller-->
+        <scene sceneID="JOu-yg-Lor">
+            <objects>
+                <viewController id="Bgr-PG-ANw" customClass="SiritoriTopViewController" customModule="iosDeKasegu" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="znn-El-y3F">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="iCc-bh-yAN"/>
+                    </view>
+                    <connections>
+                        <segue destination="K0v-UG-ZIM" kind="show" identifier="toSiritoriTheme" id="seK-y2-Kyh"/>
+                        <segue destination="Brf-VP-SpD" kind="show" identifier="toSiritoriGuide" id="qDw-nb-qob"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="azt-lP-5xL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1899" y="-232"/>
+        </scene>
+        <!--Siritori Guide View Controller-->
+        <scene sceneID="8oX-TN-sZq">
+            <objects>
+                <viewController id="Brf-VP-SpD" customClass="SiritoriGuideViewController" customModule="iosDeKasegu" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BdP-S9-JwN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="しりとり法のチュートリアル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olY-9T-JvQ">
+                                <rect key="frame" x="78" y="222" width="226" height="115"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="9xZ-dA-zV0"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MtC-ii-5OZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2692" y="-953"/>
+        </scene>
         <!--アイデアを発想-->
         <scene sceneID="HfH-ih-G0K">
             <objects>
@@ -194,7 +237,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1868" y="-229.83508245877064"/>
+            <point key="canvasLocation" x="2692" y="-233"/>
         </scene>
         <!--Siritori Work View Controller-->
         <scene sceneID="e3G-N5-6eo">
@@ -218,7 +261,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2597.5999999999999" y="-230.73463268365819"/>
+            <point key="canvasLocation" x="3423" y="-233"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Gvu-wS-eHV">
