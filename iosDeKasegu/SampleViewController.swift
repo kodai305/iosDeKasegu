@@ -48,6 +48,7 @@ class SampleViewController: UIViewController, UITextViewDelegate {
         view.addSubview(ThemeTextView)
         //初期化
         ThemeTextView.text = ini_theme
+        ThemeTextView.textColor = UIColor.gray
         
         var index_i = 0
         for (x,y) in vector {
@@ -62,6 +63,7 @@ class SampleViewController: UIViewController, UITextViewDelegate {
             }
             view.addSubview(ElementArray[index_i])
             ElementArray[index_i].text = ini_element
+            ElementArray[index_i].textColor = UIColor.gray
 
             // 要素を周りに配置(新しい中心)
             if (ElementRoundArray[index_i].text.isEmpty) {
@@ -87,6 +89,7 @@ class SampleViewController: UIViewController, UITextViewDelegate {
                 }
                 view.addSubview(DetailArray[index_i][index_j])
                 DetailArray[index_i][index_j].text = ini_detail
+                DetailArray[index_i][index_j].textColor = UIColor.gray
                 index_j += 1
             }
             index_i += 1
@@ -126,6 +129,7 @@ class SampleViewController: UIViewController, UITextViewDelegate {
         func textViewDidBeginEditing(_ textView: UITextView){
         if(textView.text == ini_theme || textView.text == ini_element || textView.text == ini_detail){
             textView.text = ""
+            textView.textColor = UIColor.black
             }
     
     }
