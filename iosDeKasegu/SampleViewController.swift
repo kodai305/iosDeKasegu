@@ -49,6 +49,7 @@ class SampleViewController: UIViewController, UITextViewDelegate {
         //初期化
         ThemeTextView.text = ini_theme
         ThemeTextView.textColor = UIColor.gray
+        AutoFontResize(textView: ThemeTextView,flag: -1)
         
         var index_i = 0
         for (x,y) in vector {
@@ -64,6 +65,7 @@ class SampleViewController: UIViewController, UITextViewDelegate {
             view.addSubview(ElementArray[index_i])
             ElementArray[index_i].text = ini_element
             ElementArray[index_i].textColor = UIColor.gray
+            AutoFontResize(textView: ElementArray[index_i],flag: -1)
 
             // 要素を周りに配置(新しい中心)
             if (ElementRoundArray[index_i].text.isEmpty) {
@@ -90,6 +92,7 @@ class SampleViewController: UIViewController, UITextViewDelegate {
                 view.addSubview(DetailArray[index_i][index_j])
                 DetailArray[index_i][index_j].text = ini_detail
                 DetailArray[index_i][index_j].textColor = UIColor.gray
+                AutoFontResize(textView: DetailArray[index_i][index_j],flag: -1)
                 index_j += 1
             }
             index_i += 1
@@ -112,7 +115,18 @@ class SampleViewController: UIViewController, UITextViewDelegate {
                 k = i
             }
         }
-        //枠にあわせて文字サイズを調整
+        AutoFontResize(textView: textView,flag: k)
+    }
+    
+    //マスの編集開始時に説明文が入っていれば消去
+    func textViewDidBeginEditing(_ textView: UITextView){
+        if(textView.text == ini_theme || textView.text == ini_element || textView.text == ini_detail){
+            textView.text = ""
+            textView.textColor = UIColor.black
+            }
+    }
+    
+    func AutoFontResize(textView: UITextView, flag: Int){
         let defaultfontsize: CGFloat = 20
         var fixedFontPoint: CGFloat = 0.0
         textView.font = UIFont.systemFont(ofSize: defaultfontsize)
@@ -120,18 +134,11 @@ class SampleViewController: UIViewController, UITextViewDelegate {
         while (textView.contentSize.height > textView.frame.size.height) {
             fixedFontPoint = defaultfontsize - fontIncrement
             textView.font = UIFont.systemFont(ofSize: fixedFontPoint)
-            fontIncrement = fontIncrement + 1
-            }
-        if(k != -1){
-            ElementRoundArray[k].font = UIFont.systemFont(ofSize: fixedFontPoint)
+            fontIncrement = fontIncrement + 0.5
         }
-    }
-        func textViewDidBeginEditing(_ textView: UITextView){
-        if(textView.text == ini_theme || textView.text == ini_element || textView.text == ini_detail){
-            textView.text = ""
-            textView.textColor = UIColor.black
-            }
-    
+        if(flag != -1){
+            ElementRoundArray[flag].font = UIFont.systemFont(ofSize: fixedFontPoint)
+        }
     }
     
 
