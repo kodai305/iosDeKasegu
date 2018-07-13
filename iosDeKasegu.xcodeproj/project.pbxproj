@@ -20,7 +20,6 @@
 		47AF685820E90E3B003BD075 /* SiritoriWorkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AF685720E90E3B003BD075 /* SiritoriWorkViewController.swift */; };
 		47AF685A20F39713003BD075 /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AF685920F39713003BD075 /* SampleViewController.swift */; };
 		47AF685C20F7843B003BD075 /* SiritoriTopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AF685B20F7843B003BD075 /* SiritoriTopViewController.swift */; };
-		47AF686020F79376003BD075 /* SiritoriGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AF685F20F79376003BD075 /* SiritoriGuideViewController.swift */; };
 		5EBC0C837D2F8073B21F0A40 /* Pods_iosDeKasegu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B1C634B5C0E253B6A65BC5 /* Pods_iosDeKasegu.framework */; };
 		CE7070F920ECE421007AE6E3 /* MandaraWorkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7070F820ECE421007AE6E3 /* MandaraWorkTableViewController.swift */; };
 		CEC5235720F78FF300593701 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = CEC5235620F78FF300593701 /* icons */; };
@@ -43,7 +42,6 @@
 		47AF685720E90E3B003BD075 /* SiritoriWorkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiritoriWorkViewController.swift; sourceTree = "<group>"; };
 		47AF685920F39713003BD075 /* SampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleViewController.swift; sourceTree = "<group>"; };
 		47AF685B20F7843B003BD075 /* SiritoriTopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiritoriTopViewController.swift; sourceTree = "<group>"; };
-		47AF685F20F79376003BD075 /* SiritoriGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SiritoriGuideViewController.swift; path = /Users/kodai/Desktop/iOS_project/iosDeKasegu/iosDeKasegu/SiritoriGuideViewController.swift; sourceTree = "<absolute>"; };
 		BEC9F50579D3FA14D89B3E9E /* Pods-iosDeKasegu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosDeKasegu.release.xcconfig"; path = "Pods/Target Support Files/Pods-iosDeKasegu/Pods-iosDeKasegu.release.xcconfig"; sourceTree = "<group>"; };
 		C1B1C634B5C0E253B6A65BC5 /* Pods_iosDeKasegu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosDeKasegu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7070F820ECE421007AE6E3 /* MandaraWorkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandaraWorkTableViewController.swift; sourceTree = "<group>"; };
@@ -91,7 +89,6 @@
 				CE7070F820ECE421007AE6E3 /* MandaraWorkTableViewController.swift */,
 				47AF685B20F7843B003BD075 /* SiritoriTopViewController.swift */,
 				47AF685720E90E3B003BD075 /* SiritoriWorkViewController.swift */,
-				47AF685F20F79376003BD075 /* SiritoriGuideViewController.swift */,
 				47AF685520E8CAE5003BD075 /* SiritoriThemeViewController.swift */,
 				47409A2820E6633500AD2031 /* Assets.xcassets */,
 				CEC5235620F78FF300593701 /* icons */,
@@ -246,7 +243,6 @@
 				CE7070F920ECE421007AE6E3 /* MandaraWorkTableViewController.swift in Sources */,
 				47AF685820E90E3B003BD075 /* SiritoriWorkViewController.swift in Sources */,
 				47AF685A20F39713003BD075 /* SampleViewController.swift in Sources */,
-				47AF686020F79376003BD075 /* SiritoriGuideViewController.swift in Sources */,
 				47409A2720E6633300AD2031 /* iosDeKasegu.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
