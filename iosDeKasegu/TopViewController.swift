@@ -25,15 +25,15 @@ class TopViewController: BaseViewController {
         //アイデアを発想ボタンの設定
         GetIdea.setImage(GetIdeaImageDefault!, for: [])
         GetIdea.imageView?.contentMode = UIViewContentMode.scaleAspectFit
-        GetIdea.layer.cornerRadius = 20.0
+        GetIdea.layer.cornerRadius = 21.0
         //アイデアを拡大ボタンの
         Expand.setImage(buttonImageDefault!, for: [])
         Expand.imageView?.contentMode = UIViewContentMode.scaleAspectFit
-        Expand.layer.cornerRadius = 20.0
+        Expand.layer.cornerRadius = 21.0
         //チュートリアルボタンの設定
         Tutorial.setImage(TutorialImageDefault!, for: [])
         Tutorial.imageView?.contentMode = UIViewContentMode.scaleAspectFit
-        Tutorial.layer.cornerRadius = 20.0
+        Tutorial.layer.cornerRadius = 21.0
         
         // To display the advertisement
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
