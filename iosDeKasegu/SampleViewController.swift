@@ -21,6 +21,10 @@ var DetailArray:[[UITextView]] = [[UITextView](repeating: UITextView(), count: 8
                                   [UITextView](repeating: UITextView(), count: 8),
                                   [UITextView](repeating: UITextView(), count: 8),]
 
+let ini_theme:String! = "テーマを入力"
+let ini_element:String! = "構成要素を入力"
+let ini_detail:String! = "詳細を入力"
+
 class SampleViewController: UIViewController, UITextViewDelegate {
     
     let vector: [(x: Int, y: Int)] = [
@@ -39,8 +43,11 @@ class SampleViewController: UIViewController, UITextViewDelegate {
             ThemeTextView.layer.borderWidth = 1
             ThemeTextView.layer.borderColor = UIColor.lightGray.cgColor
             ThemeTextView.backgroundColor = UIColor.red
+            ThemeTextView.delegate = self
         }
         view.addSubview(ThemeTextView)
+        //初期化
+        ThemeTextView.text = ini_theme
         
         var index_i = 0
         for (x,y) in vector {
@@ -54,6 +61,7 @@ class SampleViewController: UIViewController, UITextViewDelegate {
                 ElementArray[index_i].delegate = self
             }
             view.addSubview(ElementArray[index_i])
+            ElementArray[index_i].text = ini_element
 
             // 要素を周りに配置(新しい中心)
             if (ElementRoundArray[index_i].text.isEmpty) {
@@ -75,8 +83,10 @@ class SampleViewController: UIViewController, UITextViewDelegate {
                     CellTextView.layer.borderColor = UIColor.lightGray.cgColor
                     CellTextView.backgroundColor = UIColor.lightGray
                     DetailArray[index_i][index_j] = CellTextView
+                    DetailArray[index_i][index_j].delegate = self
                 }
                 view.addSubview(DetailArray[index_i][index_j])
+                DetailArray[index_i][index_j].text = ini_detail
                 index_j += 1
             }
             index_i += 1
@@ -92,7 +102,7 @@ class SampleViewController: UIViewController, UITextViewDelegate {
 
     func textViewDidChange(_ textView: UITextView) {
         //変更したマスから対象マスへの代入と変更したマスの特定
-        var k: Int = 0
+        var k: Int = -1
         for i in 0..<8 {
             if (textView == ElementArray[i]){
                 ElementRoundArray[i].text = ElementArray[i].text
@@ -103,14 +113,23 @@ class SampleViewController: UIViewController, UITextViewDelegate {
         let defaultfontsize: CGFloat = 20
         var fixedFontPoint: CGFloat = 0.0
         textView.font = UIFont.systemFont(ofSize: defaultfontsize)
-        var fontIncrement: CGFloat = 1.0
+        var fontIncrement: CGFloat = 0.5
         while (textView.contentSize.height > textView.frame.size.height) {
             fixedFontPoint = defaultfontsize - fontIncrement
             textView.font = UIFont.systemFont(ofSize: fixedFontPoint)
             fontIncrement = fontIncrement + 1
             }
-        ElementRoundArray[k].font = UIFont.systemFont(ofSize: fixedFontPoint)
+        if(k != -1){
+            ElementRoundArray[k].font = UIFont.systemFont(ofSize: fixedFontPoint)
+        }
     }
+        func textViewDidBeginEditing(_ textView: UITextView){
+        if(textView.text == ini_theme || textView.text == ini_element || textView.text == ini_detail){
+            textView.text = ""
+            }
+    
+    }
+    
 
     /*
     // MARK: - Navigation
