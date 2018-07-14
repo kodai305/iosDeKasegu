@@ -110,6 +110,10 @@ class SiritoriTopViewController: BaseViewController,UITableViewDelegate, UITable
                 tableData    = [section0]
                 print(tableData)
                 self.siritoriTableView.insertRows(at: [IndexPath(row: section0.count - 1, section: 0)], with: UITableViewRowAnimation.right)
+                //self.siritoriTableView.reloadData()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    self.performSegue(withIdentifier: "toSiritoriTheme", sender: nil)
+                }
             }
         }
         alertController.addAction(okAction)
