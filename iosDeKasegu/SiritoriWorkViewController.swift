@@ -26,7 +26,7 @@ class SiritoriWorkViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var index = keywordArray.count
+        let index = keywordArray.count
         
 // XXX: CGRectのパラメータを数値でなく、画面の幅の半分とかにしないと別の機器で表示が崩れる、多分
         scrollView.backgroundColor = UIColor.gray
@@ -40,7 +40,8 @@ class SiritoriWorkViewController: BaseViewController {
         let themeLabel = UILabel()
         themeLabel.frame = CGRect(x:0, y:60, width:view.frame.width, height:50)
         themeLabel.numberOfLines = 0
-        themeLabel.text = "★テーマ★\n　　　　" + siritoriTheme
+        
+        themeLabel.text = "★テーマ★\n　　　　" + UserDefaults.standard.string(forKey: "SiritoriTheme")!
         themeLabel.textColor = UIColor.white
         themeLabel.backgroundColor = UIColor.blue
         view.addSubview(themeLabel)
@@ -73,30 +74,14 @@ class SiritoriWorkViewController: BaseViewController {
         }
         
         // ボタンの追加
-        index = keywordArray.count // indexの更新
-        let button = UIButton()
-        button.backgroundColor = UIColor.white
-        button.layer.borderWidth = 2.0 // 枠線の幅
-        button.layer.borderColor = UIColor.red.cgColor // 枠線の色
-        button.layer.cornerRadius = 10.0
-        button.setTitle("次へ", for: .normal)
-        button.setTitleColor(UIColor.blue, for: .normal)
-        button.frame = CGRect(x: 300, y: 140*(index)+100, width: 50, height: 25)
-        button.addTarget(self, action: #selector(self.onClick(_:)), for: .touchUpInside)
-        scrollView.addSubview(button)
+        addNextButton()
         
         // スクロールビューをビューに追加
         self.view.addSubview(scrollView)
         
-        // To display the advertisement on scrollView
-        // スクロールビューの後に追加することで前面に出せる
-        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-        bannerView.adUnitID = admob_id
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
-        bannerView.delegate = self
-        addBannerViewToView(bannerView)
-
+        // 広告の表示
+        displayAdvertisement()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -218,6 +203,29 @@ class SiritoriWorkViewController: BaseViewController {
         
         // スクロールビューに追加
         scrollView.addSubview(contentsView)
+    }
+    
+    func addNextButton() {
+        var index = keywordArray.count // indexの更新
+        let button = UIButton()
+        button.backgroundColor = UIColor.white
+        button.layer.borderWidth = 2.0 // 枠線の幅
+        button.layer.borderColor = UIColor.red.cgColor // 枠線の色
+        button.layer.cornerRadius = 10.0
+        button.setTitle("次へ", for: .normal)
+        button.setTitleColor(UIColor.blue, for: .normal)
+        button.frame = CGRect(x: 300, y: 140*(index)+100, width: 50, height: 25)
+        button.addTarget(self, action: #selector(self.onClick(_:)), for: .touchUpInside)
+        scrollView.addSubview(button)
+    }
+    
+    func displayAdvertisement() {
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        bannerView.adUnitID = admob_id
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        bannerView.delegate = self
+        addBannerViewToView(bannerView)
     }
     
     public func resetContents() {

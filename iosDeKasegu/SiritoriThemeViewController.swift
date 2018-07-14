@@ -9,13 +9,15 @@
 import UIKit
 import GoogleMobileAds
 
+
+
 var siritoriTheme:String!
-//var themeUITextView:UITextView
-//var siritoriTheme = ""
 
 class SiritoriThemeViewController: BaseViewController {
     var bannerView: GADBannerView!
 
+
+    
     @IBAction func viewTap(_ sender: UITapGestureRecognizer) {
         // タップされたらキーボードを下げる
         view.endEditing(true)
@@ -26,7 +28,7 @@ class SiritoriThemeViewController: BaseViewController {
     
     @IBAction func next(_ sender: Any) {
         // テーマの保存
-        siritoriTheme = self.themeUITextView.text
+        //siritoriTheme = self.themeUITextView.text
 
         // テーマが入力されていなかったらアラートを出す
         if themeUITextView.text.isEmpty {
@@ -41,11 +43,12 @@ class SiritoriThemeViewController: BaseViewController {
             )
             self.present(alert, animated: true)
         }
+        saveTheme(themeUITextView.text)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Display the description
+        // Display the description ラベル
         sublabel.backgroundColor = UIColor.white
         sublabel.text = "テーマを入力してください.\n例：新しいアプリのアイデア"
 
@@ -68,9 +71,21 @@ class SiritoriThemeViewController: BaseViewController {
         button.frame = CGRect(x: 250, y: 450, width: 80, height: 35)
         button.addTarget(self, action: #selector(self.clear(_:)), for: .touchUpInside)
         view.addSubview(button)
+
         
-        themeUITextView.text = siritoriTheme
+
         
+        let defaults = UserDefaults.standard
+        if defaults.object(forKey: "SiritoriTheme") != nil {
+            let theme:String = defaults.string(forKey: "SiritoriTheme")!
+            print("theme:")
+            print(theme)
+            themeUITextView.text = theme
+        }
+
+        siritoriTheme = themeUITextView.text
+        
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -83,6 +98,18 @@ class SiritoriThemeViewController: BaseViewController {
         SiritoriWorkViewController().resetContents()
     }
                                      
+    func saveTheme(_ theme: String) {
+        let defaults = UserDefaults.standard
+        print("save theme:")
+        print(theme)
+        defaults.set(theme, forKey: "SiritoriTheme")
+    }
+    
+    func readTheme() -> (String) {
+        let defaults = UserDefaults.standard
+        let theme:String = defaults.string(forKey: "SiritoriTheme")!
+        return theme
+    }
     
     /*
     // MARK: - Navigation
