@@ -9,14 +9,18 @@
 import UIKit
 import GoogleMobileAds
 
-// XXX: 別々の配列じゃなくて構造体とかにするべき、おそらく
-var KeywordTextViewArray:[UITextField] = []
-var IdeaTextViewArray:[UITextView] = []
-
+// 構造体
+struct IdeaData: Codable {
+    var keyword: String = "aa"
+    var idea: String = "aa"
+}
 // 保存用
-var IdeaDataArray:[(keyword: String, idea: String)] = []
+var IdeaDataArray:[IdeaData] = []
 
 class SiritoriWorkViewController: BaseViewController {
+    var KeywordTextFieldArray:[UITextField] = []
+    var IdeaTextViewArray:[UITextView] = []
+
     let firstWord = "アイデア"
     var bannerView: GADBannerView!
     let scrollView = UIScrollView()
@@ -30,8 +34,8 @@ class SiritoriWorkViewController: BaseViewController {
         super.viewDidLoad()
 
         //保存してある配列の読込
-        IdeaDataArray = readData() as! [(keyword: String, idea: String)]
-        let index = KeywordTextViewArray.count
+        IdeaDataArray = readData()
+        let index = IdeaDataArray.count
         // しりとりのテーマを読込んで表示
         displayTheme()
         // しりとりの最初のワードを設定・表示
@@ -42,7 +46,7 @@ class SiritoriWorkViewController: BaseViewController {
         } else {
             for i in 0..<index {
                 loadContentsView(ArrayIndex: i)
-                IdeaDataArray = readData() as! [(keyword: String, idea: String)]
+                IdeaDataArray = readData()
             }
         }
         // ボタンの追加
@@ -60,14 +64,14 @@ class SiritoriWorkViewController: BaseViewController {
     // 「次へ」ボタンが押されたときの処理
     @objc func onClick(_ sender: AnyObject){
         let button = sender as! UIButton
-        let index = KeywordTextViewArray.count
+        let index = KeywordTextFieldArray.count
         let y_new = index*140
         let y_field = 120 + y_new
-        
+
         // キーワードが入力されていなかったらアラートを出す
         print("index:")
         print(index)
-        if (KeywordTextViewArray[index-1].text?.isEmpty)! {
+        if (KeywordTextFieldArray[index-1].text?.isEmpty)! {
             let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
             alert.title = "Ops!!"
             alert.message = "please input a keyword!"
@@ -87,59 +91,44 @@ class SiritoriWorkViewController: BaseViewController {
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + CGFloat(y_new))
         // 中心を変更する
         scrollView.setContentOffset(CGPoint(x: 0, y: y_field-200), animated: true)
-        // 配列に追加
-        var tuple_keyword:String = "-"
-        if (KeywordTextViewArray[index-1].text?.isEmpty)! {
-            tuple_keyword = KeywordTextViewArray[index-1].text! as String
-        }
-        var tuple_idea:String = "-"
-//        if (IdeaTextViewArray[index-1].text?.isEmpty)! {
-//            tuple_idea = IdeaTextViewArray[index-1].text!
-//        }
-        IdeaDataArray.append((tuple_keyword, tuple_idea))
+
+        // 保存用のデータを作成配列
+        let stubIdeaData = IdeaData(keyword: KeywordTextFieldArray[index-1].text!, idea: IdeaTextViewArray[index-1].text!)
+        var stubIdeaDataArray = readData()
+        stubIdeaDataArray.append(stubIdeaData)
         print("IdeaData index:")
-        print(IdeaDataArray.count)
+        print(stubIdeaDataArray.count)
         // 保存
-//        saveData(ideaArray: IdeaDataArray)
-        saveData()
+        saveData(array: stubIdeaDataArray)
     }
-    
     
     func loadContentsView(ArrayIndex: Int) {
         let y_new = ArrayIndex*140
         let y_field = 120 + y_new
-        
         // キーワード + アイデアのUIViewの作成
         let contentsView = UIView()
         contentsView.frame = CGRect(x:20, y:y_field, width:Int(view.frame.width-CGFloat(40)), height:120)
         contentsView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.6, alpha: 1.0)
         
         // キーワードのラベルを追加
-        let keywordLabel = UILabel()
-        keywordLabel.frame = CGRect(x:10, y:5, width:140, height:30)
-        keywordLabel.numberOfLines = 0
-        keywordLabel.text = "キーワード"+String(ArrayIndex+1)
-        keywordLabel.textColor = UIColor.black
+        let keywordLabel = createKeywordLabel(index: ArrayIndex)
         contentsView.addSubview(keywordLabel)
-        // キーワードフィールドの作成・追加
+        // キーワードフィールドの設定・追加
         let keywordField = UITextField(frame: CGRect(x: 10, y:40, width:140, height:30))
         keywordField.borderStyle = UITextBorderStyle.roundedRect
         keywordField.text = IdeaDataArray[ArrayIndex].keyword
-        KeywordTextViewArray.append(keywordField)
+        KeywordTextFieldArray.append(keywordField)
         contentsView.addSubview(keywordField)
         
         // アイデアのラベルを追加
-        let IdeaLabel = UILabel()
-        IdeaLabel.frame = CGRect(x:160, y:5, width:160, height:30)
-        IdeaLabel.numberOfLines = 0
-        IdeaLabel.text = "アイデア"+String(ArrayIndex+1)
-        IdeaLabel.textColor = UIColor.black
+        let IdeaLabel = createIdeaLabel(index: ArrayIndex)
         contentsView.addSubview(IdeaLabel)
         // アイデアフィールドの作成・追加
         let IdeaView: UITextView = UITextView(frame: CGRect(x: 160, y:40, width:160, height:60))
         IdeaView.layer.borderWidth = 1
         IdeaView.layer.cornerRadius = 5
         IdeaView.layer.borderColor = UIColor.lightGray.cgColor
+        IdeaView.text = IdeaDataArray[ArrayIndex].idea
         IdeaTextViewArray.append(IdeaView)
         contentsView.addSubview(IdeaView)
 
@@ -150,40 +139,29 @@ class SiritoriWorkViewController: BaseViewController {
     func createContentsView(ArrayIndex: Int) {
         let y_new = ArrayIndex*140
         let y_field = 120 + y_new
-        
         // キーワード + アイデアのUIViewの作成
         let contentsView = UIView()
         contentsView.frame = CGRect(x:20, y:y_field, width:Int(view.frame.width-CGFloat(40)), height:120)
         contentsView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.6, alpha: 1.0)
         
         // キーワードのラベルを追加
-        let keywordLabel = UILabel()
-        keywordLabel.frame = CGRect(x:10, y:5, width:140, height:30)
-        keywordLabel.numberOfLines = 0
-        keywordLabel.text = "キーワード"+String(ArrayIndex+1)
-        keywordLabel.textColor = UIColor.black
+        let keywordLabel = createIdeaLabel(index: ArrayIndex)
         contentsView.addSubview(keywordLabel)
-        
-        // キーワードフィールドの追加
+        // キーワードフィールドの作成・追加
         let keywordField: UITextField = UITextField(frame: CGRect(x: 10, y:40, width:140, height:30))
         keywordField.delegate = self as? UITextFieldDelegate
         keywordField.borderStyle = UITextBorderStyle.roundedRect
         if (ArrayIndex == 0) {
             keywordField.placeholder = firstWord+"→ ..."
         } else {
-            keywordField.placeholder = KeywordTextViewArray[ArrayIndex-1].text!+"→ ..."
+            keywordField.placeholder = KeywordTextFieldArray[ArrayIndex-1].text!+"→ ..."
         }
-        KeywordTextViewArray.append(keywordField)
+        KeywordTextFieldArray.append(keywordField)
         contentsView.addSubview(keywordField)
         
         // アイデアのラベルを追加
-        let IdeaLabel = UILabel()
-        IdeaLabel.frame = CGRect(x:160, y:5, width:160, height:30)
-        IdeaLabel.numberOfLines = 0
-        IdeaLabel.text = "アイデア"+String(ArrayIndex+1)
-        IdeaLabel.textColor = UIColor.black
+        let IdeaLabel = createIdeaLabel(index: ArrayIndex)
         contentsView.addSubview(IdeaLabel)
-        
         // アイデアビューの追加
         let IdeaView: UITextView = UITextView(frame: CGRect(x: 160, y:40, width:160, height:60))
         IdeaView.layer.borderWidth = 1
@@ -197,7 +175,7 @@ class SiritoriWorkViewController: BaseViewController {
     }
     
     func addNextButton() {
-        let index = IdeaDataArray.count // indexの更新
+        let index = KeywordTextFieldArray.count
         let button = UIButton()
         button.backgroundColor = UIColor.white
         button.layer.borderWidth = 2.0 // 枠線の幅
@@ -219,29 +197,24 @@ class SiritoriWorkViewController: BaseViewController {
         addBannerViewToView(bannerView)
     }
     
-    public func resetContents() {
-        IdeaDataArray.removeAll()
-        IdeaDataArray.removeAll()
-    }
-
-//    func saveData(_: ideaArray) {
-    func saveData() {
-        let texts: [String] = ["三日月宗近"]
-        
+    func saveData(array: [IdeaData]) {
         let defaults = UserDefaults.standard
-//        defaults.set(IdeaDataArray ,forKey: "Cell_1_data")
-        defaults.set(texts ,forKey: "Cell_1_data")
+        let data = try? JSONEncoder().encode(array)
+        print("texts")
+        defaults.set(data ,forKey: "Cell_1_data")
+        print("done")
     }
     
-    func readData() -> ([(Any, Any)]) {
+    func readData() -> ([IdeaData]) {
         let defaults = UserDefaults.standard
-        let stubArray:[(Any, Any)] = []
-        if let ideaArray = defaults.array(forKey: "Cell_1_data") {
-            return ideaArray as! ([(Any, Any)])
-        } else {
+        let stubArray:[IdeaData] = []
+        print("read:")
+        guard let data = defaults.data(forKey: "Cell_1_data") else {
             return stubArray
         }
-
+        let user = try? JSONDecoder().decode([IdeaData].self, from: data)
+        print(user!)
+        return user!
     }
 
     func readTheme() -> (String) {
@@ -278,6 +251,25 @@ class SiritoriWorkViewController: BaseViewController {
         themeLabel.backgroundColor = UIColor.blue
         view.addSubview(themeLabel)
     }
+    
+    func createIdeaLabel(index: Int) -> (UILabel) {
+        let IdeaLabel = UILabel()
+        IdeaLabel.frame = CGRect(x:160, y:5, width:160, height:30)
+        IdeaLabel.numberOfLines = 0
+        IdeaLabel.text = "アイデア"+String(index+1)
+        IdeaLabel.textColor = UIColor.black
+        return IdeaLabel
+    }
+    
+    func createKeywordLabel(index: Int) -> (UILabel) {
+        let keywordLabel = UILabel()
+        keywordLabel.frame = CGRect(x:10, y:5, width:140, height:30)
+        keywordLabel.numberOfLines = 0
+        keywordLabel.text = "キーワード"+String(index+1)
+        keywordLabel.textColor = UIColor.black
+        return keywordLabel
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

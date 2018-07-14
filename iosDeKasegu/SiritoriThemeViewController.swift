@@ -95,7 +95,8 @@ class SiritoriThemeViewController: BaseViewController {
     
     @objc func clear(_ sender: AnyObject) {
         //let button = sender as! UIButton
-        SiritoriWorkViewController().resetContents()
+        print("called")
+        //        SiritoriWorkViewController().resetContents()
     }
                                      
     func saveTheme(_ theme: String) {
