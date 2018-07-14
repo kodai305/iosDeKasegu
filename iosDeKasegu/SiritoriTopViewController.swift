@@ -14,6 +14,9 @@ var section0     = [("しりとり法を使ってみよう","チュートリア�
 var tableData    = [section0]
 
 class SiritoriTopViewController: BaseViewController,UITableViewDelegate, UITableViewDataSource {
+    // 遷移先に送るデータ
+    var sendIndexData:Int = 0
+
     // 広告バナー作成
     var bannerView: GADBannerView!
     //テーブルビューインスタンス作成
@@ -84,11 +87,13 @@ class SiritoriTopViewController: BaseViewController,UITableViewDelegate, UITable
         if (indexPath.row == 0) { // 0番目がタップされたとき
             self.performSegue(withIdentifier: "toSiritoriGuide", sender: nil)
         } else {
-            self.performSegue(withIdentifier: "toSiritoriTheme", sender: nil)
+            // 遷移先に送るデータの更新
+            self.sendIndexData = indexPath.row
+            self.performSegue(withIdentifier: "toSiritoriWork", sender: nil)
         }
     }
     
-    
+    // データの保存・読み取り
     func readTheme() -> ([String]) {
         let dammy:[String] = []
         let defaults = UserDefaults.standard
@@ -98,7 +103,6 @@ class SiritoriTopViewController: BaseViewController,UITableViewDelegate, UITable
             return dammy
         }
     }
-    
     func saveTheme(_ theme: [String]) {
         let defaults = UserDefaults.standard
         defaults.set(theme, forKey: "SiritoriTheme")
@@ -118,20 +122,26 @@ class SiritoriTopViewController: BaseViewController,UITableViewDelegate, UITable
         let now = Date()
         let okAction = UIAlertAction(title:"OK",style: UIAlertActionStyle.default){(action:UIAlertAction) in
             if let textField = alertController.textFields?.first {  // ?? .first
-                // XXX: 入力されてなかったときの処理
-                
-                // テーマの保存
-                var forSaveTheme:[String] = self.readTheme()
-                forSaveTheme.append(textField.text!)
-                self.saveTheme(forSaveTheme)
-                // セルの追加
-                section0.insert((textField.text!, f.string(from: now)), at: section0.count)
-                tableData = [section0]
-                self.siritoriTableView.insertRows(at: [IndexPath(row: section0.count-1, section: 0)], with: UITableViewRowAnimation.right)
-                //self.siritoriTableView.reloadData()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    // 画面遷移
-                    self.performSegue(withIdentifier: "toSiritoriTheme", sender: nil)
+
+                let stub:String = textField.text!
+                if (stub.isEmpty) {
+                    // XXX: 入力されてなかったときの処理
+                    
+                } else {
+                    // テーマの保存
+                    var forSaveTheme:[String] = self.readTheme()
+                    forSaveTheme.append(textField.text!)
+                    self.saveTheme(forSaveTheme)
+                    // セルの追加
+                    section0.insert((textField.text!, f.string(from: now)), at: section0.count)
+                    tableData = [section0]
+                    self.siritoriTableView.insertRows(at: [IndexPath(row: section0.count-1, section: 0)], with: UITableViewRowAnimation.right)
+                    //self.siritoriTableView.reloadData()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        // 画面遷移
+                        self.sendIndexData = section0.count-1
+                        self.performSegue(withIdentifier: "toSiritoriWork", sender: nil)
+                    }
                 }
             }
         }
@@ -141,16 +151,17 @@ class SiritoriTopViewController: BaseViewController,UITableViewDelegate, UITable
         alertController.addAction(cancelButton)
         
         present(alertController, animated: true, completion: nil)
-        
     }
     
-    //画面遷移実行前の呼び出しメソッド
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        //遷移先のビューコントローラーを取得し、インスタンス変数に受け渡すデータを設定する。
-        let controller:SiritoriThemeViewController = (segue.destination as? SiritoriThemeViewController)!
-        //controller.setText("str")
-        controller.myText = "donedone"
-        print(controller.myText)
+    // セグエで画面移動の際にデータを渡す
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
+        if segue.identifier == "toSiritoriWork" {
+            let nextView:SiritoriWorkViewController = segue.destination as! SiritoriWorkViewController
+            let theme:[String]     = self.readTheme()
+            nextView.cellIndex     = self.sendIndexData
+            print(theme)
+            nextView.siritoriTheme = theme[self.sendIndexData-1] //indexがややわかりにくい
+        }
     }
 
     /*

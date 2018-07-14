@@ -11,13 +11,18 @@ import GoogleMobileAds
 
 // 構造体
 struct IdeaData: Codable {
-    var keyword: String = "aa"
-    var idea: String = "aa"
+    var keyword: String = ""
+    var idea: String = ""
 }
 // 保存用
 var IdeaDataArray:[IdeaData] = []
 
 class SiritoriWorkViewController: BaseViewController {
+    //前の画面から受け取る
+    var cellIndex:Int = 0
+    var siritoriTheme:String = ""
+
+    
     var KeywordTextFieldArray:[UITextField] = []
     var IdeaTextViewArray:[UITextView] = []
 
@@ -197,33 +202,28 @@ class SiritoriWorkViewController: BaseViewController {
         addBannerViewToView(bannerView)
     }
     
+    // データの保存・読み取り
     func saveData(array: [IdeaData]) {
         let defaults = UserDefaults.standard
         let data = try? JSONEncoder().encode(array)
+        //Userdefaultのkeyを設定
+        let siritoriDataKey:String = "SiritoriCell_"+String(self.cellIndex)+"_data"
         print("texts")
-        defaults.set(data ,forKey: "Cell_1_data")
+        defaults.set(data ,forKey: siritoriDataKey)
         print("done")
     }
-    
     func readData() -> ([IdeaData]) {
         let defaults = UserDefaults.standard
         let stubArray:[IdeaData] = []
+        //Userdefaultのkeyを設定
+        let siritoriDataKey:String = "SiritoriCell_"+String(self.cellIndex)+"_data"
         print("read:")
-        guard let data = defaults.data(forKey: "Cell_1_data") else {
+        guard let data = defaults.data(forKey: siritoriDataKey) else {
             return stubArray
         }
         let user = try? JSONDecoder().decode([IdeaData].self, from: data)
         print(user!)
         return user!
-    }
-
-    func readTheme() -> (String) {
-        let defaults = UserDefaults.standard
-        if let theme:String = defaults.string(forKey: "Cell_1_theme") {
-            return theme
-        } else {
-            return "1"
-        }
     }
     
     func createInitialWord() {
@@ -246,7 +246,7 @@ class SiritoriWorkViewController: BaseViewController {
         let themeLabel = UILabel()
         themeLabel.frame = CGRect(x:0, y:60, width:view.frame.width, height:50)
         themeLabel.numberOfLines = 0
-        themeLabel.text = "★テーマ★\n　　　　" + readTheme()
+        themeLabel.text = "★テーマ★\n　　　　" + self.siritoriTheme
         themeLabel.textColor = UIColor.white
         themeLabel.backgroundColor = UIColor.blue
         view.addSubview(themeLabel)
@@ -270,7 +270,6 @@ class SiritoriWorkViewController: BaseViewController {
         return keywordLabel
     }
 
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

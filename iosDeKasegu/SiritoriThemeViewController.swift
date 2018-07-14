@@ -12,13 +12,13 @@ import GoogleMobileAds
 
 
 var siritoriTheme:String!
-
+var myText:String = ""
 class SiritoriThemeViewController: BaseViewController {
-    var myText:String!
+    
 
     var bannerView: GADBannerView!
 
-
+    var sendText:String = ""
     
     @IBAction func viewTap(_ sender: UITapGestureRecognizer) {
         // タップされたらキーボードを下げる
@@ -52,6 +52,8 @@ class SiritoriThemeViewController: BaseViewController {
         super.viewDidLoad()
         print("myText:")
         print(myText)
+        print("sendText:")
+        print(sendText)
         
         // Display the description ラベル
         sublabel.backgroundColor = UIColor.white
