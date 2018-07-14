@@ -10,10 +10,13 @@ import UIKit
 import GoogleMobileAds
 
 let sectionTitle = ["パーソナルボード"]
-let section0     = [("しりとり法を使ってみよう","チュートリアル"),("テーマ1","sample")]
-let tableData    = [section0]
+var section0     = [("しりとり法を使ってみよう","チュートリアル"),("テーマ1","sample"),("テーマ1","sample")]
+var tableData    = [section0]
 
 class SiritoriTopViewController: BaseViewController,UITableViewDelegate, UITableViewDataSource {
+    
+    
+    
     // 広告バナー作成
     var bannerView: GADBannerView!
     //テーブルビューインスタンス作成
@@ -23,7 +26,7 @@ class SiritoriTopViewController: BaseViewController,UITableViewDelegate, UITable
         super.viewDidLoad()
         self.navigationItem.title = "アイデア発想";
         
-        siritoriTableView.frame      = CGRect(x: 50, y:100, width:240, height:200)
+        siritoriTableView.frame      = CGRect(x: 50, y:100, width:240, height:400)
         siritoriTableView.delegate   = self
         siritoriTableView.dataSource = self
         
@@ -83,6 +86,32 @@ class SiritoriTopViewController: BaseViewController,UITableViewDelegate, UITable
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func tapAddButton(_ sender: Any) {
+        let alertController = UIAlertController(title: "テーマを追加",message:"テーマを入力して下さい",preferredStyle:UIAlertControllerStyle.alert)
+        alertController.addTextField(configurationHandler: nil)
+        let f = DateFormatter()
+        f.dateStyle = .long
+        f.timeStyle = .none
+        let now = Date()
+        let okAction = UIAlertAction(title:"OK",style: UIAlertActionStyle.default){(action:UIAlertAction) in
+            if let textField = alertController.textFields?.first{
+                print(tableData.count)
+                section0.insert((textField.text!,f.string(from: now)), at: section0.count)
+                tableData    = [section0]
+                print(tableData)
+                self.siritoriTableView.insertRows(at: [IndexPath(row: section0.count - 1, section: 0)], with: UITableViewRowAnimation.right)
+            }
+        }
+        alertController.addAction(okAction)
+        
+        let cancelButton = UIAlertAction(title: "CANCEL",style:UIAlertActionStyle.cancel, handler: nil)
+        alertController.addAction(cancelButton)
+        
+        present(alertController, animated: true, completion: nil)
+        
+    }
+    
     
 
     /*

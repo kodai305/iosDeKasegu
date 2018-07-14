@@ -32,7 +32,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Bgr-PG-ANw" kind="show" id="eCr-7G-b66"/>
+                                    <segue destination="Bgr-PG-ANw" kind="show" id="KSb-Wu-HjH"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxR-Cu-w8o">
@@ -135,6 +135,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="iCc-bh-yAN"/>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="RUL-xZ-gCP">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fnB-av-ePC">
+                            <connections>
+                                <action selector="tapAddButton:" destination="Bgr-PG-ANw" id="onZ-xB-cLL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="K0v-UG-ZIM" kind="show" identifier="toSiritoriTheme" id="seK-y2-Kyh"/>
                         <segue destination="Brf-VP-SpD" kind="show" identifier="toSiritoriGuide" id="qDw-nb-qob"/>
@@ -142,7 +151,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azt-lP-5xL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1899" y="-232"/>
+            <point key="canvasLocation" x="2837.5999999999999" y="-232.53373313343329"/>
         </scene>
         <!--Siritori Guide View Controller-->
         <scene sceneID="8oX-TN-sZq">
@@ -225,7 +234,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2692" y="-233"/>
+            <point key="canvasLocation" x="3631.1999999999998" y="-233.43328335832086"/>
         </scene>
         <!--Siritori Work View Controller-->
         <scene sceneID="e3G-N5-6eo">
@@ -249,7 +258,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3423" y="-233"/>
+            <point key="canvasLocation" x="4360.8000000000002" y="-233.43328335832086"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Gvu-wS-eHV">
@@ -271,6 +280,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Bzd-ov-AWp"/>
+        <segue reference="qDw-nb-qob"/>
     </inferredMetricsTieBreakers>
 </document>
