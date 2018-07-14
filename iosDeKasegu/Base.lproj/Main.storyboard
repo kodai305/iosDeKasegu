@@ -103,12 +103,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="toJ-QX-pDr"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="9xl-oe-gca" appends="YES" id="ixS-yq-Q0R"/>
+                            <outletCollection property="gestureRecognizers" destination="rFQ-5a-BcM" appends="YES" id="Scn-Qb-z6b"/>
+                        </connections>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2pL-aI-HWs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pinchGestureRecognizer id="9xl-oe-gca">
+                    <connections>
+                        <action selector="PinchOut:" destination="wpq-R5-Cs8" id="pkr-uB-b6v"/>
+                    </connections>
+                </pinchGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="rFQ-5a-BcM">
+                    <connections>
+                        <action selector="Slide:" destination="wpq-R5-Cs8" id="M03-Ah-OhB"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1898" y="498"/>
+            <point key="canvasLocation" x="1896.8" y="497.90104947526243"/>
         </scene>
         <!--Siritori Top View Controller-->
         <scene sceneID="JOu-yg-Lor">
