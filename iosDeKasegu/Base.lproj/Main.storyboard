@@ -62,9 +62,12 @@
                                 <color key="tintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="titleEdgeInsets" minX="-250" minY="120" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="70" minY="10" maxX="70" maxY="40"/>
-                                <state key="normal" title="練習用（チュートリアル）">
+                                <state key="normal" title="チュートリアル">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Brf-VP-SpD" kind="show" id="Bzd-ov-AWp"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -252,4 +255,7 @@
             <point key="canvasLocation" x="302" y="133"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Bzd-ov-AWp"/>
+    </inferredMetricsTieBreakers>
 </document>
