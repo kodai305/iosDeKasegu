@@ -20,6 +20,7 @@ var DetailArray:[[UITextView]] = [[UITextView](repeating: UITextView(), count: 8
                                   [UITextView](repeating: UITextView(), count: 8),
                                   [UITextView](repeating: UITextView(), count: 8),
                                   [UITextView](repeating: UITextView(), count: 8),]
+var Waku = UIView()
 
 let ini_theme:String! = "テーマを入力"
 let ini_element:String! = "構成要素を入力"
@@ -37,15 +38,20 @@ class SampleViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // テーマの作成
+        
+        Waku = UIView(frame: CGRect(x: self.view.center.x-CGFloat(cellSize * 4 + cellSize/2 + margin * 4), y:self.view.center.y-CGFloat(cellSize * 4 + cellSize/2 + margin * 4), width:CGFloat(cellSize*9 + margin*8), height:CGFloat(cellSize*9 + margin*8)))
+        Waku.backgroundColor = UIColor.blue
+        view.addSubview(Waku)
+        
         if (ThemeTextView.text.isEmpty) {
-            ThemeTextView = UITextView(frame: CGRect(x: self.view.center.x-CGFloat(cellSize/2), y:self.view.center.y-CGFloat(cellSize/2), width:CGFloat(cellSize), height:CGFloat(cellSize)))
+            ThemeTextView = UITextView(frame: CGRect(x: CGFloat(cellSize * 4 + margin * 4), y:CGFloat(cellSize * 4 + margin * 4), width:CGFloat(cellSize), height:CGFloat(cellSize)))
             ThemeTextView.layer.borderWidth = 1
             ThemeTextView.layer.borderColor = UIColor.lightGray.cgColor
             ThemeTextView.backgroundColor = UIColor.red
             ThemeTextView.delegate = self
         }
-        view.addSubview(ThemeTextView)
+
+        Waku.addSubview(ThemeTextView)
         //初期化
         ThemeTextView.text = ini_theme
         ThemeTextView.textColor = UIColor.gray
@@ -54,7 +60,7 @@ class SampleViewController: UIViewController, UITextViewDelegate {
         var index_i = 0
         for (x,y) in vector {
             // 要素の作成
-            var CellTextView: UITextView = UITextView(frame: CGRect(x: self.view.center.x-CGFloat(vectorLen+(cellSize+margin)*x), y:self.view.center.y-CGFloat(vectorLen+(cellSize+margin)*y), width:CGFloat(cellSize), height:CGFloat(cellSize)))
+            var CellTextView: UITextView = UITextView(frame: CGRect(x: ThemeTextView.center.x-CGFloat(vectorLen+(cellSize+margin)*x), y:ThemeTextView.center.y-CGFloat(vectorLen+(cellSize+margin)*y), width:CGFloat(cellSize), height:CGFloat(cellSize)))
             if (ElementArray[index_i].text.isEmpty) {
                 CellTextView.layer.borderWidth = 1
                 CellTextView.layer.borderColor = UIColor.lightGray.cgColor
@@ -62,34 +68,34 @@ class SampleViewController: UIViewController, UITextViewDelegate {
                 ElementArray[index_i] = CellTextView
                 ElementArray[index_i].delegate = self
             }
-            view.addSubview(ElementArray[index_i])
+            Waku.addSubview(ElementArray[index_i])
             ElementArray[index_i].text = ini_element
             ElementArray[index_i].textColor = UIColor.gray
             AutoFontResize(textView: ElementArray[index_i],flag: -1)
 
             // 要素を周りに配置(新しい中心)
             if (ElementRoundArray[index_i].text.isEmpty) {
-                CellTextView = UITextView(frame: CGRect(x: self.view.center.x-CGFloat(vectorLen+(cellSize+margin)*3*x), y:self.view.center.y-CGFloat(vectorLen+(cellSize+margin)*3*y), width:CGFloat(cellSize), height:CGFloat(cellSize)))
+                CellTextView = UITextView(frame: CGRect(x: ThemeTextView.center.x-CGFloat(vectorLen+(cellSize+margin)*3*x), y:ThemeTextView.center.y-CGFloat(vectorLen+(cellSize+margin)*3*y), width:CGFloat(cellSize), height:CGFloat(cellSize)))
                 CellTextView.layer.borderWidth = 1
                 CellTextView.layer.borderColor = UIColor.lightGray.cgColor
                 CellTextView.backgroundColor = UIColor.yellow
                 ElementRoundArray[index_i] = CellTextView
                 ElementRoundArray[index_i].delegate = self
             }
-            view.addSubview(ElementRoundArray[index_i])
+            Waku.addSubview(ElementRoundArray[index_i])
 
             // 詳細枠(外側)の作成
             var index_j = 0
             for (xx,yy) in vector {
                 if (DetailArray[index_i][index_j].text.isEmpty) {
-                    CellTextView = UITextView(frame: CGRect(x: self.view.center.x-CGFloat(vectorLen+(cellSize+margin)*3*x+(cellSize+margin)*xx), y:self.view.center.y-CGFloat(vectorLen+(cellSize+margin)*3*y+(cellSize+margin)*yy), width:CGFloat(cellSize), height:CGFloat(cellSize)))
+                    CellTextView = UITextView(frame: CGRect(x: ThemeTextView.center.x-CGFloat(vectorLen+(cellSize+margin)*3*x+(cellSize+margin)*xx), y:ThemeTextView.center.y-CGFloat(vectorLen+(cellSize+margin)*3*y+(cellSize+margin)*yy), width:CGFloat(cellSize), height:CGFloat(cellSize)))
                     CellTextView.layer.borderWidth = 1
                     CellTextView.layer.borderColor = UIColor.lightGray.cgColor
                     CellTextView.backgroundColor = UIColor.lightGray
                     DetailArray[index_i][index_j] = CellTextView
                     DetailArray[index_i][index_j].delegate = self
                 }
-                view.addSubview(DetailArray[index_i][index_j])
+                Waku.addSubview(DetailArray[index_i][index_j])
                 DetailArray[index_i][index_j].text = ini_detail
                 DetailArray[index_i][index_j].textColor = UIColor.gray
                 AutoFontResize(textView: DetailArray[index_i][index_j],flag: -1)
@@ -97,10 +103,32 @@ class SampleViewController: UIViewController, UITextViewDelegate {
             }
             index_i += 1
         }
+
         
         // Do any additional setup after loading the view.
     }
-
+    
+    @IBAction func PinchOut(_ sender: UIPinchGestureRecognizer) {
+        //ピンチ開始時のアフィン変換を引き継いでアフィン変換を行う。
+        Waku.transform = Waku.transform.scaledBy(x: sender.scale, y: sender.scale)
+        sender.scale = 1
+    }
+    
+    @IBAction func Slide(_ sender: UIPanGestureRecognizer) {
+        //移動量を取得する。
+        let move:CGPoint = sender.translation(in: self.view)
+        
+        //ドラッグした部品の座標に移動量を加算する。
+        sender.view!.center.x += move.x
+        sender.view!.center.y += move.y
+        
+        //ラベルに現在座標を表示する。
+        //testLabel.text = "\(sender.view!.frame.origin.x), \(sender.view!.frame.origin.y)"
+        
+        //移動量を0にする。
+        sender.setTranslation(CGPoint.zero, in: self.view)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
