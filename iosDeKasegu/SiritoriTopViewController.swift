@@ -41,6 +41,7 @@ class SiritoriTopViewController: BaseViewController,UITableViewDelegate, UITable
     
     // セルを作る
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         let sectionData = tableData[(indexPath as NSIndexPath).section]
         let cellData = sectionData[(indexPath as NSIndexPath).row]
@@ -74,9 +75,17 @@ class SiritoriTopViewController: BaseViewController,UITableViewDelegate, UITable
         if (indexPath.row == 0) { // 0番目がタップされたとき
             self.performSegue(withIdentifier: "toSiritoriGuide", sender: nil)
         } else {
+            saveTheme("テーマ1")
             self.performSegue(withIdentifier: "toSiritoriTheme", sender: nil)
         }
 
+    }
+    
+    func saveTheme(_ theme: String) {
+        let defaults = UserDefaults.standard
+        print("save theme:")
+        print(theme)
+        defaults.set(theme, forKey: "Cell_1_theme")
     }
     
     override func didReceiveMemoryWarning() {
