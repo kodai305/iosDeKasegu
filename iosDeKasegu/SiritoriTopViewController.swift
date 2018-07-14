@@ -10,13 +10,10 @@ import UIKit
 import GoogleMobileAds
 
 let sectionTitle = ["パーソナルボード"]
-var section0     = [("しりとり法を使ってみよう","チュートリアル"),("テーマ1","sample"),("テーマ1","sample")]
+var section0     = [("しりとり法を使ってみよう","チュートリアル")]
 var tableData    = [section0]
 
 class SiritoriTopViewController: BaseViewController,UITableViewDelegate, UITableViewDataSource {
-    
-    
-    
     // 広告バナー作成
     var bannerView: GADBannerView!
     //テーブルビューインスタンス作成
@@ -29,6 +26,16 @@ class SiritoriTopViewController: BaseViewController,UITableViewDelegate, UITable
         siritoriTableView.frame      = CGRect(x: 50, y:100, width:240, height:400)
         siritoriTableView.delegate   = self
         siritoriTableView.dataSource = self
+        
+        // 保存されているデータの読み込み
+        let Theme:[String] = readTheme()
+        if (!Theme.isEmpty) {
+            for theme in Theme {
+                section0.insert((theme, "dammy"), at: section0.count)
+                tableData = [section0]
+                self.siritoriTableView.insertRows(at: [IndexPath(row: section0.count-1, section: 0)], with: UITableViewRowAnimation.right)
+            }
+        }
         
         self.view.addSubview(siritoriTableView)
         // Do any additional setup after loading the view.
@@ -73,22 +80,28 @@ class SiritoriTopViewController: BaseViewController,UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //セルの選択解除
         tableView.deselectRow(at: indexPath, animated: true)
-
         //画面遷移
         if (indexPath.row == 0) { // 0番目がタップされたとき
             self.performSegue(withIdentifier: "toSiritoriGuide", sender: nil)
         } else {
-            saveTheme("テーマ1")
             self.performSegue(withIdentifier: "toSiritoriTheme", sender: nil)
         }
-
     }
     
-    func saveTheme(_ theme: String) {
+    
+    func readTheme() -> ([String]) {
+        let dammy:[String] = []
         let defaults = UserDefaults.standard
-        print("save theme:")
-        print(theme)
-        defaults.set(theme, forKey: "Cell_1_theme")
+        if let stub:[String] = defaults.array(forKey: "SiritoriTheme") as? [String] {
+            return stub
+        } else {
+            return dammy
+        }
+    }
+    
+    func saveTheme(_ theme: [String]) {
+        let defaults = UserDefaults.standard
+        defaults.set(theme, forKey: "SiritoriTheme")
     }
     
     override func didReceiveMemoryWarning() {
@@ -104,14 +117,20 @@ class SiritoriTopViewController: BaseViewController,UITableViewDelegate, UITable
         f.timeStyle = .none
         let now = Date()
         let okAction = UIAlertAction(title:"OK",style: UIAlertActionStyle.default){(action:UIAlertAction) in
-            if let textField = alertController.textFields?.first{
-                print(tableData.count)
-                section0.insert((textField.text!,f.string(from: now)), at: section0.count)
-                tableData    = [section0]
-                print(tableData)
-                self.siritoriTableView.insertRows(at: [IndexPath(row: section0.count - 1, section: 0)], with: UITableViewRowAnimation.right)
+            if let textField = alertController.textFields?.first {  // ?? .first
+                // XXX: 入力されてなかったときの処理
+                
+                // テーマの保存
+                var forSaveTheme:[String] = self.readTheme()
+                forSaveTheme.append(textField.text!)
+                self.saveTheme(forSaveTheme)
+                // セルの追加
+                section0.insert((textField.text!, f.string(from: now)), at: section0.count)
+                tableData = [section0]
+                self.siritoriTableView.insertRows(at: [IndexPath(row: section0.count-1, section: 0)], with: UITableViewRowAnimation.right)
                 //self.siritoriTableView.reloadData()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    // 画面遷移
                     self.performSegue(withIdentifier: "toSiritoriTheme", sender: nil)
                 }
             }
@@ -125,7 +144,14 @@ class SiritoriTopViewController: BaseViewController,UITableViewDelegate, UITable
         
     }
     
-    
+    //画面遷移実行前の呼び出しメソッド
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        //遷移先のビューコントローラーを取得し、インスタンス変数に受け渡すデータを設定する。
+        let controller:SiritoriThemeViewController = (segue.destination as? SiritoriThemeViewController)!
+        //controller.setText("str")
+        controller.myText = "donedone"
+        print(controller.myText)
+    }
 
     /*
     // MARK: - Navigation

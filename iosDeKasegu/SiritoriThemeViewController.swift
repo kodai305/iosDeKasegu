@@ -14,6 +14,8 @@ import GoogleMobileAds
 var siritoriTheme:String!
 
 class SiritoriThemeViewController: BaseViewController {
+    var myText:String!
+
     var bannerView: GADBannerView!
 
 
@@ -48,6 +50,9 @@ class SiritoriThemeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("myText:")
+        print(myText)
+        
         // Display the description ラベル
         sublabel.backgroundColor = UIColor.white
         sublabel.text = "テーマを入力してください.\n例：新しいアプリのアイデア"
@@ -110,6 +115,12 @@ class SiritoriThemeViewController: BaseViewController {
         let defaults = UserDefaults.standard
         let theme:String = defaults.string(forKey: "Cell_1_theme")!
         return theme
+    }
+    
+    //前のビューから値を受け取る
+    func setText(_ str:String){
+        myText = str
+        print("setText:"+myText)
     }
     
     /*
