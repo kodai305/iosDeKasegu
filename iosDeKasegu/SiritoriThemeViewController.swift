@@ -76,8 +76,8 @@ class SiritoriThemeViewController: BaseViewController {
 
         
         let defaults = UserDefaults.standard
-        if defaults.object(forKey: "SiritoriTheme") != nil {
-            let theme:String = defaults.string(forKey: "SiritoriTheme")!
+        if defaults.object(forKey: "Cell_1_theme") != nil {
+            let theme:String = defaults.string(forKey: "Cell_1_theme")!
             print("theme:")
             print(theme)
             themeUITextView.text = theme
@@ -102,12 +102,12 @@ class SiritoriThemeViewController: BaseViewController {
         let defaults = UserDefaults.standard
         print("save theme:")
         print(theme)
-        defaults.set(theme, forKey: "SiritoriTheme")
+        defaults.set(theme, forKey: "Cell_1_theme")
     }
     
     func readTheme() -> (String) {
         let defaults = UserDefaults.standard
-        let theme:String = defaults.string(forKey: "SiritoriTheme")!
+        let theme:String = defaults.string(forKey: "Cell_1_theme")!
         return theme
     }
     
