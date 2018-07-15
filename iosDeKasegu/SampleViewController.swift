@@ -21,13 +21,15 @@ var DetailArray:[[UITextView]] = [[UITextView](repeating: UITextView(), count: 8
                                   [UITextView](repeating: UITextView(), count: 8),
                                   [UITextView](repeating: UITextView(), count: 8),]
 var Waku = UIView()
+var Now = UIView()
 
 let ini_theme:String! = "テーマを入力"
 let ini_element:String! = "構成要素を入力"
 let ini_detail:String! = "詳細を入力"
+var topKeyboard:CGFloat = 0
 
 class SampleViewController: UIViewController, UITextViewDelegate {
-    
+
     let vector: [(x: Int, y: Int)] = [
         (0, 1), (1, 1), (1, 0), (1, -1),
         (0, -1), (-1, -1), (-1, 0), (-1, 1)]
@@ -174,7 +176,16 @@ class SampleViewController: UIViewController, UITextViewDelegate {
         if(textView.text == ini_theme || textView.text == ini_element || textView.text == ini_detail){
             textView.text = ""
             textView.textColor = UIColor.black
-            }
+        }
+        Now = textView
+        // 重なり
+        let textView_y = Waku.frame.origin.y + textView.frame.origin.y + textView.frame.height
+        let distance = textView_y - topKeyboard
+        print(distance,textView.frame.origin.y,textView.frame.height,topKeyboard)
+        if distance >= 0 {
+            // scrollViewのコンテツを上へオフセット + 20.0(追加のオフセット)
+            Waku.frame.origin.y = Waku.frame.origin.y - (distance + 20.0)
+        }
     }
     
     func AutoFontResize(textView: UITextView, flag: Int){
@@ -190,6 +201,37 @@ class SampleViewController: UIViewController, UITextViewDelegate {
         if(flag != -1){
             ElementRoundArray[flag].font = UIFont.systemFont(ofSize: fixedFontPoint)
         }
+    }
+    
+    // キーボードが表示された時の処理
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(_:)),name: NSNotification.Name.UIKeyboardWillShow,object: nil)
+        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(_:)) ,name: NSNotification.Name.UIKeyboardWillHide,object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self,name: .UIKeyboardWillShow,object: self.view.window)
+        NotificationCenter.default.removeObserver(self,name: .UIKeyboardDidHide,object: self.view.window)
+    }
+    
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        let info = notification.userInfo!
+        let keyboardFrame = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        // top of keyboard
+        topKeyboard = keyboardFrame.origin.y
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        Waku.frame.origin.y = Waku.frame.origin.y - 20.0
+    }
+    
+    func TextViewShouldReturn(_ textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+        return true
     }
     
 
