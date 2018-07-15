@@ -13,32 +13,27 @@ let sectionTitle = ["パーソナルボード"]
 var section0     = [("しりとり法を使ってみよう","チュートリアル")]
 var tableData    = [section0]
 
-class SiritoriTopViewController: BaseViewController,UITableViewDelegate, UITableViewDataSource {
+class SiritoriThemeViewController: BaseThemeViewController {
     // 遷移先に送るデータ
     var sendIndexData:Int = 0
-
+    // 次の画面のID
+    let nextSegueId:String = "toSiritoriWork"
+    let guideSegueId:String = "toSiritoriGuide"
     // 広告バナー作成
     var bannerView: GADBannerView!
     //テーブルビューインスタンス作成
-    var siritoriTableView: UITableView  =   UITableView()
+    var siritoriTableView: UITableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "アイデア発想";
-        
+
         siritoriTableView.frame      = CGRect(x: 50, y:100, width:240, height:400)
         siritoriTableView.delegate   = self
         siritoriTableView.dataSource = self
         
         // 保存されているデータの読み込み
-        let Theme:[String] = readTheme()
-        if (!Theme.isEmpty) {
-            for theme in Theme {
-                section0.insert((theme, "dammy"), at: section0.count)
-                tableData = [section0]
-                self.siritoriTableView.insertRows(at: [IndexPath(row: section0.count-1, section: 0)], with: UITableViewRowAnimation.right)
-            }
-        }
+        loadSavedTheme()
         
         self.view.addSubview(siritoriTableView)
         // Do any additional setup after loading the view.
@@ -52,31 +47,18 @@ class SiritoriTopViewController: BaseViewController,UITableViewDelegate, UITable
         addBannerViewToView(bannerView)
     }
     
-    // セルを作る
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
-        let sectionData = tableData[(indexPath as NSIndexPath).section]
-        let cellData = sectionData[(indexPath as NSIndexPath).row]
-        cell.textLabel?.text = cellData.0
-        cell.detailTextLabel?.text = cellData.1
-        return cell
-    }
-    
-    // セクションごとの行数を返す
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionData = tableData[section]
-        return sectionData.count
-    }
-
-    // セクション数を決める
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return sectionTitle.count
-    }
-    
-    // セクションのタイトル
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sectionTitle[section]
+    func loadSavedTheme() {
+        guard (section0.count <= 1) else {
+            return
+        }
+        let Theme:[String] = readTheme()
+        if (!Theme.isEmpty) {
+            for theme in Theme {
+                section0.insert((theme, "dammy"), at: section0.count)
+                tableData = [section0]
+                self.siritoriTableView.insertRows(at: [IndexPath(row: section0.count-1, section: 0)], with: UITableViewRowAnimation.right)
+            }
+        }
     }
     
     // タップしたときの処理
@@ -85,11 +67,11 @@ class SiritoriTopViewController: BaseViewController,UITableViewDelegate, UITable
         tableView.deselectRow(at: indexPath, animated: true)
         //画面遷移
         if (indexPath.row == 0) { // 0番目がタップされたとき
-            self.performSegue(withIdentifier: "toSiritoriGuide", sender: nil)
+            self.performSegue(withIdentifier: self.guideSegueId, sender: nil)
         } else {
             // 遷移先に送るデータの更新
             self.sendIndexData = indexPath.row
-            self.performSegue(withIdentifier: "toSiritoriWork", sender: nil)
+            self.performSegue(withIdentifier: self.nextSegueId, sender: nil)
         }
     }
     
@@ -106,11 +88,6 @@ class SiritoriTopViewController: BaseViewController,UITableViewDelegate, UITable
     func saveTheme(_ theme: [String]) {
         let defaults = UserDefaults.standard
         defaults.set(theme, forKey: "SiritoriTheme")
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func tapAddButton(_ sender: Any) {
@@ -140,7 +117,7 @@ class SiritoriTopViewController: BaseViewController,UITableViewDelegate, UITable
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                         // 画面遷移
                         self.sendIndexData = section0.count-1
-                        self.performSegue(withIdentifier: "toSiritoriWork", sender: nil)
+                        self.performSegue(withIdentifier: self.nextSegueId, sender: nil)
                     }
                 }
             }
@@ -155,13 +132,18 @@ class SiritoriTopViewController: BaseViewController,UITableViewDelegate, UITable
     
     // セグエで画面移動の際にデータを渡す
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
-        if segue.identifier == "toSiritoriWork" {
+        if segue.identifier == self.nextSegueId {
             let nextView:SiritoriWorkViewController = segue.destination as! SiritoriWorkViewController
             let theme:[String]     = self.readTheme()
             nextView.cellIndex     = self.sendIndexData
             print(theme)
             nextView.siritoriTheme = theme[self.sendIndexData-1] //indexがややわかりにくい
         }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
     /*

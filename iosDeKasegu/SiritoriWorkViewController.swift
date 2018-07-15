@@ -46,6 +46,8 @@ class SiritoriWorkViewController: BaseViewController {
         // しりとりの最初のワードを設定・表示
         createInitialWord()
         // キーワード+アイデアのコンテンツを作成, すでにあれば表示だけする
+        print("index:")
+        print(index)
         if (index == 0) {
             createContentsView(ArrayIndex: 0)
         } else {
@@ -150,7 +152,7 @@ class SiritoriWorkViewController: BaseViewController {
         contentsView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.6, alpha: 1.0)
         
         // キーワードのラベルを追加
-        let keywordLabel = createIdeaLabel(index: ArrayIndex)
+        let keywordLabel = createKeywordLabel(index: ArrayIndex)
         contentsView.addSubview(keywordLabel)
         // キーワードフィールドの作成・追加
         let keywordField: UITextField = UITextField(frame: CGRect(x: 10, y:40, width:140, height:30))
@@ -253,6 +255,7 @@ class SiritoriWorkViewController: BaseViewController {
     }
     
     func createIdeaLabel(index: Int) -> (UILabel) {
+        print("called")
         let IdeaLabel = UILabel()
         IdeaLabel.frame = CGRect(x:160, y:5, width:160, height:30)
         IdeaLabel.numberOfLines = 0
