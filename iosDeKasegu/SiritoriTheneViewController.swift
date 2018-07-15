@@ -33,15 +33,7 @@ class SiritoriThemeViewController: BaseThemeViewController {
         siritoriTableView.dataSource = self
         
         // 保存されているデータの読み込み
-        // XXX: この処理をアプリが起動したときだけにしないと何度も画面遷移のたびにロードされてしまう.
-        let Theme:[String] = readTheme()
-        if (!Theme.isEmpty) {
-            for theme in Theme {
-                section0.insert((theme, "dammy"), at: section0.count)
-                tableData = [section0]
-                self.siritoriTableView.insertRows(at: [IndexPath(row: section0.count-1, section: 0)], with: UITableViewRowAnimation.right)
-            }
-        }
+        loadSavedTheme()
         
         self.view.addSubview(siritoriTableView)
         // Do any additional setup after loading the view.
@@ -54,7 +46,21 @@ class SiritoriThemeViewController: BaseThemeViewController {
         bannerView.delegate = self
         addBannerViewToView(bannerView)
     }
-
+    
+    func loadSavedTheme() {
+        guard (section0.count <= 1) else {
+            return
+        }
+        let Theme:[String] = readTheme()
+        if (!Theme.isEmpty) {
+            for theme in Theme {
+                section0.insert((theme, "dammy"), at: section0.count)
+                tableData = [section0]
+                self.siritoriTableView.insertRows(at: [IndexPath(row: section0.count-1, section: 0)], with: UITableViewRowAnimation.right)
+            }
+        }
+    }
+    
     // タップしたときの処理
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //セルの選択解除
