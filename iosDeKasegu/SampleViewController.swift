@@ -119,11 +119,34 @@ class SampleViewController: UIViewController, UITextViewDelegate {
         let move:CGPoint = sender.translation(in: self.view)
         
         //ドラッグした部品の座標に移動量を加算する。
-        sender.view!.center.x += move.x
-        sender.view!.center.y += move.y
+        let right_x = Waku.frame.origin.x + Waku.frame.size.width + move.x
+        let left_x  = Waku.frame.origin.x + move.x
+        let top_y = Waku.frame.origin.y + move.y
+        let bottom_y  = Waku.frame.origin.y + Waku.frame.size.height + move.y
         
-        //ラベルに現在座標を表示する。
-        //testLabel.text = "\(sender.view!.frame.origin.x), \(sender.view!.frame.origin.y)"
+        if(self.view.center.x < left_x){
+            Waku.frame.origin.x = self.view.center.x
+        }
+        else{
+            if(right_x < self.view.center.x){
+                Waku.frame.origin.x = self.view.center.x - Waku.frame.size.width
+            }
+            else{
+                Waku.center.x += move.x
+            }
+        }
+        
+        if(self.view.center.y < top_y){
+            Waku.frame.origin.y = self.view.center.y
+        }
+        else{
+            if(bottom_y < self.view.center.y){
+                Waku.frame.origin.y = self.view.center.y - Waku.frame.size.height
+            }
+            else{
+                Waku.center.y += move.y
+            }
+        }
         
         //移動量を0にする。
         sender.setTranslation(CGPoint.zero, in: self.view)
