@@ -13,7 +13,7 @@ let sectionTitle = ["パーソナルボード"]
 var section0     = [("しりとり法を使ってみよう","チュートリアル")]
 var tableData    = [section0]
 
-class SiritoriTopViewController: BaseViewController,UITableViewDelegate, UITableViewDataSource {
+class SiritoriTopViewController: BaseThemeViewController,UITableViewDelegate, UITableViewDataSource {
     // 遷移先に送るデータ
     var sendIndexData:Int = 0
 

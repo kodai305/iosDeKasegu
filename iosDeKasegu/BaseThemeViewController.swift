@@ -1,0 +1,25 @@
+//
+//  BaseThemeViewController.swift
+//  iosDeKasegu
+//
+//  Created by 高木広大 on 2018/07/15.
+//  Copyright © 2018年 shonanhiratsuka. All rights reserved.
+//
+
+import UIKit
+
+class BaseThemeViewController: BaseViewController {
+
+
+    
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}

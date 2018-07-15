@@ -123,7 +123,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1896.8" y="497.90104947526243"/>
+            <point key="canvasLocation" x="2838" y="597"/>
         </scene>
         <!--Siritori Top View Controller-->
         <scene sceneID="JOu-yg-Lor">
@@ -175,7 +175,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MtC-ii-5OZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2692" y="-953"/>
+            <point key="canvasLocation" x="2838" y="-1039"/>
         </scene>
         <!--Siritori Work View Controller-->
         <scene sceneID="e3G-N5-6eo">
@@ -221,6 +221,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qDw-nb-qob"/>
+        <segue reference="Bzd-ov-AWp"/>
     </inferredMetricsTieBreakers>
 </document>
