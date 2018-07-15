@@ -118,7 +118,7 @@ class SampleViewController: UIViewController, UITextViewDelegate {
         //移動量を取得する。
         let move:CGPoint = sender.translation(in: self.view)
         
-        //ドラッグした部品の座標に移動量を加算する。
+        //画面の中央を境界線に移動を規制
         let right_x = Waku.frame.origin.x + Waku.frame.size.width + move.x
         let left_x  = Waku.frame.origin.x + move.x
         let top_y = Waku.frame.origin.y + move.y
