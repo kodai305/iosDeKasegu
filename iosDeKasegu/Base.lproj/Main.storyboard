@@ -125,10 +125,10 @@
             </objects>
             <point key="canvasLocation" x="2838" y="597"/>
         </scene>
-        <!--Siritori Top View Controller-->
+        <!--Siritori Theme View Controller-->
         <scene sceneID="JOu-yg-Lor">
             <objects>
-                <viewController id="Bgr-PG-ANw" customClass="SiritoriTopViewController" customModule="iosDeKasegu" sceneMemberID="viewController">
+                <viewController id="Bgr-PG-ANw" customClass="SiritoriThemeViewController" customModule="iosDeKasegu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="znn-El-y3F">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -221,6 +221,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Bzd-ov-AWp"/>
+        <segue reference="qDw-nb-qob"/>
     </inferredMetricsTieBreakers>
 </document>
