@@ -7,8 +7,23 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+    // 広告バナー作成
+    var bannerView: GADBannerView!
+
+    // overrideする変数 // XXX:ベストなやり方かは微妙
+    // 遷移先に送るデータ
+    var sendIndexData:Int = 0
+    // 次の画面のID
+    var nextSegueId:String = ""
+    var guideSegueId:String = ""
+    // テーマのKey
+    var themeKey:String = ""
+    //テーブルビューインスタンス作成
+    var themeTableView: UITableView = UITableView()
+    
     // セルを作る
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
@@ -35,6 +50,69 @@ class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableV
         return sectionTitle[section]
     }
     
+    // データの保存・読み取り
+    func readTheme() -> ([String]) {
+        let dammy:[String] = []
+        let defaults = UserDefaults.standard
+        if let stub:[String] = defaults.array(forKey: themeKey) as? [String] {
+            return stub
+        } else {
+            return dammy
+        }
+    }
+    func saveTheme(_ theme: [String]) {
+        let defaults = UserDefaults.standard
+        defaults.set(theme, forKey: themeKey)
+    }
+
+    // タップしたときの処理
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //セルの選択解除
+        tableView.deselectRow(at: indexPath, animated: true)
+        //画面遷移
+        if (indexPath.row == 0) { // 0番目がタップされたとき
+            self.performSegue(withIdentifier: self.guideSegueId, sender: nil)
+        } else {
+            // 遷移先に送るデータの更新
+            self.sendIndexData = indexPath.row
+            self.performSegue(withIdentifier: self.nextSegueId, sender: nil)
+        }
+    }
+    
+    // テーマの読込
+    func loadSavedTheme() {
+        guard (section0.count <= 1) else {
+            return
+        }
+        let Theme:[String] = readTheme()
+        if (!Theme.isEmpty) {
+            for theme in Theme {
+                section0.insert((theme, "dammy"), at: section0.count)
+                tableData = [section0]
+                self.themeTableView.insertRows(at: [IndexPath(row: section0.count-1, section: 0)], with: UITableViewRowAnimation.right)
+            }
+        }
+    }
+    
+    // セグエで画面移動の際にデータを渡す
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
+        if segue.identifier == self.nextSegueId {
+            let nextView:SiritoriWorkViewController = segue.destination as! SiritoriWorkViewController
+            let theme:[String]     = self.readTheme()
+            nextView.cellIndex     = self.sendIndexData
+            print(theme)
+            nextView.siritoriTheme = theme[self.sendIndexData-1] //indexがややわかりにくい
+        }
+    }
+    
+    func displayAdvertisement () {
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        bannerView.adUnitID = admob_id
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        bannerView.delegate = self
+        addBannerViewToView(bannerView)
+    }
     /*
     // MARK: - Navigation
 

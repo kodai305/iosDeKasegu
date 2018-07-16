@@ -21,6 +21,7 @@
 		47AF685C20F7843B003BD075 /* SiritoriTheneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AF685B20F7843B003BD075 /* SiritoriTheneViewController.swift */; };
 		47C6BBBE20FAD8E300C1BFDF /* BaseThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C6BBBD20FAD8E300C1BFDF /* BaseThemeViewController.swift */; };
 		47C6BBC020FCA0C700C1BFDF /* MandaraThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C6BBBF20FCA0C600C1BFDF /* MandaraThemeViewController.swift */; };
+		47C6BBC220FCA4D200C1BFDF /* MandaraGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C6BBC120FCA4D200C1BFDF /* MandaraGuideViewController.swift */; };
 		5EBC0C837D2F8073B21F0A40 /* Pods_iosDeKasegu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B1C634B5C0E253B6A65BC5 /* Pods_iosDeKasegu.framework */; };
 		CE7070F920ECE421007AE6E3 /* MandaraWorkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7070F820ECE421007AE6E3 /* MandaraWorkTableViewController.swift */; };
 		CEB2999920F82C930003E985 /* SiritoriGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2999820F82C930003E985 /* SiritoriGuideViewController.swift */; };
@@ -44,6 +45,7 @@
 		47AF685B20F7843B003BD075 /* SiritoriTheneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiritoriTheneViewController.swift; sourceTree = "<group>"; };
 		47C6BBBD20FAD8E300C1BFDF /* BaseThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseThemeViewController.swift; sourceTree = "<group>"; };
 		47C6BBBF20FCA0C600C1BFDF /* MandaraThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandaraThemeViewController.swift; sourceTree = "<group>"; };
+		47C6BBC120FCA4D200C1BFDF /* MandaraGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandaraGuideViewController.swift; sourceTree = "<group>"; };
 		BEC9F50579D3FA14D89B3E9E /* Pods-iosDeKasegu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosDeKasegu.release.xcconfig"; path = "Pods/Target Support Files/Pods-iosDeKasegu/Pods-iosDeKasegu.release.xcconfig"; sourceTree = "<group>"; };
 		C1B1C634B5C0E253B6A65BC5 /* Pods_iosDeKasegu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosDeKasegu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7070F820ECE421007AE6E3 /* MandaraWorkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandaraWorkTableViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				47409A2020E6633300AD2031 /* TopViewController.swift */,
 				47C6BBBF20FCA0C600C1BFDF /* MandaraThemeViewController.swift */,
 				CE7070F820ECE421007AE6E3 /* MandaraWorkTableViewController.swift */,
+				47C6BBC120FCA4D200C1BFDF /* MandaraGuideViewController.swift */,
 				47AF685B20F7843B003BD075 /* SiritoriTheneViewController.swift */,
 				47AF685720E90E3B003BD075 /* SiritoriWorkViewController.swift */,
 				CEB2999820F82C930003E985 /* SiritoriGuideViewController.swift */,
@@ -241,6 +244,7 @@
 				47AF685C20F7843B003BD075 /* SiritoriTheneViewController.swift in Sources */,
 				47409A1F20E6633200AD2031 /* AppDelegate.swift in Sources */,
 				47AF685420E8C874003BD075 /* BaseViewController.swift in Sources */,
+				47C6BBC220FCA4D200C1BFDF /* MandaraGuideViewController.swift in Sources */,
 				CE7070F920ECE421007AE6E3 /* MandaraWorkTableViewController.swift in Sources */,
 				47C6BBBE20FAD8E300C1BFDF /* BaseThemeViewController.swift in Sources */,
 				47C6BBC020FCA0C700C1BFDF /* MandaraThemeViewController.swift in Sources */,
