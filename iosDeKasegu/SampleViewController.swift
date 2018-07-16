@@ -179,12 +179,13 @@ class SampleViewController: UIViewController, UITextViewDelegate {
         }
         Now = textView
         // 重なり
-        let textView_y = Waku.frame.origin.y + textView.frame.origin.y + textView.frame.height
+        let textView_y = Waku.frame.origin.y + (Now.frame.origin.y + Now.frame.height) * Waku.transform.a
         let distance = textView_y - topKeyboard
-        print(distance,textView.frame.origin.y,textView.frame.height,topKeyboard)
+        print(Waku.frame.origin.y , Now.frame.origin.y , Now.frame.height)
+        print(Waku.transform,Waku.frame.size.height)
         if distance >= 0 {
-            // scrollViewのコンテツを上へオフセット + 20.0(追加のオフセット)
-            Waku.frame.origin.y = Waku.frame.origin.y - (distance + 20.0)
+            // scrollViewのコンテツを上へオフセット + 50(追加のオフセット)
+            Waku.frame.origin.y = Waku.frame.origin.y - (distance + 50)
         }
     }
     
@@ -234,7 +235,10 @@ class SampleViewController: UIViewController, UITextViewDelegate {
         return true
     }
     
-
+    @IBAction func Tap(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
     /*
     // MARK: - Navigation
 
