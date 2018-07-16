@@ -9,10 +9,6 @@
 import UIKit
 import GoogleMobileAds
 
-let sectionTitle = ["パーソナルボード"]
-var section0     = [("しりとり法を使ってみよう","チュートリアル")]
-var tableData    = [section0]
-
 class SiritoriThemeViewController: BaseThemeViewController {
     
     override func viewDidLoad() {
@@ -26,8 +22,13 @@ class SiritoriThemeViewController: BaseThemeViewController {
         self.themeKey = "SiritoriTheme"
         self.navigationItem.title = "アイデア発想";
         themeTableView.frame      = CGRect(x: 50, y:100, width:240, height:400)
+        if (self.tableData.count == 1) {
+            // 最初のセルの中身
+            self.section0 = [("しりとり法を使う","チュートリアルを見る")]
+            self.tableData = [self.section0]
+        }
         // ここまで
-
+        
         themeTableView.delegate   = self
         themeTableView.dataSource = self
 
@@ -60,13 +61,13 @@ class SiritoriThemeViewController: BaseThemeViewController {
                     forSaveTheme.append(textField.text!)
                     self.saveTheme(forSaveTheme)
                     // セルの追加
-                    section0.insert((textField.text!, f.string(from: now)), at: section0.count)
-                    tableData = [section0]
-                    self.themeTableView.insertRows(at: [IndexPath(row: section0.count-1, section: 0)], with: UITableViewRowAnimation.right)
+                    self.section0.insert((textField.text!, f.string(from: now)), at: self.section0.count)
+                    self.tableData = [self.section0]
+                    self.themeTableView.insertRows(at: [IndexPath(row: self.section0.count-1, section: 0)], with: UITableViewRowAnimation.right)
                     //self.themeTableView.reloadData()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                         // 画面遷移
-                        self.sendIndexData = section0.count-1
+                        self.sendIndexData = self.section0.count-1
                         self.performSegue(withIdentifier: self.nextSegueId, sender: nil)
                     }
                 }

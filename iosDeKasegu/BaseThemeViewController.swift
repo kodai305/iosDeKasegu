@@ -10,9 +10,11 @@ import UIKit
 import GoogleMobileAds
 
 class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+    let sectionTitle = ["パーソナルボード"]
+    var section0:[(String,String)] = []
+    var tableData:[[(String,String)]] = [[]]
     // 広告バナー作成
     var bannerView: GADBannerView!
-
     // overrideする変数 // XXX:ベストなやり方かは微妙
     // 遷移先に送るデータ
     var sendIndexData:Int = 0
@@ -23,7 +25,6 @@ class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableV
     var themeKey:String = ""
     //テーブルビューインスタンス作成
     var themeTableView: UITableView = UITableView()
-    
     // セルを作る
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
@@ -107,6 +108,7 @@ class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableV
         bannerView.delegate = self
         addBannerViewToView(bannerView)
     }
+    
     /*
     // MARK: - Navigation
 

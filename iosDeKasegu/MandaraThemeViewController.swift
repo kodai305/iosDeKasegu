@@ -9,10 +9,6 @@
 import UIKit
 import GoogleMobileAds
 
-let sectionMandaraTitle = ["パーソナルボード"]
-var sectionMandara0     = [("マンダラチャートを使ってみよう","チュートリアル")]
-var tableMandaraData    = [sectionMandara0]
-
 class MandaraThemeViewController: BaseThemeViewController {
 
     override func viewDidLoad() {
@@ -25,6 +21,13 @@ class MandaraThemeViewController: BaseThemeViewController {
         self.themeKey = "MandaraTheme"
         self.navigationItem.title = "アイデア拡散";
         themeTableView.frame      = CGRect(x: 50, y:100, width:240, height:400)
+        if (self.tableData.count == 1) {
+            // 最初のセルの中身
+            print("called first cell")
+            let stub = [("マンダラチャートを使う","チュートリアルを見る")]
+            self.tableData = [stub]
+        }
+
         // ここまで
         
         themeTableView.delegate   = self
@@ -60,13 +63,13 @@ class MandaraThemeViewController: BaseThemeViewController {
                     forSaveTheme.append(textField.text!)
                     self.saveTheme(forSaveTheme)
                     // セルの追加
-                    sectionMandara0.insert((textField.text!, f.string(from: now)), at: sectionMandara0.count)
-                    tableData = [sectionMandara0]
-                    self.themeTableView.insertRows(at: [IndexPath(row: sectionMandara0.count-1, section: 0)], with: UITableViewRowAnimation.right)
+                    self.section0.insert((textField.text!, f.string(from: now)), at: self.section0.count)
+                    self.tableData = [self.section0]
+                    self.themeTableView.insertRows(at: [IndexPath(row: self.section0.count-1, section: 0)], with: UITableViewRowAnimation.right)
                     //self.themeTableView.reloadData()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                         // 画面遷移
-                        self.sendIndexData = sectionMandara0.count-1
+                        self.sendIndexData = self.section0.count-1
                         self.performSegue(withIdentifier: self.nextSegueId, sender: nil)
                     }
                 }
