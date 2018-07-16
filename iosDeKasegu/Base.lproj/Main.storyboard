@@ -143,10 +143,10 @@
             </objects>
             <point key="canvasLocation" x="2838" y="600"/>
         </scene>
-        <!--View Controller-->
+        <!--Mandara Guide View Controller-->
         <scene sceneID="5kL-uN-oPa">
             <objects>
-                <viewController id="qD1-sR-4wq" sceneMemberID="viewController">
+                <viewController id="qD1-sR-4wq" customClass="MandaraGuideViewController" customModule="iosDeKasegu" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lOg-Rg-okB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
