@@ -65,4 +65,6 @@ class BaseViewController: UIViewController, GADBannerViewDelegate {
         print("adViewWillLeaveApplication")
     }
     
+
+    
 }

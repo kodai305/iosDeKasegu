@@ -48,9 +48,6 @@
                                 <state key="normal" title="アイデアを拡大">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <segue destination="wpq-R5-Cs8" kind="show" id="0Bo-Ob-J8s"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wue-VC-Mo4">
                                 <rect key="frame" x="30" y="434" width="315" height="150"/>
@@ -123,7 +120,43 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2838" y="597"/>
+            <point key="canvasLocation" x="3756" y="600"/>
+        </scene>
+        <!--Mandara Work Table View Controller-->
+        <scene sceneID="595-R5-Z2g">
+            <objects>
+                <viewController id="xfR-05-4tw" customClass="MandaraWorkTableViewController" customModule="iosDeKasegu" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sDd-tK-4v3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="mlL-tJ-3ls"/>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="qD1-sR-4wq" kind="show" identifier="toMandaraGuide" id="EJg-ct-XpO"/>
+                        <segue destination="wpq-R5-Cs8" kind="show" identifier="toMandaraWork" id="USL-sT-SEf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tsK-cA-sTT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2838" y="600"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="5kL-uN-oPa">
+            <objects>
+                <viewController id="qD1-sR-4wq" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lOg-Rg-okB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="B9Q-jz-zMp"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UGf-UR-Cvb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2838" y="1330"/>
         </scene>
         <!--Siritori Theme View Controller-->
         <scene sceneID="JOu-yg-Lor">
