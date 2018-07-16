@@ -80,6 +80,17 @@ class SiritoriThemeViewController: BaseThemeViewController {
         present(alertController, animated: true, completion: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
+        if segue.identifier == self.nextSegueId {
+            let nextView:SiritoriWorkViewController = segue.destination as! SiritoriWorkViewController
+            let theme:[String]     = self.readTheme()
+            nextView.cellIndex     = self.sendIndexData
+            print(theme)
+            nextView.siritoriTheme = theme[self.sendIndexData-1] //indexがややわかりにくい
+        }
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

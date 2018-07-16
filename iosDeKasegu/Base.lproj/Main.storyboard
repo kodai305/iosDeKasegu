@@ -48,6 +48,9 @@
                                 <state key="normal" title="アイデアを拡大">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="xfR-05-4tw" kind="show" id="oNq-OB-Gg1"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wue-VC-Mo4">
                                 <rect key="frame" x="30" y="434" width="315" height="150"/>
@@ -128,10 +131,10 @@
             </objects>
             <point key="canvasLocation" x="3756" y="600"/>
         </scene>
-        <!--Mandara Work Table View Controller-->
+        <!--Mandara Theme View Controller-->
         <scene sceneID="595-R5-Z2g">
             <objects>
-                <viewController id="xfR-05-4tw" customClass="MandaraWorkTableViewController" customModule="iosDeKasegu" sceneMemberID="viewController">
+                <viewController id="xfR-05-4tw" customClass="MandaraThemeViewController" customModule="iosDeKasegu" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sDd-tK-4v3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -139,6 +142,13 @@
                         <viewLayoutGuide key="safeArea" id="mlL-tJ-3ls"/>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="z6W-x7-UwO">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="7mf-Xm-3wc">
+                            <connections>
+                                <action selector="plusButtonTapped:" destination="xfR-05-4tw" id="CaQ-ZC-aEG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="qD1-sR-4wq" kind="show" identifier="toMandaraGuide" id="EJg-ct-XpO"/>

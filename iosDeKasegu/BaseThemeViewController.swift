@@ -96,13 +96,7 @@ class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableV
     
     // セグエで画面移動の際にデータを渡す
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
-        if segue.identifier == self.nextSegueId {
-            let nextView:SiritoriWorkViewController = segue.destination as! SiritoriWorkViewController
-            let theme:[String]     = self.readTheme()
-            nextView.cellIndex     = self.sendIndexData
-            print(theme)
-            nextView.siritoriTheme = theme[self.sendIndexData-1] //indexがややわかりにくい
-        }
+
     }
     
     func displayAdvertisement () {
