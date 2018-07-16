@@ -108,6 +108,7 @@
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="9xl-oe-gca" appends="YES" id="ixS-yq-Q0R"/>
                             <outletCollection property="gestureRecognizers" destination="rFQ-5a-BcM" appends="YES" id="Scn-Qb-z6b"/>
+                            <outletCollection property="gestureRecognizers" destination="EM3-f7-aID" appends="YES" id="HHb-qX-kma"/>
                         </connections>
                     </view>
                 </viewController>
@@ -122,6 +123,11 @@
                         <action selector="Slide:" destination="wpq-R5-Cs8" id="M03-Ah-OhB"/>
                     </connections>
                 </panGestureRecognizer>
+                <tapGestureRecognizer id="EM3-f7-aID">
+                    <connections>
+                        <action selector="Tap:" destination="wpq-R5-Cs8" id="hUa-XV-hLc"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2838" y="597"/>
         </scene>
