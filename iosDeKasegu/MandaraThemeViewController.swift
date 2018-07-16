@@ -10,7 +10,7 @@ import UIKit
 import GoogleMobileAds
 
 let sectionMandaraTitle = ["パーソナルボード"]
-var sectionMandara0     = [("しりとり法を使ってみよう","チュートリアル")]
+var sectionMandara0     = [("マンダラチャートを使ってみよう","チュートリアル")]
 var tableMandaraData    = [sectionMandara0]
 
 class MandaraThemeViewController: BaseThemeViewController {
