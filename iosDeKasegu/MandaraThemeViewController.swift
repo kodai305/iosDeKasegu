@@ -92,9 +92,9 @@ class MandaraThemeViewController: BaseThemeViewController {
         if segue.identifier == self.nextSegueId {
             let nextView:SampleViewController = segue.destination as! SampleViewController
             let theme:[String]     = self.readTheme()
-//            nextView.cellIndex     = self.sendIndexData
+            nextView.cellIndex     = self.sendIndexData
             print(theme)
-//            nextView.siritoriTheme = theme[self.sendIndexData-1] //indexがややわかりにくい
+            nextView.mandaraTheme = theme[self.sendIndexData-1] //indexがややわかりにくい
         }
     }
     

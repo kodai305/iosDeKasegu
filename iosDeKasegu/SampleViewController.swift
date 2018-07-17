@@ -11,9 +11,23 @@ import UIKit
 class SampleViewController: UIViewController, UITextViewDelegate {
     // 保存用の構造体
     struct MandaraData {
-        var CentralData:[String] = []
+        // テーマの周りの8マス
+        var CentralData:[String] = [String](repeating: "", count: 8)
+        // 周りのマス
+        var DetailData:[[String]] = [[String](repeating: "", count: 8),
+                                     [String](repeating: "", count: 8),
+                                     [String](repeating: "", count: 8),
+                                     [String](repeating: "", count: 8),
+                                     [String](repeating: "", count: 8),
+                                     [String](repeating: "", count: 8),
+                                     [String](repeating: "", count: 8),
+                                     [String](repeating: "", count: 8),]
     }
+    //前の画面から受け取る変数
+    var cellIndex:Int = 0
+    var mandaraTheme:String = ""
     
+    // 変数の宣言と初期化
     var ElementArray = [UITextView](repeating: UITextView(), count: 8)
     var ElementRoundArray = [UITextView](repeating: UITextView(), count: 8)
     var DetailArray:[[UITextView]] = [[UITextView](repeating: UITextView(), count: 8),
@@ -25,14 +39,13 @@ class SampleViewController: UIViewController, UITextViewDelegate {
                                       [UITextView](repeating: UITextView(), count: 8),
                                       [UITextView](repeating: UITextView(), count: 8),]
 
-    // 変数の宣言と初期化
-    var ThemeTextView = UITextView() // UILabelに変える予定
-    let ini_theme:String! = "テーマを入力"
+    var ThemeLabel = UILabel() // UILabelに変える予定
+    // let ini_theme:String! = "テーマを入力"
     let ini_element:String! = "構成要素を入力"
     let ini_detail:String! = "詳細を入力"
     var topKeyboard:CGFloat = 0
-    var Waku = UIView()
-    var Now = UIView()
+    var Waku = UIView() //なにを指しているかピンとこない
+    var Now = UIView()  //なにを指しているかピンとこない
     
     let vector: [(x: Int, y: Int)] = [
         (0, 1), (1, 1), (1, 0), (1, -1),
@@ -49,24 +62,22 @@ class SampleViewController: UIViewController, UITextViewDelegate {
         Waku.backgroundColor = UIColor.blue
         view.addSubview(Waku)
         
-        if (ThemeTextView.text.isEmpty) {
-            ThemeTextView = UITextView(frame: CGRect(x: CGFloat(cellSize * 4 + margin * 4), y:CGFloat(cellSize * 4 + margin * 4), width:CGFloat(cellSize), height:CGFloat(cellSize)))
-            ThemeTextView.layer.borderWidth = 1
-            ThemeTextView.layer.borderColor = UIColor.lightGray.cgColor
-            ThemeTextView.backgroundColor = UIColor.red
-            ThemeTextView.delegate = self
-        }
-
-        Waku.addSubview(ThemeTextView)
-        //初期化
-        ThemeTextView.text = ini_theme
-        ThemeTextView.textColor = UIColor.gray
-        AutoFontResize(textView: ThemeTextView,flag: -1)
+        
+        ThemeLabel = UILabel(frame: CGRect(x: CGFloat(cellSize * 4 + margin * 4), y:CGFloat(cellSize * 4 + margin * 4), width:CGFloat(cellSize), height:CGFloat(cellSize)))
+        ThemeLabel.layer.borderWidth = 1
+        ThemeLabel.layer.borderColor = UIColor.lightGray.cgColor
+        ThemeLabel.backgroundColor = UIColor.red
+        ThemeLabel.adjustsFontSizeToFitWidth = true
+        ThemeLabel.minimumScaleFactor = 0.3
+        ThemeLabel.numberOfLines = 0
+        ThemeLabel.text = mandaraTheme
+        //AutoFontResize(textView: ThemeLabel,flag: -1)
+        Waku.addSubview(ThemeLabel)
         
         var index_i = 0
         for (x,y) in vector {
             // 要素の作成
-            var CellTextView: UITextView = UITextView(frame: CGRect(x: ThemeTextView.center.x-CGFloat(vectorLen+(cellSize+margin)*x), y:ThemeTextView.center.y-CGFloat(vectorLen+(cellSize+margin)*y), width:CGFloat(cellSize), height:CGFloat(cellSize)))
+            var CellTextView: UITextView = UITextView(frame: CGRect(x: ThemeLabel.center.x-CGFloat(vectorLen+(cellSize+margin)*x), y:ThemeLabel.center.y-CGFloat(vectorLen+(cellSize+margin)*y), width:CGFloat(cellSize), height:CGFloat(cellSize)))
             if (ElementArray[index_i].text.isEmpty) {
                 CellTextView.layer.borderWidth = 1
                 CellTextView.layer.borderColor = UIColor.lightGray.cgColor
@@ -81,7 +92,7 @@ class SampleViewController: UIViewController, UITextViewDelegate {
 
             // 要素を周りに配置(新しい中心)
             if (ElementRoundArray[index_i].text.isEmpty) {
-                CellTextView = UITextView(frame: CGRect(x: ThemeTextView.center.x-CGFloat(vectorLen+(cellSize+margin)*3*x), y:ThemeTextView.center.y-CGFloat(vectorLen+(cellSize+margin)*3*y), width:CGFloat(cellSize), height:CGFloat(cellSize)))
+                CellTextView = UITextView(frame: CGRect(x: ThemeLabel.center.x-CGFloat(vectorLen+(cellSize+margin)*3*x), y:ThemeLabel.center.y-CGFloat(vectorLen+(cellSize+margin)*3*y), width:CGFloat(cellSize), height:CGFloat(cellSize)))
                 CellTextView.layer.borderWidth = 1
                 CellTextView.layer.borderColor = UIColor.lightGray.cgColor
                 CellTextView.backgroundColor = UIColor.yellow
@@ -94,7 +105,7 @@ class SampleViewController: UIViewController, UITextViewDelegate {
             var index_j = 0
             for (xx,yy) in vector {
                 if (DetailArray[index_i][index_j].text.isEmpty) {
-                    CellTextView = UITextView(frame: CGRect(x: ThemeTextView.center.x-CGFloat(vectorLen+(cellSize+margin)*3*x+(cellSize+margin)*xx), y:ThemeTextView.center.y-CGFloat(vectorLen+(cellSize+margin)*3*y+(cellSize+margin)*yy), width:CGFloat(cellSize), height:CGFloat(cellSize)))
+                    CellTextView = UITextView(frame: CGRect(x: ThemeLabel.center.x-CGFloat(vectorLen+(cellSize+margin)*3*x+(cellSize+margin)*xx), y:ThemeLabel.center.y-CGFloat(vectorLen+(cellSize+margin)*3*y+(cellSize+margin)*yy), width:CGFloat(cellSize), height:CGFloat(cellSize)))
                     CellTextView.layer.borderWidth = 1
                     CellTextView.layer.borderColor = UIColor.lightGray.cgColor
                     CellTextView.backgroundColor = UIColor.lightGray
@@ -123,7 +134,6 @@ class SampleViewController: UIViewController, UITextViewDelegate {
     @IBAction func Slide(_ sender: UIPanGestureRecognizer) {
         //移動量を取得する。
         let move:CGPoint = sender.translation(in: self.view)
-        
         //画面の中央を境界線に移動を規制した
         let right_x = Waku.frame.origin.x + Waku.frame.size.width + move.x
         let left_x  = Waku.frame.origin.x + move.x
@@ -153,7 +163,6 @@ class SampleViewController: UIViewController, UITextViewDelegate {
                 Waku.center.y += move.y
             }
         }
-        
         //移動量を0にする。
         sender.setTranslation(CGPoint.zero, in: self.view)
     }
@@ -177,7 +186,7 @@ class SampleViewController: UIViewController, UITextViewDelegate {
     
     //マスの編集開始時に説明文が入っていれば消去
     func textViewDidBeginEditing(_ textView: UITextView){
-        if(textView.text == ini_theme || textView.text == ini_element || textView.text == ini_detail){
+        if(textView.text == ini_element || textView.text == ini_detail){
             textView.text = ""
             textView.textColor = UIColor.black
         }
