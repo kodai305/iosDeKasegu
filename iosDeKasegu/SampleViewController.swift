@@ -8,28 +8,32 @@
 
 import UIKit
 
-var ThemeTextView = UITextView()
-var ElementArray = [UITextView](repeating: UITextView(), count: 8)
-var ElementRoundArray = [UITextView](repeating: UITextView(), count: 8)
-//var DetailArray:[[UITextView]] = [[]]
-var DetailArray:[[UITextView]] = [[UITextView](repeating: UITextView(), count: 8),
-                                  [UITextView](repeating: UITextView(), count: 8),
-                                  [UITextView](repeating: UITextView(), count: 8),
-                                  [UITextView](repeating: UITextView(), count: 8),
-                                  [UITextView](repeating: UITextView(), count: 8),
-                                  [UITextView](repeating: UITextView(), count: 8),
-                                  [UITextView](repeating: UITextView(), count: 8),
-                                  [UITextView](repeating: UITextView(), count: 8),]
-var Waku = UIView()
-var Now = UIView()
-
-let ini_theme:String! = "テーマを入力"
-let ini_element:String! = "構成要素を入力"
-let ini_detail:String! = "詳細を入力"
-var topKeyboard:CGFloat = 0
-
 class SampleViewController: UIViewController, UITextViewDelegate {
+    // 保存用の構造体
+    struct MandaraData {
+        var CentralData:[String] = []
+    }
+    
+    var ElementArray = [UITextView](repeating: UITextView(), count: 8)
+    var ElementRoundArray = [UITextView](repeating: UITextView(), count: 8)
+    var DetailArray:[[UITextView]] = [[UITextView](repeating: UITextView(), count: 8),
+                                      [UITextView](repeating: UITextView(), count: 8),
+                                      [UITextView](repeating: UITextView(), count: 8),
+                                      [UITextView](repeating: UITextView(), count: 8),
+                                      [UITextView](repeating: UITextView(), count: 8),
+                                      [UITextView](repeating: UITextView(), count: 8),
+                                      [UITextView](repeating: UITextView(), count: 8),
+                                      [UITextView](repeating: UITextView(), count: 8),]
 
+    // 変数の宣言と初期化
+    var ThemeTextView = UITextView() // UILabelに変える予定
+    let ini_theme:String! = "テーマを入力"
+    let ini_element:String! = "構成要素を入力"
+    let ini_detail:String! = "詳細を入力"
+    var topKeyboard:CGFloat = 0
+    var Waku = UIView()
+    var Now = UIView()
+    
     let vector: [(x: Int, y: Int)] = [
         (0, 1), (1, 1), (1, 0), (1, -1),
         (0, -1), (-1, -1), (-1, 0), (-1, 1)]

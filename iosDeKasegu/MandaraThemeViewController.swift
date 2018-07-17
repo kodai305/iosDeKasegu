@@ -24,8 +24,8 @@ class MandaraThemeViewController: BaseThemeViewController {
         if (self.tableData.count == 1) {
             // 最初のセルの中身
             print("called first cell")
-            let stub = [("マンダラチャートを使う","チュートリアルを見る")]
-            self.tableData = [stub]
+            self.section0  = [("マンダラチャートを使う","チュートリアルを見る")]
+            self.tableData = [self.section0]
         }
 
         // ここまで

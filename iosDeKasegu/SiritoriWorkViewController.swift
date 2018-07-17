@@ -9,15 +9,15 @@
 import UIKit
 import GoogleMobileAds
 
-// 構造体
-struct IdeaData: Codable {
-    var keyword: String = ""
-    var idea: String = ""
-}
-// 保存用
-var IdeaDataArray:[IdeaData] = []
-
 class SiritoriWorkViewController: BaseViewController {
+    // 構造体
+    struct IdeaData: Codable {
+        var keyword: String = ""
+        var idea: String = ""
+    }
+    // 保存用
+    var IdeaDataArray:[IdeaData] = []
+
     //前の画面から受け取る
     var cellIndex:Int = 0
     var siritoriTheme:String = ""
@@ -227,6 +227,7 @@ class SiritoriWorkViewController: BaseViewController {
         print(user!)
         return user!
     }
+    
     
     func createInitialWord() {
         let contentsView = UIView()
