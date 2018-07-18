@@ -43,97 +43,106 @@ class SampleViewController: UIViewController, UITextViewDelegate {
                                       [UITextView](repeating: UITextView(), count: 8),]
 
     var ThemeLabel = UILabel() // UILabelに変える予定
-    let ini_element:String! = "構成要素を入力"
-    let ini_detail:String! = "詳細を入力"
+    let InitialTextOfElement:String! = "構成要素を入力"
+    let InitialTextOfDetail:String! = "詳細を入力"
     var topKeyboard:CGFloat = 0
-    var Waku = UIView() //なにを指しているかピンとこない
-    var Now = UIView()  //なにを指しているかピンとこない
+    var BackGround = UIView() //マンダラチャートの全てのマスを同時に動かすためのUIView
+    
     
     let vector: [(x: Int, y: Int)] = [
         (0, 1), (1, 1), (1, 0), (1, -1),
         (0, -1), (-1, -1), (-1, 0), (-1, 1)]
 
-    let cellSize  = 36
-    let vectorLen = 18
-    let margin    =  3
+    //ここで宣言しないとビルド時にメモリーリーク？
+    var cellSize  = 0
+    var vectorLen = 0
+    var margin    = 0
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         print("load View called")
-
-        Waku = UIView(frame: CGRect(x: self.view.center.x-CGFloat(cellSize * 4 + cellSize/2 + margin * 4), y:self.view.center.y-CGFloat(cellSize * 4 + cellSize/2 + margin * 4), width:CGFloat(cellSize*9 + margin*8), height:CGFloat(cellSize*9 + margin*8)))
-        Waku.backgroundColor = UIColor.blue
-        view.addSubview(Waku)
         
+        //iPhoneに合せて再定義
+        cellSize = Int(self.view.frame.width / 9 * 11 / 12)
+        vectorLen = cellSize / 2
+        margin = Int(self.view.frame.width / 9 * 1 / 12)
+
+        //マンダラチャートの全てのマスを同時に動かすためのUIViewの位置、大きさを定義
+        BackGround = UIView(frame: CGRect(x: self.view.frame.origin.x + CGFloat(margin), y:self.view.center.y-CGFloat(cellSize * 4 + cellSize/2 + margin * 4), width:CGFloat(cellSize*9 + margin*8), height:CGFloat(cellSize*9 + margin*8)))
+        //背景色(SHERPA BLUE)
+        BackGround.backgroundColor = UIColor(hex: "013243", alpha: 1.0)
+        view.addSubview(BackGround)
+        
+        //テーママスの設定
         ThemeLabel = UILabel(frame: CGRect(x: CGFloat(cellSize * 4 + margin * 4), y:CGFloat(cellSize * 4 + margin * 4), width:CGFloat(cellSize), height:CGFloat(cellSize)))
-        ThemeLabel.layer.borderWidth = 1
-        ThemeLabel.layer.borderColor = UIColor.lightGray.cgColor
-        ThemeLabel.backgroundColor = UIColor.red
+        //テーママスの色(SOFTRED)
+        ThemeLabel.backgroundColor = UIColor(hex: "EC644B", alpha: 0.7)
         ThemeLabel.adjustsFontSizeToFitWidth = true
         ThemeLabel.minimumScaleFactor = 0.3
         ThemeLabel.numberOfLines = 0
         ThemeLabel.text = mandaraTheme
         //AutoFontResize(textView: ThemeLabel,flag: -1)
-        Waku.addSubview(ThemeLabel)
+        BackGround.addSubview(ThemeLabel)
         
         // 保存されているデータの読み込み
         let lastData:MandaraData = readData()
-        // 周りのセルを作成
+        // 要素マスを作成
         var index_i = 0
         for (x,y) in vector {
-            // 要素の作成
             var CellTextView: UITextView = UITextView(frame: CGRect(x: ThemeLabel.center.x-CGFloat(vectorLen+(cellSize+margin)*x), y:ThemeLabel.center.y-CGFloat(vectorLen+(cellSize+margin)*y), width:CGFloat(cellSize), height:CGFloat(cellSize)))
             if (ElementArray[index_i].text.isEmpty) {
-                CellTextView.layer.borderWidth = 1
-                CellTextView.layer.borderColor = UIColor.lightGray.cgColor
-                CellTextView.backgroundColor = UIColor.yellow
+                //要素のマスの色(MADANG)
+                CellTextView.backgroundColor = UIColor(hex: "C8F7C5", alpha: 0.7)
                 ElementArray[index_i] = CellTextView
                 ElementArray[index_i].delegate = self
             }
 
-            Waku.addSubview(ElementArray[index_i])
-            ElementArray[index_i].text = ini_element
-            //loadしたもので上書き
-            if (!lastData.CentralData[index_i].isEmpty) {
+            BackGround.addSubview(ElementArray[index_i])
+            //loadしたもので上書きする場合
+            if (lastData.CentralData[index_i] != InitialTextOfElement) {
                 ElementArray[index_i].text = lastData.CentralData[index_i]
             }
-            ElementArray[index_i].textColor = UIColor.gray
-            AutoFontResize(textView: ElementArray[index_i],flag: -1)
+            //初期化の場合
+            else{
+                ElementArray[index_i].text = InitialTextOfElement
+                ElementArray[index_i].textColor = UIColor.gray
+                AutoFontResize(textView: ElementArray[index_i],flag: -1)
+            }
             
             // 要素を周りに配置(新しい中心)
             if (ElementRoundArray[index_i].text.isEmpty) {
                 CellTextView = UITextView(frame: CGRect(x: ThemeLabel.center.x-CGFloat(vectorLen+(cellSize+margin)*3*x), y:ThemeLabel.center.y-CGFloat(vectorLen+(cellSize+margin)*3*y), width:CGFloat(cellSize), height:CGFloat(cellSize)))
-                CellTextView.layer.borderWidth = 1
-                CellTextView.layer.borderColor = UIColor.lightGray.cgColor
-                CellTextView.backgroundColor = UIColor.yellow
+                CellTextView.backgroundColor = UIColor(hex: "C8F7C5", alpha: 0.7)
                 ElementRoundArray[index_i] = CellTextView
                 ElementRoundArray[index_i].delegate = self
             }
+            //ロードする情報がある場合
             if (!lastData.CentralData[index_i].isEmpty) {
                 ElementRoundArray[index_i].text = lastData.CentralData[index_i]
             }
-            Waku.addSubview(ElementRoundArray[index_i])
+            BackGround.addSubview(ElementRoundArray[index_i])
             
-            // 詳細枠(外側)の作成
+            // 詳細マス(外側)の作成
             var index_j = 0
             for (xx,yy) in vector {
                 if (DetailArray[index_i][index_j].text.isEmpty) {
                     CellTextView = UITextView(frame: CGRect(x: ThemeLabel.center.x-CGFloat(vectorLen+(cellSize+margin)*3*x+(cellSize+margin)*xx), y:ThemeLabel.center.y-CGFloat(vectorLen+(cellSize+margin)*3*y+(cellSize+margin)*yy), width:CGFloat(cellSize), height:CGFloat(cellSize)))
-                    CellTextView.layer.borderWidth = 1
-                    CellTextView.layer.borderColor = UIColor.lightGray.cgColor
-                    CellTextView.backgroundColor = UIColor.lightGray
+                    //詳細マスの色(MALIBU)
+                    CellTextView.backgroundColor = UIColor(hex: "6BB9F0", alpha: 0.7)
                     DetailArray[index_i][index_j] = CellTextView
                     DetailArray[index_i][index_j].delegate = self
                 }
-
-                Waku.addSubview(DetailArray[index_i][index_j])
-                DetailArray[index_i][index_j].text = ini_detail
-                // loadしたもので上書き
-                if (!lastData.DetailData[index_i][index_j].isEmpty) {
+                BackGround.addSubview(DetailArray[index_i][index_j])
+                // loadしたもので上書きする場合
+                if (lastData.DetailData[index_i][index_j] != InitialTextOfDetail) {
                     DetailArray[index_i][index_j].text = lastData.DetailData[index_i][index_j]
                 }
-                DetailArray[index_i][index_j].textColor = UIColor.gray
-                AutoFontResize(textView: DetailArray[index_i][index_j],flag: -1)
+                //初期化の場合
+                else{
+                    DetailArray[index_i][index_j].text = InitialTextOfDetail
+                    DetailArray[index_i][index_j].textColor = UIColor.gray
+                    AutoFontResize(textView: DetailArray[index_i][index_j],flag: -1)
+                }
                 index_j += 1
             }
             index_i += 1
@@ -156,7 +165,7 @@ class SampleViewController: UIViewController, UITextViewDelegate {
         if (self.isViewLoaded && (self.view.window != nil)) {
             print("バッググラウンド処理")
             for i in 0..<self.ElementArray.count {
-                if (self.ElementArray[i].text != ini_element) {
+                if (self.ElementArray[i].text != InitialTextOfElement) {
                     self.mandaraData.CentralData[i] = self.ElementArray[i].text
                 } else {
                     self.mandaraData.CentralData[i] = ""
@@ -171,42 +180,48 @@ class SampleViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    //ピンチした時の拡大縮小を設定
     @IBAction func PinchOut(_ sender: UIPinchGestureRecognizer) {
-        //ピンチ開始時のアフィン変換を引き継いでアフィン変換を行う。
-        Waku.transform = Waku.transform.scaledBy(x: sender.scale, y: sender.scale)
+        //let TempTransform : UIView = UIView()
+        BackGround.transform = BackGround.transform.scaledBy(x: sender.scale, y: sender.scale)
         sender.scale = 1
     }
     
+    //パンした時の移動方法を設定
     @IBAction func Slide(_ sender: UIPanGestureRecognizer) {
-        //移動量を取得する。
+        //指の移動量を取得する。
         let move:CGPoint = sender.translation(in: self.view)
-        //画面の中央を境界線に移動を規制した
-        let right_x = Waku.frame.origin.x + Waku.frame.size.width + move.x
-        let left_x  = Waku.frame.origin.x + move.x
-        let top_y = Waku.frame.origin.y + move.y
-        let bottom_y  = Waku.frame.origin.y + Waku.frame.size.height + move.y
+        //移動後のBackGroundの上下左右の端の座標を算出
+        let right_x = BackGround.frame.origin.x + BackGround.frame.size.width + move.x
+        let left_x  = BackGround.frame.origin.x + move.x
+        let top_y = BackGround.frame.origin.y + move.y
+        let bottom_y  = BackGround.frame.origin.y + BackGround.frame.size.height + move.y
         
+        //移動後のBackGroundの左端が画面の真ん中より右にある場合、左端を画面の真ん中で規制する
         if(self.view.center.x < left_x){
-            Waku.frame.origin.x = self.view.center.x
+            BackGround.frame.origin.x = self.view.center.x
         }
         else{
+            //移動後のBackGroundの右端が画面の真ん中より左にある場合、右端を画面の真ん中で規制する
             if(right_x < self.view.center.x){
-                Waku.frame.origin.x = self.view.center.x - Waku.frame.size.width
+                BackGround.frame.origin.x = self.view.center.x - BackGround.frame.size.width
             }
+            //移動量分移動させる
             else{
-                Waku.center.x += move.x
+                BackGround.center.x += move.x
             }
         }
-
+        //移動後のBackGroundの上端が画面の真ん中より下にある場合、上端を画面の真ん中で規制する
         if(self.view.center.y < top_y){
-            Waku.frame.origin.y = self.view.center.y
+            BackGround.frame.origin.y = self.view.center.y
         }
         else{
+        //移動後のBackGroundの下端が画面の真ん中より上にある場合、下端を画面の真ん中で規制する
             if(bottom_y < self.view.center.y){
-                Waku.frame.origin.y = self.view.center.y - Waku.frame.size.height
+                BackGround.frame.origin.y = self.view.center.y - BackGround.frame.size.height
             }
             else{
-                Waku.center.y += move.y
+                BackGround.center.y += move.y
             }
         }
         //移動量を0にする。
@@ -218,6 +233,7 @@ class SampleViewController: UIViewController, UITextViewDelegate {
         // Dispose of any resources that can be recreated.
     }
 
+    //任意のマスの内容が書き換えられた時の処理
     func textViewDidChange(_ textView: UITextView) {
         //変更したマスから対象マスへの代入と変更したマスの特定
         var k: Int = -1
@@ -230,21 +246,20 @@ class SampleViewController: UIViewController, UITextViewDelegate {
         AutoFontResize(textView: textView,flag: k)
     }
     
-    //マスの編集開始時に説明文が入っていれば消去
+    //マスの編集開始時の処理
     func textViewDidBeginEditing(_ textView: UITextView){
-        if(textView.text == ini_element || textView.text == ini_detail){
+        //マスの内容が初期状態の場合
+        if(textView.text == InitialTextOfElement || textView.text == InitialTextOfDetail){
             textView.text = ""
             textView.textColor = UIColor.black
         }
-        Now = textView
-        // 重なり
-        let textView_y = Waku.frame.origin.y + (Now.frame.origin.y + Now.frame.height) * Waku.transform.a
+        // 編集しているマスがキーボードと重なるかを判定
+        // 編集しているマスの下端の絶対座標を算出、拡大時にも対応するためにBackGround.transform.aをかける
+        let textView_y = BackGround.frame.origin.y + (textView.frame.origin.y + textView.frame.height) * BackGround.transform.a
         let distance = textView_y - topKeyboard
-        print(Waku.frame.origin.y , Now.frame.origin.y , Now.frame.height)
-        print(Waku.transform,Waku.frame.size.height)
         if distance >= 0 {
             // scrollViewのコンテツを上へオフセット + 50(追加のオフセット)
-            Waku.frame.origin.y = Waku.frame.origin.y - (distance + 50)
+            BackGround.frame.origin.y = BackGround.frame.origin.y - (distance + 50)
         }
     }
     
@@ -263,10 +278,9 @@ class SampleViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    // キーボードが表示された時の処理
+    // キーボードが表示、非表示された時に最初に呼び出される関数（textViewDidBeginEditing(）より早い）
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(_:)),name: NSNotification.Name.UIKeyboardWillShow,object: nil)
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(_:)) ,name: NSNotification.Name.UIKeyboardWillHide,object: nil)
     }
@@ -278,7 +292,7 @@ class SampleViewController: UIViewController, UITextViewDelegate {
         NotificationCenter.default.removeObserver(self,name: .UIKeyboardDidHide,object: self.view.window)
         
         for i in 0..<self.ElementArray.count {
-            if (self.ElementArray[i].text != ini_element) {
+            if (self.ElementArray[i].text != InitialTextOfElement) {
                 self.mandaraData.CentralData[i] = self.ElementArray[i].text
             } else {
                 self.mandaraData.CentralData[i] = ""
@@ -297,22 +311,22 @@ class SampleViewController: UIViewController, UITextViewDelegate {
 
     }
     
+    //キーボードが表示された時の処理
     @objc func keyboardWillShow(_ notification: Notification) {
         let info = notification.userInfo!
+        //キーボードの大きさ、座標を取得
         let keyboardFrame = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        // top of keyboard
+        //キーボードの上端のy座標を保存
         topKeyboard = keyboardFrame.origin.y
     }
     
+     //キーボードが下がった時の処理
     @objc func keyboardWillHide(_ notification: Notification) {
-        Waku.frame.origin.y = Waku.frame.origin.y - 20.0
+        //キーボードが下がって分全体を下げる
+        BackGround.frame.origin.y = BackGround.frame.origin.y - 20.0
     }
-    
-    func TextViewShouldReturn(_ textView: UITextView) -> Bool {
-        textView.resignFirstResponder()
-        return true
-    }
-    
+
+    //UITextView以外を触るとキーボードが下がる
     @IBAction func Tap(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
