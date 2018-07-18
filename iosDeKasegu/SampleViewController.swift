@@ -138,20 +138,8 @@ class SampleViewController: UIViewController, UITextViewDelegate {
             }
             index_i += 1
         }
-        
-        
-        // 保存されているデータの読み込み
-        //let lastData:MandaraData = readData()
-        //for i in 0..<lastData.CentralData.count {
-        //    self.ElementArray[i].text = lastData.CentralData[i]
-        //}
-        //for i in 0..<lastData.DetailData.count {
-        //    for j in 0..<lastData.DetailData[i].count {
-        //        self.DetailArray[i][j].text = lastData.DetailData[i][j]
-        //    }
-        //}
-        
-
+        // バッググラウンドに行ったときの処理
+        NotificationCenter.default.addObserver(self, selector: #selector(viewDidEnterBackground(_:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
     }
 
     
@@ -161,6 +149,26 @@ class SampleViewController: UIViewController, UITextViewDelegate {
 
         print("loaded")
         // Do any additional setup after loading the view.
+    }
+    
+    // バッググラウンドに行ったときの処理
+    @objc func viewDidEnterBackground(_ notification: Notification?) {
+        if (self.isViewLoaded && (self.view.window != nil)) {
+            print("バッググラウンド処理")
+            for i in 0..<self.ElementArray.count {
+                if (self.ElementArray[i].text != ini_element) {
+                    self.mandaraData.CentralData[i] = self.ElementArray[i].text
+                } else {
+                    self.mandaraData.CentralData[i] = ""
+                }
+            }
+            for i in 0..<self.ElementArray.count {
+                for j in 0..<self.DetailArray.count {
+                    self.mandaraData.DetailData[i][j] = self.DetailArray[i][j].text
+                }
+            }
+            saveData(self.mandaraData)
+        }
     }
     
     @IBAction func PinchOut(_ sender: UIPinchGestureRecognizer) {
@@ -285,6 +293,9 @@ class SampleViewController: UIViewController, UITextViewDelegate {
         print("saveData is called")
     }
     
+    @objc func UIApplicationWillTerminateNotification(_ notification: Notification) {
+
+    }
     
     @objc func keyboardWillShow(_ notification: Notification) {
         let info = notification.userInfo!
