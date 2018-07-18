@@ -26,6 +26,9 @@ class SampleViewController: UIViewController, UITextViewDelegate {
     // 保存用
     var mandaraData = MandaraData()
     
+    // キーボード上に出す完了ボタンが載るツールバー
+    let DoneToolBar = UIToolbar()
+    
     //前の画面から受け取る変数
     var cellIndex:Int = 0
     var mandaraTheme:String = ""
@@ -154,9 +157,14 @@ class SampleViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
-        print("loaded")
+        //完了ボタン用のツールバーの設定
+        DoneToolBar.frame = CGRect(x: 0, y: self.view.frame.size.height, width: 320, height: 40) //仮にサイズを決定、ここでは見えない場所に置く
+        DoneToolBar.barStyle = UIBarStyle.default  // スタイルを設定
+        DoneToolBar.sizeToFit()
+        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil) // スペーサー
+        let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.commitButtonTapped)) // 閉じるボタン
+        DoneToolBar.items = [spacer, commitButton]
+        self.view.addSubview(DoneToolBar)
         // Do any additional setup after loading the view.
     }
     
@@ -253,14 +261,22 @@ class SampleViewController: UIViewController, UITextViewDelegate {
             textView.text = ""
             textView.textColor = UIColor.black
         }
+        
         // 編集しているマスがキーボードと重なるかを判定
         // 編集しているマスの下端の絶対座標を算出、拡大時にも対応するためにBackGround.transform.aをかける
         let textView_y = BackGround.frame.origin.y + (textView.frame.origin.y + textView.frame.height) * BackGround.transform.a
-        let distance = textView_y - topKeyboard
+        let distance = textView_y - (topKeyboard - 40)
         if distance >= 0 {
-            // scrollViewのコンテツを上へオフセット + 50(追加のオフセット)
-            BackGround.frame.origin.y = BackGround.frame.origin.y - (distance + 50)
+            // scrollViewのコンテツを上へオフセット + 20(追加のオフセット)
+            BackGround.frame.origin.y = BackGround.frame.origin.y - (distance + 20)
         }
+        self.view.bringSubview(toFront: DoneToolBar) //最前面に配置
+        //完了ボタンをキーボード上に表示
+        DoneToolBar.frame.origin = CGPoint(x: 0, y: topKeyboard-40)
+    }
+    
+    @objc func commitButtonTapped (){
+        self.view.endEditing(true)
     }
     
     func AutoFontResize(textView: UITextView, flag: Int){
@@ -316,14 +332,15 @@ class SampleViewController: UIViewController, UITextViewDelegate {
         let info = notification.userInfo!
         //キーボードの大きさ、座標を取得
         let keyboardFrame = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        //キーボードの上端のy座標を保存
+        //キーボード+ツールバーの上端のy座標を保存
         topKeyboard = keyboardFrame.origin.y
     }
     
      //キーボードが下がった時の処理
     @objc func keyboardWillHide(_ notification: Notification) {
         //キーボードが下がって分全体を下げる
-        BackGround.frame.origin.y = BackGround.frame.origin.y - 20.0
+        BackGround.frame.origin.y = BackGround.frame.origin.y + 50.0
+        DoneToolBar.frame.origin = CGPoint(x: 0, y: self.view.frame.height)
     }
 
     //UITextView以外を触るとキーボードが下がる
