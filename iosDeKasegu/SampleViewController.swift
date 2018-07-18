@@ -10,7 +10,7 @@ import UIKit
 
 class SampleViewController: UIViewController, UITextViewDelegate {
     // 保存用の構造体
-    struct MandaraData {
+    struct MandaraData: Codable {
         // テーマの周りの8マス
         var CentralData:[String] = [String](repeating: "", count: 8)
         // 周りのマス
@@ -23,6 +23,9 @@ class SampleViewController: UIViewController, UITextViewDelegate {
                                      [String](repeating: "", count: 8),
                                      [String](repeating: "", count: 8),]
     }
+    // 保存用
+    var mandaraData = MandaraData()
+    
     //前の画面から受け取る変数
     var cellIndex:Int = 0
     var mandaraTheme:String = ""
@@ -40,7 +43,6 @@ class SampleViewController: UIViewController, UITextViewDelegate {
                                       [UITextView](repeating: UITextView(), count: 8),]
 
     var ThemeLabel = UILabel() // UILabelに変える予定
-    // let ini_theme:String! = "テーマを入力"
     let ini_element:String! = "構成要素を入力"
     let ini_detail:String! = "詳細を入力"
     var topKeyboard:CGFloat = 0
@@ -55,13 +57,13 @@ class SampleViewController: UIViewController, UITextViewDelegate {
     let vectorLen = 18
     let margin    =  3
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        print("load View called")
+
         Waku = UIView(frame: CGRect(x: self.view.center.x-CGFloat(cellSize * 4 + cellSize/2 + margin * 4), y:self.view.center.y-CGFloat(cellSize * 4 + cellSize/2 + margin * 4), width:CGFloat(cellSize*9 + margin*8), height:CGFloat(cellSize*9 + margin*8)))
         Waku.backgroundColor = UIColor.blue
         view.addSubview(Waku)
-        
         
         ThemeLabel = UILabel(frame: CGRect(x: CGFloat(cellSize * 4 + margin * 4), y:CGFloat(cellSize * 4 + margin * 4), width:CGFloat(cellSize), height:CGFloat(cellSize)))
         ThemeLabel.layer.borderWidth = 1
@@ -74,6 +76,9 @@ class SampleViewController: UIViewController, UITextViewDelegate {
         //AutoFontResize(textView: ThemeLabel,flag: -1)
         Waku.addSubview(ThemeLabel)
         
+        // 保存されているデータの読み込み
+        let lastData:MandaraData = readData()
+        // 周りのセルを作成
         var index_i = 0
         for (x,y) in vector {
             // 要素の作成
@@ -85,11 +90,16 @@ class SampleViewController: UIViewController, UITextViewDelegate {
                 ElementArray[index_i] = CellTextView
                 ElementArray[index_i].delegate = self
             }
+
             Waku.addSubview(ElementArray[index_i])
             ElementArray[index_i].text = ini_element
+            //loadしたもので上書き
+            if (!lastData.CentralData[index_i].isEmpty) {
+                ElementArray[index_i].text = lastData.CentralData[index_i]
+            }
             ElementArray[index_i].textColor = UIColor.gray
             AutoFontResize(textView: ElementArray[index_i],flag: -1)
-
+            
             // 要素を周りに配置(新しい中心)
             if (ElementRoundArray[index_i].text.isEmpty) {
                 CellTextView = UITextView(frame: CGRect(x: ThemeLabel.center.x-CGFloat(vectorLen+(cellSize+margin)*3*x), y:ThemeLabel.center.y-CGFloat(vectorLen+(cellSize+margin)*3*y), width:CGFloat(cellSize), height:CGFloat(cellSize)))
@@ -99,8 +109,11 @@ class SampleViewController: UIViewController, UITextViewDelegate {
                 ElementRoundArray[index_i] = CellTextView
                 ElementRoundArray[index_i].delegate = self
             }
+            if (!lastData.CentralData[index_i].isEmpty) {
+                ElementRoundArray[index_i].text = lastData.CentralData[index_i]
+            }
             Waku.addSubview(ElementRoundArray[index_i])
-
+            
             // 詳細枠(外側)の作成
             var index_j = 0
             for (xx,yy) in vector {
@@ -112,16 +125,41 @@ class SampleViewController: UIViewController, UITextViewDelegate {
                     DetailArray[index_i][index_j] = CellTextView
                     DetailArray[index_i][index_j].delegate = self
                 }
+
                 Waku.addSubview(DetailArray[index_i][index_j])
                 DetailArray[index_i][index_j].text = ini_detail
+                // loadしたもので上書き
+                if (!lastData.DetailData[index_i][index_j].isEmpty) {
+                    DetailArray[index_i][index_j].text = lastData.DetailData[index_i][index_j]
+                }
                 DetailArray[index_i][index_j].textColor = UIColor.gray
                 AutoFontResize(textView: DetailArray[index_i][index_j],flag: -1)
                 index_j += 1
             }
             index_i += 1
         }
-
         
+        
+        // 保存されているデータの読み込み
+        //let lastData:MandaraData = readData()
+        //for i in 0..<lastData.CentralData.count {
+        //    self.ElementArray[i].text = lastData.CentralData[i]
+        //}
+        //for i in 0..<lastData.DetailData.count {
+        //    for j in 0..<lastData.DetailData[i].count {
+        //        self.DetailArray[i][j].text = lastData.DetailData[i][j]
+        //    }
+        //}
+        
+
+    }
+
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+
+        print("loaded")
         // Do any additional setup after loading the view.
     }
     
@@ -151,7 +189,7 @@ class SampleViewController: UIViewController, UITextViewDelegate {
                 Waku.center.x += move.x
             }
         }
-        
+
         if(self.view.center.y < top_y){
             Waku.frame.origin.y = self.view.center.y
         }
@@ -225,10 +263,26 @@ class SampleViewController: UIViewController, UITextViewDelegate {
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(_:)) ,name: NSNotification.Name.UIKeyboardWillHide,object: nil)
     }
     
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self,name: .UIKeyboardWillShow,object: self.view.window)
         NotificationCenter.default.removeObserver(self,name: .UIKeyboardDidHide,object: self.view.window)
+        
+        for i in 0..<self.ElementArray.count {
+            if (self.ElementArray[i].text != ini_element) {
+                self.mandaraData.CentralData[i] = self.ElementArray[i].text
+            } else {
+                self.mandaraData.CentralData[i] = ""
+            }
+        }
+        for i in 0..<self.ElementArray.count {
+            for j in 0..<self.DetailArray.count {
+                self.mandaraData.DetailData[i][j] = self.DetailArray[i][j].text
+            }
+        }
+        saveData(self.mandaraData)
+        print("saveData is called")
     }
     
     
@@ -250,6 +304,30 @@ class SampleViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func Tap(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
+    }
+    
+    // データの保存・読み取り
+    func saveData(_ mandaraData: MandaraData) {
+        let defaults = UserDefaults.standard
+        let data = try? JSONEncoder().encode(mandaraData)
+        //Userdefaultのkeyを設定
+        let siritoriDataKey:String = "MandaraCell_"+String(self.cellIndex)+"_data"
+        print("texts")
+        defaults.set(data ,forKey: siritoriDataKey)
+        print("done")
+    }
+    func readData() -> (MandaraData) {
+        let defaults = UserDefaults.standard
+        let stub = MandaraData()
+        //Userdefaultのkeyを設定
+        let siritoriDataKey:String = "MandaraCell_"+String(self.cellIndex)+"_data"
+        print("read:")
+        guard let data = defaults.data(forKey: siritoriDataKey) else {
+            return stub
+        }
+        let user = try? JSONDecoder().decode(MandaraData.self, from: data)
+        print(user!)
+        return user!
     }
     
     /*
