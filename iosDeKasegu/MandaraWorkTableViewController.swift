@@ -47,7 +47,7 @@ class MandaraWorkTableViewController: BaseViewController,UITextViewDelegate {
         userDefaults.set(Center5.text, forKey: "c5")
         userDefaults.synchronize()
     }
- */
+    */
     
     //中央の9x9を周囲の9x9の中央にコピー、変更を保存
     func textViewDidChange(_ Center6: UITextView) {

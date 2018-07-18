@@ -53,8 +53,8 @@ class SiritoriWorkViewController: BaseViewController {
         } else {
             for i in 0..<index {
                 loadContentsView(ArrayIndex: i)
-                IdeaDataArray = readData()
             }
+            IdeaDataArray = readData()
         }
         // ボタンの追加
         addNextButton()
@@ -66,7 +66,27 @@ class SiritoriWorkViewController: BaseViewController {
         self.view.addSubview(scrollView)
         // 広告の表示
         displayAdvertisement()
+        
+        // バッググラウンドに行ったときの処理
+        NotificationCenter.default.addObserver(self, selector: #selector(viewDidEnterBackground(_:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
     }
+
+    // バッググラウンドに行ったときの処理
+    @objc func viewDidEnterBackground(_ notification: Notification?) {
+        if (self.isViewLoaded && (self.view.window != nil)) {
+            print("バッググラウンド処理")
+            let index = KeywordTextFieldArray.count
+            print("disapper index:")
+            print(index)
+            var stubIdeaDataArray:[IdeaData] = []
+            for i in 0..<index {
+                let stub = IdeaData(keyword: KeywordTextFieldArray[i].text!, idea: KeywordTextFieldArray[i].text!)
+                stubIdeaDataArray.append(stub)
+            }
+            saveData(array: stubIdeaDataArray)
+        }
+    }
+
     
     // 「次へ」ボタンが押されたときの処理
     @objc func onClick(_ sender: AnyObject){
@@ -272,6 +292,20 @@ class SiritoriWorkViewController: BaseViewController {
         keywordLabel.text = "キーワード"+String(index+1)
         keywordLabel.textColor = UIColor.black
         return keywordLabel
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        let index = KeywordTextFieldArray.count
+        print("disapper index:")
+        print(index)
+        var stubIdeaDataArray:[IdeaData] = []
+        for i in 0..<index {
+            let stub = IdeaData(keyword: KeywordTextFieldArray[i].text!, idea: KeywordTextFieldArray[i].text!)
+            stubIdeaDataArray.append(stub)
+        }
+        saveData(array: stubIdeaDataArray)
+        print("saveData is called")
     }
 
     override func didReceiveMemoryWarning() {
