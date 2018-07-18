@@ -18,51 +18,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M0j-6a-V72">
-                                <rect key="frame" x="30" y="94" width="315" height="150"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M0j-6a-V72">
+                                <rect key="frame" x="53" y="97" width="278" height="104"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.99578227031718758" blue="0.42074295857966271" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="uPI-bU-e8z"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="20"/>
                                 <color key="tintColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
-                                <inset key="titleEdgeInsets" minX="-250" minY="120" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="70" minY="10" maxX="70" maxY="40"/>
-                                <state key="normal" title="アイデアを発想">
+                                <inset key="titleEdgeInsets" minX="0.0" minY="120" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="70" maxY="0.0"/>
+                                <state key="normal">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="Bgr-PG-ANw" kind="show" id="KSb-Wu-HjH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxR-Cu-w8o">
-                                <rect key="frame" x="30" y="264" width="315" height="150"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxR-Cu-w8o">
+                                <rect key="frame" x="149" y="226" width="86" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="utI-KX-QVJ"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="20"/>
                                 <color key="tintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <inset key="titleEdgeInsets" minX="-250" minY="120" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="70" minY="10" maxX="70" maxY="40"/>
-                                <state key="normal" title="アイデアを拡大">
+                                <state key="normal">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="xfR-05-4tw" kind="show" id="oNq-OB-Gg1"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wue-VC-Mo4">
-                                <rect key="frame" x="30" y="434" width="315" height="150"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wue-VC-Mo4">
+                                <rect key="frame" x="140" y="434" width="104" height="89"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="Lio-XX-yJ1"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="20"/>
                                 <color key="tintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <inset key="titleEdgeInsets" minX="-250" minY="120" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="70" minY="10" maxX="70" maxY="40"/>
-                                <state key="normal" title="チュートリアル">
+                                <state key="normal">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -71,17 +61,6 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="M0j-6a-V72" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="1eS-Pu-zba"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wue-VC-Mo4" secondAttribute="trailing" constant="30" id="7Wo-dM-kS6"/>
-                            <constraint firstItem="M0j-6a-V72" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="DeK-R6-g8T"/>
-                            <constraint firstItem="wue-VC-Mo4" firstAttribute="top" secondItem="kxR-Cu-w8o" secondAttribute="bottom" constant="20" id="EEj-r0-Omz"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kxR-Cu-w8o" secondAttribute="trailing" constant="30" id="LVX-XX-4Hl"/>
-                            <constraint firstItem="kxR-Cu-w8o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="LzK-kJ-O0C"/>
-                            <constraint firstItem="wue-VC-Mo4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="iLU-0B-cA4"/>
-                            <constraint firstItem="kxR-Cu-w8o" firstAttribute="top" secondItem="M0j-6a-V72" secondAttribute="bottom" constant="20" id="kF7-pD-gtP"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="M0j-6a-V72" secondAttribute="trailing" constant="30" id="zTK-xV-4ZV"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Main" id="jmy-MV-NVb"/>
@@ -270,6 +249,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qDw-nb-qob"/>
+        <segue reference="Bzd-ov-AWp"/>
     </inferredMetricsTieBreakers>
 </document>
