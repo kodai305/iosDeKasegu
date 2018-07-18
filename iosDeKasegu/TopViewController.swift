@@ -76,6 +76,7 @@ class TopViewController: BaseViewController {
         //ボタンの角を丸くする
         Tutorial.layer.cornerRadius = 21.0
         
+        
         // To display the advertisement
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         bannerView.adUnitID = admob_id
