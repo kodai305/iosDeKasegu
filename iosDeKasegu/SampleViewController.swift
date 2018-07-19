@@ -71,15 +71,15 @@ class SampleViewController: UIViewController, UITextViewDelegate {
         margin = Int(self.view.frame.width / 9 * 1 / 12)
 
         //マンダラチャートの全てのマスを同時に動かすためのUIViewの位置、大きさを定義
-        BackGround = UIView(frame: CGRect(x: self.view.frame.origin.x + CGFloat(margin), y:self.view.center.y-CGFloat(cellSize * 4 + cellSize/2 + margin * 4), width:CGFloat(cellSize*9 + margin*8), height:CGFloat(cellSize*9 + margin*8)))
+        BackGround = UIView(frame: CGRect(x: self.view.center.x-CGFloat(cellSize * 4 + cellSize/2 + margin * 5), y:self.view.center.y-CGFloat(cellSize * 4 + cellSize/2 + margin * 5), width:CGFloat(cellSize * 9 + margin * 10), height:CGFloat(cellSize * 9 + margin * 10)))
         //背景色(SHERPA BLUE)
         BackGround.backgroundColor = UIColor(hex: "013243", alpha: 1.0)
         view.addSubview(BackGround)
         
         //テーママスの設定
-        ThemeLabel = UILabel(frame: CGRect(x: CGFloat(cellSize * 4 + margin * 4), y:CGFloat(cellSize * 4 + margin * 4), width:CGFloat(cellSize), height:CGFloat(cellSize)))
-        //テーママスの色(SOFTRED)
-        ThemeLabel.backgroundColor = UIColor(hex: "EC644B", alpha: 0.7)
+        ThemeLabel = UILabel(frame: CGRect(x: CGFloat(cellSize * 4 + margin * 5), y:CGFloat(cellSize * 4 + margin * 5), width:CGFloat(cellSize), height:CGFloat(cellSize)))
+        //テーママスの色(WAX FLOWER)
+        ThemeLabel.backgroundColor = UIColor(hex: "F1A9A0", alpha: 1.0)
         ThemeLabel.adjustsFontSizeToFitWidth = true
         ThemeLabel.minimumScaleFactor = 0.3
         ThemeLabel.numberOfLines = 0
@@ -95,33 +95,37 @@ class SampleViewController: UIViewController, UITextViewDelegate {
             var CellTextView: UITextView = UITextView(frame: CGRect(x: ThemeLabel.center.x-CGFloat(vectorLen+(cellSize+margin)*x), y:ThemeLabel.center.y-CGFloat(vectorLen+(cellSize+margin)*y), width:CGFloat(cellSize), height:CGFloat(cellSize)))
             if (ElementArray[index_i].text.isEmpty) {
                 //要素のマスの色(MADANG)
-                CellTextView.backgroundColor = UIColor(hex: "C8F7C5", alpha: 0.7)
+                CellTextView.backgroundColor = UIColor(hex: "C8F7C5", alpha: 1.0)
                 ElementArray[index_i] = CellTextView
                 ElementArray[index_i].delegate = self
             }
 
             BackGround.addSubview(ElementArray[index_i])
-            //loadしたもので上書きする場合
-            if (lastData.CentralData[index_i] != InitialTextOfElement) {
-                ElementArray[index_i].text = lastData.CentralData[index_i]
-            }
-            //初期化の場合
-            else{
+            //初期化or編集されていないマスの場合
+            if (lastData.CentralData[index_i].isEmpty || lastData.CentralData[index_i] == InitialTextOfElement) {
+                
                 ElementArray[index_i].text = InitialTextOfElement
                 ElementArray[index_i].textColor = UIColor.gray
+                AutoFontResize(textView: ElementArray[index_i],flag: -1)
+            }
+            //ロードする場合
+            else{
+                ElementArray[index_i].text = lastData.CentralData[index_i]
+                ElementArray[index_i].textColor = UIColor.black
                 AutoFontResize(textView: ElementArray[index_i],flag: -1)
             }
             
             // 要素を周りに配置(新しい中心)
             if (ElementRoundArray[index_i].text.isEmpty) {
                 CellTextView = UITextView(frame: CGRect(x: ThemeLabel.center.x-CGFloat(vectorLen+(cellSize+margin)*3*x), y:ThemeLabel.center.y-CGFloat(vectorLen+(cellSize+margin)*3*y), width:CGFloat(cellSize), height:CGFloat(cellSize)))
-                CellTextView.backgroundColor = UIColor(hex: "C8F7C5", alpha: 0.7)
+                CellTextView.backgroundColor = UIColor(hex: "C8F7C5", alpha: 1.0)
                 ElementRoundArray[index_i] = CellTextView
                 ElementRoundArray[index_i].delegate = self
             }
             //ロードする情報がある場合
             if (!lastData.CentralData[index_i].isEmpty) {
                 ElementRoundArray[index_i].text = lastData.CentralData[index_i]
+                AutoFontResize(textView: ElementRoundArray[index_i],flag: -1)
             }
             BackGround.addSubview(ElementRoundArray[index_i])
             
@@ -130,20 +134,23 @@ class SampleViewController: UIViewController, UITextViewDelegate {
             for (xx,yy) in vector {
                 if (DetailArray[index_i][index_j].text.isEmpty) {
                     CellTextView = UITextView(frame: CGRect(x: ThemeLabel.center.x-CGFloat(vectorLen+(cellSize+margin)*3*x+(cellSize+margin)*xx), y:ThemeLabel.center.y-CGFloat(vectorLen+(cellSize+margin)*3*y+(cellSize+margin)*yy), width:CGFloat(cellSize), height:CGFloat(cellSize)))
-                    //詳細マスの色(MALIBU)
-                    CellTextView.backgroundColor = UIColor(hex: "6BB9F0", alpha: 0.7)
+                    //詳細マスの色(ALICE BLUE)
+                    CellTextView.backgroundColor = UIColor(hex: "E4F1FE", alpha: 1.0)
                     DetailArray[index_i][index_j] = CellTextView
                     DetailArray[index_i][index_j].delegate = self
                 }
                 BackGround.addSubview(DetailArray[index_i][index_j])
-                // loadしたもので上書きする場合
-                if (lastData.DetailData[index_i][index_j] != InitialTextOfDetail) {
-                    DetailArray[index_i][index_j].text = lastData.DetailData[index_i][index_j]
-                }
-                //初期化の場合
-                else{
+                
+                //初期化or編集されていないマスの場合
+                if (lastData.DetailData[index_i][index_j].isEmpty || lastData.DetailData[index_i][index_j] == InitialTextOfDetail) {
                     DetailArray[index_i][index_j].text = InitialTextOfDetail
                     DetailArray[index_i][index_j].textColor = UIColor.gray
+                    AutoFontResize(textView: DetailArray[index_i][index_j],flag: -1)
+                }
+                    //ロードする場合
+                else{
+                    DetailArray[index_i][index_j].text = lastData.DetailData[index_i][index_j]
+                    DetailArray[index_i][index_j].textColor = UIColor.black
                     AutoFontResize(textView: DetailArray[index_i][index_j],flag: -1)
                 }
                 index_j += 1
