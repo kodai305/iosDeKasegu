@@ -97,12 +97,12 @@
 				47AF685B20F7843B003BD075 /* SiritoriThemeViewController.swift */,
 				47AF685720E90E3B003BD075 /* SiritoriWorkViewController.swift */,
 				CEB2999820F82C930003E985 /* SiritoriGuideViewController.swift */,
+				47AF148821023D1A00500D6B /* PlaceholderTextView.swift */,
 				47409A2820E6633500AD2031 /* Assets.xcassets */,
 				47409A2A20E6633500AD2031 /* LaunchScreen.storyboard */,
 				47AF684F20E8C6C3003BD075 /* GoogleService-Info.plist */,
 				47409A2D20E6633500AD2031 /* Info.plist */,
 				47409A2520E6633300AD2031 /* iosDeKasegu.xcdatamodeld */,
-				47AF148821023D1A00500D6B /* PlaceholderTextView.swift */,
 			);
 			path = iosDeKasegu;
 			sourceTree = "<group>";
