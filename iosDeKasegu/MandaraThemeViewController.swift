@@ -20,7 +20,7 @@ class MandaraThemeViewController: BaseThemeViewController {
         // 保存されているテーマのKey
         self.themeKey = "MandaraTheme"
         self.navigationItem.title = "アイデア拡大";
-        themeTableView.frame      = CGRect(x: 0, y:0, width:self.view.frame.size.width, height:self.view.frame.size.height)
+        themeTableView.frame      = CGRect(x: 0, y:0, width:self.view.frame.size.width * 9 / 10, height:self.view.frame.size.height)
         if (self.tableData.count == 1) {
             // 最初のセルの中身
             print("called first cell")

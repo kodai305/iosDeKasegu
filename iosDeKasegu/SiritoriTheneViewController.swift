@@ -21,7 +21,7 @@ class SiritoriThemeViewController: BaseThemeViewController {
         // 保存されているテーマのKey
         self.themeKey = "SiritoriTheme"
         self.navigationItem.title = "アイデア発想";
-        themeTableView.frame      = CGRect(x: 0, y:0, width:self.view.frame.size.width, height:self.view.frame.size.height)
+        themeTableView.frame      = CGRect(x: 0, y:0, width:self.view.frame.size.width * 9 / 10, height:self.view.frame.size.height)
         if (self.tableData.count == 1) {
             // 最初のセルの中身
             self.section0 = [("しりとり法を使う","チュートリアルを見る")]

@@ -32,15 +32,18 @@ class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableV
         cell.textLabel?.text = cellData.0
         cell.detailTextLabel?.text = cellData.1
         cell.layoutMargins = UIEdgeInsets.zero
-        //チュートリアルのセルの色を設定（MADANG）
+        //チュートリアルのセルの色を設定（EBONY CLAY）
         if(indexPath.row == 0){
-            cell.backgroundColor = UIColor(hex: "C8F7C5", alpha: 1.0)
-            cell.layer.borderWidth = 2.5
+            cell.backgroundColor = UIColor(hex: "22313F", alpha: 1.0)
+            cell.textLabel?.textColor = UIColor.white
+            cell.layer.borderWidth = 3
+            cell.layer.borderColor = UIColor.white.cgColor
         }
-        //テーマのセルの色を設定(CAPE HONEY)
+        //テーマのセルの色を設定(PORCELAIN)
         else{
-            cell.backgroundColor = UIColor(hex: "FDE3A7", alpha: 1.0)
-            cell.layer.borderWidth = 1.0
+            cell.backgroundColor = UIColor(hex: "ECF0F1", alpha: 1.0)
+            cell.layer.borderWidth = 3
+            cell.layer.borderColor = UIColor.white.cgColor
         }
         return cell
     }
