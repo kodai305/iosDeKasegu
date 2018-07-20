@@ -74,10 +74,10 @@
             </objects>
             <point key="canvasLocation" x="1076" y="132.68365817091455"/>
         </scene>
-        <!--Sample View Controller-->
+        <!--Mandara Work View Controller-->
         <scene sceneID="agl-0m-AlV">
             <objects>
-                <viewController id="wpq-R5-Cs8" customClass="SampleViewController" customModule="iosDeKasegu" sceneMemberID="viewController">
+                <viewController id="wpq-R5-Cs8" customClass="MandaraWorkViewController" customModule="iosDeKasegu" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7SV-kl-xAL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SampleViewController: UIViewController, UITextViewDelegate {
+class MandaraWorkViewController: UIViewController, UITextViewDelegate {
     // 保存用の構造体
     struct MandaraData: Codable {
         // テーマの周りの8マス

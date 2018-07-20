@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMobileAds
 
-class MandaraWorkTableViewController: BaseViewController,UITextViewDelegate {
+class nkMandaraWorkTableViewController: BaseViewController,UITextViewDelegate {
     var bannerView: GADBannerView!
     
     @IBAction func TapScreen(_ sender: UITapGestureRecognizer) {

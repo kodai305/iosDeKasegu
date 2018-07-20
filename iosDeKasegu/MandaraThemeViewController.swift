@@ -91,7 +91,7 @@ class MandaraThemeViewController: BaseThemeViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         if segue.identifier == self.nextSegueId {
-            let nextView:SampleViewController = segue.destination as! SampleViewController
+            let nextView:MandaraWorkViewController = segue.destination as! MandaraWorkViewController
             let theme:[String]     = self.readTheme()
             nextView.cellIndex     = self.sendIndexData
             print(theme)
