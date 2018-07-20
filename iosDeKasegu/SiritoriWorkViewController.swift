@@ -34,7 +34,7 @@ class SiritoriWorkViewController: BaseViewController {
     var IdeaTextViewArray:[UITextView] = []
 
     let firstWord = "アイデア"
-    var bannerView: GADBannerView!
+//    var bannerView: GADBannerView!
     let scrollView = UIScrollView()
 
     // キーボードを下げる
@@ -227,14 +227,7 @@ class SiritoriWorkViewController: BaseViewController {
         scrollView.addSubview(button)
     }
     
-    func displayAdvertisement() {
-        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-        bannerView.adUnitID = admob_id
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
-        bannerView.delegate = self
-        addBannerViewToView(bannerView)
-    }
+
     
     // データの保存・読み取り
     func saveData(array: [IdeaData]) {

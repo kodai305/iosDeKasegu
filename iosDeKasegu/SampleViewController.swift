@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
-class MandaraWorkViewController: UIViewController, UITextViewDelegate {
+class MandaraWorkViewController: BaseViewController, UITextViewDelegate {
     // 保存用の構造体
     struct MandaraData: Codable {
         // テーマの周りの8マス
@@ -159,6 +160,9 @@ class MandaraWorkViewController: UIViewController, UITextViewDelegate {
         }
         // バッググラウンドに行ったときの処理
         NotificationCenter.default.addObserver(self, selector: #selector(viewDidEnterBackground(_:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        
+        // To display the advertisement on scrollView
+        displayAdvertisement()
     }
 
     
@@ -378,6 +382,7 @@ class MandaraWorkViewController: UIViewController, UITextViewDelegate {
         print(user!)
         return user!
     }
+    
     
     /*
     // MARK: - Navigation

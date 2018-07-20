@@ -13,8 +13,7 @@ class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableV
     let sectionTitle = ["パーソナルボード"]
     var section0:[(String,String)] = []
     var tableData:[[(String,String)]] = [[]]
-    // 広告バナー作成
-    var bannerView: GADBannerView!
+
     // overrideする変数 // XXX:ベストなやり方かは微妙
     // 遷移先に送るデータ
     var sendIndexData:Int = 0
@@ -112,15 +111,7 @@ class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableV
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
 
     }
-    
-    func displayAdvertisement () {
-        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-        bannerView.adUnitID = admob_id
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
-        bannerView.delegate = self
-        addBannerViewToView(bannerView)
-    }
+
     
     /*
     // MARK: - Navigation

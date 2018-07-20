@@ -25,6 +25,8 @@ extension UIColor {
 }
 
 class BaseViewController: UIViewController, GADBannerViewDelegate {
+    var bannerView: GADBannerView!
+    
     let admob_id = "ca-app-pub-3940256099942544/2934735716"
     
     func addBannerViewToView(_ bannerView: GADBannerView) {
@@ -74,12 +76,21 @@ class BaseViewController: UIViewController, GADBannerViewDelegate {
         print("adViewDidDismissScreen")
     }
     
+    
     /// Tells the delegate that a user click will open another app (such as
     /// the App Store), backgrounding the current app.
     func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
         print("adViewWillLeaveApplication")
     }
     
-
+    // 広告の表示
+    func displayAdvertisement() {
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        bannerView.adUnitID = admob_id
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        bannerView.delegate = self
+        addBannerViewToView(bannerView)
+    }
     
 }

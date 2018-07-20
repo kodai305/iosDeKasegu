@@ -25,11 +25,13 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - PlaceholderTextView (0.2.0)
 
 DEPENDENCIES:
   - Firebase/AdMob
   - Firebase/Core
   - Google-Mobile-Ads-SDK
+  - PlaceholderTextView
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -40,6 +42,7 @@ SPEC REPOS:
     - Google-Mobile-Ads-SDK
     - GoogleToolboxForMac
     - nanopb
+    - PlaceholderTextView
 
 SPEC CHECKSUMS:
   Firebase: d66f4f29c23f22d96808d9abc174d81d8eee968f
@@ -49,7 +52,8 @@ SPEC CHECKSUMS:
   Google-Mobile-Ads-SDK: 6e529e748b45507a2ca904e0b5a52669ba3920c4
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  PlaceholderTextView: 0489c5ccfc0f576d5a627b051131e01f4ab0e2e5
 
-PODFILE CHECKSUM: 8010ece076473c0c46be4f27a984813853cdd70a
+PODFILE CHECKSUM: ad8b08c4833fbed73d425a4563612be48affadd9
 
 COCOAPODS: 1.5.3

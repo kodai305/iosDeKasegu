@@ -27,12 +27,10 @@ class MandaraThemeViewController: BaseThemeViewController {
             self.section0  = [("マンダラチャートを使う","チュートリアルを見る")]
             self.tableData = [self.section0]
         }
-
-        // ここまで
         
         themeTableView.delegate   = self
         themeTableView.dataSource = self
-        themeTableView.tableFooterView = UIView(frame: .zero)
+        //themeTableView.tableFooterView = UIView(frame: .zero)
         
         // 保存されているデータの読み込み
         loadSavedTheme()

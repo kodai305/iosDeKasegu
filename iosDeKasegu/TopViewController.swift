@@ -10,7 +10,6 @@ import UIKit
 import GoogleMobileAds
 
 class TopViewController: BaseViewController {
-    var bannerView: GADBannerView!
     
     @IBOutlet weak var Expand: UIButton!
     @IBOutlet weak var GetIdea: UIButton!
