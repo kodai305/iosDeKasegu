@@ -24,6 +24,11 @@ class SiritoriWorkViewController: BaseViewController {
     var cellIndex:Int = 0
     var siritoriTheme:String = ""
 
+    //カードの幅、高さ、カード間の距離を定義
+    var HeightOfCard:CGFloat!
+    var WidthOfCard:CGFloat!
+    var MarginOfCards:CGFloat!
+    
     
     var KeywordTextFieldArray:[UITextField] = []
     var IdeaTextViewArray:[UITextView] = []
@@ -39,16 +44,19 @@ class SiritoriWorkViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //カードの幅、高さ、カード間の距離を定義
+        self.HeightOfCard = self.view.frame.size.height / 5
+        self.WidthOfCard = self.view.frame.size.width * 9 / 10
+        self.MarginOfCards = self.view.frame.size.height / 30
         //保存してある配列の読込
         IdeaDataArray = readData()
         let index = IdeaDataArray.count
+        
         // しりとりのテーマを読込んで表示
         displayTheme()
         // しりとりの最初のワードを設定・表示
         createInitialWord()
         // キーワード+アイデアのコンテンツを作成, すでにあれば表示だけする
-        print("index:")
-        print(index)
         if (index == 0) {
             createContentsView(ArrayIndex: 0)
         } else {
@@ -91,15 +99,9 @@ class SiritoriWorkViewController: BaseViewController {
     
     // 「次へ」ボタンが押されたときの処理
     @objc func onClick(_ sender: AnyObject){
-        let button = sender as! UIButton
-        let index = KeywordTextFieldArray.count
-        
-        //カードの幅、高さ、カード間の距離を定義
-        let HeightOfCard = self.view.frame.size.height / 5
-        let MarginOfCards = self.view.frame.size.height / 30
-        
-        let y_new = index * Int(HeightOfCard + MarginOfCards)
-        let y_field = Int(HeightOfCard) + y_new
+        let button   = sender as! UIButton
+        let index    = KeywordTextFieldArray.count
+        let button_y = (index + 2) * Int(self.MarginOfCards!) + (index + 1) * Int(self.HeightOfCard!)
 
         // キーワードが入力されていなかったらアラートを出す
         print("index:")
@@ -119,11 +121,11 @@ class SiritoriWorkViewController: BaseViewController {
         // キーワード+アイデアを作成
         createContentsView(ArrayIndex: Int(index))
         // ボタンを下げる
-        button.frame = CGRect(x:Int(self.view.frame.width * 3 / 4), y:y_field + Int(HeightOfCard + MarginOfCards) , width:Int(self.view.frame.width) / 6, height:Int(HeightOfCard) / 3)
+        button.frame = CGRect(x:Int(self.view.frame.width * 3 / 4), y:button_y + Int(HeightOfCard + MarginOfCards) , width:Int(self.view.frame.width) / 6, height:Int(HeightOfCard) / 3)
         // スクロールビューのサイズを更新
-        scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + CGFloat(y_new))
-        // 中心を変更する(-200はなんの値？)
-        scrollView.setContentOffset(CGPoint(x: 0, y: y_field-200), animated: true)
+        scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + CGFloat(button_y))
+        // 中心を変更する(-200はなんの値？) // 200は、無意味. とりあえず、ボタンの位置からカード２つ分上にしてみた
+        scrollView.setContentOffset(CGPoint(x: 0, y: button_y - Int(HeightOfCard) * 2), animated: true)
 
         // 保存用のデータを作成配列
         let stubIdeaData = IdeaData(keyword: KeywordTextFieldArray[index-1].text!, idea: IdeaTextViewArray[index-1].text!)
@@ -136,13 +138,8 @@ class SiritoriWorkViewController: BaseViewController {
     }
     
     func loadContentsView(ArrayIndex: Int) {
-        //カードの幅、高さ、カード間の距離を定義
-        let HeightOfCard = self.view.frame.size.height / 5
-        let WidthOfCard = self.view.frame.size.width * 9 / 10
-        let MarginOfCards = self.view.frame.size.height / 30
-        
-        let y_new = ArrayIndex * Int(HeightOfCard + MarginOfCards)
-        let y_field = Int(HeightOfCard) + y_new
+        let y_field = (ArrayIndex + 2) * Int(self.MarginOfCards!) + (ArrayIndex + 1) * Int(HeightOfCard)
+
         // キーワード + アイデアのUIViewの作成
         let contentsView = UIView()
         contentsView.frame = CGRect(x:Int(self.view.frame.size.width / 20), y:y_field, width:Int(WidthOfCard), height:Int(HeightOfCard))
@@ -177,13 +174,7 @@ class SiritoriWorkViewController: BaseViewController {
     }
     
     func createContentsView(ArrayIndex: Int) {
-        //カードの幅、高さ、カード間の距離を定義
-        let HeightOfCard = self.view.frame.size.height / 5
-        let WidthOfCard = self.view.frame.size.width * 9 / 10
-        let MarginOfCards = self.view.frame.size.height / 30
-        
-        let y_new = ArrayIndex * Int(HeightOfCard + MarginOfCards)
-        let y_field = Int(HeightOfCard) + y_new
+        let y_field = (ArrayIndex + 2) * Int(MarginOfCards) + (ArrayIndex + 1) * Int(HeightOfCard)
         
         // キーワード + アイデアのUIViewの作成
         let contentsView = UIView()
@@ -221,16 +212,17 @@ class SiritoriWorkViewController: BaseViewController {
     }
     
     func addNextButton() {
-        //カードの幅、高さ、カード間の距離を定義
-        let HeightOfCard = self.view.frame.size.height / 5
-        let button = UIButton()
+        let button   = UIButton()
+        let index    = KeywordTextFieldArray.count
+        let button_y = (index + 2) * Int(MarginOfCards) + (index + 1) * Int(HeightOfCard)
+
         button.backgroundColor = UIColor.white
         button.layer.borderWidth = 2.0 // 枠線の幅
         button.layer.borderColor = UIColor.red.cgColor // 枠線の色
         button.layer.cornerRadius = 10.0
         button.setTitle("次へ", for: .normal)
         button.setTitleColor(UIColor.blue, for: .normal)
-        button.frame = CGRect(x: Int(self.view.frame.width * 3 / 4), y: Int(HeightOfCard * 2), width:Int(self.view.frame.width) / 6, height:Int(HeightOfCard) / 3)
+        button.frame = CGRect(x: Int(self.view.frame.width * 3 / 4), y: button_y, width:Int(self.view.frame.width) / 6, height:Int(HeightOfCard) / 3)
         button.addTarget(self, action: #selector(self.onClick(_:)), for: .touchUpInside)
         scrollView.addSubview(button)
     }
@@ -271,10 +263,6 @@ class SiritoriWorkViewController: BaseViewController {
     
     func createInitialWord() {
         let contentsView = UIView()
-        //カードの幅、高さ、カード間の距離を定義
-        let HeightOfCard = self.view.frame.size.height / 5
-        let WidthOfCard = self.view.frame.size.width * 9 / 10
-        let MarginOfCards = self.view.frame.size.height / 30
         
         contentsView.frame = CGRect(x:Int(self.view.frame.size.width / 20), y:Int(MarginOfCards), width:Int(WidthOfCard), height:Int(HeightOfCard))
         contentsView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.6, alpha: 1.0)
