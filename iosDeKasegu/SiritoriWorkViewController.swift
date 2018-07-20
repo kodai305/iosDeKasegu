@@ -9,6 +9,8 @@
 import UIKit
 import GoogleMobileAds
 
+
+
 class SiritoriWorkViewController: BaseViewController {
     // 構造体
     struct IdeaData: Codable {
@@ -37,7 +39,6 @@ class SiritoriWorkViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         //保存してある配列の読込
         IdeaDataArray = readData()
         let index = IdeaDataArray.count
@@ -61,7 +62,7 @@ class SiritoriWorkViewController: BaseViewController {
         // スクロールビューを設定・追加
         scrollView.backgroundColor = UIColor.gray
         scrollView.keyboardDismissMode = .onDrag
-        scrollView.frame = CGRect(x:0 , y:110 , width:view.frame.width, height:view.frame.height-20)
+        scrollView.frame = CGRect(x:0 , y:60 + view.frame.height / 10, width:view.frame.width, height:view.frame.height-20)
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height-20+CGFloat(140*index))
         self.view.addSubview(scrollView)
         // 広告の表示
@@ -92,8 +93,13 @@ class SiritoriWorkViewController: BaseViewController {
     @objc func onClick(_ sender: AnyObject){
         let button = sender as! UIButton
         let index = KeywordTextFieldArray.count
-        let y_new = index*140
-        let y_field = 120 + y_new
+        
+        //カードの幅、高さ、カード間の距離を定義
+        let HeightOfCard = self.view.frame.size.height / 5
+        let MarginOfCards = self.view.frame.size.height / 30
+        
+        let y_new = index * Int(HeightOfCard + MarginOfCards)
+        let y_field = Int(HeightOfCard) + y_new
 
         // キーワードが入力されていなかったらアラートを出す
         print("index:")
@@ -113,10 +119,10 @@ class SiritoriWorkViewController: BaseViewController {
         // キーワード+アイデアを作成
         createContentsView(ArrayIndex: Int(index))
         // ボタンを下げる
-        button.frame = CGRect(x:300, y:y_field+120, width:50, height:25)
+        button.frame = CGRect(x:Int(self.view.frame.width * 3 / 4), y:y_field + Int(HeightOfCard + MarginOfCards) , width:Int(self.view.frame.width) / 6, height:Int(HeightOfCard) / 3)
         // スクロールビューのサイズを更新
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + CGFloat(y_new))
-        // 中心を変更する
+        // 中心を変更する(-200はなんの値？)
         scrollView.setContentOffset(CGPoint(x: 0, y: y_field-200), animated: true)
 
         // 保存用のデータを作成配列
@@ -130,20 +136,27 @@ class SiritoriWorkViewController: BaseViewController {
     }
     
     func loadContentsView(ArrayIndex: Int) {
-        let y_new = ArrayIndex*140
-        let y_field = 120 + y_new
+        //カードの幅、高さ、カード間の距離を定義
+        let HeightOfCard = self.view.frame.size.height / 5
+        let WidthOfCard = self.view.frame.size.width * 9 / 10
+        let MarginOfCards = self.view.frame.size.height / 30
+        
+        let y_new = ArrayIndex * Int(HeightOfCard + MarginOfCards)
+        let y_field = Int(HeightOfCard) + y_new
         // キーワード + アイデアのUIViewの作成
         let contentsView = UIView()
-        contentsView.frame = CGRect(x:20, y:y_field, width:Int(view.frame.width-CGFloat(40)), height:120)
+        contentsView.frame = CGRect(x:Int(self.view.frame.size.width / 20), y:y_field, width:Int(WidthOfCard), height:Int(HeightOfCard))
         contentsView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.6, alpha: 1.0)
         
         // キーワードのラベルを追加
         let keywordLabel = createKeywordLabel(index: ArrayIndex)
         contentsView.addSubview(keywordLabel)
         // キーワードフィールドの設定・追加
-        let keywordField = UITextField(frame: CGRect(x: 10, y:40, width:140, height:30))
+        let keywordField = UITextField(frame: CGRect(x: contentsView.frame.size.width / 50, y:contentsView.frame.size.height * 3 / 10, width:contentsView.frame.size.width * 2 / 5, height:contentsView.frame.size.height / 4))
         keywordField.borderStyle = UITextBorderStyle.roundedRect
         keywordField.text = IdeaDataArray[ArrayIndex].keyword
+        keywordField.layer.borderWidth = 1
+        keywordField.layer.borderColor = UIColor.lightGray.cgColor
         KeywordTextFieldArray.append(keywordField)
         contentsView.addSubview(keywordField)
         
@@ -151,7 +164,7 @@ class SiritoriWorkViewController: BaseViewController {
         let IdeaLabel = createIdeaLabel(index: ArrayIndex)
         contentsView.addSubview(IdeaLabel)
         // アイデアフィールドの作成・追加
-        let IdeaView: UITextView = UITextView(frame: CGRect(x: 160, y:40, width:160, height:60))
+        let IdeaView: UITextView = UITextView(frame: CGRect(x: contentsView.frame.size.width * 23 / 50, y:contentsView.frame.size.height * 3 / 10, width:contentsView.frame.size.width * 26 / 50, height:contentsView.frame.size.height * 15 / 25))
         IdeaView.layer.borderWidth = 1
         IdeaView.layer.cornerRadius = 5
         IdeaView.layer.borderColor = UIColor.lightGray.cgColor
@@ -164,18 +177,24 @@ class SiritoriWorkViewController: BaseViewController {
     }
     
     func createContentsView(ArrayIndex: Int) {
-        let y_new = ArrayIndex*140
-        let y_field = 120 + y_new
+        //カードの幅、高さ、カード間の距離を定義
+        let HeightOfCard = self.view.frame.size.height / 5
+        let WidthOfCard = self.view.frame.size.width * 9 / 10
+        let MarginOfCards = self.view.frame.size.height / 30
+        
+        let y_new = ArrayIndex * Int(HeightOfCard + MarginOfCards)
+        let y_field = Int(HeightOfCard) + y_new
+        
         // キーワード + アイデアのUIViewの作成
         let contentsView = UIView()
-        contentsView.frame = CGRect(x:20, y:y_field, width:Int(view.frame.width-CGFloat(40)), height:120)
+        contentsView.frame = CGRect(x:Int(self.view.frame.size.width / 20), y:y_field, width:Int(WidthOfCard), height:Int(HeightOfCard))
         contentsView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.6, alpha: 1.0)
         
         // キーワードのラベルを追加
         let keywordLabel = createKeywordLabel(index: ArrayIndex)
         contentsView.addSubview(keywordLabel)
         // キーワードフィールドの作成・追加
-        let keywordField: UITextField = UITextField(frame: CGRect(x: 10, y:40, width:140, height:30))
+        let keywordField = UITextField(frame: CGRect(x: contentsView.frame.size.width / 50, y:contentsView.frame.size.height * 3 / 10, width:contentsView.frame.size.width * 2 / 5, height:contentsView.frame.size.height / 4))
         keywordField.delegate = self as? UITextFieldDelegate
         keywordField.borderStyle = UITextBorderStyle.roundedRect
         if (ArrayIndex == 0) {
@@ -190,7 +209,7 @@ class SiritoriWorkViewController: BaseViewController {
         let IdeaLabel = createIdeaLabel(index: ArrayIndex)
         contentsView.addSubview(IdeaLabel)
         // アイデアビューの追加
-        let IdeaView: UITextView = UITextView(frame: CGRect(x: 160, y:40, width:160, height:60))
+        let IdeaView: UITextView = UITextView(frame: CGRect(x: contentsView.frame.size.width * 23 / 50, y:contentsView.frame.size.height * 3 / 10, width:contentsView.frame.size.width * 26 / 50, height:contentsView.frame.size.height * 15 / 25))
         IdeaView.layer.borderWidth = 1
         IdeaView.layer.cornerRadius = 5
         IdeaView.layer.borderColor = UIColor.lightGray.cgColor
@@ -202,7 +221,8 @@ class SiritoriWorkViewController: BaseViewController {
     }
     
     func addNextButton() {
-        let index = KeywordTextFieldArray.count
+        //カードの幅、高さ、カード間の距離を定義
+        let HeightOfCard = self.view.frame.size.height / 5
         let button = UIButton()
         button.backgroundColor = UIColor.white
         button.layer.borderWidth = 2.0 // 枠線の幅
@@ -210,7 +230,7 @@ class SiritoriWorkViewController: BaseViewController {
         button.layer.cornerRadius = 10.0
         button.setTitle("次へ", for: .normal)
         button.setTitleColor(UIColor.blue, for: .normal)
-        button.frame = CGRect(x: 300, y: 140*(index)+100, width: 50, height: 25)
+        button.frame = CGRect(x: Int(self.view.frame.width * 3 / 4), y: Int(HeightOfCard * 2), width:Int(self.view.frame.width) / 6, height:Int(HeightOfCard) / 3)
         button.addTarget(self, action: #selector(self.onClick(_:)), for: .touchUpInside)
         scrollView.addSubview(button)
     }
@@ -251,14 +271,19 @@ class SiritoriWorkViewController: BaseViewController {
     
     func createInitialWord() {
         let contentsView = UIView()
-        contentsView.frame = CGRect(x:20, y:10, width:Int(view.frame.width-CGFloat(40)), height:90)
+        //カードの幅、高さ、カード間の距離を定義
+        let HeightOfCard = self.view.frame.size.height / 5
+        let WidthOfCard = self.view.frame.size.width * 9 / 10
+        let MarginOfCards = self.view.frame.size.height / 30
+        
+        contentsView.frame = CGRect(x:Int(self.view.frame.size.width / 20), y:Int(MarginOfCards), width:Int(WidthOfCard), height:Int(HeightOfCard))
         contentsView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.6, alpha: 1.0)
         let firstWordLabel = UILabel()
-        firstWordLabel.frame = CGRect(x:10, y:5, width:contentsView.frame.width-20, height:30)
+        firstWordLabel.frame = CGRect(x:WidthOfCard / 50, y:HeightOfCard / 10, width:WidthOfCard , height:HeightOfCard / 10)
         firstWordLabel.text = "しりとりの最初のフレーズ"
         firstWordLabel.textColor = UIColor.black
         contentsView.addSubview(firstWordLabel)
-        let firstWordField = UITextField(frame: CGRect(x: 10, y:40, width:140, height:30))
+        let firstWordField = UITextField(frame: CGRect(x:contentsView.frame.size.width / 50, y:contentsView.frame.size.height * 3 / 10, width:contentsView.frame.size.width * 2 / 5, height:contentsView.frame.size.height / 4))
         firstWordField.borderStyle = UITextBorderStyle.roundedRect
         firstWordField.text = firstWord
         contentsView.addSubview(firstWordField)
@@ -267,18 +292,21 @@ class SiritoriWorkViewController: BaseViewController {
     
     func displayTheme() {
         let themeLabel = UILabel()
-        themeLabel.frame = CGRect(x:0, y:60, width:view.frame.width, height:50)
+        themeLabel.frame = CGRect(x:0, y:60, width:view.frame.width, height:view.frame.height / 10)
         themeLabel.numberOfLines = 0
         themeLabel.text = "★テーマ★\n　　　　" + self.siritoriTheme
         themeLabel.textColor = UIColor.white
-        themeLabel.backgroundColor = UIColor.blue
+        //JACKSONS PURPLE
+        themeLabel.backgroundColor = UIColor(hex: "1F3A93", alpha: 1.0)
         view.addSubview(themeLabel)
     }
     
     func createIdeaLabel(index: Int) -> (UILabel) {
-        print("called")
+        //カードの幅、高さ、カード間の距離を定義
+        let HeightOfCard = self.view.frame.size.height / 5
+        let WidthOfCard = self.view.frame.size.width * 9 / 10
         let IdeaLabel = UILabel()
-        IdeaLabel.frame = CGRect(x:160, y:5, width:160, height:30)
+        IdeaLabel.frame = CGRect(x:WidthOfCard * 23 / 50, y:HeightOfCard / 10, width:WidthOfCard * 2 / 5, height:HeightOfCard / 10)
         IdeaLabel.numberOfLines = 0
         IdeaLabel.text = "アイデア"+String(index+1)
         IdeaLabel.textColor = UIColor.black
@@ -286,8 +314,11 @@ class SiritoriWorkViewController: BaseViewController {
     }
     
     func createKeywordLabel(index: Int) -> (UILabel) {
+        //カードの幅、高さ、カード間の距離を定義
+        let HeightOfCard = self.view.frame.size.height / 5
+        let WidthOfCard = self.view.frame.size.width * 9 / 10
         let keywordLabel = UILabel()
-        keywordLabel.frame = CGRect(x:10, y:5, width:140, height:30)
+        keywordLabel.frame = CGRect(x:WidthOfCard / 50, y:HeightOfCard / 10, width:WidthOfCard * 2 / 5, height:HeightOfCard / 10)
         keywordLabel.numberOfLines = 0
         keywordLabel.text = "キーワード"+String(index+1)
         keywordLabel.textColor = UIColor.black

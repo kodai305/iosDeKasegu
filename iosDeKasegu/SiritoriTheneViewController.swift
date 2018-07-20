@@ -31,6 +31,7 @@ class SiritoriThemeViewController: BaseThemeViewController {
         
         themeTableView.delegate   = self
         themeTableView.dataSource = self
+        themeTableView.tableFooterView = UIView(frame: .zero)
 
         // 保存されているデータの読み込み
         loadSavedTheme()
