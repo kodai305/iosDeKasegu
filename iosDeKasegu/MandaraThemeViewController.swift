@@ -19,8 +19,8 @@ class MandaraThemeViewController: BaseThemeViewController {
         self.guideSegueId = "toMandaraGuide"
         // 保存されているテーマのKey
         self.themeKey = "MandaraTheme"
-        self.navigationItem.title = "アイデア拡散";
-        themeTableView.frame      = CGRect(x: 50, y:100, width:240, height:400)
+        self.navigationItem.title = "アイデア拡大";
+        themeTableView.frame      = CGRect(x: 0, y:0, width:self.view.frame.size.width, height:self.view.frame.size.height)
         if (self.tableData.count == 1) {
             // 最初のセルの中身
             print("called first cell")
@@ -32,6 +32,7 @@ class MandaraThemeViewController: BaseThemeViewController {
         
         themeTableView.delegate   = self
         themeTableView.dataSource = self
+        themeTableView.tableFooterView = UIView(frame: .zero)
         
         // 保存されているデータの読み込み
         loadSavedTheme()

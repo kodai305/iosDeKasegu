@@ -32,6 +32,17 @@ class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableV
         let cellData = sectionData[(indexPath as NSIndexPath).row]
         cell.textLabel?.text = cellData.0
         cell.detailTextLabel?.text = cellData.1
+        cell.layoutMargins = UIEdgeInsets.zero
+        //チュートリアルのセルの色を設定（MADANG）
+        if(indexPath.row == 0){
+            cell.backgroundColor = UIColor(hex: "C8F7C5", alpha: 1.0)
+            cell.layer.borderWidth = 2.5
+        }
+        //テーマのセルの色を設定(CAPE HONEY)
+        else{
+            cell.backgroundColor = UIColor(hex: "FDE3A7", alpha: 1.0)
+            cell.layer.borderWidth = 1.0
+        }
         return cell
     }
     
@@ -47,9 +58,11 @@ class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableV
     }
     
     // セクションのタイトル
+    /**
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionTitle[section]
     }
+    **/
     
     // データの保存・読み取り
     func readTheme() -> ([String]) {
