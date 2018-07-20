@@ -1,130 +1,103 @@
 //
-//  SiritoriViewController.swift
+//  SiritoriTopViewController.swift
 //  iosDeKasegu
 //
-//  Created by 高木広大 on 2018/07/01.
+//  Created by 高木広大 on 2018/07/12.
 //  Copyright © 2018年 shonanhiratsuka. All rights reserved.
 //
 
 import UIKit
 import GoogleMobileAds
 
-
-
-var siritoriTheme:String!
-var myText:String = ""
-class SiritoriThemeViewController: BaseViewController {
-    
-
-    var bannerView: GADBannerView!
-
-    var sendText:String = ""
-    
-    @IBAction func viewTap(_ sender: UITapGestureRecognizer) {
-        // タップされたらキーボードを下げる
-        view.endEditing(true)
-    }
-    @IBOutlet weak var sublabel: UILabel!
-    @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var themeUITextView: UITextView!
-    
-    @IBAction func next(_ sender: Any) {
-        // テーマの保存
-        //siritoriTheme = self.themeUITextView.text
-
-        // テーマが入力されていなかったらアラートを出す
-        if themeUITextView.text.isEmpty {
-            print("hoge")
-            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
-            alert.title = "Ops!!"
-            alert.message = "please input a theme!"
-            alert.addAction(UIAlertAction(
-                title: "back",
-                style: .default
-                )
-            )
-            self.present(alert, animated: true)
-        }
-        saveTheme(themeUITextView.text)
-    }
+class SiritoriThemeViewController: BaseThemeViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("myText:")
-        print(myText)
-        print("sendText:")
-        print(sendText)
-        
-        // Display the description ラベル
-        sublabel.backgroundColor = UIColor.white
-        sublabel.text = "テーマを入力してください.\n例：新しいアプリのアイデア"
 
-        // To display the advertisement
-        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-        bannerView.adUnitID = admob_id
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
-        bannerView.delegate = self
-        addBannerViewToView(bannerView)
-     
-        // テスト：クリアボタン
-        let button = UIButton()
-        button.backgroundColor = UIColor.white
-        button.layer.borderWidth = 2.0 // 枠線の幅
-        button.layer.borderColor = UIColor.red.cgColor // 枠線の色
-        button.layer.cornerRadius = 10.0
-        button.setTitle("clear", for: .normal)
-        button.setTitleColor(UIColor.blue, for: .normal)
-        button.frame = CGRect(x: 250, y: 450, width: 80, height: 35)
-        button.addTarget(self, action: #selector(self.clear(_:)), for: .touchUpInside)
-        view.addSubview(button)
-
-        
-
-        
-        let defaults = UserDefaults.standard
-        if defaults.object(forKey: "Cell_1_theme") != nil {
-            let theme:String = defaults.string(forKey: "Cell_1_theme")!
-            print("theme:")
-            print(theme)
-            themeUITextView.text = theme
+        // 親クラスの変数を自分の画面に合わせて定義すなおす
+        // 次の画面のID
+        self.nextSegueId = "toSiritoriWork"
+        self.guideSegueId = "toSiritoriGuide"
+        // 保存されているテーマのKey
+        self.themeKey = "SiritoriTheme"
+        self.navigationItem.title = "アイデア発想";
+        themeTableView.frame      = CGRect(x: 0, y:0, width:self.view.frame.size.width * 9 / 10, height:self.view.frame.size.height)
+        if (self.tableData.count == 1) {
+            // 最初のセルの中身
+            self.section0 = [("しりとり法を使う","チュートリアルを見る")]
+            self.tableData = [self.section0]
         }
-
-        siritoriTheme = themeUITextView.text
+        // ここまで
         
+        themeTableView.delegate   = self
+        themeTableView.dataSource = self
+        themeTableView.tableFooterView = UIView(frame: .zero)
 
+        // 保存されているデータの読み込み
+        loadSavedTheme()
+
+        // テーブルを追加
+        self.view.addSubview(themeTableView)
+        
+        // To display the advertisement on scrollView
+        displayAdvertisement()
     }
+    
+    
+    @IBAction func tapAddButton(_ sender: Any) {
+        let alertController = UIAlertController(title: "テーマを追加",message:"テーマを入力して下さい",preferredStyle:UIAlertControllerStyle.alert)
+        alertController.addTextField(configurationHandler: nil)
+        let f = DateFormatter()
+        f.dateStyle = .long
+        f.timeStyle = .none
+        let now = Date()
+        let okAction = UIAlertAction(title:"OK",style: UIAlertActionStyle.default){(action:UIAlertAction) in
+            if let textField = alertController.textFields?.first {  // ?? .first
+                let stub:String = textField.text!
+                if (stub.isEmpty) {
+                    // XXX: 入力されてなかったときの処理
+                } else {
+                    // テーマの保存
+                    var forSaveTheme:[String] = self.readTheme()
+                    forSaveTheme.append(textField.text!)
+                    self.saveTheme(forSaveTheme)
+                    // セルの追加
+                    self.section0.insert((textField.text!, f.string(from: now)), at: self.section0.count)
+                    self.tableData = [self.section0]
+                    self.themeTableView.insertRows(at: [IndexPath(row: self.section0.count-1, section: 0)], with: UITableViewRowAnimation.right)
+                    //self.themeTableView.reloadData()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        // 画面遷移
+                        self.sendIndexData = self.section0.count-1
+                        self.performSegue(withIdentifier: self.nextSegueId, sender: nil)
+                    }
+                }
+            }
+        }
+        alertController.addAction(okAction)
+        
+        let cancelButton = UIAlertAction(title: "CANCEL",style:UIAlertActionStyle.cancel, handler: nil)
+        alertController.addAction(cancelButton)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
+        if segue.identifier == self.nextSegueId {
+            let nextView:SiritoriWorkViewController = segue.destination as! SiritoriWorkViewController
+            let theme:[String]     = self.readTheme()
+            nextView.cellIndex     = self.sendIndexData
+            print(theme)
+            nextView.siritoriTheme = theme[self.sendIndexData-1] //indexがややわかりにくい
+        }
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @objc func clear(_ sender: AnyObject) {
-        //let button = sender as! UIButton
-        print("called")
-        //        SiritoriWorkViewController().resetContents()
-    }
-                                     
-    func saveTheme(_ theme: String) {
-        let defaults = UserDefaults.standard
-        print("save theme:")
-        print(theme)
-        defaults.set(theme, forKey: "Cell_1_theme")
-    }
-    
-    func readTheme() -> (String) {
-        let defaults = UserDefaults.standard
-        let theme:String = defaults.string(forKey: "Cell_1_theme")!
-        return theme
-    }
-    
-    //前のビューから値を受け取る
-    func setText(_ str:String){
-        myText = str
-        print("setText:"+myText)
-    }
-    
+
     /*
     // MARK: - Navigation
 
