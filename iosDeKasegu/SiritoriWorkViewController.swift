@@ -33,7 +33,7 @@ class SiritoriWorkViewController: BaseViewController, UITextFieldDelegate {
     var KeywordTextFieldArray:[UITextField] = []
     var IdeaTextViewArray:[PlaceholderTextView] = []
 
-    let firstWord = "アイデア"
+    let firstWord = "しりとり"
     let scrollView = UIScrollView()
 
     // キーボードを下げる
@@ -88,7 +88,7 @@ class SiritoriWorkViewController: BaseViewController, UITextFieldDelegate {
             print(index)
             var stubIdeaDataArray:[IdeaData] = []
             for i in 0..<index {
-                let stub = IdeaData(keyword: KeywordTextFieldArray[i].text!, idea: KeywordTextFieldArray[i].text!)
+                let stub = IdeaData(keyword: KeywordTextFieldArray[i].text!, idea: IdeaTextViewArray[i].text!)
                 stubIdeaDataArray.append(stub)
             }
             saveData(array: stubIdeaDataArray)
@@ -204,7 +204,7 @@ class SiritoriWorkViewController: BaseViewController, UITextFieldDelegate {
         IdeaView.layer.borderWidth = 1
         IdeaView.layer.cornerRadius = 5
         IdeaView.layer.borderColor = UIColor.lightGray.cgColor
-        IdeaView.placeholder = "←のキーワードを入力してください."
+        IdeaView.placeholder = "キーワードを入力してください."
         IdeaTextViewArray.append(IdeaView)
         contentsView.addSubview(IdeaView)
         
@@ -232,6 +232,7 @@ class SiritoriWorkViewController: BaseViewController, UITextFieldDelegate {
     
     // データの保存・読み取り
     func saveData(array: [IdeaData]) {
+        print(array)
         let defaults = UserDefaults.standard
         let data = try? JSONEncoder().encode(array)
         //Userdefaultのkeyを設定
@@ -328,10 +329,9 @@ class SiritoriWorkViewController: BaseViewController, UITextFieldDelegate {
         super.viewWillDisappear(animated)
         let index = KeywordTextFieldArray.count
         print("disapper index:")
-        print(index)
         var stubIdeaDataArray:[IdeaData] = []
         for i in 0..<index {
-            let stub = IdeaData(keyword: KeywordTextFieldArray[i].text!, idea: KeywordTextFieldArray[i].text!)
+            let stub = IdeaData(keyword: KeywordTextFieldArray[i].text!, idea: IdeaTextViewArray[i].text!)
             stubIdeaDataArray.append(stub)
         }
         saveData(array: stubIdeaDataArray)

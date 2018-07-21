@@ -66,7 +66,7 @@ class SiritoriThemeViewController: BaseThemeViewController {
                     self.tableData = [self.section0]
                     self.themeTableView.insertRows(at: [IndexPath(row: self.section0.count-1, section: 0)], with: UITableViewRowAnimation.right)
                     //self.themeTableView.reloadData()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                         // 画面遷移
                         self.sendIndexData = self.section0.count-1
                         self.performSegue(withIdentifier: self.nextSegueId, sender: nil)
