@@ -11,7 +11,7 @@ import GoogleMobileAds
 
 
 
-class SiritoriWorkViewController: BaseViewController {
+class SiritoriWorkViewController: BaseViewController, UITextFieldDelegate {
     // 構造体
     struct IdeaData: Codable {
         var keyword: String = ""
@@ -31,10 +31,9 @@ class SiritoriWorkViewController: BaseViewController {
     
     
     var KeywordTextFieldArray:[UITextField] = []
-    var IdeaTextViewArray:[UITextView] = []
+    var IdeaTextViewArray:[PlaceholderTextView] = []
 
     let firstWord = "アイデア"
-//    var bannerView: GADBannerView!
     let scrollView = UIScrollView()
 
     // キーボードを下げる
@@ -161,7 +160,7 @@ class SiritoriWorkViewController: BaseViewController {
         let IdeaLabel = createIdeaLabel(index: ArrayIndex)
         contentsView.addSubview(IdeaLabel)
         // アイデアフィールドの作成・追加
-        let IdeaView: UITextView = UITextView(frame: CGRect(x: contentsView.frame.size.width * 23 / 50, y:contentsView.frame.size.height * 3 / 10, width:contentsView.frame.size.width * 26 / 50, height:contentsView.frame.size.height * 15 / 25))
+        let IdeaView: PlaceholderTextView = PlaceholderTextView(frame: CGRect(x: contentsView.frame.size.width * 23 / 50, y:contentsView.frame.size.height * 3 / 10, width:contentsView.frame.size.width * 26 / 50, height:contentsView.frame.size.height * 15 / 25))
         IdeaView.layer.borderWidth = 1
         IdeaView.layer.cornerRadius = 5
         IdeaView.layer.borderColor = UIColor.lightGray.cgColor
@@ -186,7 +185,6 @@ class SiritoriWorkViewController: BaseViewController {
         contentsView.addSubview(keywordLabel)
         // キーワードフィールドの作成・追加
         let keywordField = UITextField(frame: CGRect(x: contentsView.frame.size.width / 50, y:contentsView.frame.size.height * 3 / 10, width:contentsView.frame.size.width * 2 / 5, height:contentsView.frame.size.height / 4))
-        keywordField.delegate = self as? UITextFieldDelegate
         keywordField.borderStyle = UITextBorderStyle.roundedRect
         if (ArrayIndex == 0) {
             keywordField.placeholder = firstWord+"→ ..."
@@ -194,16 +192,19 @@ class SiritoriWorkViewController: BaseViewController {
             keywordField.placeholder = KeywordTextFieldArray[ArrayIndex-1].text!+"→ ..."
         }
         KeywordTextFieldArray.append(keywordField)
+        KeywordTextFieldArray[ArrayIndex].delegate = self
+        
         contentsView.addSubview(keywordField)
         
         // アイデアのラベルを追加
         let IdeaLabel = createIdeaLabel(index: ArrayIndex)
         contentsView.addSubview(IdeaLabel)
         // アイデアビューの追加
-        let IdeaView: UITextView = UITextView(frame: CGRect(x: contentsView.frame.size.width * 23 / 50, y:contentsView.frame.size.height * 3 / 10, width:contentsView.frame.size.width * 26 / 50, height:contentsView.frame.size.height * 15 / 25))
+        let IdeaView: PlaceholderTextView = PlaceholderTextView(frame: CGRect(x: contentsView.frame.size.width * 23 / 50, y:contentsView.frame.size.height * 3 / 10, width:contentsView.frame.size.width * 26 / 50, height:contentsView.frame.size.height * 15 / 25))
         IdeaView.layer.borderWidth = 1
         IdeaView.layer.cornerRadius = 5
         IdeaView.layer.borderColor = UIColor.lightGray.cgColor
+        IdeaView.placeholder = "←のキーワードを入力してください."
         IdeaTextViewArray.append(IdeaView)
         contentsView.addSubview(IdeaView)
         
@@ -304,6 +305,23 @@ class SiritoriWorkViewController: BaseViewController {
         keywordLabel.text = "キーワード"+String(index+1)
         keywordLabel.textColor = UIColor.black
         return keywordLabel
+    }
+    
+    //任意のマスの内容が書き換えられた時の処理
+    func textFieldDidEndEditing(_ textField:UITextField) {
+        for i in 0..<KeywordTextFieldArray.count {
+            if (KeywordTextFieldArray[i].text?.isEmpty)! {
+                IdeaTextViewArray[i].placeholder = "←のキーワードを入力してください."
+            } else {
+                IdeaTextViewArray[i].placeholder = "["+KeywordTextFieldArray[i].text!+"]をつかった["+siritoriTheme+"]を入力."
+            }
+            
+            if (i == 0) {
+                KeywordTextFieldArray[i].placeholder = firstWord+"→ ..."
+            } else {
+                KeywordTextFieldArray[i].placeholder = KeywordTextFieldArray[i-1].text!+"→ ..."
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
