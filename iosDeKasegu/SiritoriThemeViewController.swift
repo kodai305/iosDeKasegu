@@ -50,6 +50,7 @@ class SiritoriThemeViewController: BaseThemeViewController {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        formatter.locale = Locale(identifier: "ja_JP")
         let okAction = UIAlertAction(title:"OK",style: UIAlertActionStyle.default){(action:UIAlertAction) in
             if let textField = alertController.textFields?.first {  // ?? .first
                 let stub:String = textField.text!
