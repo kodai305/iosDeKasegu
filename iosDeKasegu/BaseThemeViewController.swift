@@ -123,6 +123,39 @@ class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableV
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
 
     }
+    
+    //セルが編集可能であるかどうかをReturn（セルの中身ではない）
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    //セルを削除した時の処理
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        //削除処理かどうかを判定
+        if editingStyle == UITableViewCellEditingStyle.delete{
+            //テーマリストからセルを削除
+            section0.remove(at: indexPath.row)
+            tableData = [section0]
+            //セルを削除
+            themeTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+
+            
+            // テーマの保存がしたい。。。。
+            /**
+            var forSaveTheme:[themeData] = []
+            var temp:themeData = {
+                var theme   :String = ""
+                var editdata:Date
+            }
+            (1 ..< section0.count).forEach {(n) in
+                temp = [section0[n].0 ,section0[n].1]
+                forSaveTheme.append(temp)
+            }
+            self.saveTheme(forSaveTheme)
+ **/
+        }
+    }
+
 
     
     /*
