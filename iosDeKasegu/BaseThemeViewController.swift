@@ -20,8 +20,13 @@ class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableV
     // 次の画面のID
     var nextSegueId:String = ""
     var guideSegueId:String = ""
-    // テーマのKey
+    // 保存するデータ
     var themeKey:String = ""
+    struct themeData: Codable {
+        var theme   :String = ""
+        var editdata:Date
+    }
+
     //テーブルビューインスタンス作成
     var themeTableView: UITableView = UITableView()
     // セルを作る
@@ -67,18 +72,19 @@ class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableV
     **/
     
     // データの保存・読み取り
-    func readTheme() -> ([String]) {
-        let dammy:[String] = []
+    func readTheme() -> ([themeData]) {
         let defaults = UserDefaults.standard
-        if let stub:[String] = defaults.array(forKey: themeKey) as? [String] {
-            return stub
-        } else {
-            return dammy
+        let stubArray:[themeData] = []
+        guard let data = defaults.data(forKey: themeKey) else {
+            return stubArray
         }
+        let savedData = try? JSONDecoder().decode([themeData].self, from: data)
+        return savedData!
     }
-    func saveTheme(_ theme: [String]) {
+    func saveTheme(_ theme: [themeData]) {
         let defaults = UserDefaults.standard
-        defaults.set(theme, forKey: themeKey)
+        let data = try? JSONEncoder().encode(theme)
+        defaults.set(data, forKey: themeKey)
     }
 
     // タップしたときの処理
@@ -100,10 +106,13 @@ class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableV
         guard (section0.count <= 1) else {
             return
         }
-        let Theme:[String] = readTheme()
-        if (!Theme.isEmpty) {
-            for theme in Theme {
-                section0.insert((theme, "dammy"), at: section0.count)
+        let ThemeData:[themeData] = readTheme()
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        if (!ThemeData.isEmpty) {
+            for data in ThemeData {
+                section0.insert((data.theme, formatter.string(from: data.editdata)), at: section0.count)
                 tableData = [section0]
                 self.themeTableView.insertRows(at: [IndexPath(row: section0.count-1, section: 0)], with: UITableViewRowAnimation.right)
             }

@@ -16,7 +16,7 @@ class SiritoriThemeViewController: BaseThemeViewController {
 
         // 親クラスの変数を自分の画面に合わせて定義すなおす
         // 次の画面のID
-        self.nextSegueId = "toSiritoriWork"
+        self.nextSegueId  = "toSiritoriWork"
         self.guideSegueId = "toSiritoriGuide"
         // 保存されているテーマのKey
         self.themeKey = "SiritoriTheme"
@@ -47,10 +47,9 @@ class SiritoriThemeViewController: BaseThemeViewController {
     @IBAction func tapAddButton(_ sender: Any) {
         let alertController = UIAlertController(title: "テーマを追加",message:"テーマを入力して下さい",preferredStyle:UIAlertControllerStyle.alert)
         alertController.addTextField(configurationHandler: nil)
-        let f = DateFormatter()
-        f.dateStyle = .long
-        f.timeStyle = .none
-        let now = Date()
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
         let okAction = UIAlertAction(title:"OK",style: UIAlertActionStyle.default){(action:UIAlertAction) in
             if let textField = alertController.textFields?.first {  // ?? .first
                 let stub:String = textField.text!
@@ -58,11 +57,13 @@ class SiritoriThemeViewController: BaseThemeViewController {
                     // XXX: 入力されてなかったときの処理
                 } else {
                     // テーマの保存
-                    var forSaveTheme:[String] = self.readTheme()
-                    forSaveTheme.append(textField.text!)
+                    var forSaveTheme:[themeData] = self.readTheme()
+                    let stub = themeData(theme: textField.text!, editdata: Date())
+                    forSaveTheme.append(stub)
                     self.saveTheme(forSaveTheme)
+                    
                     // セルの追加
-                    self.section0.insert((textField.text!, f.string(from: now)), at: self.section0.count)
+                    self.section0.insert((textField.text!, formatter.string(from: Date())), at: self.section0.count)
                     self.tableData = [self.section0]
                     self.themeTableView.insertRows(at: [IndexPath(row: self.section0.count-1, section: 0)], with: UITableViewRowAnimation.right)
                     //self.themeTableView.reloadData()
@@ -85,10 +86,10 @@ class SiritoriThemeViewController: BaseThemeViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         if segue.identifier == self.nextSegueId {
             let nextView:SiritoriWorkViewController = segue.destination as! SiritoriWorkViewController
-            let theme:[String]     = self.readTheme()
-            nextView.cellIndex     = self.sendIndexData
-            print(theme)
-            nextView.siritoriTheme = theme[self.sendIndexData-1] //indexがややわかりにくい
+            let savedThemeData:[themeData]     = self.readTheme()
+            nextView.cellIndex        = self.sendIndexData
+            print(savedThemeData)
+            nextView.siritoriTheme = savedThemeData[self.sendIndexData-1].theme //indexがややわかりにくい
         }
     }
     
