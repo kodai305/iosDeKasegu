@@ -11,7 +11,7 @@ import GoogleMobileAds
 
 
 
-class SiritoriWorkViewController: BaseViewController, UITextFieldDelegate {
+class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
     // 構造体
     struct IdeaData: Codable {
         var keyword: String = ""
@@ -28,7 +28,6 @@ class SiritoriWorkViewController: BaseViewController, UITextFieldDelegate {
     var HeightOfCard:CGFloat!
     var WidthOfCard:CGFloat!
     var MarginOfCards:CGFloat!
-    
     
     var KeywordTextFieldArray:[UITextField] = []
     var IdeaTextViewArray:[PlaceholderTextView] = []
@@ -73,6 +72,16 @@ class SiritoriWorkViewController: BaseViewController, UITextFieldDelegate {
         scrollView.frame = CGRect(x:0 , y:60 + view.frame.height / 10, width:view.frame.width, height:view.frame.height-20)
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height-20+CGFloat(140*index))
         self.view.addSubview(scrollView)
+        
+        
+        //UIToolBarの生成
+        self.toolbar = UIToolbar(frame: CGRect(x:0, y:self.view.frame.height - 50, width:self.view.frame.width, height:50))
+        let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
+        let button = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(self.shareButtonAction(sender:)))
+        button.tag = 1
+        self.toolbar.items = [space,space,button]
+        self.view.addSubview(self.toolbar)
+        
         // 広告の表示
         displayAdvertisement()
         
@@ -80,6 +89,24 @@ class SiritoriWorkViewController: BaseViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(viewDidEnterBackground(_:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
     }
 
+    override func shareButtonAction(sender: UIBarButtonItem) {
+        print("shitiroti !!!!!")
+        // シェアする
+        let TopText = "しりとり法で発想したアイデア\n"
+        var sharedText:String = ""
+        sharedText += "テーマ："+self.siritoriTheme+"\n\n"
+        for i in 0..<KeywordTextFieldArray.count {
+            sharedText += "キーワード"+String(i+1)+"："+KeywordTextFieldArray[i].text!+"\n"
+            sharedText += "アイデア"+String(i+1)+"："+IdeaTextViewArray[i].text+"\n"
+            sharedText += "\n"
+        }
+        
+        let activities = [TopText, sharedText] as [Any]
+        // アクティビティコントローラを表示する
+        let activityVC = UIActivityViewController(activityItems: activities, applicationActivities: nil)
+        self.present(activityVC, animated: true, completion: nil)
+    }
+    
     // バッググラウンドに行ったときの処理
     @objc func viewDidEnterBackground(_ notification: Notification?) {
         if (self.isViewLoaded && (self.view.window != nil)) {

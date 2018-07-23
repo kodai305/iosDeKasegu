@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMobileAds
 
-class MandaraWorkViewController: BaseViewController, UITextViewDelegate {
+class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
     // 保存用の構造体
     struct MandaraData: Codable {
         // テーマの周りの8マス
@@ -158,6 +158,15 @@ class MandaraWorkViewController: BaseViewController, UITextViewDelegate {
             }
             index_i += 1
         }
+        //UIToolBarの生成。
+        self.toolbar = UIToolbar(frame: CGRect(x:0, y:self.view.frame.height - 50, width:self.view.frame.width, height:50))
+        let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
+        let button = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(self.shareButtonAction(sender:)))
+        button.tag = 1
+        self.toolbar.items = [space,space,button]
+        self.view.addSubview(self.toolbar)
+        
+        
         // バッググラウンドに行ったときの処理
         NotificationCenter.default.addObserver(self, selector: #selector(viewDidEnterBackground(_:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
         
@@ -198,6 +207,26 @@ class MandaraWorkViewController: BaseViewController, UITextViewDelegate {
             saveData(self.mandaraData)
         }
     }
+    
+    override func shareButtonAction(sender: UIBarButtonItem) {
+        print("shitiroti !!!!!")
+        // シェアする
+        let TopText = "マンダラチャート出力\n"
+        var sharedText:String = ""
+        sharedText += "テーマ："+self.mandaraTheme+"\n"
+        for i in 0..<ElementArray.count {
+            sharedText += "　要素"+String(i+1)+"："+ElementArray[i].text!+"\n"
+            for j in 0..<DetailArray[i].count {
+                sharedText += "　　詳細"+String(j+1)+"："+DetailArray[i][j].text+"\n"
+            }
+        }
+        
+        let activities = [TopText, sharedText] as [Any]
+        // アクティビティコントローラを表示する
+        let activityVC = UIActivityViewController(activityItems: activities, applicationActivities: nil)
+        self.present(activityVC, animated: true, completion: nil)
+    }
+    
     
     //ピンチした時の拡大縮小を設定
     @IBAction func PinchOut(_ sender: UIPinchGestureRecognizer) {

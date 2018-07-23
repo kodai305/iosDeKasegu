@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4715B50C21060C75003ACEBA /* BaseWorkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4715B50B21060C75003ACEBA /* BaseWorkViewController.swift */; };
 		47409A1F20E6633200AD2031 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47409A1E20E6633200AD2031 /* AppDelegate.swift */; };
 		47409A2120E6633300AD2031 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47409A2020E6633300AD2031 /* TopViewController.swift */; };
 		47409A2420E6633300AD2031 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47409A2220E6633300AD2031 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		266A3B3A4ACA227D34169225 /* Pods-iosDeKasegu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosDeKasegu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iosDeKasegu/Pods-iosDeKasegu.debug.xcconfig"; sourceTree = "<group>"; };
+		4715B50B21060C75003ACEBA /* BaseWorkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWorkViewController.swift; sourceTree = "<group>"; };
 		47409A1B20E6633200AD2031 /* iosDeKasegu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosDeKasegu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47409A1E20E6633200AD2031 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47409A2020E6633300AD2031 /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				47409A1E20E6633200AD2031 /* AppDelegate.swift */,
 				47AF685320E8C874003BD075 /* BaseViewController.swift */,
 				47C6BBBD20FAD8E300C1BFDF /* BaseThemeViewController.swift */,
+				4715B50B21060C75003ACEBA /* BaseWorkViewController.swift */,
 				47409A2220E6633300AD2031 /* Main.storyboard */,
 				47409A2020E6633300AD2031 /* TopViewController.swift */,
 				47C6BBBF20FCA0C600C1BFDF /* MandaraThemeViewController.swift */,
@@ -252,6 +255,7 @@
 				47C6BBC020FCA0C700C1BFDF /* MandaraThemeViewController.swift in Sources */,
 				47AF685820E90E3B003BD075 /* SiritoriWorkViewController.swift in Sources */,
 				47AF685A20F39713003BD075 /* MandaraWorksViewController.swift in Sources */,
+				4715B50C21060C75003ACEBA /* BaseWorkViewController.swift in Sources */,
 				CEB2999920F82C930003E985 /* SiritoriGuideViewController.swift in Sources */,
 				47409A2720E6633300AD2031 /* iosDeKasegu.xcdatamodeld in Sources */,
 			);
