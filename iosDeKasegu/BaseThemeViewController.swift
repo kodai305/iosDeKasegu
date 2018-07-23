@@ -138,21 +138,10 @@ class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableV
             tableData = [section0]
             //セルを削除
             themeTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
-
-            
-            // テーマの保存がしたい。。。。
-            /**
-            var forSaveTheme:[themeData] = []
-            var temp:themeData = {
-                var theme   :String = ""
-                var editdata:Date
-            }
-            (1 ..< section0.count).forEach {(n) in
-                temp = [section0[n].0 ,section0[n].1]
-                forSaveTheme.append(temp)
-            }
+            //保存しているデータを修正
+            var forSaveTheme:[themeData] = self.readTheme()
+            forSaveTheme.remove(at: indexPath.row - 1)
             self.saveTheme(forSaveTheme)
- **/
         }
     }
 
