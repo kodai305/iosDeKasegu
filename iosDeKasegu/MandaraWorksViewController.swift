@@ -215,9 +215,19 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
         var sharedText:String = ""
         sharedText += "テーマ："+self.mandaraTheme+"\n"
         for i in 0..<ElementArray.count {
-            sharedText += "　要素"+String(i+1)+"："+ElementArray[i].text!+"\n"
+            if (ElementArray[i].text == InitialTextOfElement) {
+                sharedText += "　要素"+String(i+1)+"：-\n"
+            } else {
+                sharedText += "　要素"+String(i+1)+"："+ElementArray[i].text!+"\n"
+            }
+            
+            
             for j in 0..<DetailArray[i].count {
-                sharedText += "　　詳細"+String(j+1)+"："+DetailArray[i][j].text+"\n"
+                if (DetailArray[i][j].text == InitialTextOfDetail) {
+                    sharedText += "　　詳細"+String(j+1)+"：-\n"
+                } else {
+                    sharedText += "　　詳細"+String(j+1)+"："+DetailArray[i][j].text+"\n"
+                }
             }
         }
         
