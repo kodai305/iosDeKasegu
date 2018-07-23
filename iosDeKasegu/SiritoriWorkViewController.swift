@@ -67,7 +67,8 @@ class SiritoriWorkViewController: BaseViewController, UITextFieldDelegate {
         // ボタンの追加
         addNextButton()
         // スクロールビューを設定・追加
-        scrollView.backgroundColor = UIColor.gray
+        //背景色（PORCELAIN）
+        scrollView.backgroundColor = UIColor(hex: "ECF0F1", alpha: 10.0)
         scrollView.keyboardDismissMode = .onDrag
         scrollView.frame = CGRect(x:0 , y:60 + view.frame.height / 10, width:view.frame.width, height:view.frame.height-20)
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height-20+CGFloat(140*index))
@@ -142,7 +143,7 @@ class SiritoriWorkViewController: BaseViewController, UITextFieldDelegate {
         // キーワード + アイデアのUIViewの作成
         let contentsView = UIView()
         contentsView.frame = CGRect(x:Int(self.view.frame.size.width / 20), y:y_field, width:Int(WidthOfCard), height:Int(HeightOfCard))
-        contentsView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.6, alpha: 1.0)
+        contentsView.backgroundColor = UIColor(hex: "FABE58", alpha: 1.0)
         
         // キーワードのラベルを追加
         let keywordLabel = createKeywordLabel(index: ArrayIndex)
@@ -178,7 +179,7 @@ class SiritoriWorkViewController: BaseViewController, UITextFieldDelegate {
         // キーワード + アイデアのUIViewの作成
         let contentsView = UIView()
         contentsView.frame = CGRect(x:Int(self.view.frame.size.width / 20), y:y_field, width:Int(WidthOfCard), height:Int(HeightOfCard))
-        contentsView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.6, alpha: 1.0)
+        contentsView.backgroundColor = UIColor(hex: "FABE58", alpha: 1.0)
         
         // キーワードのラベルを追加
         let keywordLabel = createKeywordLabel(index: ArrayIndex)
@@ -217,12 +218,12 @@ class SiritoriWorkViewController: BaseViewController, UITextFieldDelegate {
         let index    = KeywordTextFieldArray.count
         let button_y = (index + 2) * Int(MarginOfCards) + (index + 1) * Int(HeightOfCard)
 
-        button.backgroundColor = UIColor.white
+        button.backgroundColor = UIColor(hex: "F9690E", alpha: 1.0)
         button.layer.borderWidth = 2.0 // 枠線の幅
-        button.layer.borderColor = UIColor.red.cgColor // 枠線の色
+        button.layer.borderColor = UIColor(hex: "6C7A89", alpha: 1.0).cgColor // 枠線の色
         button.layer.cornerRadius = 10.0
         button.setTitle("次へ", for: .normal)
-        button.setTitleColor(UIColor.blue, for: .normal)
+        button.setTitleColor(UIColor.black, for: .normal)
         button.frame = CGRect(x: Int(self.view.frame.width * 3 / 4), y: button_y, width:Int(self.view.frame.width) / 6, height:Int(HeightOfCard) / 3)
         button.addTarget(self, action: #selector(self.onClick(_:)), for: .touchUpInside)
         scrollView.addSubview(button)
@@ -260,7 +261,7 @@ class SiritoriWorkViewController: BaseViewController, UITextFieldDelegate {
         let contentsView = UIView()
         
         contentsView.frame = CGRect(x:Int(self.view.frame.size.width / 20), y:Int(MarginOfCards), width:Int(WidthOfCard), height:Int(HeightOfCard))
-        contentsView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.6, alpha: 1.0)
+        contentsView.backgroundColor = UIColor(hex: "FABE58", alpha: 1.0)
         let firstWordLabel = UILabel()
         firstWordLabel.frame = CGRect(x:WidthOfCard / 50, y:HeightOfCard / 10, width:WidthOfCard , height:HeightOfCard / 10)
         firstWordLabel.text = "しりとりの最初のフレーズ"

@@ -20,11 +20,12 @@ class MandaraThemeViewController: BaseThemeViewController {
         // 保存されているテーマのKey
         self.themeKey = "MandaraTheme"
         self.navigationItem.title = "アイデア拡大";
-        themeTableView.frame      = CGRect(x: 0, y:0, width:self.view.frame.size.width * 9 / 10, height:self.view.frame.size.height)
+        themeTableView.frame.size      = CGSize(width:self.view.frame.size.width * 9 / 10, height:self.view.frame.size.height * 4 / 5)
+        themeTableView.center = CGPoint(x: self.view.center.x, y: self.view.center.y)
         if (self.tableData.count == 1) {
             // 最初のセルの中身
             print("called first cell")
-            self.section0  = [("マンダラチャートを使う","チュートリアルを見る")]
+            self.section0  = [("マンダラチャートを使う","チュートリアルを見る",0)]
             self.tableData = [self.section0]
         }
         
@@ -58,17 +59,21 @@ class MandaraThemeViewController: BaseThemeViewController {
                 } else {
                     // テーマの保存
                     var forSaveTheme:[themeData] = self.readTheme()
-                    let stub = themeData(theme: textField.text!, editdata: Date())
+                    //キーとして使うためにUNIXTime取得
+                    let UNIXTime = Int(Date.timeIntervalSinceReferenceDate)
+                    let EditData = Date()
+                    let stub = themeData(theme: textField.text!, editdata: EditData,key: UNIXTime)
                     forSaveTheme.append(stub)
                     self.saveTheme(forSaveTheme)
+                    
                     // セルの追加
-                    self.section0.insert((textField.text!, formatter.string(from: Date())), at: self.section0.count)
+                    self.section0.insert((textField.text!, formatter.string(from: EditData),UNIXTime), at: self.section0.count)
                     self.tableData = [self.section0]
                     self.themeTableView.insertRows(at: [IndexPath(row: self.section0.count-1, section: 0)], with: UITableViewRowAnimation.right)
                     //self.themeTableView.reloadData()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                         // 画面遷移
-                        self.sendIndexData = self.section0.count-1
+                        self.sendIndexData = UNIXTime
                         self.performSegue(withIdentifier: self.nextSegueId, sender: nil)
                     }
                 }
@@ -90,10 +95,15 @@ class MandaraThemeViewController: BaseThemeViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         if segue.identifier == self.nextSegueId {
             let nextView:MandaraWorkViewController = segue.destination as! MandaraWorkViewController
-            let ThemeData:[themeData]  = self.readTheme()
-            nextView.cellIndex     = self.sendIndexData
-            print(ThemeData)
-            nextView.mandaraTheme = ThemeData[self.sendIndexData-1].theme //indexがややわかりにくい
+            let savedThemeData:[themeData]     = self.readTheme()
+            nextView.cellIndex        = self.sendIndexData
+            print(savedThemeData)
+            //タップしたセルとkeyが同じデータを探す
+            for n in 0..<section0.count{
+                if(section0[n].2 == self.sendIndexData){
+                    nextView.mandaraTheme = section0[n].0
+                }
+            }
         }
     }
     

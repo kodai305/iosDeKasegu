@@ -11,8 +11,8 @@ import GoogleMobileAds
 
 class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     let sectionTitle = ["パーソナルボード"]
-    var section0:[(String,String)] = []
-    var tableData:[[(String,String)]] = [[]]
+    var section0:[(String,String,Int)] = []
+    var tableData:[[(String,String,Int)]] = [[]]
 
     // overrideする変数 // XXX:ベストなやり方かは微妙
     // 遷移先に送るデータ
@@ -25,6 +25,7 @@ class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableV
     struct themeData: Codable {
         var theme   :String = ""
         var editdata:Date
+        var key     :Int
     }
 
     //テーブルビューインスタンス作成
@@ -96,7 +97,7 @@ class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableV
             self.performSegue(withIdentifier: self.guideSegueId, sender: nil)
         } else {
             // 遷移先に送るデータの更新
-            self.sendIndexData = indexPath.row
+            self.sendIndexData = section0[indexPath.row].2
             self.performSegue(withIdentifier: self.nextSegueId, sender: nil)
         }
     }
@@ -112,7 +113,7 @@ class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableV
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
         if (!ThemeData.isEmpty) {
             for data in ThemeData {
-                section0.insert((data.theme, formatter.string(from: data.editdata)), at: section0.count)
+                section0.insert((data.theme, formatter.string(from: data.editdata), data.key), at: section0.count)
                 tableData = [section0]
                 self.themeTableView.insertRows(at: [IndexPath(row: section0.count-1, section: 0)], with: UITableViewRowAnimation.right)
             }
@@ -138,21 +139,10 @@ class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableV
             tableData = [section0]
             //セルを削除
             themeTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
-
-            
-            // テーマの保存がしたい。。。。
-            /**
-            var forSaveTheme:[themeData] = []
-            var temp:themeData = {
-                var theme   :String = ""
-                var editdata:Date
-            }
-            (1 ..< section0.count).forEach {(n) in
-                temp = [section0[n].0 ,section0[n].1]
-                forSaveTheme.append(temp)
-            }
+            //保存しているデータを修正
+            var forSaveTheme:[themeData] = self.readTheme()
+            forSaveTheme.remove(at: indexPath.row - 1)
             self.saveTheme(forSaveTheme)
- **/
         }
     }
 
