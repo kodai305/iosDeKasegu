@@ -65,6 +65,11 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         print("load View called")
+        //デバック用
+        let format = DateFormatter()
+        format.dateFormat = "yyyy/MM/dd HH:mm:ss.SSS"
+        print("startofDidAppear")
+        print(format.string(from: Date()))
         
         //iPhoneに合せて再定義
         cellSize = Int(self.view.frame.width / 9 * 11 / 12)
@@ -166,17 +171,36 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
         self.toolbar.items = [space,space,button]
         self.view.addSubview(self.toolbar)
         
+        //デバック用
+        let format2 = DateFormatter()
+        format2.dateFormat = "yyyy/MM/dd HH:mm:ss.SSS"
+        print("lastofDidAppear")
+        print(format2.string(from: Date()))
+        
         
         // バッググラウンドに行ったときの処理
         NotificationCenter.default.addObserver(self, selector: #selector(viewDidEnterBackground(_:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
         
         // To display the advertisement on scrollView
         displayAdvertisement()
+        
+        //デバック用
+        let format4 = DateFormatter()
+        format4.dateFormat = "yyyy/MM/dd HH:mm:ss.SSS"
+        print("EndofDidAppear")
+        print(format4.string(from: Date()))
+        
     }
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //デバック用
+        let format3 = DateFormatter()
+        format3.dateFormat = "yyyy/MM/dd HH:mm:ss.SSS"
+        print("startofDidLoad")
+        print(format3.string(from: Date()))
+        
         //完了ボタン用のツールバーの設定
         DoneToolBar.frame = CGRect(x: 0, y: self.view.frame.size.height, width: 320, height: 40) //仮にサイズを決定、ここでは見えない場所に置く
         DoneToolBar.barStyle = UIBarStyle.default  // スタイルを設定
@@ -187,6 +211,7 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
         self.view.addSubview(DoneToolBar)
         // Do any additional setup after loading the view.
     }
+    
     
     // バッググラウンドに行ったときの処理
     @objc func viewDidEnterBackground(_ notification: Notification?) {
