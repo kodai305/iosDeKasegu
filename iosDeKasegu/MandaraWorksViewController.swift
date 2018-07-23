@@ -49,6 +49,9 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
     var ThemeLabel = UILabel() // UILabelに変える予定
     let InitialTextOfElement:String! = "構成要素を入力"
     let InitialTextOfDetail:String! = "詳細を入力"
+    var InitialFontSizeOfElement: CGFloat = 0
+    var InitialFontSizeOfDetail: CGFloat = 0
+    
     var topKeyboard:CGFloat = 0
     var BackGround = UIView() //マンダラチャートの全てのマスを同時に動かすためのUIView
     
@@ -75,7 +78,19 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
         cellSize = Int(self.view.frame.width / 9 * 11 / 12)
         vectorLen = cellSize / 2
         margin = Int(self.view.frame.width / 9 * 1 / 12)
-
+        
+        //セルのサイズと初期文字列の長さに合わせてフォントサイズを調整
+        let Temp:UITextView = UITextView(frame: CGRect(x: 0, y:0, width:CGFloat(cellSize * 9 + margin * 10), height:CGFloat(cellSize * 9 + margin * 10)))
+        //要素マスの初期フォントサイズ
+        Temp.text = InitialTextOfElement
+        AutoFontResize(textView: Temp,flag: -1)
+        InitialFontSizeOfElement = (Temp.font?.pointSize)!
+        //詳細マスの初期フォントサイズ
+        Temp.text = InitialTextOfDetail
+        AutoFontResize(textView: Temp,flag: -1)
+        InitialFontSizeOfDetail = (Temp.font?.pointSize)!
+        Temp.removeFromSuperview()
+        
         //マンダラチャートの全てのマスを同時に動かすためのUIViewの位置、大きさを定義
         BackGround = UIView(frame: CGRect(x: self.view.center.x-CGFloat(cellSize * 4 + cellSize/2 + margin * 5), y:self.view.center.y-CGFloat(cellSize * 4 + cellSize/2 + margin * 5), width:CGFloat(cellSize * 9 + margin * 10), height:CGFloat(cellSize * 9 + margin * 10)))
         //背景色(SHERPA BLUE)
@@ -99,6 +114,7 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
         var index_i = 0
         for (x,y) in vector {
             var CellTextView: UITextView = UITextView(frame: CGRect(x: ThemeLabel.center.x-CGFloat(vectorLen+(cellSize+margin)*x), y:ThemeLabel.center.y-CGFloat(vectorLen+(cellSize+margin)*y), width:CGFloat(cellSize), height:CGFloat(cellSize)))
+            
             if (ElementArray[index_i].text.isEmpty) {
                 //要素のマスの色(MADANG)
                 CellTextView.backgroundColor = UIColor(hex: "C8F7C5", alpha: 1.0)
