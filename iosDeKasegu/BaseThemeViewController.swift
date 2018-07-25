@@ -96,6 +96,11 @@ class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableV
         if (indexPath.row == 0) { // 0番目がタップされたとき
             self.performSegue(withIdentifier: self.guideSegueId, sender: nil)
         } else {
+            //デバック用
+            let format = DateFormatter()
+            format.dateFormat = "yyyy/MM/dd HH:mm:ss.SSS"
+            print("cell tapped!!!")
+            print(format.string(from: Date()))
             // 遷移先に送るデータの更新
             self.sendIndexData = section0[indexPath.row].2
             self.performSegue(withIdentifier: self.nextSegueId, sender: nil)
