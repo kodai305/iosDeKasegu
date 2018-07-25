@@ -26,14 +26,11 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
     }
     // 保存用
     var mandaraData = MandaraData()
-    
     // キーボード上に出す完了ボタンが載るツールバー
     let DoneToolBar = UIToolbar()
-    
     //前の画面から受け取る変数
     var cellIndex:Int = 0
     var mandaraTheme:String = ""
-    
     // 変数の宣言と初期化
     var ElementArray = [UITextView](repeating: UITextView(), count: 8)
     var ElementRoundArray = [UITextView](repeating: UITextView(), count: 8)
@@ -45,17 +42,13 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
                                       [UITextView](repeating: UITextView(), count: 8),
                                       [UITextView](repeating: UITextView(), count: 8),
                                       [UITextView](repeating: UITextView(), count: 8),]
-
     var ThemeLabel = UILabel()
-    
     let InitialTextOfElement:String! = "構成要素を入力"
-    let InitialTextOfDetail:String! = "詳細を入力"
+    let InitialTextOfDetail:String!  = "詳細を入力"
     var InitialFontSizeOfElement: CGFloat = 0
-    var InitialFontSizeOfDetail: CGFloat = 0
-    
+    var InitialFontSizeOfDetail:  CGFloat = 0
     var topKeyboard:CGFloat = 0
     var BackGround = UIView() //マンダラチャートの全てのマスを同時に動かすためのUIView
-    
     
     let vector: [(x: Int, y: Int)] = [
         (0, 1), (1, 1), (1, 0), (1, -1),
@@ -65,8 +58,6 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
     var cellSize  = 0
     var vectorLen = 0
     var margin    = 0
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,7 +99,6 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
         ThemeLabel.minimumScaleFactor = 0.3
         ThemeLabel.numberOfLines = 0
         ThemeLabel.text = mandaraTheme
-        //AutoFontResize(textView: ThemeLabel,flag: -1)
         BackGround.addSubview(ThemeLabel)
         
         // 保存されているデータの読み込み
@@ -203,7 +193,6 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
         format4.dateFormat = "yyyy/MM/dd HH:mm:ss.SSS"
         print("EndofDidLoad")
         print(format4.string(from: Date()))
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -282,7 +271,6 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
         let activityVC = UIActivityViewController(activityItems: activities, applicationActivities: nil)
         self.present(activityVC, animated: true, completion: nil)
     }
-    
     
     //ピンチした時の拡大縮小を設定
     @IBAction func PinchOut(_ sender: UIPinchGestureRecognizer) {
@@ -396,7 +384,6 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(_:)) ,name: NSNotification.Name.UIKeyboardWillHide,object: nil)
     }
     
-    
     //キーボードが表示された時の処理
     @objc func keyboardWillShow(_ notification: Notification) {
         let info = notification.userInfo!
@@ -441,7 +428,6 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
         print(user!)
         return user!
     }
-    
     
     /*
     // MARK: - Navigation
