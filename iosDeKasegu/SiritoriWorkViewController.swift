@@ -234,12 +234,16 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
         let keywordField = UITextField(frame: CGRect(x: contentsView.frame.size.width / 50, y:contentsView.frame.size.height * 3 / 10, width:contentsView.frame.size.width * 2 / 5, height:contentsView.frame.size.height / 4))
         keywordField.borderStyle = UITextBorderStyle.roundedRect
         keywordField.text = IdeaDataArray[ArrayIndex].keyword
-        if (IdeaDataArray[ArrayIndex].keyword.isEmpty) {
-            keywordField.placeholder = KeywordTextFieldArray[ArrayIndex-1].text!+"→ ..."
-        }
+        print("ArrayIndex:")
+        print(ArrayIndex)
         keywordField.layer.borderWidth = 1
         keywordField.layer.borderColor = UIColor.lightGray.cgColor
         KeywordTextFieldArray.append(keywordField)
+        if (ArrayIndex == 0) {
+            keywordField.placeholder = firstWord + "→ ..."
+        } else {
+            keywordField.placeholder = KeywordTextFieldArray[ArrayIndex].text!+"→ ..."
+        }
         contentsView.addSubview(keywordField)
         
         // アイデアのラベルを追加
@@ -251,12 +255,13 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
         IdeaView.layer.cornerRadius = 5
         IdeaView.layer.borderColor = UIColor.lightGray.cgColor
         IdeaView.text = IdeaDataArray[ArrayIndex].idea
+        IdeaTextViewArray.append(IdeaView)
         if (IdeaDataArray[ArrayIndex].idea.isEmpty && IdeaDataArray[ArrayIndex].keyword.isEmpty) {
             IdeaView.placeholder = "キーワードを入力してください."
         } else if (IdeaDataArray[ArrayIndex].idea.isEmpty && !IdeaDataArray[ArrayIndex].keyword.isEmpty) {
             IdeaView.placeholder = "["+KeywordTextFieldArray[ArrayIndex].text!+"]をつかった["+siritoriTheme+"]を入力."
         }
-        IdeaTextViewArray.append(IdeaView)
+
         contentsView.addSubview(IdeaView)
         
         // スクロールビューに追加
