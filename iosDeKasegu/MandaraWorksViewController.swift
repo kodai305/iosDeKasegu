@@ -14,6 +14,7 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
     struct MandaraData: Codable {
         // テーマの周りの8マス
         var CentralData:[String] = [String](repeating: "", count: 8)
+        var CentralFontSize:[CGFloat] = [CGFloat](repeating: 10, count: 8)
         // 周りのマス
         var DetailData:[[String]] = [[String](repeating: "", count: 8),
                                      [String](repeating: "", count: 8),
@@ -23,6 +24,14 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
                                      [String](repeating: "", count: 8),
                                      [String](repeating: "", count: 8),
                                      [String](repeating: "", count: 8),]
+        var DetailFontSize:[[CGFloat]] = [[CGFloat](repeating: 10, count: 8),
+                                          [CGFloat](repeating: 10, count: 8),
+                                          [CGFloat](repeating: 10, count: 8),
+                                          [CGFloat](repeating: 10, count: 8),
+                                          [CGFloat](repeating: 10, count: 8),
+                                          [CGFloat](repeating: 10, count: 8),
+                                          [CGFloat](repeating: 10, count: 8),
+                                          [CGFloat](repeating: 10, count: 8),]
     }
     // 保存用
     var mandaraData = MandaraData()
@@ -61,13 +70,6 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("load View called")
-        //デバック用
-        let format = DateFormatter()
-        format.dateFormat = "yyyy/MM/dd HH:mm:ss.SSS"
-        print("startofDidLoad")
-        print(format.string(from: Date()))
-
         //iPhoneに合せて再定義
         cellSize = Int(self.view.frame.width / 9 * 11 / 12)
         vectorLen = cellSize / 2
@@ -75,11 +77,11 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
         
         //セルのサイズと初期文字列の長さに合わせてフォントサイズを調整
         let Temp:UITextView = UITextView(frame: CGRect(x: 0, y:0, width:CGFloat(cellSize), height:CGFloat(cellSize)))
-        //要素マスの初期フォントサイズ
+
+        //要素マスと詳細マスの初期フォントサイズ取得
         Temp.text = InitialTextOfElement
         AutoFontResize(textView: Temp,flag: -1)
         self.InitialFontSizeOfElement = (Temp.font?.pointSize)!
-        //詳細マスの初期フォントサイズ
         Temp.text = InitialTextOfDetail
         AutoFontResize(textView: Temp,flag: -1)
         self.InitialFontSizeOfDetail = (Temp.font?.pointSize)!
@@ -112,8 +114,6 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
             CellTextView.backgroundColor = UIColor(hex: "C8F7C5", alpha: 1.0)
             ElementArray[index_i] = CellTextView
             ElementArray[index_i].delegate = self
-
-            BackGround.addSubview(ElementArray[index_i])
             //初期化or編集されていないマスの場合
             if (lastData.CentralData[index_i].isEmpty || lastData.CentralData[index_i] == InitialTextOfElement) {
                 ElementArray[index_i].text = InitialTextOfElement
@@ -122,8 +122,10 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
             } else { //ロードする場合
                 ElementArray[index_i].text = lastData.CentralData[index_i]
                 ElementArray[index_i].textColor = UIColor.black
-                //AutoFontResize(textView: ElementArray[index_i],flag: -1)
+                ElementArray[index_i].font = UIFont.systemFont(ofSize: lastData.CentralFontSize[index_i])
             }
+            BackGround.addSubview(ElementArray[index_i])
+
             // 要素を周りに配置(新しい中心)
             CellTextView = UITextView(frame: CGRect(x: ThemeLabel.center.x-CGFloat(vectorLen+(cellSize+margin)*3*x), y:ThemeLabel.center.y-CGFloat(vectorLen+(cellSize+margin)*3*y), width:CGFloat(cellSize), height:CGFloat(cellSize)))
             CellTextView.backgroundColor = UIColor(hex: "C8F7C5", alpha: 1.0)
@@ -132,7 +134,7 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
             //ロードする情報がある場合
             if (!lastData.CentralData[index_i].isEmpty) {
                 ElementRoundArray[index_i].text = lastData.CentralData[index_i]
-                //AutoFontResize(textView: ElementRoundArray[index_i],flag: -1)
+                ElementRoundArray[index_i].font = UIFont.systemFont(ofSize: lastData.CentralFontSize[index_i])
             }
             BackGround.addSubview(ElementRoundArray[index_i])
             
@@ -154,14 +156,15 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
                 else{
                     DetailArray[index_i][index_j].text = lastData.DetailData[index_i][index_j]
                     DetailArray[index_i][index_j].textColor = UIColor.black
-                    //AutoFontResize(textView: DetailArray[index_i][index_j],flag: -1)
+                    DetailArray[index_i][index_j].font = UIFont.systemFont(ofSize: lastData.DetailFontSize[index_i][index_j])
                 }
                 BackGround.addSubview(DetailArray[index_i][index_j])
                 index_j += 1
             }
             index_i += 1
         }
-        //UIToolBarの生成。
+        
+        //UIToolBarの生成 (シェアボタン)
         self.toolbar = UIToolbar(frame: CGRect(x:0, y:self.view.frame.height - 50, width:self.view.frame.width, height:50))
         let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
         let button = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(self.shareButtonAction(sender:)))
@@ -188,40 +191,14 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
         // To display the advertisement on scrollView
         displayAdvertisement()
         
-        //デバック用
-        let format4 = DateFormatter()
-        format4.dateFormat = "yyyy/MM/dd HH:mm:ss.SSS"
-        print("EndofDidLoad")
-        print(format4.string(from: Date()))
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        ElementArray[1].text = "testtest"
-        ElementArray[2].text = "testtest"
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self,name: .UIKeyboardWillShow,object: self.view.window)
         NotificationCenter.default.removeObserver(self,name: .UIKeyboardDidHide,object: self.view.window)
-        
-        for i in 0..<self.ElementArray.count {
-            if (self.ElementArray[i].text != InitialTextOfElement) {
-                self.mandaraData.CentralData[i] = self.ElementArray[i].text
-            } else {
-                self.mandaraData.CentralData[i] = ""
-            }
-        }
-        for i in 0..<self.ElementArray.count {
-            for j in 0..<self.DetailArray.count {
-                if (self.DetailArray[i][j].text != InitialTextOfDetail) {
-                    self.mandaraData.DetailData[i][j] = self.DetailArray[i][j].text
-                } else {
-                    self.mandaraData.DetailData[i][j] = ""
-                }
-            }
-        }
+        // 保存
+        _prepareSaveData()
         saveData(self.mandaraData)
         print("saveData is called")
     }
@@ -229,20 +206,32 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
     // バッググラウンドに行ったときの処理
     @objc func viewDidEnterBackground(_ notification: Notification?) {
         if (self.isViewLoaded && (self.view.window != nil)) {
-            print("バッググラウンド処理")
-            for i in 0..<self.ElementArray.count {
-                if (self.ElementArray[i].text != InitialTextOfElement) {
-                    self.mandaraData.CentralData[i] = self.ElementArray[i].text
-                } else {
-                    self.mandaraData.CentralData[i] = ""
-                }
-            }
-            for i in 0..<self.ElementArray.count {
-                for j in 0..<self.DetailArray.count {
-                    self.mandaraData.DetailData[i][j] = self.DetailArray[i][j].text
-                }
-            }
+            // 保存
+            _prepareSaveData()
             saveData(self.mandaraData)
+        }
+    }
+    
+    func _prepareSaveData () {
+        for i in 0..<self.ElementArray.count {
+            if (self.ElementArray[i].text != InitialTextOfElement) {
+                self.mandaraData.CentralData[i] = self.ElementArray[i].text
+                self.mandaraData.CentralFontSize[i] = (self.ElementArray[i].font?.pointSize)!
+            } else {
+                self.mandaraData.CentralData[i] = ""
+                self.mandaraData.CentralFontSize[i] = 0
+            }
+        }
+        for i in 0..<self.ElementArray.count {
+            for j in 0..<self.DetailArray.count {
+                if (self.DetailArray[i][j].text != InitialTextOfDetail) {
+                    self.mandaraData.DetailData[i][j] = self.DetailArray[i][j].text
+                    self.mandaraData.DetailFontSize[i][j] = (self.DetailArray[i][j].font?.pointSize)!
+                } else {
+                    self.mandaraData.DetailData[i][j] = ""
+                    self.mandaraData.DetailFontSize[i][j] = 0
+                }
+            }
         }
     }
     
@@ -288,40 +277,29 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
         let left_x  = BackGround.frame.origin.x + move.x
         let top_y = BackGround.frame.origin.y + move.y
         let bottom_y  = BackGround.frame.origin.y + BackGround.frame.size.height + move.y
-        
         //移動後のBackGroundの左端が画面の真ん中より右にある場合、左端を画面の真ん中で規制する
-        if(self.view.center.x < left_x){
+        if (self.view.center.x < left_x) {
             BackGround.frame.origin.x = self.view.center.x
-        }else{
-            //移動後のBackGroundの右端が画面の真ん中より左にある場合、右端を画面の真ん中で規制する
-            if(right_x < self.view.center.x){
+        } else { //移動後のBackGroundの右端が画面の真ん中より左にある場合、右端を画面の真ん中で規制する
+            if (right_x < self.view.center.x) {
                 BackGround.frame.origin.x = self.view.center.x - BackGround.frame.size.width
-            }
-            //移動量分移動させる
-            else{
+            } else { //移動量分移動させる
                 BackGround.center.x += move.x
             }
         }
         //移動後のBackGroundの上端が画面の真ん中より下にある場合、上端を画面の真ん中で規制する
-        if(self.view.center.y < top_y){
+        if (self.view.center.y < top_y) {
             BackGround.frame.origin.y = self.view.center.y
-        }
-        else{
-        //移動後のBackGroundの下端が画面の真ん中より上にある場合、下端を画面の真ん中で規制する
-            if(bottom_y < self.view.center.y){
+        } else {
+            //移動後のBackGroundの下端が画面の真ん中より上にある場合、下端を画面の真ん中で規制する
+            if (bottom_y < self.view.center.y) {
                 BackGround.frame.origin.y = self.view.center.y - BackGround.frame.size.height
-            }
-            else{
+            } else {
                 BackGround.center.y += move.y
             }
         }
         //移動量を0にする。
         sender.setTranslation(CGPoint.zero, in: self.view)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     //任意のマスの内容が書き換えられた時の処理
@@ -344,7 +322,6 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
             textView.text = ""
             textView.textColor = UIColor.black
         }
-        
         // 編集しているマスがキーボードと重なるかを判定
         // 編集しているマスの下端の絶対座標を算出、拡大時にも対応するためにBackGround.transform.aをかける
         let textView_y = BackGround.frame.origin.y + (textView.frame.origin.y + textView.frame.height) * BackGround.transform.a
@@ -427,6 +404,11 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
         let user = try? JSONDecoder().decode(MandaraData.self, from: data)
         print(user!)
         return user!
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     /*
