@@ -25,6 +25,7 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
     var siritoriTheme:String = ""
 
     var firstWordLabel:UILabel!
+    var firstWordChangeButton = UIButton()
     
     //カードの幅、高さ、カード間の距離を定義
     var HeightOfCard:CGFloat!
@@ -34,7 +35,7 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
     var KeywordTextFieldArray:[UITextField] = []
     var IdeaTextViewArray:[PlaceholderTextView] = []
 
-    let firstWord = "しりとり"
+    var firstWord = "しりとり"
     let scrollView = UIScrollView()
 
     // キーボードを下げる
@@ -319,7 +320,42 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
         self.firstWordLabel.layer.cornerRadius = 3
         self.firstWordLabel.text = firstWord
         contentsView.addSubview(self.firstWordLabel)
+        
+        // キーワード変更ボタン
+        self.firstWordChangeButton.backgroundColor = UIColor(hex: "F9690E", alpha: 1.0)
+        self.firstWordChangeButton.layer.borderWidth = 2.0 // 枠線の幅
+        self.firstWordChangeButton.layer.cornerRadius = 5.0
+        self.firstWordChangeButton.setTitle("変更", for: .normal)
+        self.firstWordChangeButton.setTitleColor(UIColor.black, for: .normal)
+        self.firstWordChangeButton.frame = CGRect(x: contentsView.frame.size.width * 23 / 50, y:contentsView.frame.size.height * 3 / 10, width:contentsView.frame.size.width * 10 / 50, height:contentsView.frame.size.height / 4)
+        self.firstWordChangeButton.addTarget(self, action: #selector(self.changeFirstKeyword(_:)), for: .touchUpInside)
+        contentsView.addSubview(self.firstWordChangeButton)
+        
         scrollView.addSubview(contentsView)
+    }
+    
+    @objc func changeFirstKeyword(_ sender: Any) {
+        let alertController = UIAlertController(title: "先頭フレーズの変更",message:"好きな単語を入力してください",preferredStyle:UIAlertControllerStyle.alert)
+        alertController.addTextField(configurationHandler: nil)
+
+        let okAction = UIAlertAction(title:"OK",style: UIAlertActionStyle.default){(action:UIAlertAction) in
+            if let textField = alertController.textFields?.first {  // ?? .first
+                let stub:String = textField.text!
+                if (stub.isEmpty) {
+                    // XXX: 入力されてなかったときの処理
+                } else {
+                    self.firstWordLabel.text = stub
+                    self.firstWord = stub
+                    self.KeywordTextFieldArray[0].placeholder = self.firstWord+"→ ..."
+                }
+            }
+        }
+        alertController.addAction(okAction)
+        
+        let cancelButton = UIAlertAction(title: "CANCEL",style:UIAlertActionStyle.cancel, handler: nil)
+        alertController.addAction(cancelButton)
+        
+        present(alertController, animated: true, completion: nil)
     }
     
     func displayTheme() {
