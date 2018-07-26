@@ -24,6 +24,8 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
     var cellIndex:Int = 0
     var siritoriTheme:String = ""
 
+    var firstWordLabel:UILabel!
+    
     //カードの幅、高さ、カード間の距離を定義
     var HeightOfCard:CGFloat!
     var WidthOfCard:CGFloat!
@@ -73,7 +75,6 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height-20+CGFloat(140*index))
         self.view.addSubview(scrollView)
         
-        
         //UIToolBarの生成
         self.toolbar = UIToolbar(frame: CGRect(x:0, y:self.view.frame.height - 50, width:self.view.frame.width, height:50))
         let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
@@ -85,10 +86,24 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
         // 広告の表示
         displayAdvertisement()
         
-        // バッググラウンドに行ったときの処理
+        // バッググラウンドに行ったときの処理を登録
         NotificationCenter.default.addObserver(self, selector: #selector(viewDidEnterBackground(_:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        let index = KeywordTextFieldArray.count
+        print("disapper index:")
+        var stubIdeaDataArray:[IdeaData] = []
+        for i in 0..<index {
+            let stub = IdeaData(keyword: KeywordTextFieldArray[i].text!, idea: IdeaTextViewArray[i].text!)
+            stubIdeaDataArray.append(stub)
+        }
+        saveData(array: stubIdeaDataArray)
+        print("saveData is called")
+    }
+    
+    // シェアボタン
     override func shareButtonAction(sender: UIBarButtonItem) {
         print("shitiroti !!!!!")
         // シェアする
@@ -122,7 +137,6 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
             saveData(array: stubIdeaDataArray)
         }
     }
-
     
     // 「次へ」ボタンが押されたときの処理
     @objc func onClick(_ sender: AnyObject){
@@ -162,42 +176,6 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
         print(stubIdeaDataArray.count)
         // 保存
         saveData(array: stubIdeaDataArray)
-    }
-    
-    func loadContentsView(ArrayIndex: Int) {
-        let y_field = (ArrayIndex + 2) * Int(self.MarginOfCards!) + (ArrayIndex + 1) * Int(HeightOfCard)
-
-        // キーワード + アイデアのUIViewの作成
-        let contentsView = UIView()
-        contentsView.frame = CGRect(x:Int(self.view.frame.size.width / 20), y:y_field, width:Int(WidthOfCard), height:Int(HeightOfCard))
-        contentsView.backgroundColor = UIColor(hex: "FABE58", alpha: 1.0)
-        
-        // キーワードのラベルを追加
-        let keywordLabel = createKeywordLabel(index: ArrayIndex)
-        contentsView.addSubview(keywordLabel)
-        // キーワードフィールドの設定・追加
-        let keywordField = UITextField(frame: CGRect(x: contentsView.frame.size.width / 50, y:contentsView.frame.size.height * 3 / 10, width:contentsView.frame.size.width * 2 / 5, height:contentsView.frame.size.height / 4))
-        keywordField.borderStyle = UITextBorderStyle.roundedRect
-        keywordField.text = IdeaDataArray[ArrayIndex].keyword
-        keywordField.layer.borderWidth = 1
-        keywordField.layer.borderColor = UIColor.lightGray.cgColor
-        KeywordTextFieldArray.append(keywordField)
-        contentsView.addSubview(keywordField)
-        
-        // アイデアのラベルを追加
-        let IdeaLabel = createIdeaLabel(index: ArrayIndex)
-        contentsView.addSubview(IdeaLabel)
-        // アイデアフィールドの作成・追加
-        let IdeaView: PlaceholderTextView = PlaceholderTextView(frame: CGRect(x: contentsView.frame.size.width * 23 / 50, y:contentsView.frame.size.height * 3 / 10, width:contentsView.frame.size.width * 26 / 50, height:contentsView.frame.size.height * 15 / 25))
-        IdeaView.layer.borderWidth = 1
-        IdeaView.layer.cornerRadius = 5
-        IdeaView.layer.borderColor = UIColor.lightGray.cgColor
-        IdeaView.text = IdeaDataArray[ArrayIndex].idea
-        IdeaTextViewArray.append(IdeaView)
-        contentsView.addSubview(IdeaView)
-
-        // スクロールビューに追加
-        scrollView.addSubview(contentsView)
     }
     
     func createContentsView(ArrayIndex: Int) {
@@ -240,6 +218,50 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
         scrollView.addSubview(contentsView)
     }
     
+    func loadContentsView(ArrayIndex: Int) {
+        let y_field = (ArrayIndex + 2) * Int(self.MarginOfCards!) + (ArrayIndex + 1) * Int(HeightOfCard)
+        
+        // キーワード + アイデアのUIViewの作成
+        let contentsView = UIView()
+        contentsView.frame = CGRect(x:Int(self.view.frame.size.width / 20), y:y_field, width:Int(WidthOfCard), height:Int(HeightOfCard))
+        contentsView.backgroundColor = UIColor(hex: "FABE58", alpha: 1.0)
+        
+        // キーワードのラベルを追加
+        let keywordLabel = createKeywordLabel(index: ArrayIndex)
+        contentsView.addSubview(keywordLabel)
+        // キーワードフィールドの設定・追加
+        let keywordField = UITextField(frame: CGRect(x: contentsView.frame.size.width / 50, y:contentsView.frame.size.height * 3 / 10, width:contentsView.frame.size.width * 2 / 5, height:contentsView.frame.size.height / 4))
+        keywordField.borderStyle = UITextBorderStyle.roundedRect
+        keywordField.text = IdeaDataArray[ArrayIndex].keyword
+        if (IdeaDataArray[ArrayIndex].keyword.isEmpty) {
+            keywordField.placeholder = KeywordTextFieldArray[ArrayIndex-1].text!+"→ ..."
+        }
+        keywordField.layer.borderWidth = 1
+        keywordField.layer.borderColor = UIColor.lightGray.cgColor
+        KeywordTextFieldArray.append(keywordField)
+        contentsView.addSubview(keywordField)
+        
+        // アイデアのラベルを追加
+        let IdeaLabel = createIdeaLabel(index: ArrayIndex)
+        contentsView.addSubview(IdeaLabel)
+        // アイデアフィールドの作成・追加
+        let IdeaView: PlaceholderTextView = PlaceholderTextView(frame: CGRect(x: contentsView.frame.size.width * 23 / 50, y:contentsView.frame.size.height * 3 / 10, width:contentsView.frame.size.width * 26 / 50, height:contentsView.frame.size.height * 15 / 25))
+        IdeaView.layer.borderWidth = 1
+        IdeaView.layer.cornerRadius = 5
+        IdeaView.layer.borderColor = UIColor.lightGray.cgColor
+        IdeaView.text = IdeaDataArray[ArrayIndex].idea
+        if (IdeaDataArray[ArrayIndex].idea.isEmpty && IdeaDataArray[ArrayIndex].keyword.isEmpty) {
+            IdeaView.placeholder = "キーワードを入力してください."
+        } else if (IdeaDataArray[ArrayIndex].idea.isEmpty && !IdeaDataArray[ArrayIndex].keyword.isEmpty) {
+            IdeaView.placeholder = "["+KeywordTextFieldArray[ArrayIndex].text!+"]をつかった["+siritoriTheme+"]を入力."
+        }
+        IdeaTextViewArray.append(IdeaView)
+        contentsView.addSubview(IdeaView)
+        
+        // スクロールビューに追加
+        scrollView.addSubview(contentsView)
+    }
+    
     func addNextButton() {
         let button   = UIButton()
         let index    = KeywordTextFieldArray.count
@@ -255,8 +277,6 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
         button.addTarget(self, action: #selector(self.onClick(_:)), for: .touchUpInside)
         scrollView.addSubview(button)
     }
-    
-
     
     // データの保存・読み取り
     func saveData(array: [IdeaData]) {
@@ -283,21 +303,22 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
         return user!
     }
     
-    
     func createInitialWord() {
         let contentsView = UIView()
         
         contentsView.frame = CGRect(x:Int(self.view.frame.size.width / 20), y:Int(MarginOfCards), width:Int(WidthOfCard), height:Int(HeightOfCard))
         contentsView.backgroundColor = UIColor(hex: "FABE58", alpha: 1.0)
-        let firstWordLabel = UILabel()
-        firstWordLabel.frame = CGRect(x:WidthOfCard / 50, y:HeightOfCard / 10, width:WidthOfCard , height:HeightOfCard / 10)
-        firstWordLabel.text = "しりとりの最初のフレーズ"
-        firstWordLabel.textColor = UIColor.black
-        contentsView.addSubview(firstWordLabel)
-        let firstWordField = UITextField(frame: CGRect(x:contentsView.frame.size.width / 50, y:contentsView.frame.size.height * 3 / 10, width:contentsView.frame.size.width * 2 / 5, height:contentsView.frame.size.height / 4))
-        firstWordField.borderStyle = UITextBorderStyle.roundedRect
-        firstWordField.text = firstWord
-        contentsView.addSubview(firstWordField)
+        let firstWordTagLabel = UILabel()
+        firstWordTagLabel.frame = CGRect(x:WidthOfCard / 50, y:HeightOfCard / 10, width:WidthOfCard , height:HeightOfCard / 10)
+        firstWordTagLabel.text = "しりとりの最初のフレーズ"
+        firstWordTagLabel.textColor = UIColor.black
+        contentsView.addSubview(firstWordTagLabel)
+        self.firstWordLabel = UILabel(frame: CGRect(x:contentsView.frame.size.width / 50, y:contentsView.frame.size.height * 3 / 10, width:contentsView.frame.size.width * 2 / 5, height:contentsView.frame.size.height / 4))
+        self.firstWordLabel.backgroundColor = UIColor.white
+        self.firstWordLabel.clipsToBounds = true
+        self.firstWordLabel.layer.cornerRadius = 3
+        self.firstWordLabel.text = firstWord
+        contentsView.addSubview(self.firstWordLabel)
         scrollView.addSubview(contentsView)
     }
     
@@ -344,7 +365,6 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
             } else {
                 IdeaTextViewArray[i].placeholder = "["+KeywordTextFieldArray[i].text!+"]をつかった["+siritoriTheme+"]を入力."
             }
-            
             if (i == 0) {
                 KeywordTextFieldArray[i].placeholder = firstWord+"→ ..."
             } else {
@@ -353,19 +373,6 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        let index = KeywordTextFieldArray.count
-        print("disapper index:")
-        var stubIdeaDataArray:[IdeaData] = []
-        for i in 0..<index {
-            let stub = IdeaData(keyword: KeywordTextFieldArray[i].text!, idea: IdeaTextViewArray[i].text!)
-            stubIdeaDataArray.append(stub)
-        }
-        saveData(array: stubIdeaDataArray)
-        print("saveData is called")
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
