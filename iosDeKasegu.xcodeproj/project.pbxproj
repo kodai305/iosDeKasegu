@@ -26,7 +26,6 @@
 		47C6BBC220FCA4D200C1BFDF /* MandaraGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C6BBC120FCA4D200C1BFDF /* MandaraGuideViewController.swift */; };
 		5EBC0C837D2F8073B21F0A40 /* Pods_iosDeKasegu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B1C634B5C0E253B6A65BC5 /* Pods_iosDeKasegu.framework */; };
 		CE465B842109D16800C4CF16 /* TopGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE465B832109D16800C4CF16 /* TopGuideViewController.swift */; };
-		CE465B862109F62700C4CF16 /* SiritoriExample.png in Resources */ = {isa = PBXBuildFile; fileRef = CE465B852109F62700C4CF16 /* SiritoriExample.png */; };
 		CEB2999920F82C930003E985 /* SiritoriGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2999820F82C930003E985 /* SiritoriGuideViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,7 +53,6 @@
 		BEC9F50579D3FA14D89B3E9E /* Pods-iosDeKasegu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosDeKasegu.release.xcconfig"; path = "Pods/Target Support Files/Pods-iosDeKasegu/Pods-iosDeKasegu.release.xcconfig"; sourceTree = "<group>"; };
 		C1B1C634B5C0E253B6A65BC5 /* Pods_iosDeKasegu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosDeKasegu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE465B832109D16800C4CF16 /* TopGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopGuideViewController.swift; sourceTree = "<group>"; };
-		CE465B852109F62700C4CF16 /* SiritoriExample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SiritoriExample.png; path = ../../../SiritoriExample.png; sourceTree = "<group>"; };
 		CEB2999820F82C930003E985 /* SiritoriGuideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiritoriGuideViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,7 +94,6 @@
 				47AF685320E8C874003BD075 /* BaseViewController.swift */,
 				47C6BBBD20FAD8E300C1BFDF /* BaseThemeViewController.swift */,
 				4715B50B21060C75003ACEBA /* BaseWorkViewController.swift */,
-				CE465B852109F62700C4CF16 /* SiritoriExample.png */,
 				47409A2220E6633300AD2031 /* Main.storyboard */,
 				CE465B832109D16800C4CF16 /* TopGuideViewController.swift */,
 				47409A2020E6633300AD2031 /* TopViewController.swift */,
@@ -195,7 +192,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				47409A2C20E6633500AD2031 /* LaunchScreen.storyboard in Resources */,
-				CE465B862109F62700C4CF16 /* SiritoriExample.png in Resources */,
 				47AF685020E8C6C3003BD075 /* GoogleService-Info.plist in Resources */,
 				47409A2920E6633500AD2031 /* Assets.xcassets in Resources */,
 				47409A2420E6633300AD2031 /* Main.storyboard in Resources */,
