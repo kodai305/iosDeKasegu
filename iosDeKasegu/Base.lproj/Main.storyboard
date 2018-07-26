@@ -43,7 +43,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Brf-VP-SpD" kind="show" id="Bzd-ov-AWp"/>
+                                    <segue destination="PHS-Wy-QBI" kind="show" id="DVl-G6-rcM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxR-Cu-w8o">
@@ -108,7 +108,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3756" y="600"/>
+            <point key="canvasLocation" x="3636" y="1156"/>
         </scene>
         <!--Mandara Theme View Controller-->
         <scene sceneID="595-R5-Z2g">
@@ -136,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tsK-cA-sTT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2838" y="600"/>
+            <point key="canvasLocation" x="2694" y="716"/>
         </scene>
         <!--Mandara Guide View Controller-->
         <scene sceneID="5kL-uN-oPa">
@@ -151,7 +151,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UGf-UR-Cvb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2838" y="1330"/>
+            <point key="canvasLocation" x="3636" y="477"/>
         </scene>
         <!--Siritori Theme View Controller-->
         <scene sceneID="JOu-yg-Lor">
@@ -179,7 +179,60 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azt-lP-5xL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2837.5999999999999" y="-232.53373313343329"/>
+            <point key="canvasLocation" x="2695" y="-575"/>
+        </scene>
+        <!--Top Guide View Controller-->
+        <scene sceneID="KS8-jf-mYd">
+            <objects>
+                <viewController id="PHS-Wy-QBI" customClass="TopGuideViewController" customModule="iosDeKasegu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kcV-aW-DLp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WvU-iJ-lFG">
+                                <rect key="frame" x="74" y="389" width="190" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.99578227031718758" blue="0.42074295857966271" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="しりとり法の説明へ">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Brf-VP-SpD" kind="show" id="hxk-fS-K0a"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="このアプリではあなたのアイデアの 発想と拡大を助けるツールが使えます！  発想にはしりとり法 拡大にはマンダラチャートを 採用しています  下のボタンからそれぞれのツールの 使い方を見ることが出来ます！" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mL5-My-iF7">
+                                <rect key="frame" x="13" y="114" width="349" height="205"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="giU-TT-FGP">
+                                <rect key="frame" x="-9" y="519" width="364" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="マンダラチャートの説明へ">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="qD1-sR-4wq" kind="show" id="uZu-tX-U4m"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="zET-us-exY"/>
+                    </view>
+                    <connections>
+                        <outlet property="Introduction" destination="mL5-My-iF7" id="FG8-fR-ydE"/>
+                        <outlet property="MandaraGuide" destination="giU-TT-FGP" id="Enm-Bg-CtA"/>
+                        <outlet property="SiritoriGuide" destination="WvU-iJ-lFG" id="dfC-zF-M02"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q9g-qE-sYx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2693.5999999999999" y="83.208395802098963"/>
         </scene>
         <!--Siritori Guide View Controller-->
         <scene sceneID="8oX-TN-sZq">
@@ -194,7 +247,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MtC-ii-5OZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2838" y="-1039"/>
+            <point key="canvasLocation" x="3636" y="-206"/>
         </scene>
         <!--Siritori Work View Controller-->
         <scene sceneID="e3G-N5-6eo">
@@ -218,7 +271,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3756" y="-233"/>
+            <point key="canvasLocation" x="3636" y="-892"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Gvu-wS-eHV">
@@ -240,6 +293,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Bzd-ov-AWp"/>
+        <segue reference="hxk-fS-K0a"/>
+        <segue reference="uZu-tX-U4m"/>
     </inferredMetricsTieBreakers>
 </document>
