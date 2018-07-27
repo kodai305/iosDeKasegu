@@ -7,7 +7,10 @@
 
 import UIKit
 
-class SiritoriGuideViewController: UIViewController {
+class SiritoriGuideViewController: BaseViewController,UIScrollViewDelegate {
+    
+    //UIPageControlのインスタンス作成
+    let PageControl = UIPageControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,11 +20,11 @@ class SiritoriGuideViewController: UIViewController {
         let WidthOfScrollView:CGFloat = UIScreen.main.bounds.width*0.9
         let HeightOfScrollView:CGFloat = UIScreen.main.bounds.height*0.9
         
-        
         let scrollView = UIScrollView()
         scrollView.frame = CGRect(x: Datum_xOfScrollView, y: Datum_yOfScrollView, width: WidthOfScrollView, height: HeightOfScrollView)
         scrollView.contentSize = CGSize(width: WidthOfScrollView * 4.0, height: HeightOfScrollView)
         scrollView.isPagingEnabled = true
+        scrollView.delegate = self
         
         // しりとり法の説明
         let IntroductionUIView = UIView(frame: CGRect(x: 0, y: 0, width: WidthOfScrollView, height: HeightOfScrollView))
@@ -108,6 +111,26 @@ class SiritoriGuideViewController: UIViewController {
         
         // スクロールビューを追加
         self.view.addSubview(scrollView)
+        
+        //スクロールビューのページ位置を表すドットを追加
+        //pageControlの位置とサイズを設定
+        PageControl.frame = CGRect(x:0, y:self.view.frame.height*0.96, width:self.view.frame.width, height:self.view.frame.height*0.04)
+        //背景色の設定
+        PageControl.backgroundColor = UIColor.lightGray
+        //ページ数の設定
+        PageControl.numberOfPages = 4
+        //現在ページの設定
+        PageControl.currentPage = 0
+        self.view.addSubview(PageControl)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        //スクロール距離 = 1ページ(画面幅)
+        print("in")
+        if fmod(scrollView.contentOffset.x, scrollView.frame.width) == 0 {
+            //ページの切り替え
+            self.PageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.width)
+        }
     }
 
     override func didReceiveMemoryWarning() {
