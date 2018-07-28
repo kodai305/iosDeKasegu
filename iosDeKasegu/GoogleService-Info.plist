@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>34636395815-5kqsq8tr1g56h1j9ircboc3eds99c413.apps.googleusercontent.com</string>
+	<string>34636395815-ptee1dnshi3ho9t1jo4896qkqes4frc1.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.34636395815-5kqsq8tr1g56h1j9ircboc3eds99c413</string>
+	<string>com.googleusercontent.apps.34636395815-ptee1dnshi3ho9t1jo4896qkqes4frc1</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAokyKDCV4XaWPy1QToizN9LGYCfs6WlRk</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>shonanhiratsuka216.HelloWorld</string>
+	<string>jp.iosearn.fastidea</string>
 	<key>PROJECT_ID</key>
 	<string>aideamobile-27004</string>
 	<key>STORAGE_BUCKET</key>
@@ -27,13 +27,13 @@
 	<key>IS_ANALYTICS_ENABLED</key>
 	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false></false>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
 	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:34636395815:ios:5c9fa4cab72749ce</string>
+	<string>1:34636395815:ios:57fb695936fbaafc</string>
 	<key>DATABASE_URL</key>
 	<string>https://aideamobile-27004.firebaseio.com</string>
 </dict>
