@@ -25,6 +25,13 @@ extension UIColor {
 }
 
 class BaseViewController: UIViewController, GADBannerViewDelegate {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = UIColor(hex: "ECF0F1")
+        
+    }
+    
     var bannerView: GADBannerView!
     
     let admob_id = "ca-app-pub-3940256099942544/2934735716"
