@@ -136,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tsK-cA-sTT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2694" y="716"/>
+            <point key="canvasLocation" x="2694" y="777"/>
         </scene>
         <!--Mandara Guide View Controller-->
         <scene sceneID="5kL-uN-oPa">
@@ -148,10 +148,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="B9Q-jz-zMp"/>
                     </view>
+                    <connections>
+                        <segue destination="xfR-05-4tw" kind="show" identifier="toMandaraTheme" id="Vq0-s3-kqI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UGf-UR-Cvb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3636" y="477"/>
+            <point key="canvasLocation" x="3636" y="500"/>
         </scene>
         <!--Siritori Theme View Controller-->
         <scene sceneID="JOu-yg-Lor">
@@ -179,7 +182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azt-lP-5xL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2695" y="-575"/>
+            <point key="canvasLocation" x="2694" y="-582"/>
         </scene>
         <!--Top Guide View Controller-->
         <scene sceneID="KS8-jf-mYd">
@@ -244,10 +247,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="9xZ-dA-zV0"/>
                     </view>
+                    <connections>
+                        <segue destination="Bgr-PG-ANw" kind="show" identifier="toSiritoriTheme" id="hSX-5i-qlC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MtC-ii-5OZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3636" y="-206"/>
+            <point key="canvasLocation" x="3863" y="-286"/>
         </scene>
         <!--Siritori Work View Controller-->
         <scene sceneID="e3G-N5-6eo">
@@ -293,7 +299,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hxk-fS-K0a"/>
-        <segue reference="uZu-tX-U4m"/>
+        <segue reference="qDw-nb-qob"/>
+        <segue reference="hSX-5i-qlC"/>
+        <segue reference="EJg-ct-XpO"/>
+        <segue reference="Vq0-s3-kqI"/>
     </inferredMetricsTieBreakers>
 </document>

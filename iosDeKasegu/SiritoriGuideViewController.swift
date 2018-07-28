@@ -7,21 +7,28 @@
 
 import UIKit
 
-class SiritoriGuideViewController: UIViewController {
+class SiritoriGuideViewController: BaseViewController,UIScrollViewDelegate {
+    
+    //UIPageControlのインスタンス作成
+    let PageControl = UIPageControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //スクロールビューの大きさ、座標を決める
         let Datum_xOfScrollView:CGFloat = UIScreen.main.bounds.width*0.05
         let Datum_yOfScrollView:CGFloat = UIScreen.main.bounds.height*0.1
         let WidthOfScrollView:CGFloat = UIScreen.main.bounds.width*0.9
         let HeightOfScrollView:CGFloat = UIScreen.main.bounds.height*0.9
+        let NumberOfPages:Int = 5
         
-        
+        //スクロールビューの設定
         let scrollView = UIScrollView()
         scrollView.frame = CGRect(x: Datum_xOfScrollView, y: Datum_yOfScrollView, width: WidthOfScrollView, height: HeightOfScrollView)
-        scrollView.contentSize = CGSize(width: WidthOfScrollView * 4.0, height: HeightOfScrollView)
+        //枚数に合わせてwidthの係数を変える
+        scrollView.contentSize = CGSize(width: WidthOfScrollView * CGFloat(NumberOfPages), height: HeightOfScrollView)
         scrollView.isPagingEnabled = true
+        scrollView.delegate = self
         
         // しりとり法の説明
         let IntroductionUIView = UIView(frame: CGRect(x: 0, y: 0, width: WidthOfScrollView, height: HeightOfScrollView))
@@ -29,14 +36,17 @@ class SiritoriGuideViewController: UIViewController {
         let DetailofIntroduction = UILabel()
         DetailofIntroduction.frame = CGRect(x:0, y: HeightOfScrollView * 0.05 ,width: WidthOfScrollView, height: HeightOfScrollView * 0.4 )
         DetailofIntroduction.text = "しりとり法とは \n アイデアを出すテーマを決め \n しりとり形式でキーワードを増やしながら \n キーワードを含むアイデアを考える方法です \n 下は「新しいアプリ」をテーマにした例です"
+        //上記の文章の段数と合わせる
         DetailofIntroduction.numberOfLines = 5
         DetailofIntroduction.font = UIFont.systemFont(ofSize: 40.0)
+        //横幅に合わせてフォントサイズを自動調整
         DetailofIntroduction.adjustsFontSizeToFitWidth = true
         DetailofIntroduction.minimumScaleFactor = 0.3
         
         let ImageofIntroduction = UIImageView(image: UIImage(named: "SiritoriExample.png"))
         ImageofIntroduction.frame.size.width = WidthOfScrollView
         ImageofIntroduction.frame.origin = CGPoint(x: 0, y: HeightOfScrollView * 0.3)
+        //元の画像のアスペクト比を保ったまま、画像を縮小
         ImageofIntroduction.contentMode = UIViewContentMode.scaleAspectFit
         
         let DetailofApp = UILabel()
@@ -106,8 +116,50 @@ class SiritoriGuideViewController: UIViewController {
         ThirdUIView.addSubview(ThirdLable)
         scrollView.addSubview(ThirdUIView)
         
+        //しりとりテーマ画面へ遷移するボタン
+        let ButtonUIView = UIView(frame: CGRect(x: WidthOfScrollView * 4, y: 0, width: WidthOfScrollView, height: HeightOfScrollView))
+        let SiritoriButton = UIButton()
+        SiritoriButton.frame.size = CGSize(width: WidthOfScrollView, height: HeightOfScrollView * 0.3)
+        SiritoriButton.center = CGPoint(x:WidthOfScrollView * 0.5, y:HeightOfScrollView * 0.5)
+        SiritoriButton.backgroundColor = UIColor(hex: "ffd700")
+        //ボタンの角を丸くする
+        SiritoriButton.layer.cornerRadius = 21.0
+        SiritoriButton.addTarget(self, action: #selector(self.movetotheme(sender:)), for: .touchUpInside)
+        let ButtonLable = UILabel()
+        ButtonLable.text = "しりとり法を使う！ \n （テーマ作成画面に移動します）"
+        ButtonLable.numberOfLines = 2
+        ButtonLable.textAlignment = NSTextAlignment.center
+        ButtonLable.font = UIFont.systemFont(ofSize: 20)
+        ButtonLable.frame = CGRect(x:0, y:0,width: SiritoriButton.frame.width, height: SiritoriButton.frame.height)
+        SiritoriButton.addSubview(ButtonLable)
+        ButtonUIView.addSubview(SiritoriButton)
+        scrollView.addSubview(ButtonUIView)
+        
         // スクロールビューを追加
         self.view.addSubview(scrollView)
+        
+        //スクロールビューのページ位置を表すドットを追加
+        //pageControlの位置とサイズを設定
+        PageControl.frame = CGRect(x:0, y:self.view.frame.height*0.96, width:self.view.frame.width, height:self.view.frame.height*0.04)
+        //背景色の設定
+        PageControl.backgroundColor = UIColor.lightGray
+        //ページ数の設定
+        PageControl.numberOfPages = NumberOfPages
+        //現在ページの設定
+        PageControl.currentPage = 0
+        self.view.addSubview(PageControl)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        //スクロール距離 = 1ページ(画面幅)
+        if fmod(scrollView.contentOffset.x, scrollView.frame.width) == 0 {
+            //ページの切り替え
+            self.PageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.width)
+        }
+    }
+    
+    @objc func movetotheme(sender: Any) {
+        self.performSegue(withIdentifier: "toSiritoriTheme", sender: nil)
     }
 
     override func didReceiveMemoryWarning() {
