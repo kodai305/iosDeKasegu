@@ -77,6 +77,8 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
         
         //セルのサイズと初期文字列の長さに合わせてフォントサイズを調整
         let Temp:UITextView = UITextView(frame: CGRect(x: 0, y:0, width:CGFloat(cellSize), height:CGFloat(cellSize)))
+        Temp.textContainerInset = UIEdgeInsets.zero
+        Temp.textContainer.lineFragmentPadding = 0
 
         //要素マスと詳細マスの初期フォントサイズ取得
         Temp.text = InitialTextOfElement
@@ -113,6 +115,8 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
             //要素のマスの色(MADANG)
             CellTextView.backgroundColor = UIColor(hex: "C8F7C5", alpha: 1.0)
             ElementArray[index_i] = CellTextView
+            ElementArray[index_i].textContainerInset = UIEdgeInsets.zero
+            ElementArray[index_i].textContainer.lineFragmentPadding = 0
             ElementArray[index_i].delegate = self
             //初期化or編集されていないマスの場合
             if (lastData.CentralData[index_i].isEmpty || lastData.CentralData[index_i] == InitialTextOfElement) {
@@ -130,6 +134,8 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
             CellTextView = UITextView(frame: CGRect(x: ThemeLabel.center.x-CGFloat(vectorLen+(cellSize+margin)*3*x), y:ThemeLabel.center.y-CGFloat(vectorLen+(cellSize+margin)*3*y), width:CGFloat(cellSize), height:CGFloat(cellSize)))
             CellTextView.backgroundColor = UIColor(hex: "C8F7C5", alpha: 1.0)
             ElementRoundArray[index_i] = CellTextView
+            ElementRoundArray[index_i].textContainerInset = UIEdgeInsets.zero
+            ElementRoundArray[index_i].textContainer.lineFragmentPadding = 0
             ElementRoundArray[index_i].delegate = self
             //ロードする情報がある場合
             if (!lastData.CentralData[index_i].isEmpty) {
@@ -145,6 +151,8 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
                 //詳細マスの色(ALICE BLUE)
                 CellTextView.backgroundColor = UIColor(hex: "E4F1FE", alpha: 1.0)
                 DetailArray[index_i][index_j] = CellTextView
+                DetailArray[index_i][index_j].textContainerInset = UIEdgeInsets.zero
+                DetailArray[index_i][index_j].textContainer.lineFragmentPadding = 0
                 DetailArray[index_i][index_j].delegate = self
                 //初期化or編集されていないマスの場合
                 if (lastData.DetailData[index_i][index_j].isEmpty || lastData.DetailData[index_i][index_j] == InitialTextOfDetail) {
