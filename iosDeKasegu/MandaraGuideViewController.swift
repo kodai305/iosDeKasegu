@@ -8,6 +8,7 @@
 
 import UIKit
 //import PlaceholderTextView
+import AVFoundation
 
 class MandaraGuideViewController: BaseViewController,UIScrollViewDelegate {
     
@@ -32,35 +33,54 @@ class MandaraGuideViewController: BaseViewController,UIScrollViewDelegate {
         scrollView.isPagingEnabled = true
         scrollView.delegate = self
         
-        // しりとり法の説明
+        // マンダラチャートの説明
         let IntroductionUIView = UIView(frame: CGRect(x: 0, y: 0, width: WidthOfScrollView, height: HeightOfScrollView))
         
-        let DetailofIntroduction = UILabel()
-        DetailofIntroduction.frame = CGRect(x:0, y: HeightOfScrollView * 0.05 ,width: WidthOfScrollView, height: HeightOfScrollView * 0.3 )
-        DetailofIntroduction.text = "マンダラチャートは \n あるアイデアから9つの単語を連想し \n それぞれの単語に関連する \n 単語を9つ考えることで \n アイデアを拡大する方法です \n 下は「りんごを育てるアプリ」の例です"
+        let TitelofIntroduction = UILabel()
+        TitelofIntroduction.frame.size = CGSize(width: WidthOfScrollView, height: 0)
+        TitelofIntroduction.center = CGPoint(x:self.view.center.x, y: HeightOfScrollView * 0.05)
+        let TitleText = "マンダラチャートとは"
+        // attributedTextを作成する.
+        let attributedText = NSMutableAttributedString(string: TitleText)
+        let range = NSMakeRange(0, TitleText.count)
+        // 下線を引くようの設定をする.
+        attributedText.addAttribute(.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: range)
+        TitelofIntroduction.attributedText = attributedText
+        TitelofIntroduction.textAlignment = NSTextAlignment.center
         //上記の文章の段数と合わせる
-        DetailofIntroduction.numberOfLines = 6
-        DetailofIntroduction.font = UIFont.systemFont(ofSize: 40.0)
-        //横幅に合わせてフォントサイズを自動調整
-        DetailofIntroduction.adjustsFontSizeToFitWidth = true
-        DetailofIntroduction.minimumScaleFactor = 0.3
+        TitelofIntroduction.numberOfLines = 1
+        TitelofIntroduction.font = UIFont.boldSystemFont(ofSize: 25)
+        TitelofIntroduction.sizeToFit()
         
-        let ImageofIntroduction = UIImageView(image: UIImage(named: "MandaraExample.png"))
-        ImageofIntroduction.frame.size.width = WidthOfScrollView
-        ImageofIntroduction.frame.origin = CGPoint(x: 0, y: HeightOfScrollView * 0.1)
+        let DetailofIntroduction = UILabel()
+        DetailofIntroduction.frame = CGRect(x:0, y: TitelofIntroduction.frame.origin.y + TitelofIntroduction.frame.height + 15 ,width: WidthOfScrollView, height: 0)
+        DetailofIntroduction.text = "マンダラチャートは \n アイデアの拡大に使用するツールです。 \n 具体的には  \n 1.あるアイデアから9つの単語を連想 \n 2.連想した単語に関連する単語を9つ考える  \n という手順で進めます。\n 下は「りんごを育てるアプリ」の例です"
+        DetailofIntroduction.textAlignment = NSTextAlignment.left
+        //上記の文章の段数と合わせる
+        DetailofIntroduction.numberOfLines = 7
+        DetailofIntroduction.font = UIFont.systemFont(ofSize: 17)
+        DetailofIntroduction.sizeToFit()
+        
+        let ImageofIntroduction = UIImage(named: "MandaraExample.png")
+        let UIImageofIntroduction = UIImageView(image: ImageofIntroduction)
+        UIImageofIntroduction.frame.size.width = WidthOfScrollView
         //元の画像のアスペクト比を保ったまま、画像を縮小
-        ImageofIntroduction.contentMode = UIViewContentMode.scaleAspectFit
-        
+        UIImageofIntroduction.contentMode = UIViewContentMode.scaleAspectFit
+        //縮小した後の画像のサイズと座標を取得
+        let FrameOfImage = AVMakeRect(aspectRatio: (ImageofIntroduction?.size)!, insideRect: UIImageofIntroduction.bounds)
+        //縮小した後の画像の座標に合わせてUIViewもオフセット
+        UIImageofIntroduction.frame.origin = CGPoint(x: 0, y:  (DetailofIntroduction.frame.origin.y - FrameOfImage.origin.y) + DetailofIntroduction.frame.height + 15)
+
         let DetailofApp = UILabel()
-        DetailofApp.frame = CGRect(x:0, y: HeightOfScrollView * 0.65 ,width: WidthOfScrollView, height: HeightOfScrollView * 0.3 )
-        DetailofApp.text = "左にスワイプすると \n 詳しいアプリの使い方を見ることが出来ます \n このアプリでは途中経過も保存されるので \n どんどん使いましょう！"
-        DetailofApp.numberOfLines = 4
-        DetailofApp.font = UIFont.systemFont(ofSize: 40.0)
-        DetailofApp.adjustsFontSizeToFitWidth = true
-        DetailofApp.minimumScaleFactor = 0.2
+        DetailofApp.frame = CGRect(x:0, y: UIImageofIntroduction.frame.origin.y + (UIImageofIntroduction.frame.height - FrameOfImage.origin.y) + 15 ,width: WidthOfScrollView, height: 0 )
+        DetailofApp.text = "左にスワイプするとアプリの使い方を \n 見ることが出来ます。 \n 途中の状態で保存して再開することも　\n 出来ます。（保存は自動で行われます。）"
+        DetailofApp.numberOfLines = 0
+        DetailofApp.font = UIFont.systemFont(ofSize: 17)
+        DetailofApp.sizeToFit()
         
-        IntroductionUIView.addSubview(ImageofIntroduction)
+        IntroductionUIView.addSubview(TitelofIntroduction)
         IntroductionUIView.addSubview(DetailofIntroduction)
+        IntroductionUIView.addSubview(UIImageofIntroduction)
         IntroductionUIView.addSubview(DetailofApp)
         scrollView.addSubview(IntroductionUIView)
         
@@ -146,7 +166,7 @@ class MandaraGuideViewController: BaseViewController,UIScrollViewDelegate {
         MandaraButton.layer.cornerRadius = 21.0
         MandaraButton.addTarget(self, action: #selector(self.movetotheme(sender:)), for: .touchUpInside)
         let ButtonLable = UILabel()
-        ButtonLable.text = "マンダラチャートを使う！ \n （テーマ作成画面に移動します）"
+        ButtonLable.text = "マンダラチャートを使う \n （テーマ作成画面に移動します）"
         ButtonLable.numberOfLines = 2
         ButtonLable.textAlignment = NSTextAlignment.center
         ButtonLable.font = UIFont.systemFont(ofSize: 20)

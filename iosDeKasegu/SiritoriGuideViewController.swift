@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class SiritoriGuideViewController: BaseViewController,UIScrollViewDelegate {
     
@@ -33,32 +34,50 @@ class SiritoriGuideViewController: BaseViewController,UIScrollViewDelegate {
         // しりとり法の説明
         let IntroductionUIView = UIView(frame: CGRect(x: 0, y: 0, width: WidthOfScrollView, height: HeightOfScrollView))
         
-        let DetailofIntroduction = UILabel()
-        DetailofIntroduction.frame = CGRect(x:0, y: HeightOfScrollView * 0.05 ,width: WidthOfScrollView, height: HeightOfScrollView * 0.4 )
-        DetailofIntroduction.text = "しりとり法とは \n アイデアを出すテーマを決め \n しりとり形式でキーワードを増やしながら \n キーワードを含むアイデアを考える方法です \n 下は「新しいアプリ」をテーマにした例です"
+        let TitelofIntroduction = UILabel()
+        TitelofIntroduction.frame.size = CGSize(width: WidthOfScrollView, height: 0)
+        TitelofIntroduction.center = CGPoint(x:self.view.center.x, y: HeightOfScrollView * 0.05)
+        let TitleText = "しりとり法とは"
+        // attributedTextを作成する.
+        let attributedText = NSMutableAttributedString(string: TitleText)
+        let range = NSMakeRange(0, TitleText.count)
+        // 下線を引くようの設定をする.
+        attributedText.addAttribute(.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: range)
+        TitelofIntroduction.attributedText = attributedText
+        TitelofIntroduction.textAlignment = NSTextAlignment.center
         //上記の文章の段数と合わせる
-        DetailofIntroduction.numberOfLines = 5
-        DetailofIntroduction.font = UIFont.systemFont(ofSize: 40.0)
-        //横幅に合わせてフォントサイズを自動調整
-        DetailofIntroduction.adjustsFontSizeToFitWidth = true
-        DetailofIntroduction.minimumScaleFactor = 0.3
+        TitelofIntroduction.numberOfLines = 1
+        TitelofIntroduction.font = UIFont.boldSystemFont(ofSize: 25)
+        TitelofIntroduction.sizeToFit()
         
-        let ImageofIntroduction = UIImageView(image: UIImage(named: "SiritoriExample.png"))
-        ImageofIntroduction.frame.size.width = WidthOfScrollView
-        ImageofIntroduction.frame.origin = CGPoint(x: 0, y: HeightOfScrollView * 0.3)
+        let DetailofIntroduction = UILabel()
+        DetailofIntroduction.frame = CGRect(x:0, y: TitelofIntroduction.frame.origin.y + TitelofIntroduction.frame.height + 15 ,width: WidthOfScrollView, height: 0)
+        DetailofIntroduction.text = "しりとり法は \n アイデアの発想を使用するツールです。 \n 具体的には \n 1.アイデアを出すテーマを決定 \n 2.最初のキーワードを決定 \n 3.しりとり形式で新しいキーワードを決定 \n 4.3のキーワードを含むアイデアを考案 \n 5.3と4を繰り返す \n という手順で進めます。 \n 下は「新しいアプリ」をテーマにした例です"
+        //上記の文章の段数と合わせる
+        DetailofIntroduction.numberOfLines = 11
+        DetailofIntroduction.font = UIFont.systemFont(ofSize: 17)
+        DetailofIntroduction.sizeToFit()
+        
+        let ImageofIntroduction = UIImage(named: "SiritoriExample.png")
+        let UIImageofIntroduction = UIImageView(image: ImageofIntroduction)
+        UIImageofIntroduction.frame.size.width = WidthOfScrollView
         //元の画像のアスペクト比を保ったまま、画像を縮小
-        ImageofIntroduction.contentMode = UIViewContentMode.scaleAspectFit
+        UIImageofIntroduction.contentMode = UIViewContentMode.scaleAspectFit
+        //縮小した後の画像のサイズと座標を取得
+        let FrameOfImage = AVMakeRect(aspectRatio: (ImageofIntroduction?.size)!, insideRect: UIImageofIntroduction.bounds)
+        //縮小した後の画像の座標に合わせてUIViewもオフセット
+        UIImageofIntroduction.frame.origin = CGPoint(x: 0, y:  (DetailofIntroduction.frame.origin.y - FrameOfImage.origin.y) + DetailofIntroduction.frame.height + 10)
         
         let DetailofApp = UILabel()
-        DetailofApp.frame = CGRect(x:0, y: HeightOfScrollView * 0.6 ,width: WidthOfScrollView, height: HeightOfScrollView * 0.3 )
-        DetailofApp.text = "左にスワイプすると \n 詳しいアプリの使い方を見ることが出来ます \n このアプリでは途中経過も保存されるので \n どんどん使いましょう！"
-        DetailofApp.numberOfLines = 4
-        DetailofApp.font = UIFont.systemFont(ofSize: 40.0)
-        DetailofApp.adjustsFontSizeToFitWidth = true
-        DetailofApp.minimumScaleFactor = 0.2
+        DetailofApp.frame = CGRect(x:0, y: UIImageofIntroduction.frame.origin.y + (UIImageofIntroduction.frame.height - FrameOfImage.origin.y) + 15 ,width: WidthOfScrollView, height: 0 )
+        DetailofApp.text = "左にスワイプするとアプリの使い方を \n 見ることが出来ます。 \n 途中の状態で保存して再開することも　\n 出来ます。（保存は自動で行われます。）"
+        DetailofApp.numberOfLines = 0
+        DetailofApp.font = UIFont.systemFont(ofSize: 17)
+        DetailofApp.sizeToFit()
         
-        IntroductionUIView.addSubview(ImageofIntroduction)
+        IntroductionUIView.addSubview(TitelofIntroduction)
         IntroductionUIView.addSubview(DetailofIntroduction)
+        IntroductionUIView.addSubview(UIImageofIntroduction)
         IntroductionUIView.addSubview(DetailofApp)
         scrollView.addSubview(IntroductionUIView)
         
@@ -106,7 +125,7 @@ class SiritoriGuideViewController: BaseViewController,UIScrollViewDelegate {
         ThirdImage.contentMode = UIViewContentMode.scaleAspectFit
         
         let ThirdLable = UILabel()
-        ThirdLable.text = "キーワード1を含むアイデア1を考案 \n 次へボタンをタップして \n キーワード2のカードを作成 \n 100個のアイデアを目指そう！"
+        ThirdLable.text = "キーワード1を含むアイデア1を考案 \n 次へボタンをタップして \n キーワード2のカードを作成 \n アイデア数は無制限です"
         ThirdLable.numberOfLines = 4
         ThirdLable.font = UIFont.systemFont(ofSize: 20.0)
         ThirdLable.frame = CGRect(x:0, y: HeightOfScrollView * 0.72,width: WidthOfScrollView, height: HeightOfScrollView * 0.3)
@@ -126,7 +145,7 @@ class SiritoriGuideViewController: BaseViewController,UIScrollViewDelegate {
         SiritoriButton.layer.cornerRadius = 21.0
         SiritoriButton.addTarget(self, action: #selector(self.movetotheme(sender:)), for: .touchUpInside)
         let ButtonLable = UILabel()
-        ButtonLable.text = "しりとり法を使う！ \n （テーマ作成画面に移動します）"
+        ButtonLable.text = "しりとり法を使う \n （テーマ作成画面に移動します）"
         ButtonLable.numberOfLines = 2
         ButtonLable.textAlignment = NSTextAlignment.center
         ButtonLable.font = UIFont.systemFont(ofSize: 20)

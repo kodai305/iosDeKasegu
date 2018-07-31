@@ -204,7 +204,7 @@
                                     <segue destination="Brf-VP-SpD" kind="show" id="hxk-fS-K0a"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="このアプリではあなたのアイデアの 発想と拡大を助けるツールが使えます！  発想にはしりとり法 拡大にはマンダラチャートを 採用しています  下のボタンからそれぞれのツールの 使い方を見ることが出来ます！" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mL5-My-iF7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="このアプリではあなたのアイデアの 発想と拡大を助けるツールが使えます！  発想にはしりとり法 拡大にはマンダラチャートを 採用しています  下のボタンからそれぞれのツールの 使い方を見ることが出来ます！" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="mL5-My-iF7">
                                 <rect key="frame" x="13" y="114" width="349" height="205"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
