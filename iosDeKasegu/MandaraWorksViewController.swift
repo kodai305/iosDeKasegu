@@ -368,12 +368,12 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
         let keyboardFrame = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         //キーボード+ツールバーの上端のy座標を保存
         topKeyboard = keyboardFrame.origin.y
-        
     }
     
     //キーボードが下がった時の処理
     @objc override func keyboardWillHide(_ notification: Notification) {
         //キーボードが下がって分全体を下げる
+        
         BackGround.frame.origin.y = BackGround.frame.origin.y + 50.0
         DoneToolBar.frame.origin = CGPoint(x: 0, y: self.view.frame.height)
     }

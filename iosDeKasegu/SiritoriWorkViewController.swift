@@ -120,11 +120,11 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
         //キーボードの大きさ、座標を取得
         let keyboardFrame = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         //キーボード+ツールバーの上端のy座標を保存
+        
         topKeyboard = keyboardFrame.origin.y
         distance =  textField_y - topKeyboard
         // 編集しているマスがキーボードと重なるかを判定
         if distance >= 0 {
-            
             // scrollViewのコンテツを上へオフセット
             scrollView.contentInset.bottom += distance
             scrollView.contentOffset.y += distance

@@ -54,6 +54,7 @@ class BaseWorkViewController: BaseViewController {
     // キーボードが表示、非表示された時に最初に呼び出される関数（textViewDidBeginEditing(）より早い）
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(_:)),name: NSNotification.Name.UIKeyboardWillShow,object: nil)
         NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(_:)) ,name: NSNotification.Name.UIKeyboardWillHide,object: nil)
     }
