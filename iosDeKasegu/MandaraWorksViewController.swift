@@ -368,6 +368,7 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
         let keyboardFrame = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         //キーボード+ツールバーの上端のy座標を保存
         topKeyboard = keyboardFrame.origin.y
+        
     }
     
     //キーボードが下がった時の処理

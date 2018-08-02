@@ -124,6 +124,7 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
         distance =  textField_y - topKeyboard
         // 編集しているマスがキーボードと重なるかを判定
         if distance >= 0 {
+            
             // scrollViewのコンテツを上へオフセット
             scrollView.contentInset.bottom += distance
             scrollView.contentOffset.y += distance
