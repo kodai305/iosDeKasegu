@@ -12,6 +12,7 @@ import GoogleMobileAds
 class BaseWorkViewController: BaseViewController {
 
     var toolbar: UIToolbar!
+    var topKeyboard:CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,21 @@ class BaseWorkViewController: BaseViewController {
                                 multiplier: 1,
                                 constant: 0)
             ])
+    }
+    
+    // キーボードが表示、非表示された時に最初に呼び出される関数（textViewDidBeginEditing(）より早い）
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(_:)),name: NSNotification.Name.UIKeyboardWillShow,object: nil)
+        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(_:)) ,name: NSNotification.Name.UIKeyboardWillHide,object: nil)
+    }
+    
+    //キーボードが表示された時の処理（マンダラとしりとりのWorkViewControllerでOverrideする）
+    @objc func keyboardWillShow(_ notification: Notification) {
+    }
+ 
+    //キーボードが下がった時の処理（マンダラとしりとりのWorkViewControllerでOverrideする）
+    @objc func keyboardWillHide(_ notification: Notification) {
     }
 
     /*

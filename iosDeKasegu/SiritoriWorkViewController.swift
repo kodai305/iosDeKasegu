@@ -37,6 +37,9 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
 
     var firstWord = "しりとり"
     let scrollView = UIScrollView()
+    
+    var textField_y:CGFloat = 0
+    var distance:CGFloat = 0
 
     // キーボードを下げる
     @IBAction func tapView(_ sender: UITapGestureRecognizer) {
@@ -102,6 +105,36 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
         }
         saveData(array: stubIdeaDataArray)
         print("saveData is called")
+    }
+    
+    //マスの編集開始時の処理
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        // 編集しているマスの下端の絶対座標を算出
+        let textFieldOrigin = textField.convert(textField.frame, to: self.view)
+        textField_y = textFieldOrigin.origin.y
+    }
+    
+    //キーボードが表示された時の処理
+    @objc override func keyboardWillShow(_ notification: Notification) {
+        let info = notification.userInfo!
+        //キーボードの大きさ、座標を取得
+        let keyboardFrame = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        //キーボード+ツールバーの上端のy座標を保存
+        topKeyboard = keyboardFrame.origin.y
+        distance =  textField_y - topKeyboard
+        // 編集しているマスがキーボードと重なるかを判定
+        if distance >= 0 {
+            // scrollViewのコンテツを上へオフセット
+            scrollView.contentInset.bottom += distance
+            scrollView.contentOffset.y += distance
+        }
+    }
+    
+    //キーボードが下がった時の処理
+    @objc override func keyboardWillHide(_ notification: Notification) {
+        //scrollViewのオフセットを初期化
+        UIView.animate(withDuration: 0.5, animations: {self.scrollView.contentOffset.y -= self.distance})
+        scrollView.contentInset = UIEdgeInsets.zero
     }
     
     // シェアボタン
@@ -212,6 +245,7 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
         IdeaView.layer.cornerRadius = 5
         IdeaView.layer.borderColor = UIColor.lightGray.cgColor
         IdeaView.placeholder = "キーワードを入力してください."
+        IdeaView.delegate = self as? UITextViewDelegate
         IdeaTextViewArray.append(IdeaView)
         contentsView.addSubview(IdeaView)
         
@@ -238,6 +272,7 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
         print(ArrayIndex)
         keywordField.layer.borderWidth = 1
         keywordField.layer.borderColor = UIColor.lightGray.cgColor
+        keywordField.delegate = self
         KeywordTextFieldArray.append(keywordField)
         if (ArrayIndex == 0) {
             keywordField.placeholder = firstWord + "→ ..."
@@ -254,6 +289,7 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
         IdeaView.layer.borderWidth = 1
         IdeaView.layer.cornerRadius = 5
         IdeaView.layer.borderColor = UIColor.lightGray.cgColor
+        IdeaView.delegate = self as? UITextViewDelegate
         IdeaView.text = IdeaDataArray[ArrayIndex].idea
         IdeaTextViewArray.append(IdeaView)
         if (IdeaDataArray[ArrayIndex].idea.isEmpty && IdeaDataArray[ArrayIndex].keyword.isEmpty) {

@@ -56,7 +56,6 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
     let InitialTextOfDetail:String!  = "詳細を入力"
     var InitialFontSizeOfElement: CGFloat = 0
     var InitialFontSizeOfDetail:  CGFloat = 0
-    var topKeyboard:CGFloat = 0
     var BackGround = UIView() //マンダラチャートの全てのマスを同時に動かすためのUIView
     
     let vector: [(x: Int, y: Int)] = [
@@ -362,15 +361,8 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
         }
     }
     
-    // キーボードが表示、非表示された時に最初に呼び出される関数（textViewDidBeginEditing(）より早い）
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(_:)),name: NSNotification.Name.UIKeyboardWillShow,object: nil)
-        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(_:)) ,name: NSNotification.Name.UIKeyboardWillHide,object: nil)
-    }
-    
     //キーボードが表示された時の処理
-    @objc func keyboardWillShow(_ notification: Notification) {
+    @objc override func keyboardWillShow(_ notification: Notification) {
         let info = notification.userInfo!
         //キーボードの大きさ、座標を取得
         let keyboardFrame = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
@@ -378,13 +370,13 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
         topKeyboard = keyboardFrame.origin.y
     }
     
-     //キーボードが下がった時の処理
-    @objc func keyboardWillHide(_ notification: Notification) {
+    //キーボードが下がった時の処理
+    @objc override func keyboardWillHide(_ notification: Notification) {
         //キーボードが下がって分全体を下げる
         BackGround.frame.origin.y = BackGround.frame.origin.y + 50.0
         DoneToolBar.frame.origin = CGPoint(x: 0, y: self.view.frame.height)
     }
-
+    
     //UITextView以外を触るとキーボードが下がる
     @IBAction func Tap(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
