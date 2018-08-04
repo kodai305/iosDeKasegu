@@ -65,7 +65,6 @@ class BaseWorkViewController: BaseViewController {
  
     //キーボードが下がった時の処理（マンダラとしりとりのWorkViewControllerでOverrideする）
     @objc func keyboardWillHide(_ notification: Notification) {
-        
     }
 
     /*
