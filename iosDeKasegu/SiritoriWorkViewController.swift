@@ -76,7 +76,7 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate , 
         scrollView.backgroundColor = UIColor(hex: "ECF0F1", alpha: 10.0)
         scrollView.keyboardDismissMode = .onDrag
         scrollView.frame = CGRect(x:0 , y:60 + view.frame.height / 10, width:view.frame.width, height:view.frame.height-50)
-        scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height-20+CGFloat(140*index))
+        scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height+50+CGFloat(140*index))
         self.view.addSubview(scrollView)
         
         //UIToolBarの生成
