@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main-->
+        <!--Top View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="TopViewController" customModule="iosDeKasegu" sceneMemberID="viewController">
@@ -63,7 +63,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Main" id="jmy-MV-NVb"/>
+                    <navigationItem key="navigationItem" id="jmy-MV-NVb"/>
                     <connections>
                         <outlet property="Expand" destination="kxR-Cu-w8o" id="y60-Pb-51S"/>
                         <outlet property="GetIdea" destination="M0j-6a-V72" id="jnj-xO-ePX"/>
@@ -300,8 +300,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="qDw-nb-qob"/>
-        <segue reference="hSX-5i-qlC"/>
+        <segue reference="KSb-Wu-HjH"/>
         <segue reference="EJg-ct-XpO"/>
-        <segue reference="Vq0-s3-kqI"/>
+        <segue reference="oNq-OB-Gg1"/>
     </inferredMetricsTieBreakers>
 </document>

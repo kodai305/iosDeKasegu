@@ -24,56 +24,69 @@ class TopViewController: BaseViewController {
         super.viewDidLoad()
         
         //サイズ、位置を動的に動かすためにUIImageViewにセット
-        let GetIdeaImageView = UIImageView(image: ImageOfGetIdea)
         let ExpandImageView = UIImageView(image: ImageOfExpand)
         let TutorialImageView = UIImageView(image: ImageOfTutorial)
         
         //ボタンの大きさ、ボタン間の距離を動的に設定
-        let Width :CGFloat = self.view.frame.width * 4 / 5
+        let Width :CGFloat = self.view.frame.width
         let Height :CGFloat = self.view.frame.height / 4
         let margin :CGFloat = Height / 10
         
+        //表題
+        let Title =  UILabel(frame: CGRect(x:0,y:(self.navigationController?.navigationBar.frame.size.height)!+margin,width:Width,height:Height/2.5))
+        Title.text = "Fast Idea"
+        Title.font = UIFont(name: "Futura-Medium", size: 35)
+        Title.numberOfLines = 0
+        Title.textAlignment = NSTextAlignment.center
+        Title.baselineAdjustment = UIBaselineAdjustment.alignCenters
+        Title.backgroundColor = UIColor(hex: "ECF0F1")
+        self.view.addSubview(Title)
+        
         //アイデアを発想ボタンの設定
-        GetIdea.frame = CGRect(x:self.view.frame.width / 10, y : self.view.frame.height / 8, width:Width,height:Height)
+        GetIdea.frame = CGRect(x:0, y : Title.frame.origin.y + Title.frame.height, width:Width,height:Height)
         //ボタンに使う画像の縮尺率を算出
+        let GetIdeaImageView = UIImageView(image: ImageOfGetIdea)
         var Image_Scale :CGFloat = GetIdea.frame.height / GetIdeaImageView.frame.size.height * 3 / 5
         GetIdeaImageView.frame.size  = CGSize(width:GetIdeaImageView.frame.size.width * Image_Scale,height:GetIdeaImageView.frame.size.height * Image_Scale)
         GetIdeaImageView.center = CGPoint(x:GetIdea.frame.width / 2, y : GetIdea.frame.height * 2 / 5)
         GetIdea.addSubview(GetIdeaImageView)
         //ボタンの文字の設定
-        GetIdea.setTitle("アイデアを発想", for: UIControlState.normal)
-        GetIdea.setTitleColor(UIColor.black, for: UIControlState.normal)
-        GetIdea.titleEdgeInsets = UIEdgeInsetsMake(0.8 * Height, 0, 0, 0)
-        //ボタンの角を丸くする
-        GetIdea.layer.cornerRadius = 21.0
+        let GetIdeaTitle = UILabel(frame: CGRect(x:0,y:GetIdeaImageView.frame.origin.y + GetIdeaImageView.frame.height,width:Width,height:Height * 3 / 10))
+        GetIdeaTitle.text = "アイデアを発想"
+        GetIdeaTitle.font = UIFont(name: "HiraginoSans-W6", size: 20)
+        GetIdeaTitle.adjustsFontSizeToFitWidth = true
+        GetIdeaTitle.textAlignment = NSTextAlignment.center
+        GetIdea.addSubview(GetIdeaTitle)
         
         //アイデアを拡大ボタンの設定
-        Expand.frame = CGRect(x:self.view.frame.width / 10, y:GetIdea.frame.origin.y + Height + margin,width:Width, height:Height)
+        Expand.frame = CGRect(x:0, y:GetIdea.frame.origin.y + Height,width:Width, height:Height)
         //ボタンに使う画像の縮尺率を算出
         Image_Scale = Expand.frame.height / ExpandImageView.frame.size.height * 3 / 5
         ExpandImageView.frame.size  = CGSize(width:ExpandImageView.frame.size.width * Image_Scale,height:ExpandImageView.frame.size.height * Image_Scale)
         ExpandImageView.center = CGPoint(x:Expand.frame.width / 2, y : Expand.frame.height * 2 / 5)
         Expand.addSubview(ExpandImageView)
         //ボタンの文字の設定
-        Expand.setTitle("アイデアを拡大", for: UIControlState.normal)
-        Expand.setTitleColor(UIColor.black, for: UIControlState.normal)
-        Expand.titleEdgeInsets = UIEdgeInsetsMake(0.8 * Height, 0, 0, 0)
-        //ボタンの角を丸くする
-        Expand.layer.cornerRadius = 21.0
+        let ExpandTitle = UILabel(frame: CGRect(x:0,y:ExpandImageView.frame.origin.y + ExpandImageView.frame.height,width:Width,height:Height * 3 / 10))
+        ExpandTitle.text = "アイデアを拡大"
+        ExpandTitle.font = UIFont(name: "HiraginoSans-W6", size: 20)
+        ExpandTitle.adjustsFontSizeToFitWidth = true
+        ExpandTitle.textAlignment = NSTextAlignment.center
+        Expand.addSubview(ExpandTitle)
         
         //チュートリアルボタンの設定
-        Tutorial.frame = CGRect(x:self.view.frame.width / 10, y:Expand.frame.origin.y + Height + margin,width:Width, height:Height)
+        Tutorial.frame = CGRect(x:0, y:Expand.frame.origin.y + Height,width:Width, height:Height)
         //ボタンに使う画像の縮尺率を算出
         Image_Scale = Tutorial.frame.height / TutorialImageView.frame.size.height * 3 / 5
         TutorialImageView.frame.size  = CGSize(width:TutorialImageView.frame.size.width * Image_Scale,height:TutorialImageView.frame.size.height * Image_Scale)
         TutorialImageView.center = CGPoint(x:Tutorial.frame.width / 2, y : Tutorial.frame.height * 2 / 5)
         Tutorial.addSubview(TutorialImageView)
         //ボタンの文字の設定
-        Tutorial.setTitle("チュートリアル", for: UIControlState.normal)
-        Tutorial.setTitleColor(UIColor.black, for: UIControlState.normal)
-        Tutorial.titleEdgeInsets = UIEdgeInsetsMake(0.8 * Height, 0, 0, 0)
-        //ボタンの角を丸くする
-        Tutorial.layer.cornerRadius = 21.0
+        let TutorialTitle = UILabel(frame: CGRect(x:0,y:TutorialImageView.frame.origin.y + TutorialImageView.frame.height,width:Width,height:Height * 3 / 10))
+        TutorialTitle.text = "チュートリアル"
+        TutorialTitle.font = UIFont(name: "HiraginoSans-W6", size: 20)
+        TutorialTitle.adjustsFontSizeToFitWidth = true
+        TutorialTitle.textAlignment = NSTextAlignment.center
+        Tutorial.addSubview(TutorialTitle)
         
         
         // To display the advertisement
