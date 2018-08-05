@@ -11,7 +11,7 @@ import GoogleMobileAds
 
 
 
-class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
+class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate , UITextViewDelegate{
     // 構造体
     struct IdeaData: Codable {
         var keyword: String = ""
@@ -107,11 +107,26 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
         print("saveData is called")
     }
     
-    //マスの編集開始時の処理
+    //キーワードマスの編集開始時の処理
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // 編集しているマスの下端の絶対座標を算出
         let textFieldOrigin = textField.convert(textField.frame, to: self.view)
         textField_y = textFieldOrigin.origin.y
+    }
+    
+    //アイデアマスの編集開始時の処理
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        // 編集しているマスの下端の絶対座標を算出
+        let textFieldOrigin = textView.convert(textView.frame, to: self.view)
+        textField_y = textFieldOrigin.origin.y
+        distance =  textField_y - topKeyboard + textView.frame.height
+        // 編集しているマスがキーボードと重なるかを判定
+        if distance >= 0 {
+            // scrollViewのコンテツを上へオフセット
+            scrollView.contentInset.bottom += distance
+            scrollView.contentOffset.y += distance
+            textField_y = 0
+        }
     }
     
     //キーボードが表示された時の処理
@@ -128,6 +143,7 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
             // scrollViewのコンテツを上へオフセット
             scrollView.contentInset.bottom += distance
             scrollView.contentOffset.y += distance
+            textField_y = 0
         }
     }
     
@@ -246,7 +262,7 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
         IdeaView.layer.cornerRadius = 5
         IdeaView.layer.borderColor = UIColor.lightGray.cgColor
         IdeaView.placeholder = "キーワードを入力してください."
-        IdeaView.delegate = self as? UITextViewDelegate
+        IdeaView.delegate = self
         IdeaTextViewArray.append(IdeaView)
         contentsView.addSubview(IdeaView)
         
@@ -290,7 +306,7 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
         IdeaView.layer.borderWidth = 1
         IdeaView.layer.cornerRadius = 5
         IdeaView.layer.borderColor = UIColor.lightGray.cgColor
-        IdeaView.delegate = self as? UITextViewDelegate
+        IdeaView.delegate = self
         IdeaView.text = IdeaDataArray[ArrayIndex].idea
         IdeaTextViewArray.append(IdeaView)
         if (IdeaDataArray[ArrayIndex].idea.isEmpty && IdeaDataArray[ArrayIndex].keyword.isEmpty) {
