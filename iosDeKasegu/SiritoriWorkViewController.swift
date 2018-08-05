@@ -278,7 +278,7 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate {
         if (ArrayIndex == 0) {
             keywordField.placeholder = firstWord + "→ ..."
         } else {
-            keywordField.placeholder = KeywordTextFieldArray[ArrayIndex].text!+"→ ..."
+            keywordField.placeholder = KeywordTextFieldArray[ArrayIndex-1].text!+"→ ..."
         }
         contentsView.addSubview(keywordField)
         
