@@ -74,11 +74,11 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
         vectorLen = cellSize / 2
         margin = Int(self.view.frame.width / 9 * 1 / 12)
         
+        /**
         //セルのサイズと初期文字列の長さに合わせてフォントサイズを調整
         let Temp:UITextView = UITextView(frame: CGRect(x: 0, y:0, width:CGFloat(cellSize), height:CGFloat(cellSize)))
         Temp.textContainerInset = UIEdgeInsets.zero
         Temp.textContainer.lineFragmentPadding = 0
-
         //要素マスと詳細マスの初期フォントサイズ取得
         Temp.text = InitialTextOfElement
         AutoFontResize(textView: Temp,flag: -1)
@@ -87,15 +87,16 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
         AutoFontResize(textView: Temp,flag: -1)
         self.InitialFontSizeOfDetail = (Temp.font?.pointSize)!
         Temp.removeFromSuperview()
+        **/
         
         //マンダラチャートの全てのマスを同時に動かすためのUIViewの位置、大きさを定義
-        BackGround = UIView(frame: CGRect(x: self.view.center.x-CGFloat(cellSize * 4 + cellSize/2 + margin * 5), y:self.view.center.y-CGFloat(cellSize * 4 + cellSize/2 + margin * 5), width:CGFloat(cellSize * 9 + margin * 10), height:CGFloat(cellSize * 9 + margin * 10)))
+        BackGround = UIView(frame: CGRect(x: self.view.center.x-CGFloat(cellSize * 4 + cellSize/2 + margin * 7), y:self.view.center.y-CGFloat(cellSize * 4 + cellSize/2 + margin * 7), width:CGFloat(cellSize * 9 + margin * 14), height:CGFloat(cellSize * 9 + margin * 14)))
         //背景色(SHERPA BLUE)
         BackGround.backgroundColor = UIColor(hex: "013243", alpha: 1.0)
         view.addSubview(BackGround)
         
         //テーママスの設定
-        ThemeLabel = UILabel(frame: CGRect(x: CGFloat(cellSize * 4 + margin * 5), y:CGFloat(cellSize * 4 + margin * 5), width:CGFloat(cellSize), height:CGFloat(cellSize)))
+        ThemeLabel = UILabel(frame: CGRect(x: CGFloat(cellSize * 4 + margin * 7), y:CGFloat(cellSize * 4 + margin * 7), width:CGFloat(cellSize), height:CGFloat(cellSize)))
         //テーママスの色(WAX FLOWER)
         ThemeLabel.backgroundColor = UIColor(hex: "F1A9A0", alpha: 1.0)
         ThemeLabel.adjustsFontSizeToFitWidth = true
@@ -119,9 +120,9 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
             ElementArray[index_i].delegate = self
             //初期化or編集されていないマスの場合
             if (lastData.CentralData[index_i].isEmpty || lastData.CentralData[index_i] == InitialTextOfElement) {
-                ElementArray[index_i].text = InitialTextOfElement
-                ElementArray[index_i].textColor = UIColor.gray
-                ElementArray[index_i].font = UIFont.systemFont(ofSize: self.InitialFontSizeOfElement)
+                //ElementArray[index_i].text = InitialTextOfElement
+                //ElementArray[index_i].textColor = UIColor.gray
+                //ElementArray[index_i].font = UIFont.systemFont(ofSize: self.InitialFontSizeOfElement)
             } else { //ロードする場合
                 ElementArray[index_i].text = lastData.CentralData[index_i]
                 ElementArray[index_i].textColor = UIColor.black
@@ -130,11 +131,12 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
             BackGround.addSubview(ElementArray[index_i])
 
             // 要素を周りに配置(新しい中心)
-            CellTextView = UITextView(frame: CGRect(x: ThemeLabel.center.x-CGFloat(vectorLen+(cellSize+margin)*3*x), y:ThemeLabel.center.y-CGFloat(vectorLen+(cellSize+margin)*3*y), width:CGFloat(cellSize), height:CGFloat(cellSize)))
+            CellTextView = UITextView(frame: CGRect(x: ThemeLabel.frame.origin.x-CGFloat(cellSize*3*x+margin*4*x), y:ThemeLabel.frame.origin.y-CGFloat(cellSize*3*y+margin*4*y), width:CGFloat(cellSize), height:CGFloat(cellSize)))
             CellTextView.backgroundColor = UIColor(hex: "C8F7C5", alpha: 1.0)
             ElementRoundArray[index_i] = CellTextView
             ElementRoundArray[index_i].textContainerInset = UIEdgeInsets.zero
             ElementRoundArray[index_i].textContainer.lineFragmentPadding = 0
+            ElementRoundArray[index_i].isEditable = false
             ElementRoundArray[index_i].delegate = self
             //ロードする情報がある場合
             if (!lastData.CentralData[index_i].isEmpty) {
@@ -146,7 +148,7 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
             // 詳細マス(外側)の作成
             var index_j = 0
             for (xx,yy) in vector {
-                CellTextView = UITextView(frame: CGRect(x: ThemeLabel.center.x-CGFloat(vectorLen+(cellSize+margin)*3*x+(cellSize+margin)*xx), y:ThemeLabel.center.y-CGFloat(vectorLen+(cellSize+margin)*3*y+(cellSize+margin)*yy), width:CGFloat(cellSize), height:CGFloat(cellSize)))
+                CellTextView = UITextView(frame: CGRect(x:ElementRoundArray[index_i].frame.origin.x - CGFloat((cellSize+margin)*xx), y:ElementRoundArray[index_i].frame.origin.y - CGFloat((cellSize+margin)*yy), width:CGFloat(cellSize), height:CGFloat(cellSize)))
                 //詳細マスの色(ALICE BLUE)
                 CellTextView.backgroundColor = UIColor(hex: "E4F1FE", alpha: 1.0)
                 DetailArray[index_i][index_j] = CellTextView
@@ -155,9 +157,9 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
                 DetailArray[index_i][index_j].delegate = self
                 //初期化or編集されていないマスの場合
                 if (lastData.DetailData[index_i][index_j].isEmpty || lastData.DetailData[index_i][index_j] == InitialTextOfDetail) {
-                    DetailArray[index_i][index_j].text = InitialTextOfDetail
-                    DetailArray[index_i][index_j].textColor = UIColor.gray
-                    DetailArray[index_i][index_j].font = UIFont.systemFont(ofSize: self.InitialFontSizeOfDetail)
+                    //DetailArray[index_i][index_j].text = InitialTextOfDetail
+                    //DetailArray[index_i][index_j].textColor = UIColor.gray
+                    //DetailArray[index_i][index_j].font = UIFont.systemFont(ofSize: self.InitialFontSizeOfDetail)
                 }
                 //ロードする場合
                 else{
@@ -221,22 +223,22 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
     
     func _prepareSaveData () {
         for i in 0..<self.ElementArray.count {
-            if (self.ElementArray[i].text != InitialTextOfElement) {
-                self.mandaraData.CentralData[i] = self.ElementArray[i].text
-                self.mandaraData.CentralFontSize[i] = (self.ElementArray[i].font?.pointSize)!
-            } else {
+            if (self.ElementArray[i].text.isEmpty) {
                 self.mandaraData.CentralData[i] = ""
                 self.mandaraData.CentralFontSize[i] = 0
+            } else {
+                self.mandaraData.CentralData[i] = self.ElementArray[i].text
+                self.mandaraData.CentralFontSize[i] = (self.ElementArray[i].font?.pointSize)!
             }
         }
         for i in 0..<self.ElementArray.count {
             for j in 0..<self.DetailArray.count {
-                if (self.DetailArray[i][j].text != InitialTextOfDetail) {
-                    self.mandaraData.DetailData[i][j] = self.DetailArray[i][j].text
-                    self.mandaraData.DetailFontSize[i][j] = (self.DetailArray[i][j].font?.pointSize)!
-                } else {
+                if (self.DetailArray[i][j].text.isEmpty) {
                     self.mandaraData.DetailData[i][j] = ""
                     self.mandaraData.DetailFontSize[i][j] = 0
+                } else {
+                    self.mandaraData.DetailData[i][j] = self.DetailArray[i][j].text
+                    self.mandaraData.DetailFontSize[i][j] = (self.DetailArray[i][j].font?.pointSize)!
                 }
             }
         }
