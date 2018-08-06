@@ -43,13 +43,13 @@ class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableV
             cell.backgroundColor = UIColor(hex: "22313F", alpha: 1.0)
             cell.textLabel?.textColor = UIColor.white
             cell.layer.borderWidth = 3
-            cell.layer.borderColor = UIColor.white.cgColor
+            cell.layer.borderColor = UIColor(hex: "ECF0F1", alpha: 1.0).cgColor
         }
         //テーマのセルの色を設定(PORCELAIN)
         else{
-            cell.backgroundColor = UIColor(hex: "ECF0F1", alpha: 1.0)
+            cell.backgroundColor = UIColor.white
             cell.layer.borderWidth = 3
-            cell.layer.borderColor = UIColor.white.cgColor
+            cell.layer.borderColor = UIColor(hex: "ECF0F1", alpha: 1.0).cgColor
         }
         return cell
     }

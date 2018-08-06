@@ -10,7 +10,7 @@ import Foundation
 import GoogleMobileAds
 
 //UIColorを16進数で指定するための関数
-extension UIColor {
+extension UIColor{
     convenience init(hex: String, alpha: CGFloat) {
         let v = hex.map { String($0) } + Array(repeating: "0", count: max(6 - hex.count, 0))
         let r = CGFloat(Int(v[0] + v[1], radix: 16) ?? 0) / 255.0
@@ -99,6 +99,14 @@ class BaseViewController: UIViewController, GADBannerViewDelegate {
         bannerView.load(GADRequest())
         bannerView.delegate = self
         addBannerViewToView(bannerView)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // ナビゲーションを透明にする処理
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController!.navigationBar.shadowImage = UIImage()
     }
     
 }

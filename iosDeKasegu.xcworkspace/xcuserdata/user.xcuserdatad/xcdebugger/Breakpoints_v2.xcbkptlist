@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iosDeKasegu/TopViewController.swift"
-            timestampString = "555181112.477872"
+            timestampString = "555263064.7817709"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
@@ -216,7 +216,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iosDeKasegu/MandaraGuideViewController.swift"
-            timestampString = "555177637.078722"
+            timestampString = "555263064.7820311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "64"
@@ -232,7 +232,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iosDeKasegu/MandaraGuideViewController.swift"
-            timestampString = "555177637.078784"
+            timestampString = "555263064.782099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "65"
@@ -248,7 +248,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iosDeKasegu/MandaraGuideViewController.swift"
-            timestampString = "555177637.078835"
+            timestampString = "555263064.782149"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "68"
@@ -264,7 +264,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iosDeKasegu/MandaraGuideViewController.swift"
-            timestampString = "555177637.078886"
+            timestampString = "555263064.782196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "88"
@@ -280,7 +280,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iosDeKasegu/MandaraGuideViewController.swift"
-            timestampString = "555177637.078936"
+            timestampString = "555263064.782241"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
@@ -296,7 +296,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iosDeKasegu/SiritoriWorkViewController.swift"
-            timestampString = "555137743.622589"
+            timestampString = "555263064.78229"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "114"
@@ -312,7 +312,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iosDeKasegu/SiritoriWorkViewController.swift"
-            timestampString = "555137743.6233259"
+            timestampString = "555263064.782799"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "138"
@@ -328,7 +328,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iosDeKasegu/SiritoriWorkViewController.swift"
-            timestampString = "555137743.623614"
+            timestampString = "555263064.783142"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "120"
@@ -344,13 +344,247 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iosDeKasegu/SiritoriWorkViewController.swift"
-            timestampString = "555137743.624065"
+            timestampString = "555263064.783453"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "152"
             endingLineNumber = "152"
             landmarkName = "keyboardWillHide(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iosDeKasegu/TopViewController.swift"
+            timestampString = "555263064.783738"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "TopViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "variable initialization expression of iosDeKasegu.TopViewController.ImageOfGetIdea : Swift.Optional&lt;__ObjC.UIImage&gt;"
+                  moduleName = "iosDeKasegu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/iosdekasegu/iosDeKasegu/iosDeKasegu/TopViewController.swift"
+                  timestampString = "555251063.718918"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iosDeKasegu.TopViewController.ImageOfGetIdea.getter : Swift.Optional&lt;__ObjC.UIImage&gt;"
+                  moduleName = "iosDeKasegu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/iosdekasegu/iosDeKasegu/iosDeKasegu/TopViewController.swift"
+                  timestampString = "555251063.722"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "109">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iosDeKasegu.TopViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; iosDeKasegu.TopViewController"
+                  moduleName = "iosDeKasegu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/iosdekasegu/iosDeKasegu/iosDeKasegu/TopViewController.swift"
+                  timestampString = "555251063.725403"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "483">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iosDeKasegu.TopViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;iosDeKasegu.TopViewController&gt;"
+                  moduleName = "iosDeKasegu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/iosdekasegu/iosDeKasegu/iosDeKasegu/TopViewController.swift"
+                  timestampString = "555251063.728923"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "357">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iosDeKasegu/TopViewController.swift"
+            timestampString = "555263064.78381"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "TopViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "variable initialization expression of iosDeKasegu.TopViewController.ImageOfExpand : Swift.Optional&lt;__ObjC.UIImage&gt;"
+                  moduleName = "iosDeKasegu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/iosdekasegu/iosDeKasegu/iosDeKasegu/TopViewController.swift"
+                  timestampString = "555251063.74366"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iosDeKasegu.TopViewController.ImageOfExpand.getter : Swift.Optional&lt;__ObjC.UIImage&gt;"
+                  moduleName = "iosDeKasegu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/iosdekasegu/iosDeKasegu/iosDeKasegu/TopViewController.swift"
+                  timestampString = "555251063.747538"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "109">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iosDeKasegu.TopViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; iosDeKasegu.TopViewController"
+                  moduleName = "iosDeKasegu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/iosdekasegu/iosDeKasegu/iosDeKasegu/TopViewController.swift"
+                  timestampString = "555251063.751099"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "660">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iosDeKasegu.TopViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;iosDeKasegu.TopViewController&gt;"
+                  moduleName = "iosDeKasegu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/iosdekasegu/iosDeKasegu/iosDeKasegu/TopViewController.swift"
+                  timestampString = "555251063.754976"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "529">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iosDeKasegu/TopViewController.swift"
+            timestampString = "555263064.783873"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "TopViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "variable initialization expression of iosDeKasegu.TopViewController.ImageOfTutorial : Swift.Optional&lt;__ObjC.UIImage&gt;"
+                  moduleName = "iosDeKasegu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/iosdekasegu/iosDeKasegu/iosDeKasegu/TopViewController.swift"
+                  timestampString = "555251063.76586"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iosDeKasegu.TopViewController.ImageOfTutorial.getter : Swift.Optional&lt;__ObjC.UIImage&gt;"
+                  moduleName = "iosDeKasegu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/iosdekasegu/iosDeKasegu/iosDeKasegu/TopViewController.swift"
+                  timestampString = "555251063.77005"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "109">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iosDeKasegu.TopViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; iosDeKasegu.TopViewController"
+                  moduleName = "iosDeKasegu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/iosdekasegu/iosDeKasegu/iosDeKasegu/TopViewController.swift"
+                  timestampString = "555251063.773155"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "815">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iosDeKasegu.TopViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;iosDeKasegu.TopViewController&gt;"
+                  moduleName = "iosDeKasegu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/iosdekasegu/iosDeKasegu/iosDeKasegu/TopViewController.swift"
+                  timestampString = "555251063.776471"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "674">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

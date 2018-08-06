@@ -33,7 +33,7 @@ class TopViewController: BaseViewController {
         let margin :CGFloat = Height / 10
         
         //表題
-        let Title =  UILabel(frame: CGRect(x:0,y:(self.navigationController?.navigationBar.frame.size.height)!+margin,width:Width,height:Height/2.5))
+        let Title =  UILabel(frame: CGRect(x:0,y:margin * 2,width:Width,height:Height/2.5))
         Title.text = "Fast Idea"
         Title.font = UIFont(name: "Futura-Medium", size: 35)
         Title.numberOfLines = 0
@@ -44,6 +44,7 @@ class TopViewController: BaseViewController {
         
         //アイデアを発想ボタンの設定
         GetIdea.frame = CGRect(x:0, y : Title.frame.origin.y + Title.frame.height, width:Width,height:Height)
+        GetIdea.backgroundColor = UIColor(hex: "F4D03F")
         //ボタンに使う画像の縮尺率を算出
         let GetIdeaImageView = UIImageView(image: ImageOfGetIdea)
         var Image_Scale :CGFloat = GetIdea.frame.height / GetIdeaImageView.frame.size.height * 3 / 5
@@ -52,14 +53,16 @@ class TopViewController: BaseViewController {
         GetIdea.addSubview(GetIdeaImageView)
         //ボタンの文字の設定
         let GetIdeaTitle = UILabel(frame: CGRect(x:0,y:GetIdeaImageView.frame.origin.y + GetIdeaImageView.frame.height,width:Width,height:Height * 3 / 10))
-        GetIdeaTitle.text = "アイデアを発想"
-        GetIdeaTitle.font = UIFont(name: "HiraginoSans-W6", size: 20)
+        GetIdeaTitle.text = "Get an idea"
+        GetIdeaTitle.font = UIFont(name: "Futura-Medium", size: 22)
+        GetIdeaTitle.textColor = UIColor(hex: "ECF0F1")
         GetIdeaTitle.adjustsFontSizeToFitWidth = true
         GetIdeaTitle.textAlignment = NSTextAlignment.center
         GetIdea.addSubview(GetIdeaTitle)
         
         //アイデアを拡大ボタンの設定
         Expand.frame = CGRect(x:0, y:GetIdea.frame.origin.y + Height,width:Width, height:Height)
+        Expand.backgroundColor = UIColor(hex: "59ABE3")
         //ボタンに使う画像の縮尺率を算出
         Image_Scale = Expand.frame.height / ExpandImageView.frame.size.height * 3 / 5
         ExpandImageView.frame.size  = CGSize(width:ExpandImageView.frame.size.width * Image_Scale,height:ExpandImageView.frame.size.height * Image_Scale)
@@ -67,14 +70,16 @@ class TopViewController: BaseViewController {
         Expand.addSubview(ExpandImageView)
         //ボタンの文字の設定
         let ExpandTitle = UILabel(frame: CGRect(x:0,y:ExpandImageView.frame.origin.y + ExpandImageView.frame.height,width:Width,height:Height * 3 / 10))
-        ExpandTitle.text = "アイデアを拡大"
-        ExpandTitle.font = UIFont(name: "HiraginoSans-W6", size: 20)
+        ExpandTitle.text = "Expand on an idea"
+        ExpandTitle.font = UIFont(name: "Futura-Medium", size: 22)
+        ExpandTitle.textColor = UIColor(hex: "ECF0F1")
         ExpandTitle.adjustsFontSizeToFitWidth = true
         ExpandTitle.textAlignment = NSTextAlignment.center
         Expand.addSubview(ExpandTitle)
         
         //チュートリアルボタンの設定
         Tutorial.frame = CGRect(x:0, y:Expand.frame.origin.y + Height,width:Width, height:Height)
+        Tutorial.backgroundColor = UIColor(hex: "E08283")
         //ボタンに使う画像の縮尺率を算出
         Image_Scale = Tutorial.frame.height / TutorialImageView.frame.size.height * 3 / 5
         TutorialImageView.frame.size  = CGSize(width:TutorialImageView.frame.size.width * Image_Scale,height:TutorialImageView.frame.size.height * Image_Scale)
@@ -82,8 +87,9 @@ class TopViewController: BaseViewController {
         Tutorial.addSubview(TutorialImageView)
         //ボタンの文字の設定
         let TutorialTitle = UILabel(frame: CGRect(x:0,y:TutorialImageView.frame.origin.y + TutorialImageView.frame.height,width:Width,height:Height * 3 / 10))
-        TutorialTitle.text = "チュートリアル"
-        TutorialTitle.font = UIFont(name: "HiraginoSans-W6", size: 20)
+        TutorialTitle.text = "Tutorial"
+        TutorialTitle.font = UIFont(name: "Futura-Medium", size: 22)
+        TutorialTitle.textColor = UIColor(hex: "ECF0F1")
         TutorialTitle.adjustsFontSizeToFitWidth = true
         TutorialTitle.textAlignment = NSTextAlignment.center
         Tutorial.addSubview(TutorialTitle)

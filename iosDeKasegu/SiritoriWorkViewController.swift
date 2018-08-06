@@ -75,7 +75,7 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate , 
         //背景色（PORCELAIN）
         scrollView.backgroundColor = UIColor(hex: "ECF0F1", alpha: 10.0)
         scrollView.keyboardDismissMode = .onDrag
-        scrollView.frame = CGRect(x:0 , y:60 + view.frame.height / 10, width:view.frame.width, height:view.frame.height-50)
+        scrollView.frame = CGRect(x:0 , y:self.view.frame.height * 3 / 20, width:view.frame.width, height:view.frame.height-50)
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height+50+CGFloat(140*index))
         self.view.addSubview(scrollView)
         
@@ -236,7 +236,7 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate , 
         // キーワード + アイデアのUIViewの作成
         let contentsView = UIView()
         contentsView.frame = CGRect(x:Int(self.view.frame.size.width / 20), y:y_field, width:Int(WidthOfCard), height:Int(HeightOfCard))
-        contentsView.backgroundColor = UIColor(hex: "FABE58", alpha: 1.0)
+        contentsView.backgroundColor = UIColor(hex: "F4D03F")
         
         // キーワードのラベルを追加
         let keywordLabel = createKeywordLabel(index: ArrayIndex)
@@ -277,7 +277,7 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate , 
         // キーワード + アイデアのUIViewの作成
         let contentsView = UIView()
         contentsView.frame = CGRect(x:Int(self.view.frame.size.width / 20), y:y_field, width:Int(WidthOfCard), height:Int(HeightOfCard))
-        contentsView.backgroundColor = UIColor(hex: "FABE58", alpha: 1.0)
+        contentsView.backgroundColor = UIColor(hex: "F4D03F")
         
         // キーワードのラベルを追加
         let keywordLabel = createKeywordLabel(index: ArrayIndex)
@@ -328,8 +328,8 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate , 
         let button_y = (index + 2) * Int(MarginOfCards) + (index + 1) * Int(HeightOfCard)
 
         button.backgroundColor = UIColor(hex: "F9690E", alpha: 1.0)
-        button.layer.borderWidth = 2.0 // 枠線の幅
-        button.layer.borderColor = UIColor(hex: "6C7A89", alpha: 1.0).cgColor // 枠線の色
+        button.layer.borderWidth = 1.0 // 枠線の幅
+        button.layer.borderColor = UIColor.black.cgColor // 枠線の色
         button.layer.cornerRadius = 10.0
         button.setTitle("次へ", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
@@ -366,8 +366,8 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate , 
     func createInitialWord() {
         let contentsView = UIView()
         
-        contentsView.frame = CGRect(x:Int(self.view.frame.size.width / 20), y:Int(MarginOfCards), width:Int(WidthOfCard), height:Int(HeightOfCard))
-        contentsView.backgroundColor = UIColor(hex: "FABE58", alpha: 1.0)
+        contentsView.frame = CGRect(x:Int(self.view.frame.size.width / 20), y:0, width:Int(WidthOfCard), height:Int(HeightOfCard))
+        contentsView.backgroundColor = UIColor(hex: "F4D03F")
         let firstWordTagLabel = UILabel()
         firstWordTagLabel.frame = CGRect(x:WidthOfCard / 50, y:HeightOfCard / 10, width:WidthOfCard , height:HeightOfCard / 10)
         firstWordTagLabel.text = "しりとりの最初のフレーズ"
@@ -382,7 +382,7 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate , 
         
         // キーワード変更ボタン
         self.firstWordChangeButton.backgroundColor = UIColor(hex: "F9690E", alpha: 1.0)
-        self.firstWordChangeButton.layer.borderWidth = 2.0 // 枠線の幅
+        self.firstWordChangeButton.layer.borderWidth = 1.0 // 枠線の幅
         self.firstWordChangeButton.layer.cornerRadius = 5.0
         self.firstWordChangeButton.setTitle("変更", for: .normal)
         self.firstWordChangeButton.setTitleColor(UIColor.black, for: .normal)
@@ -418,14 +418,15 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate , 
     }
     
     func displayTheme() {
-        let themeLabel = UILabel()
-        themeLabel.frame = CGRect(x:0, y:60, width:view.frame.width, height:view.frame.height / 10)
-        themeLabel.numberOfLines = 0
-        themeLabel.text = "★テーマ★\n　　　　" + self.siritoriTheme
-        themeLabel.textColor = UIColor.white
-        //JACKSONS PURPLE
-        themeLabel.backgroundColor = UIColor(hex: "1F3A93", alpha: 1.0)
-        view.addSubview(themeLabel)
+        //表題
+        let Title =  UILabel(frame: CGRect(x:0,y:self.view.frame.height / 20,width:self.view.frame.width,height:self.view.frame.height / 10))
+        Title.text = self.siritoriTheme
+        Title.font = UIFont(name: "Futura-Medium", size: 25)
+        Title.numberOfLines = 0
+        Title.textAlignment = NSTextAlignment.center
+        Title.baselineAdjustment = UIBaselineAdjustment.alignCenters
+        Title.backgroundColor = UIColor(hex: "ECF0F1")
+        self.view.addSubview(Title)
     }
     
     func createIdeaLabel(index: Int) -> (UILabel) {

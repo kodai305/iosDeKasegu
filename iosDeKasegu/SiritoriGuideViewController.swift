@@ -140,9 +140,7 @@ class SiritoriGuideViewController: BaseViewController,UIScrollViewDelegate {
         let SiritoriButton = UIButton()
         SiritoriButton.frame.size = CGSize(width: WidthOfScrollView, height: HeightOfScrollView * 0.3)
         SiritoriButton.center = CGPoint(x:WidthOfScrollView * 0.5, y:HeightOfScrollView * 0.5)
-        SiritoriButton.backgroundColor = UIColor(hex: "ffd700")
-        //ボタンの角を丸くする
-        SiritoriButton.layer.cornerRadius = 21.0
+        SiritoriButton.backgroundColor = UIColor(hex: "F4D03F")
         SiritoriButton.addTarget(self, action: #selector(self.movetotheme(sender:)), for: .touchUpInside)
         let ButtonLable = UILabel()
         ButtonLable.text = "しりとり法を使う \n （テーマ作成画面に移動します）"

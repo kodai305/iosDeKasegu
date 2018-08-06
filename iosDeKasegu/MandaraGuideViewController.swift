@@ -161,9 +161,7 @@ class MandaraGuideViewController: BaseViewController,UIScrollViewDelegate {
         let MandaraButton = UIButton()
         MandaraButton.frame.size = CGSize(width: WidthOfScrollView, height: HeightOfScrollView * 0.3)
         MandaraButton.center = CGPoint(x:WidthOfScrollView * 0.5, y:HeightOfScrollView * 0.5)
-        MandaraButton.backgroundColor = UIColor(hex: "87ceeb")
-        //ボタンの角を丸くする
-        MandaraButton.layer.cornerRadius = 21.0
+        MandaraButton.backgroundColor = UIColor(hex: "59ABE3")
         MandaraButton.addTarget(self, action: #selector(self.movetotheme(sender:)), for: .touchUpInside)
         let ButtonLable = UILabel()
         ButtonLable.text = "マンダラチャートを使う \n （テーマ作成画面に移動します）"

@@ -13,15 +13,27 @@ class MandaraThemeViewController: BaseThemeViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //表題
+        let Title =  UILabel(frame: CGRect(x:0,y:self.view.frame.height / 20,width:self.view.frame.width,height:self.view.frame.height / 10))
+        Title.text = "Theme List"
+        Title.font = UIFont(name: "Futura-Medium", size: 25)
+        Title.numberOfLines = 0
+        Title.textAlignment = NSTextAlignment.center
+        Title.baselineAdjustment = UIBaselineAdjustment.alignCenters
+        Title.backgroundColor = UIColor(hex: "ECF0F1")
+        self.view.addSubview(Title)
 
         // 次の画面のID
         self.nextSegueId = "toMandaraWork"
         self.guideSegueId = "toMandaraGuide"
         // 保存されているテーマのKey
         self.themeKey = "MandaraTheme"
-        self.navigationItem.title = "アイデア拡大";
+        //self.navigationItem.title = "アイデア拡大";
         themeTableView.frame.size      = CGSize(width:self.view.frame.size.width * 9 / 10, height:self.view.frame.size.height * 4 / 5)
-        themeTableView.center = CGPoint(x: self.view.center.x, y: self.view.center.y)
+        themeTableView.center.x = self.view.center.x
+        themeTableView.frame.origin.y = Title.frame.origin.y + Title.frame.height
+        themeTableView.backgroundColor = UIColor(hex: "ECF0F1")
         if (self.tableData.count == 1) {
             // 最初のセルの中身
             print("called first cell")
@@ -31,7 +43,7 @@ class MandaraThemeViewController: BaseThemeViewController {
         
         themeTableView.delegate   = self
         themeTableView.dataSource = self
-        //themeTableView.tableFooterView = UIView(frame: .zero)
+        themeTableView.tableFooterView = UIView()
         
         // 保存されているデータの読み込み
         loadSavedTheme()
