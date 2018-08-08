@@ -40,6 +40,8 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate , 
     
     var textField_y:CGFloat = 0
     var distance:CGFloat = 0
+    
+    let Title = UILabel()
 
     // キーボードを下げる
     @IBAction func tapView(_ sender: UITapGestureRecognizer) {
@@ -75,7 +77,7 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate , 
         //背景色（PORCELAIN）
         scrollView.backgroundColor = UIColor(hex: "ECF0F1", alpha: 10.0)
         scrollView.keyboardDismissMode = .onDrag
-        scrollView.frame = CGRect(x:0 , y:self.view.frame.height * 3 / 20, width:view.frame.width, height:view.frame.height-50)
+        scrollView.frame = CGRect(x:0 , y:Title.frame.origin.y + Title.frame.size.height + 20, width:view.frame.width, height:view.frame.height-50)
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height+50+CGFloat(140*index))
         self.view.addSubview(scrollView)
         
@@ -419,9 +421,10 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate , 
     
     func displayTheme() {
         //表題
-        let Title =  UILabel(frame: CGRect(x:0,y:self.view.frame.height / 20,width:self.view.frame.width,height:self.view.frame.height / 10))
-        Title.text = self.siritoriTheme
-        Title.font = UIFont(name: "Futura-Medium", size: 25)
+        self.navigationItem.title = "Siritori"
+        Title.frame =  CGRect(x:0,y:self.navigationController!.navigationBar.frame.origin.y + self.navigationController!.navigationBar.frame.size.height + 20,width:self.view.frame.width,height:15)
+        Title.text = "テーマ：" + self.siritoriTheme
+        Title.font = UIFont.systemFont(ofSize: 20.0)
         Title.numberOfLines = 0
         Title.textAlignment = NSTextAlignment.center
         Title.baselineAdjustment = UIBaselineAdjustment.alignCenters

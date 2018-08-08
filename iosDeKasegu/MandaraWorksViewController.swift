@@ -90,15 +90,14 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
         **/
         
         //表題
-        let Title =  UILabel(frame: CGRect(x:0,y:self.view.frame.height / 20,width:self.view.frame.width,height:self.view.frame.height / 10))
-        Title.text = self.mandaraTheme
-        Title.font = UIFont(name: "Futura-Medium", size: 25)
+        self.navigationItem.title = "Mandara"
+        let Title =  UILabel(frame: CGRect(x:0,y:self.navigationController!.navigationBar.frame.origin.y + self.navigationController!.navigationBar.frame.size.height + 20,width:self.view.frame.width,height:self.view.frame.height / 20))
+        Title.text = "テーマ：" + self.mandaraTheme
+        Title.font = UIFont.systemFont(ofSize: 20.0)
         Title.numberOfLines = 0
         Title.textAlignment = NSTextAlignment.center
         Title.baselineAdjustment = UIBaselineAdjustment.alignCenters
         Title.backgroundColor = UIColor(hex: "ECF0F1")
-        let Blank = UILabel(frame: CGRect(x:0,y:0,width:self.view.frame.width,height:self.view.frame.height / 20))
-        Blank.backgroundColor = UIColor(hex: "ECF0F1")
         
         //マンダラチャートの全てのマスを同時に動かすためのUIViewの位置、大きさを定義
         BackGround = UIView(frame: CGRect(x: self.view.center.x-CGFloat(cellSize * 4 + cellSize/2 + margin * 7), y:self.view.center.y-CGFloat(cellSize * 4 + cellSize/2 + margin * 7), width:CGFloat(cellSize * 9 + margin * 14), height:CGFloat(cellSize * 9 + margin * 14)))
@@ -210,7 +209,6 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
         
         // To display the advertisement on scrollView
         displayAdvertisement()
-        self.view.addSubview(Blank)
         self.view.addSubview(Title)
         
     }

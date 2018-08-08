@@ -17,15 +17,6 @@ class TopGuideViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //表題
-        let Title =  UILabel(frame: CGRect(x:0,y:self.view.frame.height / 20,width:self.view.frame.width,height:self.view.frame.height / 10))
-        Title.text = "Tutorial"
-        Title.font = UIFont(name: "Futura-Medium", size: 25)
-        Title.numberOfLines = 0
-        Title.textAlignment = NSTextAlignment.center
-        Title.baselineAdjustment = UIBaselineAdjustment.alignCenters
-        Title.backgroundColor = UIColor(hex: "ECF0F1")
-        self.view.addSubview(Title)
         
         self.Introduction.frame = CGRect(x: self.view.frame.size.width * 0.05, y: self.view.frame.size.height * 0.1, width: self.view.frame.size.width * 0.9, height: self.view.frame.size.height * 0.4)
         
@@ -36,6 +27,8 @@ class TopGuideViewController: BaseViewController {
         self.MandaraGuide.frame = CGRect(x: self.view.frame.size.width * 0.1, y: self.view.frame.size.height * 0.74, width: self.view.frame.size.width * 0.8, height: self.view.frame.size.height * 0.2)
         self.MandaraGuide.titleLabel?.adjustsFontSizeToFitWidth = true
         self.MandaraGuide.backgroundColor = UIColor(hex: "59ABE3")
+        
+        self.navigationItem.title = "Tutorial"
 
         // Do any additional setup after loading the view.
     }

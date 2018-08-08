@@ -29,6 +29,10 @@ class BaseViewController: UIViewController, GADBannerViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(hex: "ECF0F1")
+        //ステータスバーの背景を白色に
+        let StatusBarBackground =  UIView(frame: CGRect(x:0,y:0,width:self.view.frame.width,height:UIApplication.shared.statusBarFrame.size.height))
+        StatusBarBackground.backgroundColor = UIColor.white
+        self.view.addSubview(StatusBarBackground)
         
     }
     
@@ -99,14 +103,6 @@ class BaseViewController: UIViewController, GADBannerViewDelegate {
         bannerView.load(GADRequest())
         bannerView.delegate = self
         addBannerViewToView(bannerView)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // ナビゲーションを透明にする処理
-        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController!.navigationBar.shadowImage = UIImage()
     }
     
 }
