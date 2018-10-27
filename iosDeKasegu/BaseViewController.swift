@@ -38,7 +38,7 @@ class BaseViewController: UIViewController, GADBannerViewDelegate {
     
     var bannerView: GADBannerView!
     
-    let admob_id = "ca-app-pub-1379462117325805/1238241858" // 本番用
+    let admob_id = "ca-app-pub-7637908590966597/8071684764" // 本番用
 //    let admob_id = "ca-app-pub-3940256099942544/2934735716" // 練習用
     
     func addBannerViewToView(_ bannerView: GADBannerView) {

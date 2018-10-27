@@ -110,17 +110,16 @@ class TopViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //super.viewWillAppear(animated)
+        super.viewWillAppear(animated)
         
         // ナビゲーションを透明にする処理
-        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController!.navigationBar.shadowImage = UIImage()
-        self.navigationController!.navigationBar.backgroundColor = nil
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController!.navigationBar.backgroundColor = UIColor.white
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationController!.navigationBar.barTintColor = UIColor.white
     }
 
 

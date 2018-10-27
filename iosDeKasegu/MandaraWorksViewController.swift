@@ -91,7 +91,7 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
         
         //表題
         self.navigationItem.title = "Mandara"
-        let Title =  UILabel(frame: CGRect(x:0,y:self.navigationController!.navigationBar.frame.origin.y + self.navigationController!.navigationBar.frame.size.height + 20,width:self.view.frame.width,height:self.view.frame.height / 20))
+        let Title =  UILabel(frame: CGRect(x:0,y:self.navigationController!.navigationBar.frame.origin.y + self.navigationController!.navigationBar.frame.size.height,width:self.view.frame.width,height:self.view.frame.height / 18))
         Title.text = "テーマ：" + self.mandaraTheme
         Title.font = UIFont.systemFont(ofSize: 20.0)
         Title.numberOfLines = 0
