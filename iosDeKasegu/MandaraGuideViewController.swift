@@ -44,7 +44,7 @@ class MandaraGuideViewController: BaseViewController,UIScrollViewDelegate {
         let attributedText = NSMutableAttributedString(string: TitleText)
         let range = NSMakeRange(0, TitleText.count)
         // 下線を引くようの設定をする.
-        attributedText.addAttribute(.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: range)
+        attributedText.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range)
         TitelofIntroduction.attributedText = attributedText
         TitelofIntroduction.textAlignment = NSTextAlignment.center
         //上記の文章の段数と合わせる
@@ -65,7 +65,7 @@ class MandaraGuideViewController: BaseViewController,UIScrollViewDelegate {
         let UIImageofIntroduction = UIImageView(image: ImageofIntroduction)
         UIImageofIntroduction.frame.size.width = WidthOfScrollView
         //元の画像のアスペクト比を保ったまま、画像を縮小
-        UIImageofIntroduction.contentMode = UIViewContentMode.scaleAspectFit
+        UIImageofIntroduction.contentMode = UIView.ContentMode.scaleAspectFit
         //縮小した後の画像のサイズと座標を取得
         let FrameOfImage = AVMakeRect(aspectRatio: (ImageofIntroduction?.size)!, insideRect: UIImageofIntroduction.bounds)
         //縮小した後の画像の座標に合わせてUIViewもオフセット
@@ -89,7 +89,7 @@ class MandaraGuideViewController: BaseViewController,UIScrollViewDelegate {
         let FirstImage = UIImageView(image: UIImage(named: "MandaraTutorialImage1.png"))
         FirstImage.frame.size.height = HeightOfScrollView * 0.8
         FirstImage.center = CGPoint(x: WidthOfScrollView * 0.5, y: HeightOfScrollView * 0.4)
-        FirstImage.contentMode = UIViewContentMode.scaleAspectFit
+        FirstImage.contentMode = UIView.ContentMode.scaleAspectFit
         
         let FirstLable = UILabel()
         FirstLable.text = "新規テーマ:画面右上の＋ボタン \n 保存テーマ:テーブルの項目 \n をそれぞれタップ"
@@ -107,7 +107,7 @@ class MandaraGuideViewController: BaseViewController,UIScrollViewDelegate {
         let SecondImage = UIImageView(image: UIImage(named: "MandaraTutorialImage2.png"))
         SecondImage.frame.size.height = HeightOfScrollView * 0.8
         SecondImage.center = CGPoint(x: WidthOfScrollView * 0.5, y: HeightOfScrollView * 0.4)
-        SecondImage.contentMode = UIViewContentMode.scaleAspectFit
+        SecondImage.contentMode = UIView.ContentMode.scaleAspectFit
         
         let SecondLable = UILabel()
         SecondLable.text = "ピンチアウトする事で \n 編集する箇所を拡大できます"
@@ -125,7 +125,7 @@ class MandaraGuideViewController: BaseViewController,UIScrollViewDelegate {
         let ThirdImage = UIImageView(image: UIImage(named: "MandaraTutorialImage3.png"))
         ThirdImage.frame.size.height = HeightOfScrollView * 0.8
         ThirdImage.center = CGPoint(x: WidthOfScrollView * 0.5, y: HeightOfScrollView * 0.4)
-        ThirdImage.contentMode = UIViewContentMode.scaleAspectFit
+        ThirdImage.contentMode = UIView.ContentMode.scaleAspectFit
         
         let ThirdLable = UILabel()
         ThirdLable.text = "先ずは赤マスの隣の緑マスに \n テーマから連想される \n 単語を入力しましょう \n 外側には自動コピーされます"
@@ -143,7 +143,7 @@ class MandaraGuideViewController: BaseViewController,UIScrollViewDelegate {
         let FourthImage = UIImageView(image: UIImage(named: "MandaraTutorialImage4.png"))
         FourthImage.frame.size.height = HeightOfScrollView * 0.8
         FourthImage.center = CGPoint(x: WidthOfScrollView * 0.5, y: HeightOfScrollView * 0.4)
-        FourthImage.contentMode = UIViewContentMode.scaleAspectFit
+        FourthImage.contentMode = UIView.ContentMode.scaleAspectFit
         
         let FourthLable = UILabel()
         FourthLable.text = "外側の緑マスの隣の青マスに \n 緑マスの単語に関連する \n 単語を入力しましょう"

@@ -55,8 +55,8 @@ class BaseWorkViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(_:)),name: NSNotification.Name.UIKeyboardWillShow,object: nil)
-        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(_:)) ,name: NSNotification.Name.UIKeyboardWillHide,object: nil)
+        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(_:)),name: UIResponder.keyboardWillShowNotification,object: nil)
+        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(_:)) ,name: UIResponder.keyboardWillHideNotification,object: nil)
     }
     
     //キーボードが表示された時の処理（マンダラとしりとりのWorkViewControllerでOverrideする）

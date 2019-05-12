@@ -48,12 +48,12 @@ class MandaraThemeViewController: BaseThemeViewController {
 
     
     @IBAction func plusButtonTapped(_ sender: Any) {
-        let alertController = UIAlertController(title: "テーマを追加",message:"テーマを入力して下さい",preferredStyle:UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "テーマを追加",message:"テーマを入力して下さい",preferredStyle:UIAlertController.Style.alert)
         alertController.addTextField(configurationHandler: nil)
 
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
-        let okAction = UIAlertAction(title:"OK",style: UIAlertActionStyle.default){(action:UIAlertAction) in
+        let okAction = UIAlertAction(title:"OK",style: UIAlertAction.Style.default){(action:UIAlertAction) in
             if let textField = alertController.textFields?.first {  // ?? .first
                 let stub:String = textField.text!
                 if (stub.isEmpty) {
@@ -71,7 +71,7 @@ class MandaraThemeViewController: BaseThemeViewController {
                     // セルの追加
                     self.section0.insert((textField.text!, formatter.string(from: EditData),UNIXTime), at: self.section0.count)
                     self.tableData = [self.section0]
-                    self.themeTableView.insertRows(at: [IndexPath(row: self.section0.count-1, section: 0)], with: UITableViewRowAnimation.right)
+                    self.themeTableView.insertRows(at: [IndexPath(row: self.section0.count-1, section: 0)], with: UITableView.RowAnimation.right)
                     //self.themeTableView.reloadData()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                         // 画面遷移
@@ -83,7 +83,7 @@ class MandaraThemeViewController: BaseThemeViewController {
         }
         alertController.addAction(okAction)
         
-        let cancelButton = UIAlertAction(title: "CANCEL",style:UIAlertActionStyle.cancel, handler: nil)
+        let cancelButton = UIAlertAction(title: "CANCEL",style:UIAlertAction.Style.cancel, handler: nil)
         alertController.addAction(cancelButton)
         
         present(alertController, animated: true, completion: nil)

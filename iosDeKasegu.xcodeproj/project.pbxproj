@@ -15,7 +15,6 @@
 		47409A2720E6633300AD2031 /* iosDeKasegu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 47409A2520E6633300AD2031 /* iosDeKasegu.xcdatamodeld */; };
 		47409A2920E6633500AD2031 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47409A2820E6633500AD2031 /* Assets.xcassets */; };
 		47409A2C20E6633500AD2031 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47409A2A20E6633500AD2031 /* LaunchScreen.storyboard */; };
-		47AF148921023D1A00500D6B /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AF148821023D1A00500D6B /* PlaceholderTextView.swift */; };
 		47AF685220E8C7E1003BD075 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47AF685120E8C7E1003BD075 /* AdSupport.framework */; };
 		47AF685420E8C874003BD075 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AF685320E8C874003BD075 /* BaseViewController.swift */; };
 		47AF685820E90E3B003BD075 /* SiritoriWorkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AF685720E90E3B003BD075 /* SiritoriWorkViewController.swift */; };
@@ -24,13 +23,12 @@
 		47C6BBBE20FAD8E300C1BFDF /* BaseThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C6BBBD20FAD8E300C1BFDF /* BaseThemeViewController.swift */; };
 		47C6BBC020FCA0C700C1BFDF /* MandaraThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C6BBBF20FCA0C600C1BFDF /* MandaraThemeViewController.swift */; };
 		47C6BBC220FCA4D200C1BFDF /* MandaraGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C6BBC120FCA4D200C1BFDF /* MandaraGuideViewController.swift */; };
-		5EBC0C837D2F8073B21F0A40 /* Pods_iosDeKasegu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B1C634B5C0E253B6A65BC5 /* Pods_iosDeKasegu.framework */; };
+		CD5E382A22872134007BDD32 /* PlaceHolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5E382922872134007BDD32 /* PlaceHolderViewController.swift */; };
 		CE465B842109D16800C4CF16 /* TopGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE465B832109D16800C4CF16 /* TopGuideViewController.swift */; };
 		CEB2999920F82C930003E985 /* SiritoriGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2999820F82C930003E985 /* SiritoriGuideViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		266A3B3A4ACA227D34169225 /* Pods-iosDeKasegu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosDeKasegu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iosDeKasegu/Pods-iosDeKasegu.debug.xcconfig"; sourceTree = "<group>"; };
 		4715B50B21060C75003ACEBA /* BaseWorkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWorkViewController.swift; sourceTree = "<group>"; };
 		4735B0B3210C5D87009D1323 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		47409A1B20E6633200AD2031 /* iosDeKasegu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosDeKasegu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,7 +39,6 @@
 		47409A2820E6633500AD2031 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		47409A2B20E6633500AD2031 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		47409A2D20E6633500AD2031 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		47AF148821023D1A00500D6B /* PlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlaceholderTextView.swift; path = ../Pods/PlaceholderTextView/Pod/Classes/PlaceholderTextView.swift; sourceTree = "<group>"; };
 		47AF685120E8C7E1003BD075 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		47AF685320E8C874003BD075 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		47AF685720E90E3B003BD075 /* SiritoriWorkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiritoriWorkViewController.swift; sourceTree = "<group>"; };
@@ -50,8 +47,7 @@
 		47C6BBBD20FAD8E300C1BFDF /* BaseThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseThemeViewController.swift; sourceTree = "<group>"; };
 		47C6BBBF20FCA0C600C1BFDF /* MandaraThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandaraThemeViewController.swift; sourceTree = "<group>"; };
 		47C6BBC120FCA4D200C1BFDF /* MandaraGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandaraGuideViewController.swift; sourceTree = "<group>"; };
-		BEC9F50579D3FA14D89B3E9E /* Pods-iosDeKasegu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosDeKasegu.release.xcconfig"; path = "Pods/Target Support Files/Pods-iosDeKasegu/Pods-iosDeKasegu.release.xcconfig"; sourceTree = "<group>"; };
-		C1B1C634B5C0E253B6A65BC5 /* Pods_iosDeKasegu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosDeKasegu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD5E382922872134007BDD32 /* PlaceHolderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderViewController.swift; sourceTree = "<group>"; };
 		CE465B832109D16800C4CF16 /* TopGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopGuideViewController.swift; sourceTree = "<group>"; };
 		CEB2999820F82C930003E985 /* SiritoriGuideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiritoriGuideViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,7 +58,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				47AF685220E8C7E1003BD075 /* AdSupport.framework in Frameworks */,
-				5EBC0C837D2F8073B21F0A40 /* Pods_iosDeKasegu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,7 +69,6 @@
 			children = (
 				47409A1D20E6633200AD2031 /* iosDeKasegu */,
 				47409A1C20E6633200AD2031 /* Products */,
-				EB8EE59FF313D6B3ADD63B1C /* Pods */,
 				A9004398B0A041C37B42D867 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -103,12 +97,12 @@
 				47AF685B20F7843B003BD075 /* SiritoriThemeViewController.swift */,
 				47AF685720E90E3B003BD075 /* SiritoriWorkViewController.swift */,
 				CEB2999820F82C930003E985 /* SiritoriGuideViewController.swift */,
-				47AF148821023D1A00500D6B /* PlaceholderTextView.swift */,
 				47409A2820E6633500AD2031 /* Assets.xcassets */,
 				47409A2A20E6633500AD2031 /* LaunchScreen.storyboard */,
 				47409A2D20E6633500AD2031 /* Info.plist */,
 				4735B0B3210C5D87009D1323 /* GoogleService-Info.plist */,
 				47409A2520E6633300AD2031 /* iosDeKasegu.xcdatamodeld */,
+				CD5E382922872134007BDD32 /* PlaceHolderViewController.swift */,
 			);
 			path = iosDeKasegu;
 			sourceTree = "<group>";
@@ -117,18 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				47AF685120E8C7E1003BD075 /* AdSupport.framework */,
-				C1B1C634B5C0E253B6A65BC5 /* Pods_iosDeKasegu.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		EB8EE59FF313D6B3ADD63B1C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				266A3B3A4ACA227D34169225 /* Pods-iosDeKasegu.debug.xcconfig */,
-				BEC9F50579D3FA14D89B3E9E /* Pods-iosDeKasegu.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,11 +122,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 47409A3020E6633500AD2031 /* Build configuration list for PBXNativeTarget "iosDeKasegu" */;
 			buildPhases = (
-				1120B9867AF28247352EEF27 /* [CP] Check Pods Manifest.lock */,
 				47409A1720E6633200AD2031 /* Sources */,
 				47409A1820E6633200AD2031 /* Frameworks */,
 				47409A1920E6633200AD2031 /* Resources */,
-				7D4EFA69D4EE21600470F969 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -165,6 +147,7 @@
 				TargetAttributes = {
 					47409A1A20E6633200AD2031 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -200,49 +183,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		1120B9867AF28247352EEF27 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-iosDeKasegu-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7D4EFA69D4EE21600470F969 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-iosDeKasegu/Pods-iosDeKasegu-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/PlaceholderTextView/PlaceholderTextView.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PlaceholderTextView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iosDeKasegu/Pods-iosDeKasegu-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		47409A1720E6633200AD2031 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -250,8 +190,8 @@
 			files = (
 				47409A2120E6633300AD2031 /* TopViewController.swift in Sources */,
 				47AF685C20F7843B003BD075 /* SiritoriThemeViewController.swift in Sources */,
+				CD5E382A22872134007BDD32 /* PlaceHolderViewController.swift in Sources */,
 				47409A1F20E6633200AD2031 /* AppDelegate.swift in Sources */,
-				47AF148921023D1A00500D6B /* PlaceholderTextView.swift in Sources */,
 				47AF685420E8C874003BD075 /* BaseViewController.swift in Sources */,
 				47C6BBC220FCA4D200C1BFDF /* MandaraGuideViewController.swift in Sources */,
 				47C6BBBE20FAD8E300C1BFDF /* BaseThemeViewController.swift in Sources */,
@@ -403,12 +343,11 @@
 		};
 		47409A3120E6633500AD2031 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 266A3B3A4ACA227D34169225 /* Pods-iosDeKasegu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JACB4GSV36;
+				DEVELOPMENT_TEAM = M5K528Q6GB;
 				INFOPLIST_FILE = iosDeKasegu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -417,19 +356,18 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.iosearn.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		47409A3220E6633500AD2031 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BEC9F50579D3FA14D89B3E9E /* Pods-iosDeKasegu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JACB4GSV36;
+				DEVELOPMENT_TEAM = M5K528Q6GB;
 				INFOPLIST_FILE = iosDeKasegu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -438,7 +376,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.iosearn.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

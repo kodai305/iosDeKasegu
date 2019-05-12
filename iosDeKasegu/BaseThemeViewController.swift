@@ -120,7 +120,7 @@ class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableV
             for data in ThemeData {
                 section0.insert((data.theme, formatter.string(from: data.editdata), data.key), at: section0.count)
                 tableData = [section0]
-                self.themeTableView.insertRows(at: [IndexPath(row: section0.count-1, section: 0)], with: UITableViewRowAnimation.right)
+                self.themeTableView.insertRows(at: [IndexPath(row: section0.count-1, section: 0)], with: UITableView.RowAnimation.right)
             }
         }
     }
@@ -136,14 +136,14 @@ class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableV
     }
     
     //セルを削除した時の処理
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         //削除処理かどうかを判定
-        if editingStyle == UITableViewCellEditingStyle.delete{
+        if editingStyle == UITableViewCell.EditingStyle.delete{
             //テーマリストからセルを削除
             section0.remove(at: indexPath.row)
             tableData = [section0]
             //セルを削除
-            themeTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+            themeTableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
             //保存しているデータを修正
             var forSaveTheme:[themeData] = self.readTheme()
             forSaveTheme.remove(at: indexPath.row - 1)
