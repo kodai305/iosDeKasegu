@@ -1,6 +1,0 @@
-framework module Pods_iosDeKasegu {
-  umbrella header "Pods-iosDeKasegu-umbrella.h"
-
-  export *
-  module * { export * }
-}
