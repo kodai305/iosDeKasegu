@@ -42,7 +42,7 @@ class SiritoriGuideViewController: BaseViewController,UIScrollViewDelegate {
         let attributedText = NSMutableAttributedString(string: TitleText)
         let range = NSMakeRange(0, TitleText.count)
         // 下線を引くようの設定をする.
-        attributedText.addAttribute(.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: range)
+        attributedText.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range)
         TitelofIntroduction.attributedText = attributedText
         TitelofIntroduction.textAlignment = NSTextAlignment.center
         //上記の文章の段数と合わせる
@@ -62,7 +62,7 @@ class SiritoriGuideViewController: BaseViewController,UIScrollViewDelegate {
         let UIImageofIntroduction = UIImageView(image: ImageofIntroduction)
         UIImageofIntroduction.frame.size.width = WidthOfScrollView
         //元の画像のアスペクト比を保ったまま、画像を縮小
-        UIImageofIntroduction.contentMode = UIViewContentMode.scaleAspectFit
+        UIImageofIntroduction.contentMode = UIView.ContentMode.scaleAspectFit
         //縮小した後の画像のサイズと座標を取得
         let FrameOfImage = AVMakeRect(aspectRatio: (ImageofIntroduction?.size)!, insideRect: UIImageofIntroduction.bounds)
         //縮小した後の画像の座標に合わせてUIViewもオフセット
@@ -86,7 +86,7 @@ class SiritoriGuideViewController: BaseViewController,UIScrollViewDelegate {
         let FirstImage = UIImageView(image: UIImage(named: "SiritoriTutorialImage1.png"))
         FirstImage.frame.size.height = HeightOfScrollView * 0.8
         FirstImage.center = CGPoint(x: WidthOfScrollView * 0.5, y: HeightOfScrollView * 0.4)
-        FirstImage.contentMode = UIViewContentMode.scaleAspectFit
+        FirstImage.contentMode = UIView.ContentMode.scaleAspectFit
         
         let FirstLable = UILabel()
         FirstLable.text = "新規テーマ:画面右上の＋ボタン \n 保存テーマ:テーブルの項目 \n をそれぞれタップ"
@@ -104,7 +104,7 @@ class SiritoriGuideViewController: BaseViewController,UIScrollViewDelegate {
         let SecondImage = UIImageView(image: UIImage(named: "SiritoriTutorialImage2.png"))
         SecondImage.frame.size.height = HeightOfScrollView * 0.8
         SecondImage.center = CGPoint(x: WidthOfScrollView * 0.5, y: HeightOfScrollView * 0.4)
-        SecondImage.contentMode = UIViewContentMode.scaleAspectFit
+        SecondImage.contentMode = UIView.ContentMode.scaleAspectFit
         
         let SecondLable = UILabel()
         SecondLable.text = "最初のフレーズを決定 \n （デフォルト:しりとり）\n 最初のフレーズとしりとりをして \n キーワード1を決定"
@@ -122,7 +122,7 @@ class SiritoriGuideViewController: BaseViewController,UIScrollViewDelegate {
         let ThirdImage = UIImageView(image: UIImage(named: "SiritoriTutorialImage3.png"))
         ThirdImage.frame.size.height = HeightOfScrollView * 0.8
         ThirdImage.center = CGPoint(x: WidthOfScrollView * 0.5, y: HeightOfScrollView * 0.4)
-        ThirdImage.contentMode = UIViewContentMode.scaleAspectFit
+        ThirdImage.contentMode = UIView.ContentMode.scaleAspectFit
         
         let ThirdLable = UILabel()
         ThirdLable.text = "キーワード1を含むアイデア1を考案 \n 次へボタンをタップして \n キーワード2のカードを作成 \n アイデア数は無制限です"

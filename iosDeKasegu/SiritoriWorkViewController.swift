@@ -83,7 +83,7 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate , 
         
         //UIToolBarの生成
         self.toolbar = UIToolbar(frame: CGRect(x:0, y:self.view.frame.height - 50, width:self.view.frame.width, height:50))
-        let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
+        let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
         let button = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(self.shareButtonAction(sender:)))
         button.tag = 1
         self.toolbar.items = [space,space,button]
@@ -93,7 +93,7 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate , 
         displayAdvertisement()
         
         // バッググラウンドに行ったときの処理を登録
-        NotificationCenter.default.addObserver(self, selector: #selector(viewDidEnterBackground(_:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(viewDidEnterBackground(_:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -135,7 +135,7 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate , 
     @objc override func keyboardWillShow(_ notification: Notification) {
         let info = notification.userInfo!
         //キーボードの大きさ、座標を取得
-        let keyboardFrame = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let keyboardFrame = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         //キーボード+ツールバーの上端のy座標を保存
         topKeyboard = keyboardFrame.origin.y
         distance =  textField_y - topKeyboard
@@ -245,7 +245,7 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate , 
         contentsView.addSubview(keywordLabel)
         // キーワードフィールドの作成・追加
         let keywordField = UITextField(frame: CGRect(x: contentsView.frame.size.width / 50, y:contentsView.frame.size.height * 3 / 10, width:contentsView.frame.size.width * 2 / 5, height:contentsView.frame.size.height / 4))
-        keywordField.borderStyle = UITextBorderStyle.roundedRect
+        keywordField.borderStyle = UITextField.BorderStyle.roundedRect
         if (ArrayIndex == 0) {
             keywordField.placeholder = firstWord+"→ ..."
         } else {
@@ -286,7 +286,7 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate , 
         contentsView.addSubview(keywordLabel)
         // キーワードフィールドの設定・追加
         let keywordField = UITextField(frame: CGRect(x: contentsView.frame.size.width / 50, y:contentsView.frame.size.height * 3 / 10, width:contentsView.frame.size.width * 2 / 5, height:contentsView.frame.size.height / 4))
-        keywordField.borderStyle = UITextBorderStyle.roundedRect
+        keywordField.borderStyle = UITextField.BorderStyle.roundedRect
         keywordField.text = IdeaDataArray[ArrayIndex].keyword
         print("ArrayIndex:")
         print(ArrayIndex)
@@ -396,10 +396,10 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate , 
     }
     
     @objc func changeFirstKeyword(_ sender: Any) {
-        let alertController = UIAlertController(title: "先頭フレーズの変更",message:"好きな単語を入力してください",preferredStyle:UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "先頭フレーズの変更",message:"好きな単語を入力してください",preferredStyle:UIAlertController.Style.alert)
         alertController.addTextField(configurationHandler: nil)
 
-        let okAction = UIAlertAction(title:"OK",style: UIAlertActionStyle.default){(action:UIAlertAction) in
+        let okAction = UIAlertAction(title:"OK",style: UIAlertAction.Style.default){(action:UIAlertAction) in
             if let textField = alertController.textFields?.first {  // ?? .first
                 let stub:String = textField.text!
                 if (stub.isEmpty) {
@@ -413,7 +413,7 @@ class SiritoriWorkViewController: BaseWorkViewController, UITextFieldDelegate , 
         }
         alertController.addAction(okAction)
         
-        let cancelButton = UIAlertAction(title: "CANCEL",style:UIAlertActionStyle.cancel, handler: nil)
+        let cancelButton = UIAlertAction(title: "CANCEL",style:UIAlertAction.Style.cancel, handler: nil)
         alertController.addAction(cancelButton)
         
         present(alertController, animated: true, completion: nil)

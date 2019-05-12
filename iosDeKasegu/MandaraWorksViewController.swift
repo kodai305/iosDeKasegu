@@ -185,7 +185,7 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
         
         //UIToolBarの生成 (シェアボタン)
         self.toolbar = UIToolbar(frame: CGRect(x:0, y:self.view.frame.height - 50, width:self.view.frame.width, height:50))
-        let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
+        let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
         let button = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(self.shareButtonAction(sender:)))
         button.tag = 1
         self.toolbar.items = [space,space,button]
@@ -195,17 +195,17 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
         DoneToolBar.frame = CGRect(x: 0, y: self.view.frame.size.height, width: 320, height: 40) //仮にサイズを決定、ここでは見えない場所に置く
         DoneToolBar.barStyle = UIBarStyle.default  // スタイルを設定
         DoneToolBar.sizeToFit()
-        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil) // スペーサー
-        let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.commitButtonTapped)) // 閉じるボタン
+        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil) // スペーサー
+        let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.commitButtonTapped)) // 閉じるボタン
         DoneToolBar.items = [spacer, commitButton]
         self.view.addSubview(DoneToolBar)
         
         // バッググラウンドに行ったときの処理
-        NotificationCenter.default.addObserver(self, selector: #selector(viewDidEnterBackground(_:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(viewDidEnterBackground(_:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
         
         // add notification center
-        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(_:)),name: NSNotification.Name.UIKeyboardWillShow,object: nil)
-        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(_:)) ,name: NSNotification.Name.UIKeyboardWillHide,object: nil)
+        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillShow(_:)),name: UIResponder.keyboardWillShowNotification,object: nil)
+        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardWillHide(_:)) ,name: UIResponder.keyboardWillHideNotification,object: nil)
         
         // To display the advertisement on scrollView
         displayAdvertisement()
@@ -215,8 +215,8 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self,name: .UIKeyboardWillShow,object: self.view.window)
-        NotificationCenter.default.removeObserver(self,name: .UIKeyboardDidHide,object: self.view.window)
+        NotificationCenter.default.removeObserver(self,name: UIResponder.keyboardWillShowNotification,object: self.view.window)
+        NotificationCenter.default.removeObserver(self,name: UIResponder.keyboardDidHideNotification,object: self.view.window)
         // 保存
         _prepareSaveData()
         saveData(self.mandaraData)
@@ -350,7 +350,7 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
             // scrollViewのコンテツを上へオフセット + 20(追加のオフセット)
             BackGround.frame.origin.y = BackGround.frame.origin.y - (distance + 20)
         }
-        self.view.bringSubview(toFront: DoneToolBar) //最前面に配置
+        self.view.bringSubviewToFront(DoneToolBar) //最前面に配置
         //完了ボタンをキーボード上に表示
         DoneToolBar.frame.origin = CGPoint(x: 0, y: topKeyboard-40)
     }
@@ -378,7 +378,7 @@ class MandaraWorkViewController: BaseWorkViewController, UITextViewDelegate {
     @objc override func keyboardWillShow(_ notification: Notification) {
         let info = notification.userInfo!
         //キーボードの大きさ、座標を取得
-        let keyboardFrame = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let keyboardFrame = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         //キーボード+ツールバーの上端のy座標を保存
         topKeyboard = keyboardFrame.origin.y
     }
