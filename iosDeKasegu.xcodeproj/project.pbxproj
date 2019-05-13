@@ -23,6 +23,7 @@
 		47C6BBBE20FAD8E300C1BFDF /* BaseThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C6BBBD20FAD8E300C1BFDF /* BaseThemeViewController.swift */; };
 		47C6BBC020FCA0C700C1BFDF /* MandaraThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C6BBBF20FCA0C600C1BFDF /* MandaraThemeViewController.swift */; };
 		47C6BBC220FCA4D200C1BFDF /* MandaraGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C6BBC120FCA4D200C1BFDF /* MandaraGuideViewController.swift */; };
+		70BE9463840BF4CDFBE1A63F /* Pods_iosDeKasegu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD001B652A56BABB759593F /* Pods_iosDeKasegu.framework */; };
 		CD5E382A22872134007BDD32 /* PlaceHolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5E382922872134007BDD32 /* PlaceHolderViewController.swift */; };
 		CE465B842109D16800C4CF16 /* TopGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE465B832109D16800C4CF16 /* TopGuideViewController.swift */; };
 		CEB2999920F82C930003E985 /* SiritoriGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2999820F82C930003E985 /* SiritoriGuideViewController.swift */; };
@@ -47,9 +48,12 @@
 		47C6BBBD20FAD8E300C1BFDF /* BaseThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseThemeViewController.swift; sourceTree = "<group>"; };
 		47C6BBBF20FCA0C600C1BFDF /* MandaraThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandaraThemeViewController.swift; sourceTree = "<group>"; };
 		47C6BBC120FCA4D200C1BFDF /* MandaraGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandaraGuideViewController.swift; sourceTree = "<group>"; };
+		7F17DC46172CB3F48F8A5194 /* Pods-iosDeKasegu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosDeKasegu.debug.xcconfig"; path = "Target Support Files/Pods-iosDeKasegu/Pods-iosDeKasegu.debug.xcconfig"; sourceTree = "<group>"; };
 		CD5E382922872134007BDD32 /* PlaceHolderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderViewController.swift; sourceTree = "<group>"; };
 		CE465B832109D16800C4CF16 /* TopGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopGuideViewController.swift; sourceTree = "<group>"; };
 		CEB2999820F82C930003E985 /* SiritoriGuideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiritoriGuideViewController.swift; sourceTree = "<group>"; };
+		DAD001B652A56BABB759593F /* Pods_iosDeKasegu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosDeKasegu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0D9B1060A7D979CAA3F8C8A /* Pods-iosDeKasegu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosDeKasegu.release.xcconfig"; path = "Target Support Files/Pods-iosDeKasegu/Pods-iosDeKasegu.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,18 +62,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				47AF685220E8C7E1003BD075 /* AdSupport.framework in Frameworks */,
+				70BE9463840BF4CDFBE1A63F /* Pods_iosDeKasegu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C521D9226F97387FA062B07 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7F17DC46172CB3F48F8A5194 /* Pods-iosDeKasegu.debug.xcconfig */,
+				F0D9B1060A7D979CAA3F8C8A /* Pods-iosDeKasegu.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		47409A1220E6633200AD2031 = {
 			isa = PBXGroup;
 			children = (
 				47409A1D20E6633200AD2031 /* iosDeKasegu */,
 				47409A1C20E6633200AD2031 /* Products */,
 				A9004398B0A041C37B42D867 /* Frameworks */,
+				1C521D9226F97387FA062B07 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				47AF685120E8C7E1003BD075 /* AdSupport.framework */,
+				DAD001B652A56BABB759593F /* Pods_iosDeKasegu.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -122,9 +139,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 47409A3020E6633500AD2031 /* Build configuration list for PBXNativeTarget "iosDeKasegu" */;
 			buildPhases = (
+				79620E84021F79D49E701F67 /* [CP] Check Pods Manifest.lock */,
 				47409A1720E6633200AD2031 /* Sources */,
 				47409A1820E6633200AD2031 /* Frameworks */,
 				47409A1920E6633200AD2031 /* Resources */,
+				8537B19C02373ABAA45E042C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -182,6 +201,55 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		79620E84021F79D49E701F67 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iosDeKasegu-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8537B19C02373ABAA45E042C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iosDeKasegu/Pods-iosDeKasegu-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iosDeKasegu/Pods-iosDeKasegu-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		47409A1720E6633200AD2031 /* Sources */ = {
@@ -343,6 +411,7 @@
 		};
 		47409A3120E6633500AD2031 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F17DC46172CB3F48F8A5194 /* Pods-iosDeKasegu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -363,6 +432,7 @@
 		};
 		47409A3220E6633500AD2031 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0D9B1060A7D979CAA3F8C8A /* Pods-iosDeKasegu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
