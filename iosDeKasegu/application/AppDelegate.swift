@@ -19,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         GADMobileAds.sharedInstance().start(completionHandler: nil)
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        self.window = window
+        
+        RootRouter.showFirstView(window: window)
         return true
     }
 

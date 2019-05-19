@@ -11,18 +11,55 @@ import GoogleMobileAds
 
 class TopViewController: BaseViewController {
     
+    // Presenterへのアクセスはprotocolを介して行う
+    var presenter: TopMenuPresentable!
+    
     @IBOutlet weak var Expand: UIButton!
     @IBOutlet weak var GetIdea: UIButton!
     @IBOutlet weak var Tutorial: UIButton!
     
-    //ボタンに使う画像を設定
-    let ImageOfGetIdea :UIImage? = UIImage(named:"getidea.png")
-    let ImageOfExpand:UIImage? = UIImage(named:"expand.png")
-    let ImageOfTutorial :UIImage? = UIImage(named:"tutorial.png")
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.configure()
+        self.showAd()
+    }
+}
+
+extension TopViewController:TopMenuView {
+    func showSiritoriTheme() {
+        self.presenter.selectMenu(selectedTopMenuType: .siritori)
+    }
+    
+    func showMandaraTheme() {
+        self.presenter.selectMenu(selectedTopMenuType: .mandara)
+    }
+    
+    func showTutorialTheme() {
+        self.presenter.selectMenu(selectedTopMenuType: .tutorial)
+    }
+    
+}
+
+extension TopViewController {
+    @IBAction func tapSiritoriButton(_ sender: Any) {
+        self.showSiritoriTheme()
+    }
+    
+    @IBAction func tapMandaraButton(_ sender: Any) {
+        self.showMandaraTheme()
+    }
+    
+    @IBAction func tapTutorialButton(_ sender: Any) {
+        self.showTutorialTheme()
+    }
+}
+
+extension TopViewController {
+    fileprivate func configure() {
+        //ボタンに使う画像を設定
+        let ImageOfGetIdea :UIImage? = UIImage(named:"getidea.png")
+        let ImageOfExpand:UIImage? = UIImage(named:"expand.png")
+        let ImageOfTutorial :UIImage? = UIImage(named:"tutorial.png")
         //サイズ、位置を動的に動かすためにUIImageViewにセット
         let ExpandImageView = UIImageView(image: ImageOfExpand)
         let TutorialImageView = UIImageView(image: ImageOfTutorial)
@@ -93,8 +130,9 @@ class TopViewController: BaseViewController {
         TutorialTitle.adjustsFontSizeToFitWidth = true
         TutorialTitle.textAlignment = NSTextAlignment.center
         Tutorial.addSubview(TutorialTitle)
-        
-        
+    }
+    
+    fileprivate func showAd() {
         // To display the advertisement
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         bannerView.adUnitID = admob_id
@@ -103,25 +141,5 @@ class TopViewController: BaseViewController {
         bannerView.delegate = self
         addBannerViewToView(bannerView)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // ナビゲーションを透明にする処理
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
-        self.navigationController!.navigationBar.barTintColor = UIColor.white
-    }
-
-
 }
 
