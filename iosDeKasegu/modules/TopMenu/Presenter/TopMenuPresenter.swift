@@ -29,6 +29,10 @@ extension TopMenuPresenter: TopMenuPresentable {
             self.router.showMandaraThemes()
         case .siritori:
             self.router.showSiritoriThemes()
+        case .sixHats:
+            self.router.showSixHatsThemes()
+        case .osborne:
+            self.router.showOsborneThemes()
         case .tutorial:
             self.router.showTutorial()
         }

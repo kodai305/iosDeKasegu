@@ -18,64 +18,83 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M0j-6a-V72">
-                                <rect key="frame" x="53" y="97" width="278" height="104"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTy-Ps-P7G">
+                                <rect key="frame" x="122" y="154" width="100" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.99578227031718758" blue="0.42074295857966271" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="20"/>
-                                <color key="tintColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
-                                <inset key="titleEdgeInsets" minX="0.0" minY="120" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="70" maxY="0.0"/>
-                                <state key="normal">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.95686274509803915" green="0.81568627450980391" blue="0.24705882352941178" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
+                                <state key="normal" title="しりとり法">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="tapSiritoriButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yiN-8q-WUa"/>
+                                    <action selector="tapSiritoriButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TbI-gf-91R"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wue-VC-Mo4">
-                                <rect key="frame" x="140" y="434" width="104" height="89"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pbg-jB-gCx">
+                                <rect key="frame" x="130" y="222" width="80" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="20"/>
-                                <color key="tintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.34901960784313724" green="0.6705882352941176" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
+                                <state key="normal" title="まんだら">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="tapTutorialButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pNN-mX-siC"/>
+                                    <action selector="tapMandaraButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lOO-rT-uJS"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxR-Cu-w8o">
-                                <rect key="frame" x="118" y="264" width="139" height="121"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hX9-3i-Shf">
+                                <rect key="frame" x="155" y="291" width="69" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
-                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="20"/>
-                                <color key="tintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.8953290581703186" green="0.7297284166444562" blue="0.85980603838175207" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="19"/>
+                                <state key="normal" title="6ハット">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="tapMandaraButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BNU-fi-Xx5"/>
+                                    <action selector="tapSixHatsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RHU-5b-KSx"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DIu-Ee-x0A">
+                                <rect key="frame" x="123" y="355" width="98" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.67087692885378214" green="1" blue="0.64766766676136545" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
+                                <state key="normal" title="オズボーン">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapOsborneButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gXz-fb-49P"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6c-R8-uz2">
+                                <rect key="frame" x="119" y="445" width="139" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.8784313725490196" green="0.50980392156862742" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
+                                <state key="normal" title="チュートリアル">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapTutorialButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="m5g-7m-16T"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fast Idea" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHn-Cd-BcX">
+                                <rect key="frame" x="158" y="63" width="145" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.92549019607843142" green="0.94117647058823528" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="jmy-MV-NVb"/>
-                    <connections>
-                        <outlet property="Expand" destination="kxR-Cu-w8o" id="y60-Pb-51S"/>
-                        <outlet property="GetIdea" destination="M0j-6a-V72" id="jnj-xO-ePX"/>
-                        <outlet property="Tutorial" destination="wue-VC-Mo4" id="6Sf-e7-GZU"/>
-                        <segue destination="e1g-yK-cKD" kind="show" identifier="toSiritori" id="RDA-ly-Kqu"/>
-                        <segue destination="M7q-wS-CLF" kind="show" identifier="toMandara" id="Yp2-6H-2ok"/>
-                        <segue destination="r0s-c6-dPm" kind="show" identifier="toTutorial" id="ZgS-sd-Tpg"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="658" y="134"/>
+            <point key="canvasLocation" x="-473" y="127"/>
         </scene>
         <!--Mandara Work View Controller-->
         <scene sceneID="agl-0m-AlV">
@@ -111,7 +130,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3473" y="265"/>
+            <point key="canvasLocation" x="2340" y="72"/>
         </scene>
         <!--Mandara Theme View Controller-->
         <scene sceneID="595-R5-Z2g">
@@ -139,7 +158,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tsK-cA-sTT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2569" y="264"/>
+            <point key="canvasLocation" x="1513" y="63"/>
         </scene>
         <!--Mandara Guide View Controller-->
         <scene sceneID="5kL-uN-oPa">
@@ -157,7 +176,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UGf-UR-Cvb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3495" y="1703"/>
+            <point key="canvasLocation" x="2167" y="2908"/>
         </scene>
         <!--Siritori Theme View Controller-->
         <scene sceneID="JOu-yg-Lor">
@@ -185,7 +204,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azt-lP-5xL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2583" y="-496"/>
+            <point key="canvasLocation" x="1471" y="-622"/>
         </scene>
         <!--Top Guide View Controller-->
         <scene sceneID="KS8-jf-mYd">
@@ -239,7 +258,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q9g-qE-sYx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2561" y="997"/>
+            <point key="canvasLocation" x="1396" y="2195"/>
         </scene>
         <!--Siritori Guide View Controller-->
         <scene sceneID="8oX-TN-sZq">
@@ -257,7 +276,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MtC-ii-5OZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3489" y="998"/>
+            <point key="canvasLocation" x="2162" y="2196"/>
         </scene>
         <!--Siritori Work View Controller-->
         <scene sceneID="e3G-N5-6eo">
@@ -281,7 +300,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3489" y="-496"/>
+            <point key="canvasLocation" x="2343" y="-612"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Gvu-wS-eHV">
@@ -298,7 +317,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ex6-Uz-04r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-50" y="137"/>
+            <point key="canvasLocation" x="-1193" y="134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UXQ-N4-NsB">
@@ -316,7 +335,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m88-Hg-vmq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1593" y="-276"/>
+            <point key="canvasLocation" x="646" y="-627"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CRP-S5-biH">
@@ -334,7 +353,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yZl-4Z-unM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1583" y="402"/>
+            <point key="canvasLocation" x="668" y="60"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8JJ-Mv-J1Q">
@@ -352,7 +371,125 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GeD-hX-XhG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1598" y="1097"/>
+            <point key="canvasLocation" x="646" y="2192"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hfb-gy-R1T">
+            <objects>
+                <navigationController storyboardIdentifier="SixHatsThemeNC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uMt-QW-buM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FXp-c2-2tw">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cky-35-SHW" kind="relationship" relationship="rootViewController" id="CAj-V3-kWM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zcl-Ru-rjO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="666" y="738"/>
+        </scene>
+        <!--Six Hats Theme View Controller-->
+        <scene sceneID="1q5-3t-THT">
+            <objects>
+                <viewController id="cky-35-SHW" customClass="SixHatsThemeViewController" customModule="iosDeKasegu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uBg-zu-5lW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BBk-ai-DO6">
+                                <rect key="frame" x="168" y="294" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="OIH-Yr-dv1" kind="show" identifier="toSixHatsWork" id="RkE-c3-irX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="J85-DC-bgB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="xJV-kg-Pwa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SFp-Nl-wQ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1492" y="761"/>
+        </scene>
+        <!--Six Hats Work View Controller-->
+        <scene sceneID="hyF-2Z-WB5">
+            <objects>
+                <viewController id="OIH-Yr-dv1" customClass="SixHatsWorkViewController" customModule="iosDeKasegu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="o3t-qd-qKf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="2nJ-M7-mnT"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hFA-ni-2SX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2364" y="744"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="k9U-5y-gZk">
+            <objects>
+                <navigationController storyboardIdentifier="OsborneThemeNC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RS1-of-Bn0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qK7-Md-OWM">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ELX-c5-uO6" kind="relationship" relationship="rootViewController" id="DpY-ud-D6L"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="boI-Wo-gBr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="682" y="1471"/>
+        </scene>
+        <!--Osborne Theme View Controller-->
+        <scene sceneID="OFg-Hk-4ax">
+            <objects>
+                <viewController id="ELX-c5-uO6" customClass="OsborneThemeViewController" customModule="iosDeKasegu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kEg-p9-zrf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEX-iz-3h5">
+                                <rect key="frame" x="161" y="267" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="zs9-hA-Z4s" kind="show" identifier="toOsborneWork" id="LGZ-K8-1ox"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="YO5-NS-ucf"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bOW-WH-Crj"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o1R-d8-Lb2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1495" y="1482"/>
+        </scene>
+        <!--Osborne Work View Controller-->
+        <scene sceneID="3h7-QF-s7K">
+            <objects>
+                <viewController id="zs9-hA-Z4s" customClass="OsborneWorkViewController" customModule="iosDeKasegu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pu3-uT-i77">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="fg7-ke-HaG"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DKK-xn-Qjr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2369" y="1478"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

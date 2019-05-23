@@ -10,9 +10,11 @@ import Foundation
 
 // MARK: - view
 protocol TopMenuView: class {
-    func showSiritoriTheme()
-    func showMandaraTheme()
-    func showTutorialTheme()
+    func showSiritoriThemes()
+    func showMandaraThemes()
+    func showSixHatsThemes()
+    func showOsborneThemes()
+    func showTutorial()
 }
 
 // MARK: - presenter
@@ -24,11 +26,15 @@ protocol TopMenuPresentable: class {
 protocol TopMenuWireframe: class {
     func showSiritoriThemes()
     func showMandaraThemes()
+    func showSixHatsThemes()
+    func showOsborneThemes()
     func showTutorial()
 }
 
 enum TopMenuType: String {
     case siritori
     case mandara
+    case sixHats
+    case osborne
     case tutorial
 }

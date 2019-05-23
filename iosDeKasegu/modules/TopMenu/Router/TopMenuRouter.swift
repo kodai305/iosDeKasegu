@@ -38,13 +38,24 @@ extension TopMenuRouter:TopMenuWireframe {
     func showSiritoriThemes() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let destinationNC = storyboard.instantiateViewController(withIdentifier: "SiritoriThemeNC") as! UINavigationController
-        destinationNC.isNavigationBarHidden = false
         viewController?.navigationController?.pushViewController(destinationNC.topViewController!, animated: true)
     }
     
     func showMandaraThemes() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let destinationNC = storyboard.instantiateViewController(withIdentifier: "MandaraThemeNC") as! UINavigationController
+        viewController?.navigationController?.pushViewController(destinationNC.topViewController!, animated: true)
+    }
+    
+    func showSixHatsThemes() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let destinationNC = storyboard.instantiateViewController(withIdentifier: "SixHatsThemeNC") as! UINavigationController
+        viewController?.navigationController?.pushViewController(destinationNC.topViewController!, animated: true)
+    }
+    
+    func showOsborneThemes() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let destinationNC = storyboard.instantiateViewController(withIdentifier: "OsborneThemeNC") as! UINavigationController
         viewController?.navigationController?.pushViewController(destinationNC.topViewController!, animated: true)
     }
     
