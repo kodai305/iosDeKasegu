@@ -24,6 +24,15 @@
 		47C6BBC020FCA0C700C1BFDF /* MandaraThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C6BBBF20FCA0C600C1BFDF /* MandaraThemeViewController.swift */; };
 		47C6BBC220FCA4D200C1BFDF /* MandaraGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C6BBC120FCA4D200C1BFDF /* MandaraGuideViewController.swift */; };
 		70BE9463840BF4CDFBE1A63F /* Pods_iosDeKasegu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD001B652A56BABB759593F /* Pods_iosDeKasegu.framework */; };
+		CD4002E22291C5040097887B /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4002E12291C5040097887B /* RootRouter.swift */; };
+		CD4002E62291C5950097887B /* TopMenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4002E52291C5950097887B /* TopMenuRouter.swift */; };
+		CD4002EE2291CA290097887B /* Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4002ED2291CA290097887B /* Method.swift */; };
+		CD4002F22291CBF80097887B /* TopMenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4002F12291CBF80097887B /* TopMenuPresenter.swift */; };
+		CD4002F52291CCBD0097887B /* TopMenuContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4002F42291CCBD0097887B /* TopMenuContract.swift */; };
+		CD58A1A422959FE200C511CE /* SixHatsWorkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD58A1A322959FE200C511CE /* SixHatsWorkViewController.swift */; };
+		CD58A1A62295A00B00C511CE /* OsborneThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD58A1A52295A00B00C511CE /* OsborneThemeViewController.swift */; };
+		CD58A1A82295A05200C511CE /* SixHatsThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD58A1A72295A05200C511CE /* SixHatsThemeViewController.swift */; };
+		CD58A1AA2295A07600C511CE /* OsborneWorkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD58A1A92295A07600C511CE /* OsborneWorkViewController.swift */; };
 		CD5E382A22872134007BDD32 /* PlaceHolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5E382922872134007BDD32 /* PlaceHolderViewController.swift */; };
 		CE465B842109D16800C4CF16 /* TopGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE465B832109D16800C4CF16 /* TopGuideViewController.swift */; };
 		CEB2999920F82C930003E985 /* SiritoriGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2999820F82C930003E985 /* SiritoriGuideViewController.swift */; };
@@ -49,6 +58,15 @@
 		47C6BBBF20FCA0C600C1BFDF /* MandaraThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandaraThemeViewController.swift; sourceTree = "<group>"; };
 		47C6BBC120FCA4D200C1BFDF /* MandaraGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandaraGuideViewController.swift; sourceTree = "<group>"; };
 		7F17DC46172CB3F48F8A5194 /* Pods-iosDeKasegu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosDeKasegu.debug.xcconfig"; path = "Target Support Files/Pods-iosDeKasegu/Pods-iosDeKasegu.debug.xcconfig"; sourceTree = "<group>"; };
+		CD4002E12291C5040097887B /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
+		CD4002E52291C5950097887B /* TopMenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMenuRouter.swift; sourceTree = "<group>"; };
+		CD4002ED2291CA290097887B /* Method.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Method.swift; sourceTree = "<group>"; };
+		CD4002F12291CBF80097887B /* TopMenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMenuPresenter.swift; sourceTree = "<group>"; };
+		CD4002F42291CCBD0097887B /* TopMenuContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMenuContract.swift; sourceTree = "<group>"; };
+		CD58A1A322959FE200C511CE /* SixHatsWorkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SixHatsWorkViewController.swift; sourceTree = "<group>"; };
+		CD58A1A52295A00B00C511CE /* OsborneThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OsborneThemeViewController.swift; sourceTree = "<group>"; };
+		CD58A1A72295A05200C511CE /* SixHatsThemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SixHatsThemeViewController.swift; sourceTree = "<group>"; };
+		CD58A1A92295A07600C511CE /* OsborneWorkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OsborneWorkViewController.swift; sourceTree = "<group>"; };
 		CD5E382922872134007BDD32 /* PlaceHolderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderViewController.swift; sourceTree = "<group>"; };
 		CE465B832109D16800C4CF16 /* TopGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopGuideViewController.swift; sourceTree = "<group>"; };
 		CEB2999820F82C930003E985 /* SiritoriGuideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiritoriGuideViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +99,7 @@
 		47409A1220E6633200AD2031 = {
 			isa = PBXGroup;
 			children = (
+				CD58A1A92295A07600C511CE /* OsborneWorkViewController.swift */,
 				47409A1D20E6633200AD2031 /* iosDeKasegu */,
 				47409A1C20E6633200AD2031 /* Products */,
 				A9004398B0A041C37B42D867 /* Frameworks */,
@@ -99,12 +118,14 @@
 		47409A1D20E6633200AD2031 /* iosDeKasegu */ = {
 			isa = PBXGroup;
 			children = (
-				47409A1E20E6633200AD2031 /* AppDelegate.swift */,
+				47409A2D20E6633500AD2031 /* Info.plist */,
+				CD4002DF2291C4A40097887B /* application */,
+				CD4002DE2291C4910097887B /* modules */,
+				CD4002EA2291C8510097887B /* entities */,
 				47AF685320E8C874003BD075 /* BaseViewController.swift */,
 				47C6BBBD20FAD8E300C1BFDF /* BaseThemeViewController.swift */,
 				4715B50B21060C75003ACEBA /* BaseWorkViewController.swift */,
 				47409A2220E6633300AD2031 /* Main.storyboard */,
-				47409A2020E6633300AD2031 /* TopViewController.swift */,
 				CE465B832109D16800C4CF16 /* TopGuideViewController.swift */,
 				47C6BBBF20FCA0C600C1BFDF /* MandaraThemeViewController.swift */,
 				47AF685920F39713003BD075 /* MandaraWorksViewController.swift */,
@@ -112,11 +133,10 @@
 				47AF685B20F7843B003BD075 /* SiritoriThemeViewController.swift */,
 				47AF685720E90E3B003BD075 /* SiritoriWorkViewController.swift */,
 				CEB2999820F82C930003E985 /* SiritoriGuideViewController.swift */,
+				CD58A1A72295A05200C511CE /* SixHatsThemeViewController.swift */,
+				CD58A1A322959FE200C511CE /* SixHatsWorkViewController.swift */,
+				CD58A1A52295A00B00C511CE /* OsborneThemeViewController.swift */,
 				47409A2820E6633500AD2031 /* Assets.xcassets */,
-				47409A2A20E6633500AD2031 /* LaunchScreen.storyboard */,
-				47409A2D20E6633500AD2031 /* Info.plist */,
-				4735B0B3210C5D87009D1323 /* GoogleService-Info.plist */,
-				47409A2520E6633300AD2031 /* iosDeKasegu.xcdatamodeld */,
 				CD5E382922872134007BDD32 /* PlaceHolderViewController.swift */,
 			);
 			path = iosDeKasegu;
@@ -129,6 +149,85 @@
 				DAD001B652A56BABB759593F /* Pods_iosDeKasegu.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD4002DE2291C4910097887B /* modules */ = {
+			isa = PBXGroup;
+			children = (
+				CD4002E02291C4D00097887B /* Root */,
+				CD4002E32291C52C0097887B /* TopMenu */,
+			);
+			path = modules;
+			sourceTree = "<group>";
+		};
+		CD4002DF2291C4A40097887B /* application */ = {
+			isa = PBXGroup;
+			children = (
+				47409A1E20E6633200AD2031 /* AppDelegate.swift */,
+				4735B0B3210C5D87009D1323 /* GoogleService-Info.plist */,
+				47409A2520E6633300AD2031 /* iosDeKasegu.xcdatamodeld */,
+				47409A2A20E6633500AD2031 /* LaunchScreen.storyboard */,
+			);
+			path = application;
+			sourceTree = "<group>";
+		};
+		CD4002E02291C4D00097887B /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				CD4002E12291C5040097887B /* RootRouter.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		CD4002E32291C52C0097887B /* TopMenu */ = {
+			isa = PBXGroup;
+			children = (
+				CD4002F02291CBA10097887B /* Presenter */,
+				CD4002E42291C5770097887B /* Router */,
+				CD4002EF2291CB310097887B /* View */,
+				CD4002F32291CC680097887B /* Contract */,
+			);
+			path = TopMenu;
+			sourceTree = "<group>";
+		};
+		CD4002E42291C5770097887B /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				CD4002E52291C5950097887B /* TopMenuRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		CD4002EA2291C8510097887B /* entities */ = {
+			isa = PBXGroup;
+			children = (
+				CD4002ED2291CA290097887B /* Method.swift */,
+			);
+			path = entities;
+			sourceTree = "<group>";
+		};
+		CD4002EF2291CB310097887B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				47409A2020E6633300AD2031 /* TopViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CD4002F02291CBA10097887B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CD4002F12291CBF80097887B /* TopMenuPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CD4002F32291CC680097887B /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				CD4002F42291CCBD0097887B /* TopMenuContract.swift */,
+			);
+			path = Contract;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,10 +354,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD58A1AA2295A07600C511CE /* OsborneWorkViewController.swift in Sources */,
 				47409A2120E6633300AD2031 /* TopViewController.swift in Sources */,
+				CD4002E22291C5040097887B /* RootRouter.swift in Sources */,
+				CD58A1A422959FE200C511CE /* SixHatsWorkViewController.swift in Sources */,
 				47AF685C20F7843B003BD075 /* SiritoriThemeViewController.swift in Sources */,
 				CD5E382A22872134007BDD32 /* PlaceHolderViewController.swift in Sources */,
+				CD4002EE2291CA290097887B /* Method.swift in Sources */,
+				CD4002E62291C5950097887B /* TopMenuRouter.swift in Sources */,
 				47409A1F20E6633200AD2031 /* AppDelegate.swift in Sources */,
+				CD58A1A82295A05200C511CE /* SixHatsThemeViewController.swift in Sources */,
+				CD58A1A62295A00B00C511CE /* OsborneThemeViewController.swift in Sources */,
+				CD4002F52291CCBD0097887B /* TopMenuContract.swift in Sources */,
+				CD4002F22291CBF80097887B /* TopMenuPresenter.swift in Sources */,
 				47AF685420E8C874003BD075 /* BaseViewController.swift in Sources */,
 				47C6BBC220FCA4D200C1BFDF /* MandaraGuideViewController.swift in Sources */,
 				47C6BBBE20FAD8E300C1BFDF /* BaseThemeViewController.swift in Sources */,
