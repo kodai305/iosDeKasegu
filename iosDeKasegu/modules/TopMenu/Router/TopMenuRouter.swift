@@ -37,25 +37,25 @@ class TopMenuRouter {
 extension TopMenuRouter:TopMenuWireframe {
     func showSiritoriThemes() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let destinationNC = storyboard.instantiateViewController(withIdentifier: "SiritoriThemeNC") as! UINavigationController
+        let destinationNC = storyboard.instantiateViewController(withIdentifier: "SiritoriThemesNC") as! UINavigationController
         viewController?.navigationController?.pushViewController(destinationNC.topViewController!, animated: true)
     }
     
     func showMandaraThemes() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let destinationNC = storyboard.instantiateViewController(withIdentifier: "MandaraThemeNC") as! UINavigationController
+        let destinationNC = storyboard.instantiateViewController(withIdentifier: "MandaraThemesNC") as! UINavigationController
         viewController?.navigationController?.pushViewController(destinationNC.topViewController!, animated: true)
     }
     
     func showSixHatsThemes() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let destinationNC = storyboard.instantiateViewController(withIdentifier: "SixHatsThemeNC") as! UINavigationController
+        let destinationNC = storyboard.instantiateViewController(withIdentifier: "SixHatsThemesNC") as! UINavigationController
         viewController?.navigationController?.pushViewController(destinationNC.topViewController!, animated: true)
     }
     
     func showOsborneThemes() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let destinationNC = storyboard.instantiateViewController(withIdentifier: "OsborneThemeNC") as! UINavigationController
+        let destinationNC = storyboard.instantiateViewController(withIdentifier: "OsborneThemesNC") as! UINavigationController
         viewController?.navigationController?.pushViewController(destinationNC.topViewController!, animated: true)
     }
     

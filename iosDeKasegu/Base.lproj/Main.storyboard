@@ -322,7 +322,7 @@
         <!--Navigation Controller-->
         <scene sceneID="UXQ-N4-NsB">
             <objects>
-                <navigationController storyboardIdentifier="SiritoriThemeNC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="e1g-yK-cKD" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SiritoriThemesNC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="e1g-yK-cKD" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lzt-eq-Fab">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -340,7 +340,7 @@
         <!--Navigation Controller-->
         <scene sceneID="CRP-S5-biH">
             <objects>
-                <navigationController storyboardIdentifier="MandaraThemeNC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="M7q-wS-CLF" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MandaraThemesNC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="M7q-wS-CLF" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="607-uc-NFN">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -376,7 +376,7 @@
         <!--Navigation Controller-->
         <scene sceneID="hfb-gy-R1T">
             <objects>
-                <navigationController storyboardIdentifier="SixHatsThemeNC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uMt-QW-buM" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SixHatsThemesNC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uMt-QW-buM" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FXp-c2-2tw">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -435,7 +435,7 @@
         <!--Navigation Controller-->
         <scene sceneID="k9U-5y-gZk">
             <objects>
-                <navigationController storyboardIdentifier="OsborneThemeNC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RS1-of-Bn0" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="OsborneThemesNC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RS1-of-Bn0" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qK7-Md-OWM">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
