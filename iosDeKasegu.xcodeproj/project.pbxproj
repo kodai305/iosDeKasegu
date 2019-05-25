@@ -34,6 +34,12 @@
 		CD58A1A82295A05200C511CE /* SixHatsThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD58A1A72295A05200C511CE /* SixHatsThemeViewController.swift */; };
 		CD58A1AA2295A07600C511CE /* OsborneWorkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD58A1A92295A07600C511CE /* OsborneWorkViewController.swift */; };
 		CD5E382A22872134007BDD32 /* PlaceHolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5E382922872134007BDD32 /* PlaceHolderViewController.swift */; };
+		CD8DC176229962E1007381AF /* Siritori.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8DC175229962E1007381AF /* Siritori.storyboard */; };
+		CD8DC179229963D4007381AF /* Mandara.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8DC178229963D4007381AF /* Mandara.storyboard */; };
+		CD8DC17C22996507007381AF /* SixHats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8DC17B22996507007381AF /* SixHats.storyboard */; };
+		CD8DC17F22996573007381AF /* Osborne.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8DC17E22996573007381AF /* Osborne.storyboard */; };
+		CD8DC183229965F2007381AF /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8DC182229965F2007381AF /* Tutorial.storyboard */; };
+		CD8DC187229969D6007381AF /* MethodEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8DC186229969D6007381AF /* MethodEnum.swift */; };
 		CE465B842109D16800C4CF16 /* TopGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE465B832109D16800C4CF16 /* TopGuideViewController.swift */; };
 		CEB2999920F82C930003E985 /* SiritoriGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2999820F82C930003E985 /* SiritoriGuideViewController.swift */; };
 /* End PBXBuildFile section */
@@ -68,6 +74,12 @@
 		CD58A1A72295A05200C511CE /* SixHatsThemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SixHatsThemeViewController.swift; sourceTree = "<group>"; };
 		CD58A1A92295A07600C511CE /* OsborneWorkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OsborneWorkViewController.swift; sourceTree = "<group>"; };
 		CD5E382922872134007BDD32 /* PlaceHolderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderViewController.swift; sourceTree = "<group>"; };
+		CD8DC175229962E1007381AF /* Siritori.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Siritori.storyboard; sourceTree = "<group>"; };
+		CD8DC178229963D4007381AF /* Mandara.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Mandara.storyboard; sourceTree = "<group>"; };
+		CD8DC17B22996507007381AF /* SixHats.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SixHats.storyboard; sourceTree = "<group>"; };
+		CD8DC17E22996573007381AF /* Osborne.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Osborne.storyboard; sourceTree = "<group>"; };
+		CD8DC182229965F2007381AF /* Tutorial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
+		CD8DC186229969D6007381AF /* MethodEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MethodEnum.swift; sourceTree = "<group>"; };
 		CE465B832109D16800C4CF16 /* TopGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopGuideViewController.swift; sourceTree = "<group>"; };
 		CEB2999820F82C930003E985 /* SiritoriGuideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiritoriGuideViewController.swift; sourceTree = "<group>"; };
 		DAD001B652A56BABB759593F /* Pods_iosDeKasegu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosDeKasegu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,7 +111,6 @@
 		47409A1220E6633200AD2031 = {
 			isa = PBXGroup;
 			children = (
-				CD58A1A92295A07600C511CE /* OsborneWorkViewController.swift */,
 				47409A1D20E6633200AD2031 /* iosDeKasegu */,
 				47409A1C20E6633200AD2031 /* Products */,
 				A9004398B0A041C37B42D867 /* Frameworks */,
@@ -118,26 +129,20 @@
 		47409A1D20E6633200AD2031 /* iosDeKasegu */ = {
 			isa = PBXGroup;
 			children = (
-				47409A2D20E6633500AD2031 /* Info.plist */,
 				CD4002DF2291C4A40097887B /* application */,
-				CD4002DE2291C4910097887B /* modules */,
-				CD4002EA2291C8510097887B /* entities */,
+				CD8DC17322996146007381AF /* TopMenu */,
+				CD8DC174229962C4007381AF /* Siritori */,
+				CD8DC177229963AE007381AF /* Mandara */,
+				CD8DC17A229964E6007381AF /* SixHats */,
+				CD8DC17D22996555007381AF /* Osborne */,
+				CD8DC180229965D6007381AF /* Tutorial */,
+				47409A2D20E6633500AD2031 /* Info.plist */,
 				47AF685320E8C874003BD075 /* BaseViewController.swift */,
 				47C6BBBD20FAD8E300C1BFDF /* BaseThemeViewController.swift */,
 				4715B50B21060C75003ACEBA /* BaseWorkViewController.swift */,
-				47409A2220E6633300AD2031 /* Main.storyboard */,
-				CE465B832109D16800C4CF16 /* TopGuideViewController.swift */,
-				47C6BBBF20FCA0C600C1BFDF /* MandaraThemeViewController.swift */,
-				47AF685920F39713003BD075 /* MandaraWorksViewController.swift */,
-				47C6BBC120FCA4D200C1BFDF /* MandaraGuideViewController.swift */,
-				47AF685B20F7843B003BD075 /* SiritoriThemeViewController.swift */,
-				47AF685720E90E3B003BD075 /* SiritoriWorkViewController.swift */,
-				CEB2999820F82C930003E985 /* SiritoriGuideViewController.swift */,
-				CD58A1A72295A05200C511CE /* SixHatsThemeViewController.swift */,
-				CD58A1A322959FE200C511CE /* SixHatsWorkViewController.swift */,
-				CD58A1A52295A00B00C511CE /* OsborneThemeViewController.swift */,
 				47409A2820E6633500AD2031 /* Assets.xcassets */,
 				CD5E382922872134007BDD32 /* PlaceHolderViewController.swift */,
+				CD8DC186229969D6007381AF /* MethodEnum.swift */,
 			);
 			path = iosDeKasegu;
 			sourceTree = "<group>";
@@ -230,6 +235,67 @@
 			path = Contract;
 			sourceTree = "<group>";
 		};
+		CD8DC17322996146007381AF /* TopMenu */ = {
+			isa = PBXGroup;
+			children = (
+				47409A2220E6633300AD2031 /* Main.storyboard */,
+				CD4002DE2291C4910097887B /* modules */,
+				CD4002EA2291C8510097887B /* entities */,
+			);
+			path = TopMenu;
+			sourceTree = "<group>";
+		};
+		CD8DC174229962C4007381AF /* Siritori */ = {
+			isa = PBXGroup;
+			children = (
+				CD8DC175229962E1007381AF /* Siritori.storyboard */,
+				47AF685B20F7843B003BD075 /* SiritoriThemeViewController.swift */,
+				47AF685720E90E3B003BD075 /* SiritoriWorkViewController.swift */,
+			);
+			path = Siritori;
+			sourceTree = "<group>";
+		};
+		CD8DC177229963AE007381AF /* Mandara */ = {
+			isa = PBXGroup;
+			children = (
+				CD8DC178229963D4007381AF /* Mandara.storyboard */,
+				47C6BBBF20FCA0C600C1BFDF /* MandaraThemeViewController.swift */,
+				47AF685920F39713003BD075 /* MandaraWorksViewController.swift */,
+			);
+			path = Mandara;
+			sourceTree = "<group>";
+		};
+		CD8DC17A229964E6007381AF /* SixHats */ = {
+			isa = PBXGroup;
+			children = (
+				CD8DC17B22996507007381AF /* SixHats.storyboard */,
+				CD58A1A72295A05200C511CE /* SixHatsThemeViewController.swift */,
+				CD58A1A322959FE200C511CE /* SixHatsWorkViewController.swift */,
+			);
+			path = SixHats;
+			sourceTree = "<group>";
+		};
+		CD8DC17D22996555007381AF /* Osborne */ = {
+			isa = PBXGroup;
+			children = (
+				CD8DC17E22996573007381AF /* Osborne.storyboard */,
+				CD58A1A52295A00B00C511CE /* OsborneThemeViewController.swift */,
+				CD58A1A92295A07600C511CE /* OsborneWorkViewController.swift */,
+			);
+			path = Osborne;
+			sourceTree = "<group>";
+		};
+		CD8DC180229965D6007381AF /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				CD8DC182229965F2007381AF /* Tutorial.storyboard */,
+				CE465B832109D16800C4CF16 /* TopGuideViewController.swift */,
+				47C6BBC120FCA4D200C1BFDF /* MandaraGuideViewController.swift */,
+				CEB2999820F82C930003E985 /* SiritoriGuideViewController.swift */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -292,9 +358,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4735B0B4210C5D87009D1323 /* GoogleService-Info.plist in Resources */,
+				CD8DC183229965F2007381AF /* Tutorial.storyboard in Resources */,
+				CD8DC17F22996573007381AF /* Osborne.storyboard in Resources */,
+				CD8DC17C22996507007381AF /* SixHats.storyboard in Resources */,
 				47409A2C20E6633500AD2031 /* LaunchScreen.storyboard in Resources */,
 				47409A2920E6633500AD2031 /* Assets.xcassets in Resources */,
+				CD8DC179229963D4007381AF /* Mandara.storyboard in Resources */,
 				47409A2420E6633300AD2031 /* Main.storyboard in Resources */,
+				CD8DC176229962E1007381AF /* Siritori.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +426,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD58A1AA2295A07600C511CE /* OsborneWorkViewController.swift in Sources */,
+				CD8DC187229969D6007381AF /* MethodEnum.swift in Sources */,
 				47409A2120E6633300AD2031 /* TopViewController.swift in Sources */,
 				CD4002E22291C5040097887B /* RootRouter.swift in Sources */,
 				CD58A1A422959FE200C511CE /* SixHatsWorkViewController.swift in Sources */,

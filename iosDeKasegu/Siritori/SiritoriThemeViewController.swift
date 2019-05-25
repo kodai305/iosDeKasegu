@@ -1,58 +1,59 @@
 //
-//  MandaraThemeViewController.swift
+//  SiritoriTopViewController.swift
 //  iosDeKasegu
 //
-//  Created by 高木広大 on 2018/07/16.
+//  Created by 高木広大 on 2018/07/12.
 //  Copyright © 2018年 shonanhiratsuka. All rights reserved.
 //
 
 import UIKit
 import GoogleMobileAds
 
-class MandaraThemeViewController: BaseThemeViewController {
-
+class SiritoriThemeViewController: BaseThemeViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // 親クラスの変数を自分の画面に合わせて定義すなおす
         // 次の画面のID
-        self.nextSegueId = "toMandaraWork"
-        self.guideSegueId = "toMandaraGuide"
+        self.nextSegueId  = "toSiritoriWork"
+        self.methodType = .Siritori
         // 保存されているテーマのKey
-        self.themeKey = "MandaraTheme"
-        self.navigationItem.title = "Theme List"
-        themeTableView.frame.size      = CGSize(width:self.view.frame.size.width * 9 / 10, height:self.view.frame.size.height * 4 / 5)
+        self.themeKey = "SiritoriTheme"
+        self.navigationItem.title = "Theme List";
+        themeTableView.frame.size = CGSize(width:self.view.frame.size.width * 9 / 10, height:self.view.frame.size.height * 4 / 5)
         themeTableView.center.x = self.view.center.x
         themeTableView.frame.origin.y = self.navigationController!.navigationBar.frame.origin.y + self.navigationController!.navigationBar.frame.size.height + 20
         themeTableView.backgroundColor = UIColor(hex: "ECF0F1")
         if (self.tableData.count == 1) {
             // 最初のセルの中身
-            print("called first cell")
-            self.section0  = [("マンダラチャートを使う","チュートリアルを見る",0)]
+            self.section0 = [("しりとり法を使う","チュートリアルを見る",0)]
             self.tableData = [self.section0]
         }
+        // ここまで
         
         themeTableView.delegate   = self
         themeTableView.dataSource = self
-        themeTableView.tableFooterView = UIView()
-        
+        themeTableView.tableFooterView = UIView(frame: .zero)
+
         // 保存されているデータの読み込み
         loadSavedTheme()
-        
+
         // テーブルを追加
         self.view.addSubview(themeTableView)
         
         // To display the advertisement on scrollView
         displayAdvertisement()
-        // Do any additional setup after loading the view.
     }
-
     
-    @IBAction func plusButtonTapped(_ sender: Any) {
+    
+    @IBAction func tapAddButton(_ sender: Any) {
         let alertController = UIAlertController(title: "テーマを追加",message:"テーマを入力して下さい",preferredStyle:UIAlertController.Style.alert)
         alertController.addTextField(configurationHandler: nil)
-
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        formatter.locale = Locale(identifier: "ja_JP")
         let okAction = UIAlertAction(title:"OK",style: UIAlertAction.Style.default){(action:UIAlertAction) in
             if let textField = alertController.textFields?.first {  // ?? .first
                 let stub:String = textField.text!
@@ -61,15 +62,15 @@ class MandaraThemeViewController: BaseThemeViewController {
                 } else {
                     // テーマの保存
                     var forSaveTheme:[themeData] = self.readTheme()
-                    //キーとして使うためにUNIXTime取得
+                    //キーにするUNIXTimeを取得
                     let UNIXTime = Int(Date.timeIntervalSinceReferenceDate)
-                    let EditData = Date()
-                    let stub = themeData(theme: textField.text!, editdata: EditData,key: UNIXTime)
+                    let EditTime = Date()
+                    let stub = themeData(theme: textField.text!, editdata: EditTime,key: UNIXTime)
                     forSaveTheme.append(stub)
                     self.saveTheme(forSaveTheme)
                     
                     // セルの追加
-                    self.section0.insert((textField.text!, formatter.string(from: EditData),UNIXTime), at: self.section0.count)
+                    self.section0.insert((textField.text!, formatter.string(from: EditTime),UNIXTime), at: self.section0.count)
                     self.tableData = [self.section0]
                     self.themeTableView.insertRows(at: [IndexPath(row: self.section0.count-1, section: 0)], with: UITableView.RowAnimation.right)
                     //self.themeTableView.reloadData()
@@ -89,26 +90,27 @@ class MandaraThemeViewController: BaseThemeViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         if segue.identifier == self.nextSegueId {
-            let nextView:MandaraWorkViewController = segue.destination as! MandaraWorkViewController
+            let nextView:SiritoriWorkViewController = segue.destination as! SiritoriWorkViewController
             let savedThemeData:[themeData]     = self.readTheme()
             nextView.cellIndex        = self.sendIndexData
             print(savedThemeData)
             //タップしたセルとkeyが同じデータを探す
             for n in 0..<section0.count{
                 if(section0[n].2 == self.sendIndexData){
-                    nextView.mandaraTheme = section0[n].0
+                    nextView.siritoriTheme = section0[n].0
                 }
             }
         }
     }
     
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
     /*
     // MARK: - Navigation
 

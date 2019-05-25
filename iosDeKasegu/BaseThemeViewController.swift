@@ -19,7 +19,7 @@ class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableV
     var sendIndexData:Int = 0
     // 次の画面のID
     var nextSegueId:String = ""
-    var guideSegueId:String = ""
+    var methodType:MethodType!
     // 保存するデータ
     var themeKey:String = ""
     struct themeData: Codable {
@@ -94,7 +94,7 @@ class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableV
         tableView.deselectRow(at: indexPath, animated: true)
         //画面遷移
         if (indexPath.row == 0) { // 0番目がタップされたとき
-            self.performSegue(withIdentifier: self.guideSegueId, sender: nil)
+            self.showTutotialFromThemes(methodType: self.methodType)
         } else {
             //デバック用
             let format = DateFormatter()
@@ -150,17 +150,22 @@ class BaseThemeViewController: BaseViewController, UITableViewDelegate, UITableV
             self.saveTheme(forSaveTheme)
         }
     }
-
-
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    fileprivate func showTutotialFromThemes(methodType:MethodType) {
+        switch methodType {
+        case .Siritori:
+            let storyboard = UIStoryboard(name: "Tutorial", bundle: nil)
+            let destinationVC = storyboard.instantiateViewController(withIdentifier: "SiritoriGuideViewController") as! SiritoriGuideViewController
+            self.navigationController?.pushViewController(destinationVC, animated: true)
+        case .Mandara:
+            let storyboard = UIStoryboard(name: "Tutorial", bundle: nil)
+            let destinationVC = storyboard.instantiateViewController(withIdentifier: "MandaraGuideViewController") as! MandaraGuideViewController
+            self.navigationController?.pushViewController(destinationVC, animated: true)
+        case .SixHats:
+            ()
+        case .Osborne:
+            ()
+        }
     }
-    */
 
 }

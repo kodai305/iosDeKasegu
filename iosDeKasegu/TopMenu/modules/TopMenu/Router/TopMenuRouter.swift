@@ -36,31 +36,31 @@ class TopMenuRouter {
 // 遷移する各画面ごとにメソッドを定義
 extension TopMenuRouter:TopMenuWireframe {
     func showSiritoriThemes() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "Siritori", bundle: nil)
         let destinationNC = storyboard.instantiateViewController(withIdentifier: "SiritoriThemesNC") as! UINavigationController
         viewController?.navigationController?.pushViewController(destinationNC.topViewController!, animated: true)
     }
     
     func showMandaraThemes() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "Mandara", bundle: nil)
         let destinationNC = storyboard.instantiateViewController(withIdentifier: "MandaraThemesNC") as! UINavigationController
         viewController?.navigationController?.pushViewController(destinationNC.topViewController!, animated: true)
     }
     
     func showSixHatsThemes() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "SixHats", bundle: nil)
         let destinationNC = storyboard.instantiateViewController(withIdentifier: "SixHatsThemesNC") as! UINavigationController
         viewController?.navigationController?.pushViewController(destinationNC.topViewController!, animated: true)
     }
     
     func showOsborneThemes() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "Osborne", bundle: nil)
         let destinationNC = storyboard.instantiateViewController(withIdentifier: "OsborneThemesNC") as! UINavigationController
         viewController?.navigationController?.pushViewController(destinationNC.topViewController!, animated: true)
     }
     
     func showTutorial() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "Tutorial", bundle: nil)
         let destinationNC = storyboard.instantiateViewController(withIdentifier: "TutorialNC") as! UINavigationController
         viewController?.navigationController?.pushViewController(destinationNC.topViewController!, animated: true)
     }
