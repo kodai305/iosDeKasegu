@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="UPG-hu-BYh">
+            <objects>
+                <navigationController storyboardIdentifier="MandaraThemesNC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="COx-9N-H26" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bCz-4D-5vs">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hX7-Ht-pBR" kind="relationship" relationship="rootViewController" id="ZiJ-kK-5FR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bYT-EC-e7L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="668" y="60"/>
+        </scene>
+        <!--Mandara Theme View Controller-->
+        <scene sceneID="JVG-44-2Py">
+            <objects>
+                <viewController id="hX7-Ht-pBR" customClass="MandaraThemeViewController" customModule="iosDeKasegu" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ipf-x1-Zze">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ZEJ-M5-zfD"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="VaC-p6-232">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="AjE-R7-CGf">
+                            <connections>
+                                <action selector="plusButtonTapped:" destination="hX7-Ht-pBR" id="gmv-n9-poB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="y3S-lh-TFx" kind="show" identifier="toMandaraWork" id="ZUA-Rc-oCA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RAa-Kn-WhG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1513" y="63"/>
+        </scene>
+        <!--Mandara Work View Controller-->
+        <scene sceneID="Uas-s6-Pyu">
+            <objects>
+                <viewController id="y3S-lh-TFx" customClass="MandaraWorkViewController" customModule="iosDeKasegu" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CcH-iC-OwI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <viewLayoutGuide key="safeArea" id="7Xi-hf-0FC"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="kNR-FI-xi9" appends="YES" id="3rt-NR-Kc0"/>
+                            <outletCollection property="gestureRecognizers" destination="zgJ-vi-qzK" appends="YES" id="1O9-Mt-Kgp"/>
+                            <outletCollection property="gestureRecognizers" destination="VmU-pg-04l" appends="YES" id="lPZ-rq-fe1"/>
+                        </connections>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HD8-UX-Y9e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pinchGestureRecognizer id="kNR-FI-xi9">
+                    <connections>
+                        <action selector="PinchOut:" destination="y3S-lh-TFx" id="2dQ-Z8-CH1"/>
+                    </connections>
+                </pinchGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="zgJ-vi-qzK">
+                    <connections>
+                        <action selector="Slide:" destination="y3S-lh-TFx" id="4p5-Dp-Gr1"/>
+                    </connections>
+                </panGestureRecognizer>
+                <tapGestureRecognizer id="VmU-pg-04l">
+                    <connections>
+                        <action selector="Tap:" destination="y3S-lh-TFx" id="HYg-zx-F25"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2340" y="72"/>
+        </scene>
+    </scenes>
+</document>

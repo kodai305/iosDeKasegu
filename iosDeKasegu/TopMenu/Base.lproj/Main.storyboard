@@ -96,70 +96,6 @@
             </objects>
             <point key="canvasLocation" x="-473" y="127"/>
         </scene>
-        <!--Mandara Work View Controller-->
-        <scene sceneID="agl-0m-AlV">
-            <objects>
-                <viewController id="wpq-R5-Cs8" customClass="MandaraWorkViewController" customModule="iosDeKasegu" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7SV-kl-xAL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <gestureRecognizers/>
-                        <viewLayoutGuide key="safeArea" id="toJ-QX-pDr"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="9xl-oe-gca" appends="YES" id="ixS-yq-Q0R"/>
-                            <outletCollection property="gestureRecognizers" destination="rFQ-5a-BcM" appends="YES" id="Scn-Qb-z6b"/>
-                            <outletCollection property="gestureRecognizers" destination="EM3-f7-aID" appends="YES" id="HHb-qX-kma"/>
-                        </connections>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2pL-aI-HWs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pinchGestureRecognizer id="9xl-oe-gca">
-                    <connections>
-                        <action selector="PinchOut:" destination="wpq-R5-Cs8" id="pkr-uB-b6v"/>
-                    </connections>
-                </pinchGestureRecognizer>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="rFQ-5a-BcM">
-                    <connections>
-                        <action selector="Slide:" destination="wpq-R5-Cs8" id="M03-Ah-OhB"/>
-                    </connections>
-                </panGestureRecognizer>
-                <tapGestureRecognizer id="EM3-f7-aID">
-                    <connections>
-                        <action selector="Tap:" destination="wpq-R5-Cs8" id="hUa-XV-hLc"/>
-                    </connections>
-                </tapGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="2340" y="72"/>
-        </scene>
-        <!--Mandara Theme View Controller-->
-        <scene sceneID="595-R5-Z2g">
-            <objects>
-                <viewController id="xfR-05-4tw" customClass="MandaraThemeViewController" customModule="iosDeKasegu" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="sDd-tK-4v3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="mlL-tJ-3ls"/>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="z6W-x7-UwO">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="7mf-Xm-3wc">
-                            <connections>
-                                <action selector="plusButtonTapped:" destination="xfR-05-4tw" id="CaQ-ZC-aEG"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <segue destination="qD1-sR-4wq" kind="show" identifier="toMandaraGuide" id="EJg-ct-XpO"/>
-                        <segue destination="wpq-R5-Cs8" kind="show" identifier="toMandaraWork" id="USL-sT-SEf"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tsK-cA-sTT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1513" y="63"/>
-        </scene>
         <!--Mandara Guide View Controller-->
         <scene sceneID="5kL-uN-oPa">
             <objects>
@@ -170,41 +106,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="B9Q-jz-zMp"/>
                     </view>
-                    <connections>
-                        <segue destination="xfR-05-4tw" kind="show" identifier="toMandaraTheme" id="Vq0-s3-kqI"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UGf-UR-Cvb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2167" y="2908"/>
-        </scene>
-        <!--Siritori Theme View Controller-->
-        <scene sceneID="JOu-yg-Lor">
-            <objects>
-                <viewController storyboardIdentifier="SiritoriThemeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Bgr-PG-ANw" customClass="SiritoriThemeViewController" customModule="iosDeKasegu" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="znn-El-y3F">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="iCc-bh-yAN"/>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="RUL-xZ-gCP">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fnB-av-ePC">
-                            <connections>
-                                <action selector="tapAddButton:" destination="Bgr-PG-ANw" id="onZ-xB-cLL"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <segue destination="Brf-VP-SpD" kind="show" identifier="toSiritoriGuide" id="qDw-nb-qob"/>
-                        <segue destination="V22-p7-Vr8" kind="show" identifier="toSiritoriWork" id="l38-uq-9xN"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="azt-lP-5xL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1471" y="-622"/>
         </scene>
         <!--Top Guide View Controller-->
         <scene sceneID="KS8-jf-mYd">
@@ -270,37 +175,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="9xZ-dA-zV0"/>
                     </view>
-                    <connections>
-                        <segue destination="Bgr-PG-ANw" kind="show" identifier="toSiritoriTheme" id="hSX-5i-qlC"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MtC-ii-5OZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2162" y="2196"/>
-        </scene>
-        <!--Siritori Work View Controller-->
-        <scene sceneID="e3G-N5-6eo">
-            <objects>
-                <viewController id="V22-p7-Vr8" customClass="SiritoriWorkViewController" customModule="iosDeKasegu" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="v18-ue-FYD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <gestureRecognizers/>
-                        <viewLayoutGuide key="safeArea" id="Jjz-QG-LJD"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="df9-Z5-Zc5" appends="YES" id="dGb-2o-st6"/>
-                        </connections>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WSs-cq-awh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="df9-Z5-Zc5">
-                    <connections>
-                        <action selector="tapView:" destination="V22-p7-Vr8" id="7zl-0E-KEe"/>
-                    </connections>
-                </tapGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="2343" y="-612"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Gvu-wS-eHV">
@@ -320,42 +198,6 @@
             <point key="canvasLocation" x="-1193" y="134"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="UXQ-N4-NsB">
-            <objects>
-                <navigationController storyboardIdentifier="SiritoriThemesNC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="e1g-yK-cKD" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lzt-eq-Fab">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Bgr-PG-ANw" kind="relationship" relationship="rootViewController" id="NOw-Ac-Odh"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="m88-Hg-vmq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="646" y="-627"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="CRP-S5-biH">
-            <objects>
-                <navigationController storyboardIdentifier="MandaraThemesNC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="M7q-wS-CLF" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="607-uc-NFN">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="xfR-05-4tw" kind="relationship" relationship="rootViewController" id="dZr-KM-XUf"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yZl-4Z-unM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="668" y="60"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="8JJ-Mv-J1Q">
             <objects>
                 <navigationController storyboardIdentifier="TutorialNC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="r0s-c6-dPm" sceneMemberID="viewController">
@@ -373,129 +215,5 @@
             </objects>
             <point key="canvasLocation" x="646" y="2192"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="hfb-gy-R1T">
-            <objects>
-                <navigationController storyboardIdentifier="SixHatsThemesNC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uMt-QW-buM" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FXp-c2-2tw">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="cky-35-SHW" kind="relationship" relationship="rootViewController" id="CAj-V3-kWM"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zcl-Ru-rjO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="666" y="738"/>
-        </scene>
-        <!--Six Hats Theme View Controller-->
-        <scene sceneID="1q5-3t-THT">
-            <objects>
-                <viewController id="cky-35-SHW" customClass="SixHatsThemeViewController" customModule="iosDeKasegu" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="uBg-zu-5lW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BBk-ai-DO6">
-                                <rect key="frame" x="168" y="294" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="OIH-Yr-dv1" kind="show" identifier="toSixHatsWork" id="RkE-c3-irX"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="J85-DC-bgB"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="xJV-kg-Pwa"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SFp-Nl-wQ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1492" y="761"/>
-        </scene>
-        <!--Six Hats Work View Controller-->
-        <scene sceneID="hyF-2Z-WB5">
-            <objects>
-                <viewController id="OIH-Yr-dv1" customClass="SixHatsWorkViewController" customModule="iosDeKasegu" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="o3t-qd-qKf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="2nJ-M7-mnT"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hFA-ni-2SX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2364" y="744"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="k9U-5y-gZk">
-            <objects>
-                <navigationController storyboardIdentifier="OsborneThemesNC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RS1-of-Bn0" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qK7-Md-OWM">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="ELX-c5-uO6" kind="relationship" relationship="rootViewController" id="DpY-ud-D6L"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="boI-Wo-gBr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="682" y="1471"/>
-        </scene>
-        <!--Osborne Theme View Controller-->
-        <scene sceneID="OFg-Hk-4ax">
-            <objects>
-                <viewController id="ELX-c5-uO6" customClass="OsborneThemeViewController" customModule="iosDeKasegu" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kEg-p9-zrf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEX-iz-3h5">
-                                <rect key="frame" x="161" y="267" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="zs9-hA-Z4s" kind="show" identifier="toOsborneWork" id="LGZ-K8-1ox"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="YO5-NS-ucf"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="bOW-WH-Crj"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="o1R-d8-Lb2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1495" y="1482"/>
-        </scene>
-        <!--Osborne Work View Controller-->
-        <scene sceneID="3h7-QF-s7K">
-            <objects>
-                <viewController id="zs9-hA-Z4s" customClass="OsborneWorkViewController" customModule="iosDeKasegu" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Pu3-uT-i77">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="fg7-ke-HaG"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DKK-xn-Qjr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2369" y="1478"/>
-        </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="hxk-fS-K0a"/>
-        <segue reference="NOw-Ac-Odh"/>
-        <segue reference="uZu-tX-U4m"/>
-        <segue reference="dZr-KM-XUf"/>
-    </inferredMetricsTieBreakers>
 </document>
